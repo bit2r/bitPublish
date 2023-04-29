@@ -1,0 +1,21 @@
+title: "Your book title"
+author: "Your name"
+version: 0.0.1
+
+contributes:
+  format:
+    html:
+      theme: cosmo
+    pdf:
+      documentclass: book
+      fig-cap-location: bottom
+      tbl-cap-location: bottom
+      toc-title: "목차"
+      crossref: 
+        fig-title: "그림"
+        tbl-title: "표"
+      include-in-header: 
+        - file: preamble.tex
+      linkcolor: highlight
+      urlcolor: highlight
+      keep-tex: true
