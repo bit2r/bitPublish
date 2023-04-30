@@ -55,7 +55,7 @@
 	FontFace = {bx}{n}{ Font = {* ExtraBold} },
 	FontFace = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 }
 ]
-\setsanshangulfont{NanumGothic}[%
+\setsanshangulfont{SUIT}[%
 	Renderer = OpenType,
 	FontFace = {m}{n}{ Font = * },
 	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
@@ -63,7 +63,7 @@
 	FontFace = {bx}{n}{ Font = {* ExtraBold} },
 	FontFace = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 }
 ]
-\setmainhanjafont{NanumGothic}
+\setmainhanjafont{SUIT}
 %verbatim에 사용할 mono space 폰트
 \setmonofont{NanumGothicCoding}[%
   Scale = 0.9,
@@ -101,6 +101,8 @@
 \usepackage{titlesec}
 \titleformat{\section}
   {\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
   
 
 %%==============================================================================
@@ -117,11 +119,11 @@
 %% 머리글 바닥글의 위한 폰트 스타일 정의
 % 장/절 번호 파트: 볼드 돋움체
 \newcommand{\numberfont}{%
-  \hangulfontspec{Noto Sans KR}\bfseries\selectfont
+  \hangulfontspec{SUIT}\bfseries\selectfont
 }
 % 장/절 라벨 파트: 돋움체
 \newcommand{\labelfont}{%
-  \hangulfontspec{Noto Sans KR}\selectfont
+  \hangulfontspec{SUIT}\selectfont
 }
 %% 페이지 번호 파트 
 \newcommand*\pagefont{\normalfont\bfseries\sffamily}
