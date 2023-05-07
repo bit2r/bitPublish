@@ -1,20 +1,30 @@
 %%==============================================================================
 %% Set page size with a wider right margin
 %%==============================================================================
+%% 판형: 4x6배판, 190mm x 260mm
+%% 판면: type area, 130mm x 175.5mm
 \usepackage{geometry}
 \geometry{%
-  a4paper,
-  top=25mm,
-  headsep=10mm,
-  bottom=20mm,
-  footskip=15mm,
-  right=1.2in,
-  left=1.2in,
-  layoutsize={188mm,240mm},
-  layoutoffset={.5in,.5in},
+  paper=a4paper,
+  layoutwidth=190mm,
+  layoutheight=260mm,
+  layoutoffset={(210mm-190mm)/2, (297mm-260mm)/2},
+  % bindingoffset=0pt,
+  showcrop, 
   % showframe,
-  showcrop
+  % lines=33,
+  % hmargin={3cm, .8in},
+  % textwidth=140mm,
+  % textheight=1.5\textwidth,  
+  top=20mm,
+  headsep=10mm,                     % 면주 아래부터 type area
+  bottom=30mm,
+  footskip=15mm,                    % 페이지 아래부터 type area
+  left=25mm,
+  right=25mm,  
+  centering
 }
+
 
 %%==============================================================================
 %% load packages
@@ -23,14 +33,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage{tocloft}
-\usepackage{makeidx}
+\usepackage{makeidx}                        % 찾아보기 (색인) 정의를 위해
 \usepackage{parskip}
-\usepackage[hangul]{kotex}
+% \usepackage[hangul]{kotex}
+\usepackage[hangul]{xetexko}
 \usepackage[T1]{fontenc} 
 \usepackage{listings}                       % shell script code출력을 위함
-
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage[unicode]{hyperref}
+\usepackage{multirow}
 \usepackage[many]{tcolorbox}
 \usepackage{makecell}
 \usepackage{environ}
@@ -46,27 +57,46 @@
 %% 폰트 정의
 %%==============================================================================
 % kotex의 기본 폰트인 나눔명조의 이탤릭체 등을 표현하기 위해서 (xelatex 엔진)
-\setmainfont{Times New Roman}
-\setmainhangulfont{NanumMyeongjo}[%
-	Renderer = OpenType,
-	FontFace = {m}{n}{ Font = * },
-	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
-	FontFace = {m}{up}{ Font = * },
-	FontFace = {bx}{n}{ Font = {* ExtraBold} },
-	FontFace = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 }
+% \setmainfont{Times New Roman}
+% https://fonts.google.com/specimen/Lora
+\setmainfont{Lora}[%
+  Ligatures = TeX,
+  Scale     = 1.0
 ]
+
+% https://fonts.google.com/specimen/Open+Sans
+% \setsansfont{Open Sans}
+
+\setmainhangulfont{NanumMyeongjoOTF}[%
+  Ligatures = TeX,
+  Scale     = 1.0,
+	Renderer  = OpenType,
+	FontFace  = {m}{n}{ Font = * },
+	FontFace  = {m}{it}{ Font = *, FakeSlant=.167 },
+	FontFace  = {m}{up}{ Font = * },
+	FontFace  = {bx}{n}{ Font = {* ExtraBold} },
+	FontFace  = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 },
+	InterHangul = 0pt
+]
+
 \setsanshangulfont{SUIT}[%
-	Renderer = OpenType,
-	FontFace = {m}{n}{ Font = * },
-	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
-	FontFace = {m}{up}{ Font = * },
-	FontFace = {bx}{n}{ Font = {* ExtraBold} },
-	FontFace = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 }
+  Ligatures = TeX,
+  Scale     = 1.0,
+  UprightFont = * Medium,
+  BoldFont = * SemiBold,
+  ItalicFont = * Medium,
+  ItalicFeatures = {FakeSlant = 0.167},
+  BoldItalicFont = * SemiBold,
+  BoldItalicFeatures = {FakeSlant = 0.167},
+  SmallCapsFont = * Medium,
+  InterHangul = 0pt
 ]
-\setmainhanjafont{SUIT}
+
+\setmainhanjafont{NanumGothic}
+
 %verbatim에 사용할 mono space 폰트
-\setmonofont{NanumGothicCoding}[%
-  Scale = 0.9,
+\setmonofont{D2Coding}[%
+  Scale = 0.95,
   Renderer = OpenType,
 	FontFace = {m}{n}{ Font = * },
 	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
@@ -74,9 +104,9 @@
 	FontFace = {bx}{n}{ Font = {* Bold} },
 	FontFace = {bx}{it}{ Font = {* Bold}, FakeSlant=.167 }
 ]
-% \setmonofont{D2Coding}
-\setmonohangulfont{NanumGothicCoding}[%
-  Scale = 0.9,
+
+\setmonohangulfont{D2Coding}[%
+  Scale = 0.95,
   Renderer = OpenType,
 	FontFace = {m}{n}{ Font = * },
 	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
@@ -84,7 +114,22 @@
 	FontFace = {bx}{n}{ Font = {* Bold} },
 	FontFace = {bx}{it}{ Font = {* Bold}, FakeSlant=.167 }
 ]
-% \setmonohangulfont{D2Coding}[Scale=0.9]
+
+%% 기호글꼴 명령 - 라틴 문자나 CJK 기호를 어떤 폰트로 식자할 것인가.
+\xetexkofontregime {latin}%
+  [puncts=prevfont, colons=prevfont, parens=latin, cjksymbols=hangul]
+\xetexkofontregime {hangul}%
+  [puncts=prevfont, colons=prevfont, parens=latin, cjksymbols=hangul]     
+
+%% 한글 자간 정의
+%% \disablehangulspacing을 적용하면,
+%% 한글조판에 관련된 모든 미세간격을 영(zero)으로 돌림. 
+%% 한글 자간, 영문자와 한글 사이 간격, 구두점과 한글·한자 사이 간격 등이 미동작
+% \disablehangulspacing
+
+%% 줄간격 정의
+\linespread{1.5}
+
 
 %%==============================================================================
 %% 절(section)과 서브절(subsection) 타이틀을 돋움체(sans-serif)로 바꾸기
@@ -103,7 +148,7 @@
   {\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
   {\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
-  
+
 
 %%==============================================================================
 %% 머리글, 바탕글을 위한 정의
@@ -154,11 +199,13 @@
 \definecolor{gray95}{gray}{.95}
 \definecolor{gray85}{gray}{.85}
 \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
-\definecolor{ExerciseColor}{gray}{0.65}         % for Exercise 
+\definecolor{ExerciseColor}{gray}{0.65}         % for example 
 \definecolor{problemblue}{RGB}{100, 134, 158}   % for 시각화전략
 \definecolor{light}{HTML}{E6E6FA}
 \definecolor{highlight}{HTML}{800080}
 \definecolor{dark}{HTML}{330033}
+\definecolor{beaublue}{rgb}{0.74, 0.83, 0.9}
+\definecolor{lightcyan}{rgb}{0.88, 1.0, 1.0}    % for Exercise 
 
 
 %%==============================================================================
@@ -187,6 +234,45 @@
 
 
 %%==============================================================================
+%% backtick과 pipe 기반의 단어 강조 폰트 변경
+%%==============================================================================
+%% *** Quarto에서는 `(backticks)이 \texttt로 변환됨
+%% *** 이 명령을 사용할 경우에는 오리지날 \texttt와의 side effect를 조심해야 함
+% start markdown의 `(backticks) 강조 구현 -----
+% \newcommand{\backticks}{\setmainfont{Noto Sans KR}\hangulfontspec{Noto Sans KR}\selectfont}
+% \let\oldtexttt\texttt
+% \renewcommand{\texttt}[1]{%
+%   {\backticks\oldtexttt{#1{}}}
+% }
+% end markdown의 `(backticks) 강조 구현 -----
+
+% start markdown의 |(pipe) 강조 구현 for LaTex-----
+\newcommand{\MakeShortHighlight}[2][\texttt]{%
+  \begingroup\lccode`\~=`#2\lowercase{\endgroup
+    \def~##1~{#1{##1}}}%
+  \catcode`#2=\active}
+\newcommand\DeleteShortHightlight[1]{%
+  \catcode`#1=12 }
+  
+% \MakeShortHighlight[\colorbox{aliceblue}]\|
+% end markdown의 |(pipe) 강조 구현 for LaTex-----
+
+
+%%==============================================================================
+%% Define code blocks - for single space
+%%==============================================================================
+%% https://stackoverflow.com/questions/73439371/quarto-pdf-output-code-block-line-spacing
+\renewenvironment{Shaded}
+    {\begin{snugshade}
+    \begin{singlespace}
+    \linespread{1}
+    }
+    {\end{singlespace}
+    \end{snugshade}
+}
+
+
+%%==============================================================================
 %% 객체 정의
 %%==============================================================================
 \lstset{
@@ -198,10 +284,10 @@
 
 \surroundwithmdframed[linewidth=0pt,innerleftmargin=5pt,backgroundcolor=gray95,font=\small]{verbatim}
 
-
 \usetikzlibrary{calc}
 
 \tcbuselibrary{many}
+
 
 %%==============================================================================
 %% shadequote 정의: 강조하는 문장을 표현하기 위해서 
@@ -306,6 +392,35 @@
     \end{tikzpicture}
     \end{figure}
 }
+
+
+%%==============================================================================
+%% 연습문제
+%%==============================================================================
+%% https://tex.stackexchange.com/questions/369265/math-book-how-to-write-exercise-and-answers
+
+\usepackage{stackengine}
+\usepackage{tasks}
+% \newlength{\longestlabel}
+% \settowidth{\longestlabel}{\bfseries viii.}
+% \settasks{label=\roman*., label-format={\bfseries}, label-width=\longestlabel,
+% item-indent=0pt, label-offset=2pt, column-sep={10pt}}
+
+\usepackage[lastexercise,answerdelayed]{exercise}
+\counterwithin{Exercise}{chapter}
+\counterwithin{Answer}{chapter}
+\renewcounter{Exercise}[chapter]
+\newcommand{\QuestionNB}{\bfseries\arabic{Question}.\ }
+\renewcommand{\ExerciseName}{\sffamily연습문제}
+\renewcommand{\ExerciseHeader}{\noindent\def\stackalignment{l}% code from https://tex.stackexchange.com/a/195118/101651
+    \stackunder[0pt]{\colorbox{cyan}{\textcolor{white}{\textbf{\sffamily\LARGE\ExerciseHeaderNB\;\large\ExerciseName}}}}{\textcolor{lightcyan}{\rule{\linewidth}{2pt}}}\medskip}
+\renewcommand{\AnswerName}{연습문제 풀이}
+\renewcommand{\AnswerHeader}{\ifthenelse{\boolean{firstanswerofthechapter}}%
+    {\bigskip\noindent\textcolor{cyan}{\textbf{CHAPTER \thechapter}}\newline\newline%
+        \noindent\bfseries\emph{\textcolor{cyan}{\AnswerName\ \ExerciseHeaderNB, page %
+                \pageref{\AnswerRef}}}\smallskip}
+    {\noindent\bfseries\emph{\textcolor{cyan}{\AnswerName\ \ExerciseHeaderNB, page \pageref{\AnswerRef}}}\smallskip}}
+\setlength{\QuestionIndent}{16pt}
 
 
 %%==============================================================================
