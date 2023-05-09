@@ -294,9 +294,8 @@
 %%==============================================================================
 %% https://tex.stackexchange.com/questions/16964/block-quote-with-big-quotation-marks
 %% Start shadequote define ----------------------------------------------------- 
-\newcommand*\quotefont{\fontfamily{NanumMyeongjo}} % selects NanumMyeongjo as the quote font
-\newcommand*\quotesize{45} % if quote size changes, need a way to make shifts relative
-
+\newfontfamily\quotefont[Ligatures=TeX]{NanumMyeongjoOTF} 
+\newcommand*\quotesize{40} % if quote size changes, need a way to make shifts relative
 % Make commands for the quotes
 \newcommand*{\openquote}
    {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
@@ -335,7 +334,6 @@
    {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
 \begin{snugshade}\begin{quote}\openquote}
 {\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
-
 %% End shadequote define ------------------------------------------------------- 
 
 
