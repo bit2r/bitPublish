@@ -1,32 +1,4 @@
 %%==============================================================================
-%% Set page size with a wider right margin
-%%==============================================================================
-%% 판형: 4x6배판, 190mm x 260mm
-%% 판면: type area, 130mm x 175.5mm
-\usepackage{geometry}
-\geometry{%
-  paper=a4paper,
-  layoutwidth=190mm,
-  layoutheight=260mm,
-  layoutoffset={(210mm-190mm)/2, (297mm-260mm)/2},
-  % bindingoffset=0pt,
-  showcrop, 
-  % showframe,
-  % lines=33,
-  % hmargin={3cm, .8in},
-  % textwidth=140mm,
-  % textheight=1.5\textwidth,  
-  top=20mm,
-  headsep=10mm,                     % 면주 아래부터 type area
-  bottom=30mm,
-  footskip=15mm,                    % 페이지 아래부터 type area
-  left=25mm,
-  right=25mm,  
-  centering
-}
-
-
-%%==============================================================================
 %% load packages
 %%==============================================================================
 \usepackage{diagbox}                        % 테이블 셀에 대각선 표시를 위해
@@ -35,7 +7,6 @@
 \usepackage{tocloft}
 \usepackage{makeidx}                        % 찾아보기 (색인) 정의를 위해
 \usepackage{parskip}
-% \usepackage[hangul]{kotex}
 \usepackage[hangul]{xetexko}
 \usepackage[T1]{fontenc} 
 \usepackage{listings}                       % shell script code출력을 위함
@@ -61,22 +32,27 @@
 % https://fonts.google.com/specimen/Lora
 \setmainfont{Lora}[%
   Ligatures = TeX,
-  Scale     = 1.0
+  Scale     = 1.0,
+  UprightFont = *-Regular,
+  BoldFont = *-SemiBold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-SemiBoldItalic
 ]
 
 % https://fonts.google.com/specimen/Open+Sans
 % \setsansfont{Open Sans}
 
-\setmainhangulfont{NanumMyeongjo}[%
+\setmainhangulfont{NanumMyeongjoOTF}[%
   Ligatures = TeX,
   Scale     = 1.0,
-	Renderer  = OpenType,
-	FontFace  = {m}{n}{ Font = * },
-	FontFace  = {m}{it}{ Font = *, FakeSlant=.167 },
-	FontFace  = {m}{up}{ Font = * },
-	FontFace  = {bx}{n}{ Font = {* ExtraBold} },
-	FontFace  = {bx}{it}{ Font = {* ExtraBold}, FakeSlant=.167 },
-	InterHangul = 0pt
+  UprightFont = *,
+  BoldFont = *ExtraBold,
+  ItalicFont = *,
+  ItalicFeatures = {FakeSlant = 0.167},
+  BoldItalicFont = *ExtraBold,
+  BoldItalicFeatures = {FakeSlant = 0.167},
+  SmallCapsFont = *,
+  InterHangul = 0pt
 ]
 
 \setsanshangulfont{SUIT}[%
@@ -93,6 +69,27 @@
 ]
 
 \setmainhanjafont{NanumGothic}
+
+%verbatim에 사용할 mono space 폰트
+\setmonofont{D2Coding}[%
+  Scale = 0.95,
+  Renderer = OpenType,
+	FontFace = {m}{n}{ Font = * },
+	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
+	FontFace = {m}{up}{ Font = * },
+	FontFace = {bx}{n}{ Font = {* Bold} },
+	FontFace = {bx}{it}{ Font = {* Bold}, FakeSlant=.167 }
+]
+
+\setmonohangulfont{D2Coding}[%
+  Scale = 0.95,
+  Renderer = OpenType,
+	FontFace = {m}{n}{ Font = * },
+	FontFace = {m}{it}{ Font = *, FakeSlant=.167 },
+	FontFace = {m}{up}{ Font = * },
+	FontFace = {bx}{n}{ Font = {* Bold} },
+	FontFace = {bx}{it}{ Font = {* Bold}, FakeSlant=.167 }
+]
 
 %verbatim에 사용할 mono space 폰트
 \setmonofont{D2Coding}[%
@@ -148,50 +145,7 @@
   {\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
   {\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
-
-
-%%==============================================================================
-%% 머리글, 바탕글을 위한 정의
-%%==============================================================================
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
-%% 폰트 사이즈 정의 
-\newcommand{\changesize}{%
-  \fontsize{8}{10}\selectfont
-}
-
-%% 머리글 바닥글의 위한 폰트 스타일 정의
-% 장/절 번호 파트: 볼드 돋움체
-\newcommand{\numberfont}{%
-  \hangulfontspec{SUIT}\bfseries\selectfont
-}
-% 장/절 라벨 파트: 돋움체
-\newcommand{\labelfont}{%
-  \hangulfontspec{SUIT}\selectfont
-}
-%% 페이지 번호 파트 
-\newcommand*\pagefont{\normalfont\bfseries\sffamily}
-
-
-%% Rule 라인 제거
-\renewcommand {\headrulewidth}{0pt} % 라인 제거
-\renewcommand {\footrulewidth}{0pt} % 라인 제거
-
-\makeatletter
-\DeclareRobustCommand{\format@sec@number}[2]{{\numberfont\upshape#1}#2}
-\renewcommand{\chaptermark}[1]{%
-  \markboth{\format@sec@number{\ifnum\c@secnumdepth>\m@ne\@chapapp\ \thechapter. \fi}{\labelfont #1}}{}}
-\renewcommand{\sectionmark}[1]{%
-  \markright{{\numberfont \thesection.} {\labelfont #1}}{}}
-\makeatother
-
-\fancyhf{}
-\fancyhead[EL]{\changesize \numberfont --- R을 이용한}
-\fancyhead[OR]{\changesize \numberfont 통계학 이해 ---}
-\fancyfoot[EL]{{\pagefont\thepage}{\hskip4mm}{\changesize \leftmark}}
-\fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
-
+  
 
 %%==============================================================================
 %% 컬러 정의
