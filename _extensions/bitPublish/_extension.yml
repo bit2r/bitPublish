@@ -78,6 +78,7 @@ contributes:
       include-after-body:  
         - text: |      
             \printindex  
+      cite-method: biblatex       
       linkcolor: highlight
       urlcolor: highlight
       keep-tex: true

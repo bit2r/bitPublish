@@ -9,3 +9,6 @@ book:
   chapters:
     - index.qmd
     - chap_exams.qmd
+    - references.qmd
+    
+bibliography: references.bib
