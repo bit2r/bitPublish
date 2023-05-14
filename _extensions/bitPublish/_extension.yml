@@ -3,13 +3,6 @@ author: "Choonghyun Ryu"
 version: 0.0.1
 
 contributes:
-  book:
-    title: "R을 이용한 통계학 이해"
-    author: "유충현"
-    chapters:
-      - index.qmd
-      - data_dataprocess.qmd
-    
   format:
     html:
       theme: cosmo
@@ -81,4 +74,4 @@ contributes:
       cite-method: biblatex       
       linkcolor: highlight
       urlcolor: highlight
-      keep-tex: true
+      keep-tex: false
