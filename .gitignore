@@ -4,7 +4,6 @@
 .Ruserdata
 .Rproj
 *.Rproj
-*.pdf
 .DS_Store
 /.quarto/
 docs
