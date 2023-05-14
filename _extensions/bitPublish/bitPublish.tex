@@ -1,0 +1,391 @@
+%%==============================================================================
+%% load packages
+%%==============================================================================
+\usepackage{diagbox}                        % 테이블 셀에 대각선 표시를 위해
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage{makeidx}                        % 찾아보기 (색인) 정의를 위해
+\usepackage{parskip}
+\usepackage[hangul]{xetexko}
+\usepackage{listings}                       % shell script code출력을 위함
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[unicode]{hyperref}
+\usepackage{multirow}
+\usepackage[many]{tcolorbox}                
+\usepackage{makecell}
+\usepackage{environ}
+\usepackage[tikz]{bclogo}
+\usepackage{tikz}
+\usepackage{natbib}
+\usepackage{lastpage}
+\usepackage{awesomebox}                     % for 시나리오박스
+
+
+%%==============================================================================
+%% 폰트 정의
+%%==============================================================================
+%% 라틴 셰리프
+% https://github.com/stipub/stixfonts
+\setmainfont[ExternalLocation=_extensions/bitPublish/fonts/STIXTwoText/]{STIXTwoText-Regular.otf}[%
+  Ligatures=TeX,
+  BoldFont=STIXTwoText-Bold.otf,
+  ItalicFont=STIXTwoText-Italic.otf,
+  BoldItalicFont=STIXTwoText-BoldItalic.otf
+]
+
+%% 라틴 산셰리프
+% https://www.1001fonts.com/nimbus-sans-l-font.html
+\setsansfont[ExternalLocation=_extensions/bitPublish/fonts/Nimbus Sans L/]{NimbusSanL-Reg.otf}[%
+  Ligatures=TeX,
+  BoldFont=NimbusSanL-Bol.otf,
+  ItalicFont=NimbusSanL-RegIta.otf,
+  BoldItalicFont=NimbusSanL-BolIta.otf
+]
+
+%% 한국어 셰리프
+\setmainhangulfont[ExternalLocation=_extensions/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Batang_Pro Light.otf}[%
+  Ligatures=TeX,
+  BoldFont=KoPubWorld Batang_Pro Bold.otf,
+  ItalicFont=KoPubWorld Batang_Pro Light.otf,
+  ItalicFeatures = {FakeSlant = 0.167},  
+  BoldItalicFont=KoPubWorld Batang_Pro Bold.otf,
+  ItalicFeatures = {FakeSlant = 0.167}  
+]
+
+%% 한국어 산셰리프
+\setsanshangulfont[ExternalLocation=_extensions/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Dotum_Pro Light.otf}[%
+  Ligatures=TeX,
+  BoldFont=KoPubWorld Dotum_Pro Bold.otf,
+  ItalicFont=KoPubWorld Dotum_Pro Light.otf,
+  ItalicFeatures = {FakeSlant = 0.167},  
+  BoldItalicFont=KoPubWorld Dotum_Pro Bold.otf,
+  ItalicFeatures = {FakeSlant = 0.167}  
+]
+
+%% 한자
+\setmainhanjafont[ExternalLocation=_extensions/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Dotum_Pro Light.otf}[%
+  Ligatures=TeX,
+  BoldFont=KoPubWorld Dotum_Pro Bold.otf,
+  ItalicFont=KoPubWorld Dotum_Pro Light.otf,
+  BoldItalicFont=KoPubWorld Dotum_Pro Bold.otf
+]
+
+%% 모노스페이스
+\setmonofont[ExternalLocation=_extensions/bitPublish/fonts/D2Coding/]{D2Coding-Ver1.3.2-20180524.ttf}[%
+  Scale=0.95,
+  Ligatures=TeX,
+  BoldFont=D2CodingBold-Ver1.3.2-20180524.ttf,
+  ItalicFont=D2Coding-Ver1.3.2-20180524.ttf,
+  ItalicFeatures = {FakeSlant = 0.167},  
+  BoldItalicFont=D2CodingBold-Ver1.3.2-20180524.ttf,
+  BoldItalicFeatures = {FakeSlant = 0.167}
+]
+
+%% 수식
+\setmathfont[ExternalLocation=_extensions/bitPublish/fonts/STIXTwoText/]{STIXTwoMath-Regular.otf}
+
+
+%%==============================================================================
+%% 장평/자간/줄간격 등
+%%==============================================================================
+%% 줄간격 정의
+\linespread{1.5}
+
+
+%%==============================================================================
+%% 절(section)과 서브절(subsection) 타이틀을 돋움체(sans-serif)로 바꾸기
+%%==============================================================================
+%% Rmarkdown과 titlesec 패키지가 호환되지 않는 이슈가 있음. 
+%% 아래 두줄의 명령을 입력하지 않으면 에러가 발생함
+%% 문제의 원인:
+%% https://stackoverflow.com/questions/40439701/cant-knit-to-pdf-with-custom-styles
+%% 문제의 해결
+%% https://github.com/rstudio/bookdown/issues/677
+\let\paragraph\oldparagraph
+\let\subparagraph\oldsubparagraph
+
+\usepackage{titlesec}
+\titleformat{\section}
+  {\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
+  
+
+%%==============================================================================
+%% 컬러 정의
+%%==============================================================================
+\definecolor{gray95}{gray}{.95}
+\definecolor{gray85}{gray}{.85}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{ExerciseColor}{gray}{0.65}              % for example 
+\definecolor{problemblue}{RGB}{100, 134, 158}        % for 시각화전략
+\definecolor{light}{HTML}{E6E6FA}
+\definecolor{highlight}{HTML}{800080}
+\definecolor{dark}{HTML}{330033}
+\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}  % for Exercise 
+
+
+%%==============================================================================
+%% hypersetup
+%%==============================================================================
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+%%==============================================================================
+%% Define code blocks - for single space
+%%==============================================================================
+%% https://stackoverflow.com/questions/73439371/quarto-pdf-output-code-block-line-spacing
+\renewenvironment{Shaded}
+    {\begin{snugshade}
+    \begin{singlespace}
+    \linespread{1}
+    }
+    {\end{singlespace}
+    \end{snugshade}
+}
+
+
+%%==============================================================================
+%% backtick과 pipe 기반의 단어 강조 폰트 변경
+%%==============================================================================
+%% *** Quarto에서는 `(backticks)이 \texttt로 변환됨
+%% *** 이 명령을 사용할 경우에는 오리지날 \texttt와의 side effect를 조심해야 함
+% start markdown의 `(backticks) 강조 구현 -----
+% \newcommand{\backticks}{\setmainfont{Noto Sans KR}\hangulfontspec{Noto Sans KR}\selectfont}
+% \let\oldtexttt\texttt
+% \renewcommand{\texttt}[1]{%
+%   {\backticks\oldtexttt{#1{}}}
+% }
+% end markdown의 `(backticks) 강조 구현 -----
+
+% start markdown의 |(pipe) 강조 구현 for LaTex-----
+\newcommand{\MakeShortHighlight}[2][\texttt]{%
+  \begingroup\lccode`\~=`#2\lowercase{\endgroup
+    \def~##1~{#1{##1}}}%
+  \catcode`#2=\active}
+\newcommand\DeleteShortHightlight[1]{%
+  \catcode`#1=12 }
+  
+% \MakeShortHighlight[\colorbox{aliceblue}]\|
+% end markdown의 |(pipe) 강조 구현 for LaTex-----
+
+
+%%==============================================================================
+%% Define code blocks - for single space
+%%==============================================================================
+%% https://stackoverflow.com/questions/73439371/quarto-pdf-output-code-block-line-spacing
+\renewenvironment{Shaded}
+    {\begin{snugshade}
+    \begin{singlespace}
+    \linespread{1}
+    }
+    {\end{singlespace}
+    \end{snugshade}
+}
+
+
+%%==============================================================================
+%% 객체 정의
+%%==============================================================================
+\lstset{
+  extendedchars=false,
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{gray85}
+}
+
+
+\surroundwithmdframed[linewidth=0pt,innerleftmargin=5pt,backgroundcolor=gray95,font=\small]{verbatim}
+
+\usetikzlibrary{calc}
+
+\tcbuselibrary{many}
+
+
+%%==============================================================================
+%% shadequote 정의: 강조하는 문장을 표현하기 위해서 
+%%==============================================================================
+%% https://tex.stackexchange.com/questions/16964/block-quote-with-big-quotation-marks
+%% Start shadequote define ----------------------------------------------------- 
+\newfontfamily\quotefont[Ligatures=TeX]{NanumMyeongjo} 
+\newcommand*\quotesize{40} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=4ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{gray85}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1]{%
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi}
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+%
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+%% End shadequote define ------------------------------------------------------- 
+
+
+%%==============================================================================
+%% 예제 프레임 정의
+%%==============================================================================
+%%------------------------------------------------------------------------------
+%% 예제 environment - 예제 프레임 정의
+%%------------------------------------------------------------------------------
+\newenvironment{example}[1]{%
+  \mdfsetup{
+    skipabove=20pt,
+    skipbelow=10pt,
+    innertopmargin=0pt,
+    innerbottommargin=4pt,
+    leftmargin=-13pt,
+    splitbottomskip=0ex,
+    splittopskip=0ex,
+    topline=false,
+    leftline=true,
+    bottomline=false,
+    rightline=false,
+    innerrightmargin=0pt,
+    innerlinewidth=2pt,
+    font=\normalfont,
+    frametitle={\textbf{예제 #1.}}, 
+    linecolor=ExerciseColor,
+  }
+\begin{mdframed}%
+}
+{\end{mdframed}}
+
+%%------------------------------------------------------------------------------
+%% Custom refference for 예제 environment
+%%------------------------------------------------------------------------------
+%% https://tex.stackexchange.com/questions/18191/defining-custom-labels
+\makeatletter
+\newcommand{\examplelabel}[2]{%
+   \protected@write \@auxout {}{\string \newlabel {#1}{{#2}{\thepage}{#2}{#1}{}} }%
+   \hypertarget{#1}{}
+}   
+\makeatother
+
+
+%%==============================================================================
+%% 시나리오 박스 : snbox
+%%==============================================================================
+\newcommand{\snbox}[4]{
+    \begin{figure}[h]
+        \centering
+    \begin{tikzpicture}
+        \node[anchor=text,text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
+        \node[draw, rounded corners, line width=.5pt, fill=#2, anchor=west, xshift=5mm] (small) at (big.north west) {\sffamily#1};
+    \end{tikzpicture}
+    \end{figure}
+}
+
+
+%%==============================================================================
+%% 연습문제
+%%==============================================================================
+%% https://tex.stackexchange.com/questions/369265/math-book-how-to-write-exercise-and-answers
+
+\usepackage{stackengine}
+\usepackage{tasks}
+% \newlength{\longestlabel}
+% \settowidth{\longestlabel}{\bfseries viii.}
+% \settasks{label=\roman*., label-format={\bfseries}, label-width=\longestlabel,
+% item-indent=0pt, label-offset=2pt, column-sep={10pt}}
+
+\usepackage[lastexercise,answerdelayed]{exercise}
+\counterwithin{Exercise}{chapter}
+\counterwithin{Answer}{chapter}
+\renewcounter{Exercise}[chapter]
+\newcommand{\QuestionNB}{\bfseries\arabic{Question}.\ }
+\renewcommand{\ExerciseName}{\sffamily연습문제}
+\renewcommand{\ExerciseHeader}{\noindent\def\stackalignment{l}% code from https://tex.stackexchange.com/a/195118/101651
+    \stackunder[0pt]{\colorbox{cornflowerblue}{\textcolor{white}{\textbf{\sffamily\LARGE\ExerciseHeaderNB\;\large\ExerciseName}}}}{\textcolor{cornflowerblue}{\rule{\linewidth}{2pt}}}\medskip}
+\renewcommand{\AnswerName}{연습문제 풀이}
+\renewcommand{\AnswerHeader}{\ifthenelse{\boolean{firstanswerofthechapter}}%
+    {\bigskip\noindent\textcolor{cornflowerblue}{\textbf{CHAPTER \thechapter}}\newline\newline%
+        \noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, page %
+                \pageref{\AnswerRef}}}\smallskip}
+    {\noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, page \pageref{\AnswerRef}}}\smallskip}}
+\setlength{\QuestionIndent}{16pt}
+
+
+%%==============================================================================
+%% 아이디어 박스 정의 
+%%==============================================================================
+\NewEnviron{idea}[1]
+  {\par\medskip\noindent
+  \begin{tikzpicture}
+    \node[inner sep=0pt] (box) {\parbox[t]{.99\textwidth}{%
+      \begin{minipage}[t]{.12\textwidth}
+        \centering
+        \tikz[scale=5]\node[scale=1.3,rotate=-10]{\bcinfo};
+      \end{minipage}%
+      \begin{minipage}{.83\textwidth}
+      \textbf{#1}\par\smallskip
+      \BODY
+      \end{minipage}\hfill}%
+    };
+    \draw[gray!75!black,line width=3pt] 
+      ( $ (box.north east) + (-5pt,3pt) $ ) -- ( $ (box.north east) + (0,3pt) $ ) -- ( $ (box.south east) + (0,-3pt) $ ) -- + (-5pt,0);
+    \draw[gray!75!black,line width=3pt] 
+      ( $ (box.north west) + (5pt,3pt) $ ) -- ( $ (box.north west) + (0,3pt) $ ) -- ( $ (box.south west) + (0,-3pt) $ ) -- + (5pt,0);
+  \end{tikzpicture}\par\medskip%
+}
+
+%%==============================================================================
+%% 주의 박스 정의 
+%%==============================================================================
+\NewEnviron{caution}[1]
+  {\par\medskip\noindent
+  \begin{tikzpicture}
+    \node[inner sep=0pt] (box) {\parbox[t]{.99\textwidth}{%
+      \begin{minipage}{.12\textwidth}
+      \centering\tikz[scale=5]\node[scale=1.3,rotate=-14]{\bcattention};
+      \end{minipage}%
+      \begin{minipage}{.83\textwidth}
+      \textbf{#1}\par\smallskip
+      \BODY
+      \end{minipage}\hfill}%
+    };
+    \draw[red!75!black,line width=3pt] 
+      ( $ (box.north east) + (-5pt,3pt) $ ) -- ( $ (box.north east) + (0,3pt) $ ) -- ( $ (box.south east) + (0,-3pt) $ ) -- + (-5pt,0);
+    \draw[red!75!black,line width=3pt] 
+      ( $ (box.north west) + (5pt,3pt) $ ) -- ( $ (box.north west) + (0,3pt) $ ) -- ( $ (box.south west) + (0,-3pt) $ ) -- + (5pt,0);
+  \end{tikzpicture}\par\medskip%
+}
+
+%%------------------------------------------------------------------------------
+%------ 차례 작성 
+%%------------------------------------------------------------------------------
+\makeindex
+

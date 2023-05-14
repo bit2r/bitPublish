@@ -1,0 +1,83 @@
+title: "bitPublish"
+author: "Choonghyun Ryu"
+version: 0.0.1
+
+contributes:
+  book:
+    title: "R을 이용한 통계학 이해"
+    author: "유충현"
+    chapters:
+      - index.qmd
+      - data_dataprocess.qmd
+    
+  format:
+    html:
+      theme: cosmo
+    pdf:
+      documentclass: book
+      geometry:                            # 4x6 배판 도서를 위한 설정
+        - paper=a4paper
+        - layoutwidth=190mm
+        - layoutheight=260mm
+        - layouthoffset=10mm
+        - layoutvoffset=18.5mm
+        - showcrop
+        - top=20mm
+        - headsep=10mm             
+        - bottom=30mm
+        - footskip=15mm                 
+        - left=25mm
+        - right=25mm
+        - centering        
+      fig-cap-location: bottom
+      tbl-cap-location: bottom
+      toc-title: "목차"
+      crossref: 
+        fig-title: "그림"
+        tbl-title: "표"
+      include-in-header: 
+        - text: |
+            \usepackage{fancyhdr}
+            \pagestyle{fancy}
+            
+            %% 폰트 사이즈 정의 
+            \newcommand{\changesize}{%
+              \fontsize{8}{10}\selectfont
+            }
+            
+            %% 머리글 바닥글의 위한 폰트 스타일 정의
+            % 장/절 번호 파트: 볼드 돋움체
+            \newcommand{\numberfont}{%
+              \hangulfontspec{KoPubWorld돋움체_Pro}\bfseries\selectfont
+            }
+            % 장/절 라벨 파트: 돋움체
+            \newcommand{\labelfont}{%
+              \hangulfontspec{KoPubWorld돋움체_Pro}\selectfont
+            }
+            %% 페이지 번호 파트 
+            \newcommand*\pagefont{\normalfont\bfseries\sffamily}
+            
+            %% Rule 라인 제거
+            \renewcommand {\headrulewidth}{0pt} % 라인 제거
+            \renewcommand {\footrulewidth}{0pt} % 라인 제거
+            
+            \makeatletter
+            \DeclareRobustCommand{\format@sec@number}[2]{{\numberfont\upshape#1}#2}
+            \renewcommand{\chaptermark}[1]{%
+              \markboth{\format@sec@number{\ifnum\c@secnumdepth>\m@ne\@chapapp\ \thechapter. \fi}{\labelfont #1}}{}}
+            \renewcommand{\sectionmark}[1]{%
+              \markright{{\numberfont \thesection.} {\labelfont #1}}{}}
+            \makeatother
+            
+            \fancyhf{}
+            \fancyhead[EL]{\changesize \numberfont --- bitPublish를 이용하여}
+            \fancyhead[OR]{\changesize \numberfont 한글 책 조판하기 ---}
+            \fancyfoot[EL]{{\pagefont\thepage}{\hskip4mm}{\changesize \leftmark}}
+            \fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
+        - file: bitPublish.tex
+      include-after-body:  
+        - text: |      
+            \printindex  
+      linkcolor: highlight
+      urlcolor: highlight
+      keep-tex: true
