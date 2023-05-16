@@ -42,8 +42,6 @@
 #| message: false
 #| warning: false
 #| echo: false
-#| dev: "cairo_pdf"
-#| dev-args: list(family = 'NanumSquare')
 #| dpi: 450
 #| fig-width: 5
 #| fig-height: 5
