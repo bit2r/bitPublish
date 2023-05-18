@@ -1,0 +1,384 @@
+# bitPublish 소개
+
+\label{chap:bitpublish} 
+\newcounter{exam_num_bitpub} 
+\setcounter{exam_num_bitpub}{0}
+
+이 장에서는 \`bitPublish'의 활용을 위한 특장점과 기능을 소개합니다.
+
+\snbox{학습 목표}{blue!30}{blue!10}{bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.}
+
+## Quarto 소개
+
+### Quarto
+
+`Quarto`\cite{quarto}\index{Quarto}는 오픈 소스의 과학 및 기술 출판 시스템으로 다음과 같은 기능을 제공합니다.[^chap_intro_bitpublish-1]
+
+[^chap_intro_bitpublish-1]: https://quarto.org/
+
+-   Jupyter 노트북, RStudio를 사용하거나 선호하는 편집기에서 텍스트 마크다운을 사용하여 문서를 작성합니다.
+-   Python, R, Julia 및 Observable을 사용하여 동적 콘텐츠를 만듭니다.
+-   HTML, PDF, MS Word, ePub 등으로 재현 가능한 프로덕션 품질의 기사, 프레젠테이션, 웹 사이트, 블로그 및 책을 게시합니다.
+-   Posit Connect, Confluence 또는 기타 게시 시스템에 게시하여 조직 전체에서 지식과 통찰력을 공유합니다.
+-   방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 Pandoc 마크다운을 사용하여 작성합니다.
+
+Quarto\cite{quartoarch}를 요약하자면 그림 \ref{fig-quarto}처럼, Quarto 문서를 knitr 또는 jupyter로, 마크다운 문서로 랜더링한 다음 pandoc에 의해 html, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
+
+```{r}
+#| label: fig-quarto
+#| message: false
+#| warning: false
+#| echo: false
+#| fig-align: "center"
+#| out-width: "90%"
+#| fig-cap: "Quarto 매커니즘, Allison Horst."
+#| fig-pos: "!h"
+
+knitr::include_graphics(here::here("img", "b5217f2a-f129-4bf9-90dc-c5b9783d0ea8_rw_1920.png"))
+```
+
+### Quarto extensions
+
+extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 제공하며, 다음과 같은 유형으로 구분합니다.\cite{extensions} 
+
+| 영문 유형         | 국문 유형         | 설명                                    |
+|-------------------|-------------------|-----------------------------------------|
+| Shortcodes        | 단축 코드         | 다양한 유형의 콘텐츠를 생성하는 특수 마크다운 지시문. 예를 들어 짧은 코드를 만들어 문서에 트윗이나 동영상을 삽입 |
+| Filters           | 필터              | 새로운 전역 동작 또는 새로운 마크다운 렌더링 동작을 도입하기 위한 도구. 예를 들어 출력 접기, 이미지 슬라이더 등의 필터 제작 |
+| Journal Articles  | 저널 기사         | 마크다운으로 전문적인 저널 기사를 작성.  LaTeX(PDF) 및 HTML 버전을 모두 생성할 수 있음 |
+| Custom Formats    | 맞춤 형식         | 문서 옵션, 템플릿, 스타일시트 및 기타 콘텐츠를 함께 묶어 새로운 출력 형식을 생성 |
+| Revealjs Plugins  | Revealjs 플러그인 | Revealjs로 만든 HTML 프레젠테이션의 기능을 확장 |
+| Project Types     | 프로젝트 유형     | 표준 콘텐츠와 옵션을 함께 묶는 새로운 프로젝트 유형을 만들거나, 사용자 지정 HTML 형식으로 웹 사이트 제작 |
+| Starter Templates | 시작 템플릿       | 템플릿과 예제 콘텐츠를 제공하여 사용자가 새 프로젝트를 시작할 수 있도록 지원 |
+
+### bitPublish
+
+`bitPublish`\index{bitPublish}는 `Quarto` `extensions`\index{Quarto!extensions}로 R 기반으로 한글 책을 저작해 줍니다. 또한 한글 책 저작을 위한 예제 콘텐츠를 제공합니다. 그러므로 extensions 분류 상으로는 `맞춤 형식`, `시작 템플릿`으로 분류할 수 있습니다.
+
+## bitPublish 소개
+
+`Quarto`를 이용해서 책으로 만들 수 있는 포맷에는 `HTML`, `PDF`, `MS Word`, `EPUB`, `AsciiDoc`이 있습니다. `bitPublish`는 이중에서 `PDF` 포맷의 책을 생성합니다. 
+
+현재 bitPublish의 기본 설정에서는 4\times6 배판 판형을, 갖는 영어를 포함한 라틴계열 언어와 한국어, 중국어를 혼용한 책을 저작할 수 있습니다.
+
+## 조판 설정
+
+### 페이지 레이아웃
+
+현재 bitPublish의 기본 페이지 레이아웃 설정은 4\times6 배판으로 설계되었습니다. 
+4\times6 배판 판형의 레이아웃 설정을 변경하려면, \_extensions > bitPublish > \_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+  geometry:                            # 4x6 배판 도서를 위한 설정
+    - paper=a4paper
+    - layoutwidth=190mm
+    - layoutheight=260mm
+    - layouthoffset=10mm
+    - layoutvoffset=18.5mm
+    - showcrop
+    - top=20mm
+    - headsep=10mm             
+    - bottom=30mm
+    - footskip=15mm                 
+    - left=25mm
+    - right=25mm
+    - centering    
+```
+
+### 폰트 설정
+
+bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적으로 만들어졌기 때문에, 폰트의 선택에서 `TTF`(`True Type Font`)가 아닌 `OTF`(`Open Type Font`)를 선택하였습니다.
+
+#### 폰트 선정의 기준
+
+- 출판 시 발생할 라이센스 이슈 제거
+    - **모든 폰트를 상업적으로 이용이 가능한 폰트로 선정**
+    - serif[^serif] 영어 폰트인 Times New Roman\index{Times New Roman} 저작권의 이슈
+        - 가독성이 뛰어난 범용적인 세리프체로 영문 에세이와 학위 논문의 표준 폰트로 자리잡았으나
+        - 상업용으로 쓸 땐 저작권 면책 조건을 확인해야 함 
+    - sans-serif[^sans-serif] 영어 폰트인 Helvetica\index{Helvetica} 저작권의 이슈
+        - 대표적인 산세리프 글꼴로 20세기에 널리 쓰였음  
+- 출판 인쇄물의 미적 완성도
+    - 가독성, 심미성 등  
+
+#### 한국어 폰트
+
+- serif 폰트:
+    - **KoPubWorld바탕체\_Pro**
+- sans-serif 폰트:
+    - **KoPubWorld돋움체\_Pro**
+    
+#### 영어 폰트
+
+- serif 폰트:
+    - Times New Roman 대체 폰트
+    - **STIX Two Text**
+- sans-serif 폰트:
+    - **Nimbus Sans L**
+   
+#### 한자 폰트
+
+- **KoPubWorld돋움체\_Pro**
+ 
+#### Mono space 폰트
+
+- mono space 폰트
+    - **D2Coding**
+       - 영어/한국어 모두 동일한 폰트 사용
+       - 영어 mono space와 한국어 mono space를 혼용하면 자간격이 틀어짐
+
+#### Math 폰트
+
+- STIX Two Math
+
+[^serif]: serif 폰트는 바탕체 폰트를 의미합니다. 글자의 획에서 부리처럼 날카롭게 튀어나온 부분을 세리프(serif)라 합니다. 영어는 로만체, 한국어의 경우에는 과거에 명조체라는 이름으로 통용되던 바탕체 서체를 의미합니다.
+[^sans-serif]: serif 폰트는 돋움체 폰트를 의미합니다. 프랑스어로 sans는 "~가 없이"라는 뜻으로, sans-serif는 세리프가 없는 서체입니다. 한국어의 경우에는 과거에 고딕체라는 이름으로 통용되던 돋움체 서체를 의미합니다.
+
+#### 주의사항
+
+모든 폰트는 \_extensions > bitPublish > fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 `KoPubWorld바탕체_Pro`와 `KoPubWorld돋움체_Pro` 폰트를 사용하기 위해서는 `한국출판인회의` 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체\_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.
+
+### 머리글 바닥글
+
+`머리글`(`header`)\index{머리글}\index{header}과 `바닥글`(`footer`)\index{바닥글}\index{footer}는 `fancyhdr`\index{fancyhdr} 패키지를 사용해서 정의하였습니다.
+
+\_extensions > bitPublish > \_extension.yml 파일에 다음과 같이 설정되어 있습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+중간 생략
+
+\fancyhf{}
+\fancyhead[EL]{\changesize \numberfont --- bitPublish를 이용하여}
+\fancyhead[OR]{\changesize \numberfont 한글 책 조판하기 ---}
+\fancyfoot[EL]{{\pagefont\thepage}{\hskip4mm}{\changesize \leftmark}}
+\fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
+```
+
+만약에 머리글과 바닥글의 모양을 바꾸려면 직접 LaTeX 스크립트를 수정하면 됩니다. 책의 제목을 바꾸기 위해서는 fancyhead의 EL과 OR을 변경하면 됩니다.
+
+### 글줄 사이
+
+줄간격, 행간 등으로 부르는 글줄 사이(line spacing)는 1.5로 설정되었습니다. 수정이 필요하다면, \_extensions > bitPublish > bitPublish.tex 파일의 다음 행을 수정합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+%% 줄간격 정의
+\linespread{1.5}
+```
+
+
+## bitPublish 서식 이용하기
+
+bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 `환경`(`enviroment`)으로 제공합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{enviroment name}[optional argument]{main argument}
+  text of enviroment
+\end{enviroment name}
+```
+
+또한 다음과 같은 LaTeX `명령`(`command`)으로도 제공합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\command name[optional argument]{main argument} 
+```
+
+### 주의
+
+`caution` 환경를 이용합니다. 정보의 구문은 다음과 같습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+ \begin{caution}{<title>}
+    text of caution
+ \end{caution}
+```
+
+다음처럼 주의를 당부하는 제목과, 환경 내부에 주의사항을 기술합니다. 
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{caution}{caution의 용도}
+caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
+빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
+\end{caution}
+```
+
+```{=tex}
+\begin{caution}{caution의 용도}
+caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
+빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
+\end{caution}
+```
+
+### 정보
+
+`idea` 환경를 이용합니다. 정보의 구문은 다음과 같습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+ \begin{idea}{<title>}
+    text of idea
+ \end{idea}
+```
+
+다음처럼 제목과 정보성 아이디어를 기술합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{idea}{idea의 용도}
+idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
+\end{idea}
+```
+
+```{=tex}
+\begin{idea}{idea의 용도}
+idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
+\end{idea}
+```
+
+
+### 인용
+
+`shadequote` 환경를 이용합니다. 인용의 구문은 다음과 같습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{shadequote}[<alignment>]{<author>}
+  text of quote
+\end{shadequote}
+```
+
+다음처럼 괄호를 비우면, 저자의 이야기를 표시합니다. 
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{shadequote}{}
+나는 통계계산이 수리영역인 줄만 알았다. 그런데, 이제는 논리적인 사고도 필요한
+논리영역임을 느낀다. 그래서 논리적 사고로 통계적 데이터 분석을 위한 성능 좋은
+연장이 필요하기 시작했다.
+\end{shadequote}
+```
+
+```{=tex}
+\begin{shadequote}[r]{}
+통상적으로 많은 사람들은 `수준을 등급의 높고 낮음을 의미하는 가치의 척도'로 인식하고 있다. 그러나 통계학계에서는 levels을 수준으로 직역하여 사용해 왔다. 혼동스럽다면, \textbf{수준을 범주형 데이터의 범주로 이해}하기 바란다.
+\end{shadequote}
+```
+
+명사의 명언을 인용할 경우에는 명사의 이름을 첫째 괄호에 기입합니다. 이 예제는 명사의 이름을 오른쪽 정렬하였습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{shadequote}[r]{스피노자}
+자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.
+\end{shadequote}
+```
+
+```{=tex}
+\begin{shadequote}[r]{스피노자}
+자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.
+\end{shadequote}
+```
+
+
+### 타이틀 박스
+
+앞의 예제에서 `학습목표'를 정의한 박스 서식을 타이틀 박스라 부르겠습니다. 여러 용도로 사용될 수 있어 목적으로 이름을 특정할 수 없기 때문입니다. 학습 시나리오, 학습의 목표든 상관없습니다.
+
+다음과 같은 LaTeX `명령`으로 제공합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\snbox{text of title}{title fill color}{box fill color}{text of box} 
+```
+
+다음 명령은 `학습 목표`라는 타이틀을 갖는 박스를 생성합니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\snbox{학습 목표}{blue!30}{blue!10}{데이터의 분류 체계로서의 척도를 이해하고, 
+이를 기반으로 한 R 데이터 객체를 이해한다. CSV 파일을 읽고, 데이터 프레임 
+객체로 CSV 파일을 생성할 수 있다.}
+```
+
+```{=tex}
+\snbox{학습 목표}{blue!30}{blue!10}{데이터의 분류 체계로서의 척도를 이해하고, 이를 기반으로 한 R 데이터 객체를 이해한다. CSV 파일을 읽고, 데이터 프레임 객체로 CSV 파일을 생성할 수 있다.}
+```
+
+### 예제
+
+`example` 환경를 이용합니다. 인용의 구문은 다음과 같습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\begin{example}{number of example}
+  text of example
+\end{example}
+```
+
+그러나 예제는 다음처럼 생각보다 복잡합니다.
+
+- 장(chapter)에서 여러 예제가 있어서, 번호를 매겨야 한다.
+    - 번호는 자동으로 채번되어야 추가 및 제거 시 번호의 오류를 줄인다.
+- 예제를 본문이나 다른 예제에서 참조하는 경우가 있다.
+    - cross-reference를 지원해야 한다.
+
+예제를 위해서 다음과 같이 장(chapter)의 시작부분에 환경변수를 정의해야 합니다. 장의 라벨과 예제의 순번을 위한 카운더를 설정했습니다.
+
+```{r}
+#| eval: false
+#| echo: true
+\label{chap:bitpublish} 
+\newcounter{exam_num_bitpub} 
+\setcounter{exam_num_bitpub}{0}
+```
+
+다음은 예제를 위한 환경 설정과 예제를 구현하는 예제입니다. cross-reference를 위해서 예제에 대해서 `ex1`이라는 라벨을 `example` 환경 안에서 정의한 것을 주의깊게 보십시요.
+
+```{r}
+#| eval: false
+#| echo: true
+\addtocounter{exam_num_bitpub}{1}          % 예제를 위한 카운터 1 증가
+\begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+\examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
+\end{example}
+```
+
+```{=tex}
+\addtocounter{exam_num_bitpub}{1}         
+\begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+\examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
+\end{example}
+```
+
