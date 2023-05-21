@@ -67,7 +67,7 @@ extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 �
 현재 bitPublish의 기본 페이지 레이아웃 설정은 4\times6 배판으로 설계되었습니다. 
 4\times6 배판 판형의 레이아웃 설정을 변경하려면, _extensions/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
 
-```{verbatim}
+```{yaml}
   geometry:                            # 4x6 배판 도서를 위한 설정
     - paper=a4paper
     - layoutwidth=190mm
@@ -150,7 +150,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 \_extensions/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.
 
-```{verbatim}
+```tex
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -169,7 +169,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 줄간격, 행간 등으로 부르는 글줄 사이(line spacing)는 1.5로 설정되었습니다. 수정이 필요하다면, _extensions/bitPublish/bitPublish.tex 파일의 다음 행을 수정합니다.
 
-```{verbatim}
+```tex
 %% 줄간격 정의
 \linespread{1.5}
 ```
@@ -178,7 +178,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 `환경`(`enviroment`)으로 제공합니다.
 
-```{verbatim}
+```tex
 \begin{enviroment name}[optional argument]{main argument}
   text of enviroment
 \end{enviroment name}
@@ -186,7 +186,7 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 
 또한 다음과 같은 LaTeX `명령`(`command`)으로도 제공합니다.
 
-```{verbatim}
+```tex
 \command name[optional argument]{main argument} 
 ```
 
@@ -194,7 +194,7 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 
 `caution` 환경을 이용합니다. 정보의 구문은 다음과 같습니다.
 
-```{verbatim}
+```tex
  \begin{caution}{<title>}
     text of caution
  \end{caution}
@@ -202,7 +202,7 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 
 다음처럼 주의를 당부하는 제목과, 환경 내부에 주의사항을 기술합니다. 
 
-```{verbatim}
+```tex
 \begin{caution}{caution의 용도}
 caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
 빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
@@ -222,7 +222,7 @@ caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사
 
 `idea` 환경을 이용합니다. 정보의 구문은 다음과 같습니다.
 
-```{verbatim}
+```tex
 \begin{idea}{<title>}
   text of idea
 \end{idea}
@@ -230,7 +230,7 @@ caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사
 
 다음처럼 제목과 정보성 아이디어를 기술합니다.
 
-```{verbatim}
+```tex
 \begin{idea}{idea의 용도}
 idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
@@ -251,9 +251,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 `shadequote` 환경을 이용합니다. 인용의 구문은 다음과 같습니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```tex
 \begin{shadequote}[<alignment>]{<author>}
   text of quote
 \end{shadequote}
@@ -261,7 +259,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 다음처럼 괄호를 비우면, 저자의 이야기를 표시합니다. 
 
-```{verbatim}
+```tex
 \begin{shadequote}{}
 나는 통계계산이 수리영역인 줄만 알았다. 그런데, 이제는 논리적인 사고도 필요한
 논리영역임을 느낀다. 그래서 논리적 사고로 통계적 데이터 분석을 위한 성능 좋은
@@ -277,7 +275,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 명사의 명언을 인용할 경우에는 명사의 이름을 첫째 괄호에 기입합니다. 이 예제는 명사의 이름을 오른쪽 정렬하였습니다.
 
-```{verbatim}
+```tex
 \begin{shadequote}[r]{스피노자}
 자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.
 \end{shadequote}
@@ -296,13 +294,13 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 다음과 같은 LaTeX `명령`으로 제공합니다.
 
-```{verbatim}
+```tex
 \snbox{text of title}{title fill color}{box fill color}{text of box} 
 ```
 
 다음 명령은 `학습 목표`라는 타이틀을 갖는 박스를 생성합니다.
 
-```{verbatim}
+```tex
 \snbox{학습 목표}{blue!30}{blue!10}{데이터의 분류 체계로서의 척도를 이해하고, 
 이를 기반으로 한 R 데이터 객체를 이해한다. CSV 파일을 읽고, 데이터 프레임 
 객체로 CSV 파일을 생성할 수 있다.}
@@ -316,7 +314,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 `example` 환경을 이용합니다. 인용의 구문은 다음과 같습니다.
 
-```{verbatim}
+```tex
 \begin{example}{number of example}
   text of example
 \end{example}
@@ -331,7 +329,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 예제를 위해서 다음과 같이 장(chapter)의 시작부분에 환경변수를 정의해야 합니다. 장의 라벨과 예제의 순번을 위한 카운더를 설정했습니다.
 
-```{verbatim}
+```tex
 \label{chap:bitpublish}                    % 장 라벨 정의
 \newcounter{exam_num_bitpub}               % 새로운 카운터 생성
 \setcounter{exam_num_bitpub}{0}            % 카운터 값 0으로 초기화
@@ -339,7 +337,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 다음은 예제를 위한 환경 설정과 예제를 구현하는 예제입니다. 크로스-레퍼런스를 위해서 예제에 대해서 `ex1`이라는 라벨을 `example` 환경 안에서 정의한 것을 주의깊게 보십시오.
 
-```{verbatim}
+```tex
 \addtocounter{exam_num_bitpub}{1}          % 예제를 위한 카운터 1 증가
 \begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
 \examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
@@ -357,7 +355,7 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 `ex1`이라는 라벨을 레퍼런스하는 방법은 다음과 같습니다.
 
-```{verbatim}
+```tex
 예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \ref{}를 사용합니다.
 ```
 
@@ -368,7 +366,7 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 기술서나 학습서의 경우에는 연습문제를 제공하는 경우가 많습니다. bitPublish에서 연습문제 서식은 `Exercise` 환경을 이용합니다. 
 
-```{verbatim}
+```tex
 \begin{Exercise}
   text of exercise
 \end{Exercise}
@@ -376,7 +374,7 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 또한 연습문제의 내용을 위해서 `tasks` 환경과 `task` 명령을 사용할 수 있습니다.
 
-```{verbatim}
+```tex
 \begin{tasks}[label](1)
  \task text of task
  \task text of task
@@ -385,7 +383,7 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 다음 명령은 예제 장에서 사용한 연습문제를 기술한 LaTeX 스크립트입니다.
 
-```{verbatim}
+```tex
 \begin{Exercise}\label{EX2}
 \noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
 \begin{tasks}[label=(\arabic*)](1)
@@ -434,8 +432,8 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 이미지 파일을 삽입하기 위해서는 다음처럼 `knitr` 패키지의 `include_graphics()` 함수를 사용하는 것을 추천합니다. 이 때, `knitr` 청크는 다음과 같이 사용합니다.
 
-````{verbatim}
-```{r}
+````md
+```{r}`r ''`
 #| label: fig-label
 #| echo: false
 #| out-width: "90%"
@@ -488,8 +486,8 @@ knitr::include_graphics("이미지 파일이름.png")
 
 R 스크립트로 그리는 R 그래픽스는 `knitr` `청크`(`chunk`)를 이용해서, R 스크립트를 실행하여 삽입합니다.
 
-````{verbatim}
-```{r}
+````md
+```{r}`r ''`
 #| label: fig-hist
 #| echo: false
 #| fig-width: 6
@@ -520,16 +518,16 @@ hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
 
 한글을 정상적으로 출력하기 위해서는 문서의 맨 앞에 다음 스크립트를 추가합니다. 
 
-````{verbatim}
-```{r init, include=FALSE}
+````md
+```{r init, include=FALSE}`r ''`
 source(here::here("_extensions", "bitPublish", "init_fonts.R"))
 ```
 ````
 
 그런 후, R 플롯을 그리는 `knitr` 청크에 `nanum` 옵션의 값을 true로 추가합니다. 이 설정은 `나눔스퀘어` 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 그림 \ref{fig-hist2}\과 같은 R 그래픽스 플롯을 출력합니다.
 
-````{verbatim}
-```{r}
+````md
+```{r}`r ''`
 #| label: fig-hist2
 #| echo: false
 #| fig-width: 6
@@ -568,8 +566,8 @@ ggplot2 그래픽스도 별도의 설정없이 한글을 출력합니다. 테마
 
 다음 스크립트는 그림 \ref{fig-hist3}\과 같은 ggplot2 그래픽스 플롯을 출력합니다.
 
-````{verbatim}
-```{r}
+````md
+```{r}`r ''`
 #| label: fig-hist3
 #| echo: false
 #| fig-width: 6
@@ -622,7 +620,7 @@ markdown을 이용한 표 생성의 경우에는 캡션이 표 내부에 위치�
 
 다음과 같이 표를 정의합니다. 캡션과 라벨을 사용하지 않을 때에는 유용합니다.
 
-```{verbatim}
+```md
 | 기본값  | 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 |
 |---------|:----------|:-----------:|------------:|
 |내용 1   |내용 2     |내용 3       |내용 4       |
@@ -644,7 +642,7 @@ Table: markdown 기반 표
 
 LaTeX을 이용한 표를 삽입하는 방법은 LaTeX 스크립트를 기술하는 것입니다. 다음처럼 테이블을 생성하는 LaTeX 스크립트를 기술합니다.
 
-```{verbatim}
+```tex
 \begin{table}[htb!]
 \centering
 \begin{tabular}[]{llcr}
@@ -683,8 +681,8 @@ R을 이용해서 표를 만드는 방법에 대표적인 것이 `knitr` 패키�
 
 다음은 표 \ref{tab-r}\를 생성합니다.  
 
-````{verbatim}
-```{r}
+````md
+```{r}`r ''`
 #| echo: false
 tab <- tibble::tribble(
   ~기본값, ~`왼쪽 정렬`, ~`가운데 정렬`, ~`오른쪽 정렬`,
@@ -726,13 +724,13 @@ tab |>
 
 인라인 수식의 경우에는 \$와 \$ 사이에서 수식을 정의하고, 한 라인 전체에 수식을 사용하기 위해서는 \$\$와 \$\$ 사이에서 수식을 정의합니다.
 
-```{verbatim}
-데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음의 단계적 방법으로 만든다.
+```tex
+데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음과 같이 만든다.
 ```
 
-데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음의 단계적 방법으로 만든다.
+데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음과 같이 만든다.
 
-```{verbatim}
+```tex
 누적상대도수: 
 $$
 C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
@@ -748,39 +746,39 @@ $$
 
 LaTeX의 찾아보기(인덱싱) 기능을 활성화하기 위해, 이미 bitPublish는 프리엠블에 다음처럼 `makeidx` 패키지를 로드하고 있습니다.
 
-```{verbatim}
+```tex
 \usepackage{makeidx}
 ```
 
 또한 프리엠블에서는 찾아보기 기능을 활성화하기 위해서 다음의 명령을 포함했습니다.
 
-```{verbatim}
+```tex
 \makeindex
 ```
 
 그리고 문서에 찾아보기 색인을 표시하기 위한 다음의 명령어를 사용해야 하는데,
 
-```{verbatim}
+```tex
 \printindex
 ```
 
 이 명령어는 \_extensions/bitPublish/\_extension.yml 파일에 다음과 같이 설정되어 있습니다.
 
-```{verbatim}
-  include-after-body:  
-    - text: |      
-        \printindex  
+```yaml
+include-after-body:  
+  - text: |      
+      \printindex  
 ```
 
 그러므로 찾아보기에 색인 등록을 위해서는 여러분이 작성할 본문에 다음의 인덱스 명령을 사용하기만 하면 됩니다. 
 
-```{verbatim}
+```tex
 \index{key}
 ```
 
 다음 예는 찾아보기 색인에 *척도*를 등록합니다. 그리고 LaTeX이 알아서 해당 문장이 위치한 페이지를 찾아보기 색인과 연결해 줍니다.
 
-```{verbatim}
+```tex
 그 현상에 숫자를 부여한 것을 척도\index{척도}라 한다.
 ```
 
@@ -789,7 +787,7 @@ LaTeX의 찾아보기(인덱싱) 기능을 활성화하기 위해, 이미 bitPub
 
 참고문서 등록은 LaTeX의 `biblatex` 패키지를 이용합니다. 이 패키지를 사용할 수 있는 설정은 이미 되어 있으니, 'bitPublish를 이용하여 한글 책 조판하기' 예제를 위한 다음의 \`_quarto.yml'을 참고하여 참고문서 등록을 적용합니다.
 
-```{verbatim}
+```yaml
 book:
   title: "bitPublish를 이용하여 한글 책 조판하기"
   chapters:
@@ -803,7 +801,7 @@ link-citations: false
 
 상기 `YAML` 헤더에서 `chapters` 옵션은 책에 장을 추가하는데 'references.qmd' 파일이 참고문서 등록에 해당하는 파일입니다. 그 내용은 다음과 같습니다. 이 설정은 참고문서를 나타내는 시작 페이지의 제목을 "참고문헌"으로 표기합니다.
 
-```{verbatim}
+```md
 # 참고문헌 {.unnumbered}
 
 ::: {#refs}
@@ -814,7 +812,7 @@ link-citations: false
 
 다음은 'references.bib' 파일에 정의된 일부분으로 참고한 도서와 웹 사이트의 예입니다.
 
-```{verbatim}
+```verbatim
 @book{rstat,
   author = {유충현, 이상호},
   title = {R을 이용한 통계학 이해},
@@ -832,7 +830,7 @@ link-citations: false
 
 \`참고 문헌'이라는 제목의 참고문서에 등록하기 위해서는 본문에 다음과 같이 인용을 위해서 \\cite{} 명령을 사용합니다.
 
-```{verbatim}
+```tex
 Quarto 홈페이지의 Quarto에 대한 소개\cite{quarto}는 다음과 같다. 이러쿵 저러쿵...
 ```
 
@@ -844,13 +842,13 @@ Quarto 홈페이지의 Quarto에 대한 소개\cite{quarto}는 다음과 같다.
 
 다음과 같이 출력되는 본문이 있다고 가정하자. 
 
-```{verbatim}
+```verbatim
 그림 2.3과 같이 정규분포를 따르는 히스토그램을 그린다.
 ```
 
 그런데 앞 부분에 크로스-레퍼런스를 적용한 그림 하나를 추가하면 이 문장은 다음과 같이 바뀐다.
 
-```{verbatim}
+```verbatim
 그림 2.4과 같이 정규분포를 따르는 히스토그램을 그린다.
 ```
 
@@ -866,7 +864,7 @@ LaTeX이 크로스-레퍼런스에서 계산되는 번호의 끝소리의 자소
 
 다음은 크로스-레퍼런스에서 번호가 계산되었다는 전제로 자동조사 처리를 테스트한 것이다.
 
-```{verbatim}
+```tex
 그림 2.3\와 그림 2.4\은 같이 정규분포를 따르는 히스토그램을 그린다. 
 그림 2.3\과 그림 2.4\는 같이 정규분포를 따르는 히스토그램을 그린다.
 ```

@@ -14,23 +14,24 @@
 
 다음처럼 미리보기 명령이나,
 
-```{verbatim}
+```md
 quarto preview --to bitPublish-pdf
 ```
 
 랜더링 명령에서, 
 
-```{verbatim}
+```md
 quarto render --to bitPublish-pdf
 ```
 
 아래와 같은 에러가 발생하는 경우가 있습니다.
 
-```{verbatim}
+```verbatim
 updating existing packages
 finding package for bclogo.sty
 ERROR: Your TexLive version is not updated enough to connect to the remote 
-repository and download packages. Please update your installation of TexLive or TinyTex.
+repository and download packages. Please update your installation of TexLive 
+or TinyTex.
 
 Underlying message: Local TeX Live (2022) is older than remote repository (2023).
 Cross release updates are only supported with
@@ -42,13 +43,13 @@ See https://tug.org/texlive/upgrade.html for details.
 
 TeXlive를 사용한다면, 다음 명령으로 TeXlive를 업데이트하세요.
 
-```{verbatim}
+```md
 update-tlmgr-latest --update
 ```
 
 TinyTex을 사용한다면, 다음 명령으로 TinyTex을 업데이트하세요.
 
-```{verbatim}
+```md
 quarto update tinytex
 ```
 
