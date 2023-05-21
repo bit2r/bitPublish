@@ -32,7 +32,6 @@ Quarto\cite{quartoarch}를 요약하자면 그림 \ref{fig-quarto}처럼, Quarto
 #| fig-align: "center"
 #| out-width: "90%"
 #| fig-cap: "Quarto 매커니즘, Allison Horst."
-#| fig-pos: "!h"
 
 knitr::include_graphics(here::here("img", "b5217f2a-f129-4bf9-90dc-c5b9783d0ea8_rw_1920.png"))
 ```
@@ -66,11 +65,9 @@ extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 �
 ### 페이지 레이아웃
 
 현재 bitPublish의 기본 페이지 레이아웃 설정은 4\times6 배판으로 설계되었습니다. 
-4\times6 배판 판형의 레이아웃 설정을 변경하려면, \_extensions > bitPublish > \_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
+4\times6 배판 판형의 레이아웃 설정을 변경하려면, _extensions/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
   geometry:                            # 4x6 배판 도서를 위한 설정
     - paper=a4paper
     - layoutwidth=190mm
@@ -84,7 +81,7 @@ extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 �
     - footskip=15mm                 
     - left=25mm
     - right=25mm
-    - centering    
+    - centering   
 ```
 
 ### 폰트 설정
@@ -106,9 +103,9 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 #### 한국어 폰트
 
 - serif 폰트:
-    - **KoPubWorld바탕체\_Pro**
+    - **KoPubWorld바탕체_Pro**
 - sans-serif 폰트:
-    - **KoPubWorld돋움체\_Pro**
+    - **KoPubWorld돋움체_Pro**
     
 #### 영어 폰트
 
@@ -120,7 +117,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
    
 #### 한자 폰트
 
-- **KoPubWorld돋움체\_Pro**
+- **KoPubWorld돋움체_Pro**
  
 #### Mono space 폰트
 
@@ -133,22 +130,27 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 - STIX Two Math
 
+#### R 그래픽스 이미지 폰트
+
+- 한국어 폰트
+    - **나눔스퀘어**
+- 영어 폰트
+    - **Nimbus Sans L**
+
 [^serif]: serif 폰트는 바탕체 폰트를 의미합니다. 글자의 획에서 부리처럼 날카롭게 튀어나온 부분을 세리프(serif)라 합니다. 영어는 로만체, 한국어의 경우에는 과거에 명조체라는 이름으로 통용되던 바탕체 서체를 의미합니다.
 [^sans-serif]: serif 폰트는 돋움체 폰트를 의미합니다. 프랑스어로 sans는 "~가 없이"라는 뜻으로, sans-serif는 세리프가 없는 서체입니다. 한국어의 경우에는 과거에 고딕체라는 이름으로 통용되던 돋움체 서체를 의미합니다.
 
 #### 주의사항
 
-모든 폰트는 \_extensions > bitPublish > fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 `KoPubWorld바탕체_Pro`와 `KoPubWorld돋움체_Pro` 폰트를 사용하기 위해서는 `한국출판인회의` 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체\_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.
+모든 폰트는 \_extensions/bitPublish/fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 `KoPubWorld바탕체_Pro`와 `KoPubWorld돋움체_Pro` 폰트를 사용하기 위해서는 `한국출판인회의` 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.
 
 ### 머리글 바닥글
 
 `머리글`(`header`)\index{머리글}\index{header}과 `바닥글`(`footer`)\index{바닥글}\index{footer}는 `fancyhdr`\index{fancyhdr} 패키지를 사용해서 정의하였습니다.
 
-\_extensions > bitPublish > \_extension.yml 파일에 다음과 같이 설정되어 있습니다.
+\_extensions/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -161,27 +163,22 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 \fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
 ```
 
-만약에 머리글과 바닥글의 모양을 바꾸려면 직접 LaTeX 스크립트를 수정하면 됩니다. 책의 제목을 바꾸기 위해서는 fancyhead의 EL과 OR을 변경하면 됩니다.
+만약에 머리글과 바닥글의 모양을 바꾸려면 직접 LaTeX 스크립트를 수정하면 됩니다. 책의 제목을 바꾸기 위해서는 `fancyhead`의 `EL`과 `OR`을 변경하면 됩니다.
 
 ### 글줄 사이
 
-줄간격, 행간 등으로 부르는 글줄 사이(line spacing)는 1.5로 설정되었습니다. 수정이 필요하다면, \_extensions > bitPublish > bitPublish.tex 파일의 다음 행을 수정합니다.
+줄간격, 행간 등으로 부르는 글줄 사이(line spacing)는 1.5로 설정되었습니다. 수정이 필요하다면, _extensions/bitPublish/bitPublish.tex 파일의 다음 행을 수정합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 %% 줄간격 정의
 \linespread{1.5}
 ```
-
 
 ## bitPublish 서식 이용하기
 
 bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 `환경`(`enviroment`)으로 제공합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{enviroment name}[optional argument]{main argument}
   text of enviroment
 \end{enviroment name}
@@ -189,19 +186,15 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 
 또한 다음과 같은 LaTeX `명령`(`command`)으로도 제공합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \command name[optional argument]{main argument} 
 ```
 
 ### 주의
 
-`caution` 환경를 이용합니다. 정보의 구문은 다음과 같습니다.
+`caution` 환경을 이용합니다. 정보의 구문은 다음과 같습니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
  \begin{caution}{<title>}
     text of caution
  \end{caution}
@@ -209,9 +202,7 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 
 다음처럼 주의를 당부하는 제목과, 환경 내부에 주의사항을 기술합니다. 
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{caution}{caution의 용도}
 caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
 빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
@@ -229,21 +220,17 @@ caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사
 
 ### 정보
 
-`idea` 환경를 이용합니다. 정보의 구문은 다음과 같습니다.
+`idea` 환경을 이용합니다. 정보의 구문은 다음과 같습니다.
 
-```{r}
-#| eval: false
-#| echo: true
- \begin{idea}{<title>}
-    text of idea
- \end{idea}
+```{verbatim}
+\begin{idea}{<title>}
+  text of idea
+\end{idea}
 ```
 
 다음처럼 제목과 정보성 아이디어를 기술합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{idea}{idea의 용도}
 idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
@@ -262,7 +249,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 ### 인용
 
-`shadequote` 환경를 이용합니다. 인용의 구문은 다음과 같습니다.
+`shadequote` 환경을 이용합니다. 인용의 구문은 다음과 같습니다.
 
 ```{r}
 #| eval: false
@@ -274,9 +261,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 다음처럼 괄호를 비우면, 저자의 이야기를 표시합니다. 
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{shadequote}{}
 나는 통계계산이 수리영역인 줄만 알았다. 그런데, 이제는 논리적인 사고도 필요한
 논리영역임을 느낀다. 그래서 논리적 사고로 통계적 데이터 분석을 위한 성능 좋은
@@ -292,9 +277,7 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 명사의 명언을 인용할 경우에는 명사의 이름을 첫째 괄호에 기입합니다. 이 예제는 명사의 이름을 오른쪽 정렬하였습니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{shadequote}[r]{스피노자}
 자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.
 \end{shadequote}
@@ -313,17 +296,13 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 다음과 같은 LaTeX `명령`으로 제공합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \snbox{text of title}{title fill color}{box fill color}{text of box} 
 ```
 
 다음 명령은 `학습 목표`라는 타이틀을 갖는 박스를 생성합니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \snbox{학습 목표}{blue!30}{blue!10}{데이터의 분류 체계로서의 척도를 이해하고, 
 이를 기반으로 한 R 데이터 객체를 이해한다. CSV 파일을 읽고, 데이터 프레임 
 객체로 CSV 파일을 생성할 수 있다.}
@@ -335,11 +314,9 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 
 ### 예제
 
-`example` 환경를 이용합니다. 인용의 구문은 다음과 같습니다.
+`example` 환경을 이용합니다. 인용의 구문은 다음과 같습니다.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \begin{example}{number of example}
   text of example
 \end{example}
@@ -350,23 +327,19 @@ idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데
 - 장(chapter)에서 여러 예제가 있어서, 번호를 매겨야 한다.
     - 번호는 자동으로 채번되어야 추가 및 제거 시 번호의 오류를 줄인다.
 - 예제를 본문이나 다른 예제에서 참조하는 경우가 있다.
-    - cross-reference를 지원해야 한다.
+    - `크로스-레퍼런스`(`cross-reference`)를 지원해야 한다.
 
 예제를 위해서 다음과 같이 장(chapter)의 시작부분에 환경변수를 정의해야 합니다. 장의 라벨과 예제의 순번을 위한 카운더를 설정했습니다.
 
-```{r}
-#| eval: false
-#| echo: true
-\label{chap:bitpublish} 
-\newcounter{exam_num_bitpub} 
-\setcounter{exam_num_bitpub}{0}
+```{verbatim}
+\label{chap:bitpublish}                    % 장 라벨 정의
+\newcounter{exam_num_bitpub}               % 새로운 카운터 생성
+\setcounter{exam_num_bitpub}{0}            % 카운터 값 0으로 초기화
 ```
 
-다음은 예제를 위한 환경 설정과 예제를 구현하는 예제입니다. cross-reference를 위해서 예제에 대해서 `ex1`이라는 라벨을 `example` 환경 안에서 정의한 것을 주의깊게 보십시요.
+다음은 예제를 위한 환경 설정과 예제를 구현하는 예제입니다. 크로스-레퍼런스를 위해서 예제에 대해서 `ex1`이라는 라벨을 `example` 환경 안에서 정의한 것을 주의깊게 보십시오.
 
-```{r}
-#| eval: false
-#| echo: true
+```{verbatim}
 \addtocounter{exam_num_bitpub}{1}          % 예제를 위한 카운터 1 증가
 \begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
 \examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
@@ -381,4 +354,524 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
 \end{example}
 ```
+
+`ex1`이라는 라벨을 레퍼런스하는 방법은 다음과 같습니다.
+
+```{verbatim}
+예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \ref{}를 사용합니다.
+```
+
+예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \\ref{}를 사용합니다.
+
+
+### 연습문제
+
+기술서나 학습서의 경우에는 연습문제를 제공하는 경우가 많습니다. bitPublish에서 연습문제 서식은 `Exercise` 환경을 이용합니다. 
+
+```{verbatim}
+\begin{Exercise}
+  text of exercise
+\end{Exercise}
+```
+
+또한 연습문제의 내용을 위해서 `tasks` 환경과 `task` 명령을 사용할 수 있습니다.
+
+```{verbatim}
+\begin{tasks}[label](1)
+ \task text of task
+ \task text of task
+\end{tasks}
+```
+
+다음 명령은 예제 장에서 사용한 연습문제를 기술한 LaTeX 스크립트입니다.
+
+```{verbatim}
+\begin{Exercise}\label{EX2}
+\noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
+\begin{tasks}[label=(\arabic*)](1)
+ \task 합격, 불합격, 불합격, 합격, 불합격
+ \task 1등급, 2등급, 3등급, 2등급, 5등급, 3등급, 4등급, 4등급, 3등급, 3등급
+ \task 12㎝, 23㎝, 32㎝, 22㎝, 19㎝, 21㎝, 20㎝
+\end{tasks}
+
+\noindent 2. 다음의 데이터 객체를 외부 파일로 출력해 보아라.
+\begin{tasks}[label=(\arabic*)](1)
+ \task R의 datas 패키지에 포함되어 있는 women 데이터 프레임을 women.csv 파일로 출력해 보아라.
+ \task (1)의 파일을 다시 읽어 들여서 women2라는 이름의 데이터 프레임을 만들어라.
+\end{tasks}
+\end{Exercise}
+```
+
+```{=tex}
+\begin{Exercise}\label{EX2}
+\noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
+\begin{tasks}[label=(\arabic*)](1)
+ \task 합격, 불합격, 불합격, 합격, 불합격
+ \task 1등급, 2등급, 3등급, 2등급, 5등급, 3등급, 4등급, 4등급, 3등급, 3등급
+ \task 12㎝, 23㎝, 32㎝, 22㎝, 19㎝, 21㎝, 20㎝
+\end{tasks}
+
+\noindent 2. 다음의 데이터 객체를 외부 파일로 출력해 보아라.
+\begin{tasks}[label=(\arabic*)](1)
+ \task R의 datas 패키지에 포함되어 있는 women 데이터 프레임을 women.csv 파일로 출력해 보아라.
+ \task (1)의 파일을 다시 읽어 들여서 women2라는 이름의 데이터 프레임을 만들어라.
+\end{tasks}
+\end{Exercise}
+```
+
+만약에 연습문제를 별도의 페이지에서 시각하고 싶다면 \\clearpage 명령어를 사용하면 됩니다.
+
+
+## bitPublish 활용을 위한 팁
+
+`bitPublish`는 `LaTeX` 기반의 솔루션이기 때문에, 좀더 유용하게 사용하기 위해서 `LaTeX`에 대한 지식을 요구합니다. R 환경에서는 `knitr` 패키지를 이용해서 `Quarto` 문서를 마크다운 문서로 랜더링하기 때문에 `knitr` 청크에 대한 지식도 필요합니다. 
+
+그러나 너무 걱정하지 마십시오. 심도있는 지식이 아닌, 기초적인 지식으로도 충분하게 책을 저작할 수 있습니다. 이 절에서는 요긴하게 사용된 `LaTeX` 팁을 소개합니다.
+
+### 이미지 삽입
+
+#### 이미지 파일
+
+이미지 파일을 삽입하기 위해서는 다음처럼 `knitr` 패키지의 `include_graphics()` 함수를 사용하는 것을 추천합니다. 이 때, `knitr` 청크는 다음과 같이 사용합니다.
+
+````{verbatim}
+```{r}
+#| label: fig-label
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "이미지 캡션"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("이미지 파일이름.png")
+```
+````
+
+이 예제는 다음과 같은 작업을 수행합니다. 
+
+* \`이미지 파일이름.png' 파일을 본문에 삽입하는데,
+    + 이미지의 크기는 본문 너비의 90\%에 해당하게 적용하며, 이미지는 가운데 정렬로 배치함
+* 이미지의 캡션은 "이미지 캡션"으로 정의하며,
+* 크로스-레퍼런스를 위한 라벨의 이름은 \`fig-label'로 설정하는데, 라벨의 접두어 \`fig-'를 사용한 \`fig-라벨이름'의 포맷을 권장함
+* **이미지의 페이지 배치는**
+    1. 이미지를 정확히 해당 위치(here)에 일단 배치, 
+    1. 여의치 않으면, 그 다음 페이지 가장 윗부분에 배치, 
+    1. 만약 이것도 여의치 않으면, 그 다음 페이지 가장 아랫 부분에 배치.
+
+이미지의 페이지 배치는 다음과 같은 `fig-pos`\cite{float} 옵션으로 지정합니다.
+
+| 플로트 지정자 | 의미                                                                                                               |
+|:-------------:|--------------------------------------------------------|
+| h             | here의 약자로, 본문에 위치한 그 자리에 이미지 배치                                                                 |
+| t             | top의 약자로, 이미지가 위치한 페이지의 가장 윗부분에 배치. 크기가 맞지 않으면 다음 페이지의 가장 윗쪽에 배치         |
+| b             | bottom의 약자로, 이미지가 위치한 페이지 가장 아래에 이미지 배치. 크기가 맞지 않으면 다음 페이지의 가장 아래에 배치 |
+| p             | 이미지가 텍스트 없는 단독 페이지를 따로 만들어 배치                                                                |
+| !             | 적절한 위치 결정을 위해, 적용한 지정자 재정의. 지정자가 나열된 순서에 따라 적절한 위치에 이미지 삽입                                                              |
+
+플로트 지정자 예제에서 사용한 "htb!"는 일단 이미지를 정확히 그 위치(h)에 배치하려 하고, 여의치 않으면 다음은 위(t)이기 때문에 그 다음 페이지 가장 윗부분에 배치합니다. 만약 그것도 여의치 않으면 그 다음은 아래(b)이기 때문에 그 다음 페이지 가장 아랫 부분에 배치합니다. 
+
+그런데 bitPublish에서 `fig-pos`의 기본값[^default]이 "htb!"로 설정되었기 때문에 이 설정을 생략해도 적당한 페이지에 이미지를 배치합니다. `fig-align`의 기본값도  "center"입니다.
+
+[^default]: "htb!"을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_fonts.R 파일을 로드하는 설정을 전제로 합니다.
+
+```{=tex}
+\begin{idea}{fig-pos과 label}
+웹 페이지로 배포하는 문서는 페이지로 구분되지 않기 때문에 이미지는 항상 그(here) 자리에 출력됩니다.  
+그래서 본문에서 ``다음 그림처럼''과 같은 표현이 가능합니다만, 페이지가 구분되는 책에서는 이 표현은 적절하지 않습니다.
+왜냐하면 페이지 상황에 따라 이미지가 다음 페이지로 넘어갈 수 있는 등 저작 과정에서는 예측이 안됩니다.
+
+그래서 `fig-pos'의 값을 ``htb!''으로 설정하고 `label'을 지정하여 크로스-레퍼런스를 이용해서, ``그림 2.1처럼''과 같이 표현하는 것이 좋습니다. 
+\end{idea}
+```
+
+#### R 그래픽스
+
+R 스크립트로 그리는 R 그래픽스는 `knitr` `청크`(`chunk`)를 이용해서, R 스크립트를 실행하여 삽입합니다.
+
+````{verbatim}
+```{r}
+#| label: fig-hist
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "정규분포 히스토그램"
+set.seed(123)
+hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
+```
+````
+
+
+그런데 R 플롯에 한글이 포함될 경우에 그림 \ref{fig-hist}처럼 한글이 출력되지 않는 문제가 발생합니다.
+
+```{r}
+#| label: fig-hist
+#| message: false
+#| warning: false
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "정규분포 히스토그램"
+set.seed(123)
+
+hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
+```
+
+한글을 정상적으로 출력하기 위해서는 문서의 맨 앞에 다음 스크립트를 추가합니다. 
+
+````{verbatim}
+```{r init, include=FALSE}
+source(here::here("_extensions", "bitPublish", "init_fonts.R"))
+```
+````
+
+그런 후, R 플롯을 그리는 `knitr` 청크에 `nanum` 옵션의 값을 true로 추가합니다. 이 설정은 `나눔스퀘어` 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 그림 \ref{fig-hist2}\과 같은 R 그래픽스 플롯을 출력합니다.
+
+````{verbatim}
+```{r}
+#| label: fig-hist2
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "정규분포 히스토그램"
+#| nanum: true
+set.seed(123)
+
+hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
+```
+````
+
+```{r init, include=FALSE}
+source(here::here("_extensions", "bitPublish", "init_fonts.R"))
+```
+
+```{r}
+#| label: fig-hist2
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "정규분포 히스토그램"
+#| nanum: true
+set.seed(123)
+
+hist(rnorm(500), col = 'lightblue', main = '정규분포의 히스토그램')
+```
+
+만약 한글이 포함되지 않은 플롯에서 라틴 문자에 사용할 폰트로 `Nimbus Sans L` 폰트를 사용하려면, `nimbus` 옵션의 값을 true로 추가하면 됩니다.
+
+#### ggplot2 그래픽스
+
+ggplot2 그래픽스도 별도의 설정없이 한글을 출력합니다. 테마는 `hrbrthemes` 패키지의 `theme_ipsum()` 함수를 사용하며, 폰트는 R 그래픽스와 동일한 방법으로 `나눔스퀘어` 폰트를 사용할 수 있습니다.
+
+다음 스크립트는 그림 \ref{fig-hist3}\과 같은 ggplot2 그래픽스 플롯을 출력합니다.
+
+````{verbatim}
+```{r}
+#| label: fig-hist3
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "ggplot2 정규분포 히스토그램"
+#| nanum: true
+set.seed(123)
+random_norm <- data.frame(rnd = rnorm(500))
+
+ggplot(random_norm, aes(x = rnd)) +
+  geom_histogram(color = "darkblue", fill = "lightblue") +
+  labs(title = "ggplot2의 히스토그램",
+       subtitle = "500개 정규분포 난수")
+```
+````
+
+```{r}
+#| label: fig-hist3
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "70%"
+#| fig-cap: "ggplot2 정규분포 히스토그램"
+#| nanum: true
+set.seed(123)
+random_norm <- data.frame(rnd = rnorm(500))
+
+ggplot(random_norm, aes(x = rnd)) +
+  geom_histogram(color = "darkblue", fill = "lightblue") +
+  labs(title = "ggplot2의 히스토그램",
+       subtitle = "500개 정규분포 난수")
+```
+
+### 표 삽입
+
+본문에 표를 삽입하는 방법에 다음처럼 3가지 방법을 사용할 수 있습니다.
+
+- markdown을 이용한 표
+    - 캡션의 핸들링과 라벨의 지정에 취약해서 권하지 않음
+    - 그러나, 캡션과 라벨을 사용하지 않을 때에는 유용함
+- LaTeX을 이용한 표
+    - 가장 세밀하게 조정할 수 있으나, LaTeX에 대한 지식이 필요함
+- R을 이용한 표
+    - R에 익숙하면 쉽게 사용할 수 있음
+    
+#### markdown을 이용한 표
+
+markdown을 이용한 표 생성의 경우에는 캡션이 표 내부에 위치하고, 라벨을 지정할 수 없어서 표를 삽입하는 방법으로 적절하지 않습니다.
+
+다음과 같이 표를 정의합니다. 캡션과 라벨을 사용하지 않을 때에는 유용합니다.
+
+```{verbatim}
+| 기본값  | 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 |
+|---------|:----------|:-----------:|------------:|
+|내용 1   |내용 2     |내용 3       |내용 4       |
+|내용 5   |내용 6     |내용 7       |내용 8       |
+|내용 9   |내용 10    |내용 11      |내용 12      |
+
+Table: markdown 기반 표    
+```
+
+| 기본값  | 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 |
+|---------|:----------|:-----------:|------------:|
+|내용 1   |내용 2     |내용 3       |내용 4       |
+|내용 5   |내용 6     |내용 7       |내용 8       |
+|내용 9   |내용 10    |내용 11      |내용 12      |
+
+Table: markdown 기반 표    
+
+#### LaTeX을 이용한 표
+
+LaTeX을 이용한 표를 삽입하는 방법은 LaTeX 스크립트를 기술하는 것입니다. 다음처럼 테이블을 생성하는 LaTeX 스크립트를 기술합니다.
+
+```{verbatim}
+\begin{table}[htb!]
+\centering
+\begin{tabular}[]{llcr}
+\toprule
+기본값  & 왼쪽 정렬 & 가운데 정렬 & 오른쪽 정렬 \\
+\midrule
+내용 1 & 내용 2  & 내용 3   & 내용 4    \\
+내용 5 & 내용 6  & 내용 7   & 내용 8    \\
+내용 9 & 내용 10 & 내용 11  & 내용 12   \\
+\bottomrule
+\end{tabular}
+\caption{\label{tab-latex}LaTex 기반 표}
+\end{table}
+```
+
+
+```{=tex}
+\begin{table}[htb!]
+\centering
+\begin{tabular}[]{llcr}
+\toprule
+기본값  & 왼쪽 정렬 & 가운데 정렬 & 오른쪽 정렬 \\
+\midrule
+내용 1 & 내용 2  & 내용 3   & 내용 4    \\
+내용 5 & 내용 6  & 내용 7   & 내용 8    \\
+내용 9 & 내용 10 & 내용 11  & 내용 12   \\
+\bottomrule
+\end{tabular}
+\caption{\label{tab-latex}LaTex 기반 표}
+\end{table}
+```
+
+#### R을 이용한 표
+
+R을 이용해서 표를 만드는 방법에 대표적인 것이 `knitr` 패키지의 `kable()` 함수와 `kableExtra` 패키지의 `kable_styling()` 함수를 사용하는 방법입니다. 그러나 이 방법은 캡션의 위치가 표의 위에 위치하는 것과 아직 `Quarto`에서 크로스-레퍼런스가 지원되지 않는 관계로 `gt` 패키지의 `gt()` 함수를 사용합니다. 이 함수로 크로스-레퍼런스가 지원되지 않았으나, `as_latex_with_caption()` 함수가 이를 지원합니다. 이 함수는 `bitPublish`에서 제공하는 사용자 정의 함수입니다. 
+
+다음은 표 \ref{tab-r}\를 생성합니다.  
+
+````{verbatim}
+```{r}
+#| echo: false
+tab <- tibble::tribble(
+  ~기본값, ~`왼쪽 정렬`, ~`가운데 정렬`, ~`오른쪽 정렬`,
+  "내용 1", "내용 2", "내용 3", "내용 4",
+  "내용 5", "내용 6", "내용 7", "내용 8",
+  "내용 9", "내용 10", "내용 11", "내용 12"
+)
+
+tab |> 
+  gt::gt() |> 
+  gt::cols_align(align = "left", columns = `왼쪽 정렬`) |> 
+  gt::cols_align(align = "center", columns = `가운데 정렬`) |> 
+  gt::cols_align(align = "right", columns = `오른쪽 정렬`) |>
+  as_latex_with_caption(label = "tab-r", caption = "R 기반 표")
+```
+````
+
+```{r}
+#| eval: true
+#| echo: false
+tab <- tibble::tribble(
+  ~기본값, ~`왼쪽 정렬`, ~`가운데 정렬`, ~`오른쪽 정렬`,
+  "내용 1", "내용 2", "내용 3", "내용 4",
+  "내용 5", "내용 6", "내용 7", "내용 8",
+  "내용 9", "내용 10", "내용 11", "내용 12"
+)
+
+tab |> 
+  gt::gt() |> 
+  gt::cols_align(align = "left", columns = `왼쪽 정렬`) |> 
+  gt::cols_align(align = "center", columns = `가운데 정렬`) |> 
+  gt::cols_align(align = "right", columns = `오른쪽 정렬`) |>
+  as_latex_with_caption(label = "tab-r", caption = "R 기반 표")
+```
+ 
+### 수식 입력
+
+수식 입력은 Latex의 수학 공식을 입력하는 TeX 문법을 따릅니다.
+
+인라인 수식의 경우에는 \$와 \$ 사이에서 수식을 정의하고, 한 라인 전체에 수식을 사용하기 위해서는 \$\$와 \$\$ 사이에서 수식을 정의합니다.
+
+```{verbatim}
+데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음의 단계적 방법으로 만든다.
+```
+
+데이터가 $x_1, x_2, x_3, \cdots, x_n$일 때, 도수분포표는 다음의 단계적 방법으로 만든다.
+
+```{verbatim}
+누적상대도수: 
+$$
+C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
+$$
+```
+
+누적상대도수: 
+$$
+C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
+$$
+
+### 찾아보기 등록
+
+LaTeX의 찾아보기(인덱싱) 기능을 활성화하기 위해, 이미 bitPublish는 프리엠블에 다음처럼 `makeidx` 패키지를 로드하고 있습니다.
+
+```{verbatim}
+\usepackage{makeidx}
+```
+
+또한 프리엠블에서는 찾아보기 기능을 활성화하기 위해서 다음의 명령을 포함했습니다.
+
+```{verbatim}
+\makeindex
+```
+
+그리고 문서에 찾아보기 색인을 표시하기 위한 다음의 명령어를 사용해야 하는데,
+
+```{verbatim}
+\printindex
+```
+
+이 명령어는 \_extensions/bitPublish/\_extension.yml 파일에 다음과 같이 설정되어 있습니다.
+
+```{verbatim}
+  include-after-body:  
+    - text: |      
+        \printindex  
+```
+
+그러므로 찾아보기에 색인 등록을 위해서는 여러분이 작성할 본문에 다음의 인덱스 명령을 사용하기만 하면 됩니다. 
+
+```{verbatim}
+\index{key}
+```
+
+다음 예는 찾아보기 색인에 *척도*를 등록합니다. 그리고 LaTeX이 알아서 해당 문장이 위치한 페이지를 찾아보기 색인과 연결해 줍니다.
+
+```{verbatim}
+그 현상에 숫자를 부여한 것을 척도\index{척도}라 한다.
+```
+
+
+### 참고문서 등록
+
+참고문서 등록은 LaTeX의 `biblatex` 패키지를 이용합니다. 이 패키지를 사용할 수 있는 설정은 이미 되어 있으니, 'bitPublish를 이용하여 한글 책 조판하기' 예제를 위한 다음의 \`_quarto.yml'을 참고하여 참고문서 등록을 적용합니다.
+
+```{verbatim}
+book:
+  title: "bitPublish를 이용하여 한글 책 조판하기"
+  chapters:
+    - index.qmd
+    - chap_exams.qmd
+    - chap_intro_bitpublish.qmd
+    - references.qmd
+bibliography: references.bib
+link-citations: false
+```
+
+상기 `YAML` 헤더에서 `chapters` 옵션은 책에 장을 추가하는데 'references.qmd' 파일이 참고문서 등록에 해당하는 파일입니다. 그 내용은 다음과 같습니다. 이 설정은 참고문서를 나타내는 시작 페이지의 제목을 "참고문헌"으로 표기합니다.
+
+```{verbatim}
+# 참고문헌 {.unnumbered}
+
+::: {#refs}
+:::
+```
+
+그리고 참고문서에 등록하기 위해서는 `YAML` 헤더에 `bibliography` 옵션에 기술된 'references.bib' 파일에 참고문서를 정의합니다.
+
+다음은 'references.bib' 파일에 정의된 일부분으로 참고한 도서와 웹 사이트의 예입니다.
+
+```{verbatim}
+@book{rstat,
+  author = {유충현, 이상호},
+  title = {R을 이용한 통계학 이해},
+  year = {2013},
+  publisher = {자유아카데미}
+}
+
+@misc{quarto,
+  author = {posit},
+  title = {Welcome to Quarto},
+  howpublished = {\url{https://quarto.org/}},
+  note = {Accessed: 2023-05-15}
+}
+```
+
+\`참고 문헌'이라는 제목의 참고문서에 등록하기 위해서는 본문에 다음과 같이 인용을 위해서 \\cite{} 명령을 사용합니다.
+
+```{verbatim}
+Quarto 홈페이지의 Quarto에 대한 소개\cite{quarto}는 다음과 같다. 이러쿵 저러쿵...
+```
+
+이 본문의 \\cite{} 명령은 '참고 문헌' 페이지에 인용 문서에 대한 정보를 기술하고, 인용된 본문에 링크를 걸어줍니다.
+
+### 자동조사 처리 
+
+예제, 그림, 표 등에 라벨을 지정해서 크로스-레퍼런스를 구현하면 저작자는 번호의 증감에 신경쓸 필요가 없다. 그림과 그림 사이에 또 하나의 그림을 삽입하거나, 또는 기존 그림을 제거함으로서 빠뀌게 될 참조 번호를 수정할 필요가 없다. LaTeX이 알아서 번호를 수정해주기 때문이다.
+
+다음과 같이 출력되는 본문이 있다고 가정하자. 
+
+```{verbatim}
+그림 2.3과 같이 정규분포를 따르는 히스토그램을 그린다.
+```
+
+그런데 앞 부분에 크로스-레퍼런스를 적용한 그림 하나를 추가하면 이 문장은 다음과 같이 바뀐다.
+
+```{verbatim}
+그림 2.4과 같이 정규분포를 따르는 히스토그램을 그린다.
+```
+
+그림에 크로스-레퍼런스를 적용해서 그림의 번호 3이 4로 정상적으로 변경되었는데, 조사가 어색하다. \`그림 2.4과'가 아니라 \`그림 2.4와'로 출력되야하기 때문이다. 왜냐하면 우리말의 조사에는 다음과 같은 규칙이 있기 때문이다. 앞단어의 끝소리의 자소에 따라 다음처럼 조사가 결정되기 때문이다.\cite{kim2007}
+
+| 앞단어 끝소리 | 와 / 과 | 을 / 를 | 이 / 가 | 은 / 는 | (이)라 | (으)로 |
+|:--------------|:-------:|:-------:|:-------:|:-------:|:------:|:------:|
+| 리을(ㄹ)      |   과    |   을    |   이    |   은    |  이라  |   로   |
+| ㄹ 아닌 종성  |   과    |   을    |   이    |   은    |  이라  |  으로  |
+| 중성          |   와    |   를    |   가    |   는    |   라   |   로   |
+
+LaTeX이 크로스-레퍼런스에서 계산되는 번호의 끝소리의 자소에 따라 자동으로 자동조사 처리를 하기 위해서는, 크로스-레퍼런스조사에 붙는 조사에 역 슬래시(\\)불여주면 된다.
+
+다음은 크로스-레퍼런스에서 번호가 계산되었다는 전제로 자동조사 처리를 테스트한 것이다.
+
+```{verbatim}
+그림 2.3\와 그림 2.4\은 같이 정규분포를 따르는 히스토그램을 그린다. 
+그림 2.3\과 그림 2.4\는 같이 정규분포를 따르는 히스토그램을 그린다.
+```
+
+그림 2.3\와 그림 2.4\은 같이 정규분포를 따르는 히스토그램을 그린다.
+
+그림 2.3\과 그림 2.4\는 같이 정규분포를 따르는 히스토그램을 그린다.
 

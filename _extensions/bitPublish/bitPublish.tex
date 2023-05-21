@@ -85,6 +85,13 @@
 \setmathfont[ExternalLocation=_extensions/bitPublish/fonts/STIXTwoText/]{STIXTwoMath-Regular.otf}
 
 
+%% 기호글꼴 명령 - 라틴 문자나 CJK 기호를 어떤 폰트로 식자할 것인가.
+\xetexkofontregime{latin}%
+  [alphs=latin, puncts=latin, colons=latin, parens=latin, cjksymbols=hangul]
+\xetexkofontregime{hangul}%
+  [alphs=latin, puncts=latin, colons=latin, parens=latin, cjksymbols=hangul]
+
+
 %%==============================================================================
 %% 장평/자간/줄간격 등
 %%==============================================================================
@@ -173,20 +180,6 @@
   
 % \MakeShortHighlight[\colorbox{aliceblue}]\|
 % end markdown의 |(pipe) 강조 구현 for LaTex-----
-
-
-%%==============================================================================
-%% Define code blocks - for single space
-%%==============================================================================
-%% https://stackoverflow.com/questions/73439371/quarto-pdf-output-code-block-line-spacing
-\renewenvironment{Shaded}
-    {\begin{snugshade}
-    \begin{singlespace}
-    \linespread{1}
-    }
-    {\end{singlespace}
-    \end{snugshade}
-}
 
 
 %%==============================================================================

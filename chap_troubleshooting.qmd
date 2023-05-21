@@ -1,0 +1,55 @@
+# Troubleshooting
+
+\label{chap:tshoot} 
+\newcounter{exam_num_tshoot} 
+\setcounter{exam_num_tshoot}{0}
+
+이 장에서는 \`bitPublish'의 사용시에 발생하는 문제와 해결 방법에 대해서 다룹니다.
+
+\snbox{학습 목표}{blue!30}{blue!10}{bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.}
+
+## Quarto 오류
+
+### TeXlive 버전 이슈
+
+다음처럼 미리보기 명령이나,
+
+```{verbatim}
+quarto preview --to bitPublish-pdf
+```
+
+랜더링 명령에서, 
+
+```{verbatim}
+quarto render --to bitPublish-pdf
+```
+
+아래와 같은 에러가 발생하는 경우가 있습니다.
+
+```{verbatim}
+updating existing packages
+finding package for bclogo.sty
+ERROR: Your TexLive version is not updated enough to connect to the remote 
+repository and download packages. Please update your installation of TexLive or TinyTex.
+
+Underlying message: Local TeX Live (2022) is older than remote repository (2023).
+Cross release updates are only supported with
+  update-tlmgr-latest(.sh/.exe) --update
+See https://tug.org/texlive/upgrade.html for details.
+```
+
+매년 4월 `TeXlive`는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 `TeXlive` 또는 `TeXlive`는 원격저장소를 이용하는 `TinyTex`을 업데이트 해야 합니다.
+
+TeXlive를 사용한다면, 다음 명령으로 TeXlive를 업데이트하세요.
+
+```{verbatim}
+update-tlmgr-latest --update
+```
+
+TinyTex을 사용한다면, 다음 명령으로 TinyTex을 업데이트하세요.
+
+```{verbatim}
+quarto update tinytex
+```
+
+

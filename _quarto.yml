@@ -10,6 +10,7 @@ book:
     - index.qmd
     - chap_exams.qmd
     - chap_intro_bitpublish.qmd
+    - chap_troubleshooting.qmd
     - references.qmd
 bibliography: references.bib
 link-citations: false
