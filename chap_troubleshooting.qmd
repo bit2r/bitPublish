@@ -39,18 +39,39 @@ Cross release updates are only supported with
 See https://tug.org/texlive/upgrade.html for details.
 ```
 
-매년 4월 `TeXlive`는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 `TeXlive` 또는 `TeXlive`는 원격저장소를 이용하는 `TinyTex`을 업데이트 해야 합니다.
+매년 4월 `TeXlive`\index{TeXlive}는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 `TeXlive` 또는 `TeXlive`는 원격저장소를 이용하는 `TinyTex`\index{TinyTex}을 업데이트 해야 합니다.
 
-TeXlive를 사용한다면, 다음 명령으로 TeXlive를 업데이트하세요.
+`TeXlive`를 사용한다면, 다음 명령으로 `TeXlive`를 업데이트하세요.
 
 ```md
 update-tlmgr-latest --update
 ```
 
-TinyTex을 사용한다면, 다음 명령으로 TinyTex을 업데이트하세요.
+`TinyTex`을 사용한다면, 다음 명령으로 `TinyTex`을 업데이트하세요.
 
 ```md
 quarto update tinytex
+```
+
+## LaTeX 오류
+
+### 찾아보기 오류
+
+찾아보기 명령 \\index{}를 사용할 때, 텍스트 내에 언더라인(\_)이 있을 경우 다음과 같은 에러가 발생합니다. 
+
+```verbatim
+ompilation failed- Error compiling latex
+Missing $ inserted.
+<inserted text> 
+                $
+l.54   \item include_
+                     graphics(), \hyperpage{27} 
+```
+
+문자로서의 언더라인을 기술하기 위해서는 다음과 같이 언더라인에 역 슬래시를 붙여서 기술합니다.
+
+```tex
+\index{include\_graphics()}
 ```
 
 
