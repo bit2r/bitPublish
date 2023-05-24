@@ -782,6 +782,13 @@ include-after-body:
 그 현상에 숫자를 부여한 것을 척도\index{척도}라 한다.
 ```
 
+```{=tex}
+\begin{caution}{찾아보기에서의 언더라인의 표현}
+LaTeX에서는 언더라인(\_)은 특수문자로 인식합니다. 그래서 문자로서의 언더라인을 입력하려면 역슬래시(\textbackslash)를 붙여야 합니다. 그러므로 \textbackslash index\{key\} 명령의 key 값에 언더라인이 있다면 다음처럼 역슬래시를 붙여 표현해야 합니다.
+
+\textbackslash index\{include\textbackslash\_graphics()\}
+\end{caution}
+```
 
 ### 참고문서 등록
 
