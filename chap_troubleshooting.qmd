@@ -14,19 +14,19 @@
 
 다음처럼 미리보기 명령이나,
 
-```md
+```{md}
 quarto preview --to bitPublish-pdf
 ```
 
 랜더링 명령에서, 
 
-```md
+```{md}
 quarto render --to bitPublish-pdf
 ```
 
 아래와 같은 에러가 발생하는 경우가 있습니다.
 
-```verbatim
+```{verbatim}
 updating existing packages
 finding package for bclogo.sty
 ERROR: Your TexLive version is not updated enough to connect to the remote 
@@ -43,13 +43,13 @@ See https://tug.org/texlive/upgrade.html for details.
 
 `TeXlive`를 사용한다면, 다음 명령으로 `TeXlive`를 업데이트하세요.
 
-```md
+```{md}
 update-tlmgr-latest --update
 ```
 
 `TinyTex`을 사용한다면, 다음 명령으로 `TinyTex`을 업데이트하세요.
 
-```md
+```{md}
 quarto update tinytex
 ```
 
@@ -59,13 +59,13 @@ quarto update tinytex
 
 다음과 같이 찾아보기 명령 \\index{}를 사용할 때,
 
-```tex
+```{tex}
 \index{include_graphics()}
 ```
 
 텍스트 내에 언더라인(\_)이 있을 경우 다음과 같은 에러가 발생합니다. 
  
-```verbatim
+```{verbatim}
 ompilation failed- Error compiling latex
 Missing $ inserted.
 <inserted text> 
@@ -76,7 +76,7 @@ l.54   \item include_
 
 문자로서의 언더라인을 기술하기 위해서는 다음과 같이 언더라인에 역 슬래시를 붙여서 기술합니다.
 
-```tex
+```{tex}
 \index{include\_graphics()}
 ```
 

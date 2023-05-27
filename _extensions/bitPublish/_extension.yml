@@ -1,6 +1,6 @@
 title: "bitPublish"
 author: "Choonghyun Ryu"
-version: 0.1.0
+version: 0.1.1
 
 contributes:
   format:
@@ -75,3 +75,5 @@ contributes:
       linkcolor: highlight
       urlcolor: highlight
       keep-tex: true
+      keep-md: false
+      
