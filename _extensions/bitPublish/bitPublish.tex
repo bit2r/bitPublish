@@ -18,7 +18,8 @@
 \usepackage[tikz]{bclogo}
 \usepackage{tikz}
 \usepackage{lastpage}
-\usepackage{awesomebox}                     % for 시나리오박스
+\usepackage{fontawesome5}
+% \usepackage{awesomebox}                     % for 시나리오박스
 
 
 %%==============================================================================
@@ -194,8 +195,6 @@
 
 \surroundwithmdframed[linewidth=0pt,innerleftmargin=5pt,backgroundcolor=gray95,font=\small]{verbatim}
 
-\usetikzlibrary{calc}
-
 \tcbuselibrary{many}
 
 
@@ -332,9 +331,51 @@
 
 
 %%==============================================================================
+%% infobox 정의 
+%%==============================================================================
+\usepackage{ifthen}
+
+\usetikzlibrary{calc}
+
+\definecolor{information}{RGB}{0,142,234}
+\definecolor{caution}{RGB}{249,168,37}
+\definecolor{warning}{RGB}{211,47,47}
+\definecolor{tip}{RGB}{76,175,80}
+
+\NewEnviron{infobox}[2]
+  {\par\medskip\noindent
+  \begin{tikzpicture}
+    \ifthenelse{\equal{#1}{information}}{\def\infoicon{\faInfoCircle}}{}
+    \ifthenelse{\equal{#1}{caution}}{\def\infoicon{\faExclamationTriangle}}{}
+    \ifthenelse{\equal{#1}{warning}}{\def\infoicon{\faBomb}}{}
+    \ifthenelse{\equal{#1}{tip}}{\def\infoicon{\faLightbulb[regular]}}{}  
+    \node[inner sep=0pt] (box) {\parbox[t]{.99\textwidth}{%
+      \begin{minipage}[t]{.12\textwidth}
+        \centering
+        \tikz[scale=5]\node[scale=2.0,rotate=0]{\color{#1}\infoicon};
+      \end{minipage}%
+      \begin{minipage}{.83\textwidth}
+      \ifx&#2&%
+          {}
+      \else
+          {\textbf{#2}\par\smallskip}
+      \fi
+      \BODY
+      \end{minipage}\hfill}%
+    };
+    \draw[#1,line width=3pt] 
+      ( $ (box.north east) + (-5pt,3pt) $ ) -- ( $ (box.north east) + (0,3pt) $ ) -- ( $ (box.south east) + (0,-3pt) $ ) -- + (-5pt,0);
+    \draw[#1,line width=3pt] 
+      ( $ (box.north west) + (5pt,3pt) $ ) -- ( $ (box.north west) + (0,3pt) $ ) -- ( $ (box.south west) + (0,-3pt) $ ) -- + (5pt,0);
+  \end{tikzpicture}\par\medskip%
+}
+
+
+
+%%==============================================================================
 %% 아이디어 박스 정의 
 %%==============================================================================
-\NewEnviron{idea}[1]
+\NewEnviron{information}[1]
   {\par\medskip\noindent
   \begin{tikzpicture}
     \node[inner sep=0pt] (box) {\parbox[t]{.99\textwidth}{%
@@ -375,7 +416,8 @@
       ( $ (box.north west) + (5pt,3pt) $ ) -- ( $ (box.north west) + (0,3pt) $ ) -- ( $ (box.south west) + (0,-3pt) $ ) -- + (5pt,0);
   \end{tikzpicture}\par\medskip%
 }
-
+  
+  
 %%------------------------------------------------------------------------------
 %------ 차례 작성 
 %%------------------------------------------------------------------------------

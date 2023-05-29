@@ -1,0 +1,31 @@
+# Version
+
+\label{chap:version} 
+\newcounter{exam_num_version} 
+\setcounter{exam_num_version}{0}
+
+```{r init, include=FALSE}
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
+```
+
+이 장에서는 `bitPublish'의 버전에 대한 정보를 제공합니다.
+
+## version 0.1
+
+### version 0.1.2
+
+- **2023-05-27**
+
+- 예제 문서에 버전 정보를 담은 chapter 추가
+    - chap_version.qmd
+    
+## version 0.2
+
+### version 0.2.0    
+
+- **2023-05-29**
+
+- pdf와 html에서 공통으로 작동하는 Custom blocks 정의
+    - infobox
+        - information, caution, warning, tip
+    - LaTeX or HTML output    

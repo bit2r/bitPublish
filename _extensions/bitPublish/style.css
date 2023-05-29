@@ -1,0 +1,30 @@
+.infobox {
+  padding: 1em 1em 0em 4.5em;
+  margin-bottom: 5px;
+  border-radius: 10px;  
+  background: transparent 10px center/3em no-repeat;
+}
+
+.information {
+  border: 4px solid #0091EA;    
+  background-image: url("images/circle-info-solid.svg");
+}
+
+
+.caution {
+  border: 4px solid #F9A825;  
+  background-image: url("images/triangle-exclamation-solid.svg");
+}
+
+
+.warning {
+  border: 4px solid #D32F2F;    
+  background-image: url("images/bomb-solid.svg");
+}
+
+
+.tip {
+  border: 4px solid #4CAF50;    
+  background-image: url("images/lightbulb-regular.svg");
+}
+

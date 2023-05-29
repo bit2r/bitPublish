@@ -4,6 +4,9 @@
 \newcounter{exam_num_data}
 \setcounter{exam_num_data}{0}
 
+```{r init, include=FALSE}
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
+```
 
 이 장에서는 `bitPublish'를 이용하여 작성한 한글 책'의 형태를 이해할 수 있도록, 여러 조판 방법의 예시를 표현한다. 본문에 표현되는 내용은 저술중인, 가칭 "R로 배우는 기초 통계학"의 일부를 발췌한 것이다.[@rstat] 그러므로 본문의 내용은 완벽한 문맥이 아닌, 중간중간 문단이나 내용이 제거된 불완전한 내용임을 밝혀 둔다.
 
@@ -153,24 +156,22 @@ $$
 C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
 $$
 
-```{=tex}
-\begin{idea}{클래스 상속과 ``ordered'' ``factor''}
-상속(inheritance)은 부모 클래스의 내용(속성과 메소드)을 자식 클래스가 물려받는 것으로 객체지향형 언어의 특징이다. 예를 들면, 자동차라는 부모 클래스를 상속받아 세단과 SUV라는 자식 클래스를 생성하면, 자식 클래스인 세단과 SUV는 부모 클래스인 자동차가 갖고 있는 속성인 \textit{`핸들'}, \textit{`브레이크'}, \textit{`바퀴'} 와 같은 속성과 \textit{`엑셀을 밟다'}, \textit{`핸들을 돌리다'}, \textit{`브레이크를 밟다'}와 같은 메소드를 사용할 수 있다.
-세단은 \textit{`가벼운 중량'}, \textit{`낮은 차체'} 속성을, SUV는 \textit{`무거운 중량'}, \textit{`높은 차체'} 속성을 추가로 만들어서 부모 클래스로부터 자식 클래스를 정의한다. \\
+```{r, echo=FALSE, results='asis'}
+custom_block("
+상속(inheritance)은 부모 클래스의 내용(속성과 메소드)을 자식 클래스가 물려받는 것으로 객체지향형 언어의 특징이다. 예를 들면, 자동차라는 부모 클래스를 상속받아 세단과 SUV라는 자식 클래스를 생성하면, 자식 클래스인 세단과 SUV는 부모 클래스인 자동차가 갖고 있는 속성인 *'핸들'*, *'브레이크'*, *'바퀴'*와 같은 속성과 *'엑셀을 밟다'*, *'핸들을 돌리다'*, *'브레이크를 밟다'*와 같은 메소드를 사용할 수 있다.
+세단은 *'가벼운 중량'*, *'낮은 차체'* 속성을, SUV는 *'무거운 중량'*, *'높은 차체'* 속성을 추가로 만들어서 부모 클래스로부터 자식 클래스를 정의한다.  
 
- R에서도 클래스 상속의 개념이 있다. ordered() 함수는 `factor'라는 부모 클래스를 상속하여 `ordered'라는 자식 클래스를 만든다. 그러므로 `ordered'는 factor의 내용에, 수준의 순서가 서열로 처리되는 특성이 추가된 클래스다. 속성 중 class의 값이 ``ordered'' ``factor''인 것은, 부모 클래스인 factor로부터 상속받아 만들어진 ordered 클래스라는 의미다. 오른쪽이 부모 클래스고, 왼쪽이 자식 클래스다.
-\end{idea}
+ R에서도 클래스 상속의 개념이 있다. ordered() 함수는 'factor'라는 부모 클래스를 상속하여 'ordered'라는 자식 클래스를 만든다. 그러므로 'rdered'는 factor의 내용에, 수준의 순서가 서열로 처리되는 특성이 추가된 클래스다. 속성 중 class의 값이 \"ordered\" \"factor\"인 것은, 부모 클래스인 factor로부터 상속받아 만들어진 ordered 클래스라는 의미다. 오른쪽이 부모 클래스고, 왼쪽이 자식 클래스다.
+", title = "클래스 상속과 ordered factor", type = "information")
 ```
 
+```{r, echo=FALSE, results='asis'}
+custom_block("
+MS Windows에서는 별도의 설정이 없으면, 텍스트 파일의 한글을 **CP949**로 인코딩하여 저장한다. 그러므로 MS Windows에서 만들어진 한글이 포함된 텍스트 파일을 읽을 때에는, 'fileEncoding' 인수에 \"cp949\"를 지정해야 한다. 그런데 그림처럼 Excel에서 CSV 파일을 저장할 때, 인코딩을 **UTF-8**로 설정하면 `read.table()` 함수에서 fileEncoding 인수로 인코딩을 \"cp949\"로 지정하지 않아도 된다.
 
-```{=tex}
-\begin{caution}{CP949 인코딩과 fileEncoding 인수}
-MS Windows에서는 별도의 설정이 없으면, 텍스트 파일의 한글을 \textbf{CP949}로 인코딩하여 저장한다. 그러므로 MS Windows에서 만들어진 한글이 포함된 텍스트 파일을 읽을 때에는, `fileEncoding' 인수에 ``cp949''를 지정해야 한다. 그런데 그림처럼 Excel에서 CSV 파일을 저장할 때, 인코딩을 \textbf{UTF-8}으로 설정하면 \texttt{read.table()} 함수에서 fileEncoding 인수로 인코딩을 ``cp949''로 지정하지 않아도 된다.
-
-외산 소프트웨어에서 한글을 문제없이 사용하는 것은 매우 번거롭고 까다롭다. 최선의 방법 중 하나는 한글이 포함된 데이터 파일을 \textbf{UTF-8} 인코딩으로 저장하는 것임을 잊지말자. 
-\end{caution}
+외산 소프트웨어에서 한글을 문제없이 사용하는 것은 매우 번거롭고 까다롭다. 최선의 방법 중 하나는 한글이 포함된 데이터 파일을 **UTF-8** 인코딩으로 저장하는 것임을 잊지말자. 
+", title = "CP949 인코딩과 fileEncoding 인수", type = "caution")
 ```
-
 
 \begin{shadequote}{}
 나는 통계계산이 수리영역인 줄만 알았다. 그런데, 이제는 논리적인 사고도 필요한 논리영역임을 느낀다. 그래서 논리적 사고로 통계적 데이터 분석을 위한 성능 좋은 연장이 필요하기 시작했다.

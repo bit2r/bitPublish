@@ -6,6 +6,7 @@ contributes:
   format:
     html:
       theme: cosmo
+      css: "_extensions/bitPublish/style.css"
     pdf:
       documentclass: book
       geometry:                            # 4x6 배판 도서를 위한 설정
@@ -74,6 +75,6 @@ contributes:
       cite-method: biblatex       
       linkcolor: highlight
       urlcolor: highlight
-      keep-tex: true
+      keep-tex: false
       keep-md: false
       

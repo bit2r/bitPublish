@@ -20,9 +20,9 @@
 -   `Python`, `R`, `Julia` 및 `Observable`을 사용하여 동적 콘텐츠를 만듭니다.
 -   `HTML`, `PDF`, `MS Word`, `ePub` 등으로 재현 가능한 프로덕션 품질의 기사, 프리젠테이션, 웹 사이트, 블로그 및 책을 게시합니다.
 -   `Posit Connect`, `Confluence` 또는 기타 게시 시스템에 게시하여 조직 전체에서 지식과 통찰력을 공유합니다.
--   방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 `Pandoc` 마크다운을 사용하여 작성합니다.
+-   방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 `팬독` 마크다운을 사용하여 작성합니다.
 
-Quarto[@quartoarch]를 요약하자면 그림 \ref{fig-quarto}처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `Pandoc`\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
+Quarto[@quartoarch]를 요약하자면 그림 \ref{fig-quarto}처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `팬독`(`Pandoc`)\index{팬독}\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
 
 ```{r}
 #| label: fig-quarto
@@ -176,7 +176,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 ## bitPublish 서식 이용하기
 
-bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 `환경`\index{환경}(`enviroment`\index{enviroment})으로 제공합니다.
+bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 LaTeX `환경`\index{환경}(`enviroment`\index{enviroment})으로 제공합니다.
 
 ```{tex}
 \begin{enviroment name}[optional argument]{main argument}
@@ -190,61 +190,234 @@ bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 �
 \command name[optional argument]{main argument} 
 ```
 
-### 주의 박스
+### 멀티 아웃 포맷
 
-`caution` 환경을 이용합니다. 주의 박스 구문은 다음과 같습니다.
+bitPublish 서식은 전자출판이 아닌, 종이로 된 서책의 출판을 염두에 둔 것이라서 LaTeX을 기반으로 서식을 정의합니다. 그러나 이 경우에는 종이 서책 출판을 위한 PDF 포맷은 지원하지만 전자책 위한 HTML 포맷을 지원하지 못하는 단점이 있습니다.  
 
-```{tex}
- \begin{caution}{<title>}
-    text of caution
- \end{caution}
+bitPublish 초기 버전에서 대부분의 서식은 LaTeX 출력을 지원하지만, 전자책을 위한 HTML 출력도 동시에 지원하는 `멀티 아웃 포맷`(`multiple output formats`)\index{멀티 아웃 포맷}\index{multiple output formats}으로 업그레이드하려 합니다. 
+
+### 사용자 정의 블록
+
+bitPublish 서식의 대표적인 것에 `커스텀 블록`(`custom blocks`)\index{사용자 정의 블록}\index{custom blocks}[@rmcook]이 있습니다. 사용자 정의 블록은 보고서나 책의 일부 콘텐츠를 블록으로 정의하여 본문보다 돋보이게 하여 독자가 핵심 포인트를 쉽게 이해할 수 있도록 주목도를 높이는 서식입니다. 
+
+사용자 정의 블록은 `팬독`의 `fenced Div blocks` 기능을 사용합니다. 이 기능은 Div 블록을 HTML과 LaTeX 모두로 변환해줍니다.
+
+다음의 `팬독` 사용자 정의 블록은,
+
+```{md}
+::: {.verbatim data-latex=""}
+We show some _verbatim_ text here.
+:::
 ```
 
-다음처럼 주의를 당부하는 제목과, 환경 내부에 주의사항을 기술합니다. 
+LaTeX 출력일 경우에는 다음과 같이 변환하고,
 
 ```{tex}
-\begin{caution}{caution의 용도}
-caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
-빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
-환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
-\end{caution}
+\begin{verbatim}
+We show some \emph{verbatim} text here.
+\end{verbatim}
 ```
 
-```{=tex}
-\begin{caution}{caution의 용도}
-caution은 독자에게 당부하고 싶은 주의사항을 기술하는 데 사용합니다. 
-빨깐색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
-환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
-\end{caution}
+HTML 출력일 경우에는 다음과 같이 변환해 줍니다.
+
+```{html}
+<div class="verbatim">
+We show some <em>verbatim</em> text here.
+</div>
 ```
 
-### 정보 박스
+### 정보 블록
 
-`idea` 환경을 이용합니다. 정보 박스 구문은 다음과 같습니다.
+정보 블록\index{정보 블록}은 멀티 아웃 포맷을 지원하는데, 다음과 같은 네 개의 유형을 지원합니다. 네 개의 유형은 HTML과 LaTeX에서 우주 똑같은 모양은 아니지만, 거의 유사한 모습으로 출력됩니다.
 
-```{tex}
-\begin{idea}{<title>}
-  text of idea
-\end{idea}
-```
+- 정보 
+    - information
+- 주의
+    - caution
+- 경고
+    - warning
+- 팁
+    - tip
+   
+멀티 아웃 포맷을 지원하기 위한 `팬독` 사용자 정의 블록의 구문은 다음과 같습니다. 그리고 정보 블록에 들어갈 내용은 마크다운 문법으로 기술해야 합니다.
 
-다음처럼 제목과 정보성 아이디어를 기술합니다.
+```{md}
+::: {.infobox .<type> data-latex="{<type>}{<title>}"}
+text of infobox
+:::
+```    
 
-```{tex}
-\begin{idea}{idea의 용도}
-idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
+
+#### 정보 블록
+
+본문에서 서술하는 것보다 **유용한 정보**를 기술하는 데 사용하는 `정보`(`information`) `블록`\index{정보 블록!정보 블록} 블록은 다음처럼 사용합니다. 
+
+블록 청크의 옵션 중에 `data-latex`는 LaTeX에 전달하는 인수입니다. 정보(information)를 의미하는 .information와 {information}가 중복으로 기술된 것은, 멀티 아웃 포맷을 위한 것이므로 반드시 이 형식을 따라야 합니다.
+
+```{md}
+::: {.infobox .information data-latex="{information}{information의 용도}"}
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
-환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
-\end{idea}
+환경의 내부에는 **Markdown**으로 문장을 기술합니다.
+:::
 ```
 
-```{=tex}
-\begin{idea}{idea의 용도}
-idea는 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 
+::: {.infobox .information data-latex="{information}{information의 용도}"}
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
-환경의 내부에는 LaTeX 문법으로 문장을 기술합니다.
-\end{idea}
+환경의 내부에는 **Markdown**으로 문장을 기술합니다.
+:::
+
+다음은 정보 블록에서 제목을 생략한 예제입니다. 
+
+```{md}
+::: {.infobox .information data-latex="{information}{}"}
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 **Markdown**으로 문장을 기술합니다.
+:::
 ```
+
+::: {.infobox .information data-latex="{information}{}"}
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 **Markdown**으로 문장을 기술합니다..
+:::
+
+infobox를 팬독 블록으로 정의할 경우 HTML에서는 제목이 출력되지 않는 버그[^bug]가 있습니다. 이 경우에는 다음처럼 기술하면 재목이 출력되는 멀티 아웃 포맷이 가능합니다. 즉, 본문에서 제목을 표현하는 방법입니다.
+
+[^bug]: 원인을 알고 있으나 저자의 웹 프로그래밍 기술적인 한계로 해결하지 못했음
+
+```{md}
+::: {.infobox .information data-latex="{information}{}"}
+**information의 용도**
+
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 **Markdown**으로 문장을 기술합니다.
+:::
+```
+
+::: {.infobox .information data-latex="{information}{}"}
+**information의 용도**
+
+information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.
+짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+환경의 내부에는 **Markdown**으로 문장을 기술합니다.
+:::
+
+또 하나의 방법은 bitPublish가 제공하는 사용자 정의 R 함수 custom\_block()를 사용하는 방법이 있습니다.
+
+```{md}
+custom_block(msg, type, title)
+```
+
+```{r init2, include=FALSE}
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
+```
+
+이 방법도 멀티 아웃 포맷을 지원합니다. 다음과 같은 `knitr` 청크를 이용합니다.
+
+````md
+```{r}`r ''`
+#| echo: false
+#| results: asis
+custom_block("
+**information**은 본문에서 서술하는 것보다 **유용한 정보**를 기술하는 데 사용합니다. 
+파란색 테두리와 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+", title = "information의 용도", type = "information")
+```
+````
+
+```{r}
+#| echo: false
+#| results: asis
+custom_block("
+**information**은 본문에서 서술하는 것보다 **유용한 정보**를 기술하는 데 사용합니다. 
+파란색 테두리와 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+", title = "information의 용도", type = "information")
+```
+
+사용자 정의 함수인 custom\_block()를 사용하기 위해서는 사전에 다음처럼 init_environments.R 파일을 로드해야 합니다.
+
+````md
+```{r}`r ''`
+#| label: init
+#| include: false
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
+```
+````
+
+#### 주의 블록
+
+당부하고 싶은 **주의사항**을 기술하는 데 사용하는 `주의`(`caution`) `블록`\index{정보 블록!주의 블록}은 다음처럼 사용합니다. 
+
+```{md}
+::: {.infobox .caution data-latex="{caution}{}"}
+**caution의 용도**
+
+**caution**은 당부하고 싶은 **주의사항**을 기술하는 데 사용합니다. 
+주황색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
+```
+
+::: {.infobox .caution data-latex="{caution}{}"}
+**caution의 용도**
+
+**caution**은 당부하고 싶은 **주의사항**을 기술하는 데 사용합니다. 
+주황색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
+
+
+#### 경고 블록
+
+주의사항보다 더 치명적인 문제를 야기할 **경고**를 기술하는 데 사용하는 `경고`(`warning`) `블록`\index{정보 블록!경고 블록}은 다음처럼 사용합니다. 
+
+```{md}
+::: {.infobox .warning data-latex="{warning}{}"}
+**warning의 용도**
+
+**warning**은 주의사항보다 더 치명적인 문제를 야기할 **경고**를 기술하는 데 사용합니다. 
+붉은색 테두리에 폭탄을 표현한 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
+```
+
+
+::: {.infobox .warning data-latex="{warning}{}"}
+**warning의 용도**
+
+**warning**은 주의사항보다 더 치명적인 문제를 야기할 **경고**를 기술하는 데 사용합니다. 
+붉은색 테두리에 폭탄을 표현한 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
+
+
+#### 팁 블록
+
+유용하게 사용할 수 있는 **아이디어나 비법**을 설명하는 데 사용하는 `팁`(`tip`) `블록`\index{정보 블록!팁 블록}은 다음처럼 사용합니다. 
+
+```{md}
+::: {.infobox .tip data-latex="{tip}{}"}
+**tip의 용도**
+
+**tip**은 유용하게 사용할 수 있는 **아이디어나 비법**을 기술하는 데 사용합니다. 
+초록색 테두리에 아이디어를 나타내는 전구 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
+```
+
+::: {.infobox .tip data-latex="{tip}{}"}
+**tip의 용도**
+
+**tip**은 유용하게 사용할 수 있는 **아이디어나 비법**을 기술하는 데 사용합니다. 
+초록색 테두리에 아이디어를 나타내는 전구 아이콘을 배치하여 주위를 환기시킵니다.
+블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.
+:::
 
 
 ### 이야기 박스
@@ -470,17 +643,18 @@ knitr::include_graphics("이미지 파일이름.png")
 
 그런데 bitPublish에서 `fig-pos`의 기본값[^default]이 "htb!"로 설정되었기 때문에 이 설정을 생략해도 적당한 페이지에 이미지를 배치합니다. `fig-align`의 기본값도  "center"입니다.
 
-[^default]: "htb!"을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_fonts.R 파일을 로드하는 설정을 전제로 합니다.
+[^default]: "htb!"을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_environments.R 파일을 로드하는 설정을 전제로 합니다.
 
-```{=tex}
-\begin{idea}{fig-pos과 label}
+::: {.infobox .information data-latex="{information}{}"}
+**fig-pos과 label**
+
 웹 페이지로 배포하는 문서는 페이지로 구분되지 않기 때문에 이미지는 항상 그(here) 자리에 출력됩니다.  
-그래서 본문에서 ``다음 그림처럼''과 같은 표현이 가능합니다만, 페이지가 구분되는 책에서는 이 표현은 적절하지 않습니다.
-왜냐하면 페이지 상황에 따라 이미지가 다음 페이지로 넘어갈 수 있는 등 저작 과정에서는 예측이 안됩니다.
+그래서 본문에서 "다음 그림처럼"과 같은 표현이 가능합니다만, 페이지가 구분되는 책에서는 이 표현은 적절하지 않습니다.
+왜냐하면 페이지 상황에 따라 이미지가 다음 페이지로 넘어갈 수 있는 등 저작 과정에서는 예측이 안됩니다.   
 
-그래서 `fig-pos'의 값을 ``htb!''으로 설정하고 `label'을 지정하여 크로스-레퍼런스를 이용해서, ``그림 2.1처럼''과 같이 표현하는 것이 좋습니다. 
-\end{idea}
-```
+그래서 'fig-pos'의 값을 "htb!"으로 설정하고 'label'을 지정하여 크로스-레퍼런스를 이용해서, "그림 2.1처럼"과 같이 표현하는 것이 좋습니다. 
+:::
+
 
 #### R 그래픽스
 
@@ -520,7 +694,7 @@ hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
 
 ````md
 ```{r init, include=FALSE}`r ''`
-source(here::here("_extensions", "bitPublish", "init_fonts.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 ````
 
@@ -540,10 +714,6 @@ set.seed(123)
 hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
 ```
 ````
-
-```{r init, include=FALSE}
-source(here::here("_extensions", "bitPublish", "init_fonts.R"))
-```
 
 ```{r}
 #| label: fig-hist2
@@ -782,13 +952,14 @@ include-after-body:
 그 현상에 숫자를 부여한 것을 척도\index{척도}라 한다.
 ```
 
-```{=tex}
-\begin{caution}{찾아보기에서의 언더라인의 표현}
-LaTeX에서는 언더라인(\_)은 특수문자로 인식합니다. 그래서 문자로서의 언더라인을 입력하려면 역슬래시(\textbackslash)를 붙여야 합니다. 그러므로 \textbackslash index\{key\} 명령의 key 값에 언더라인이 있다면 다음처럼 역슬래시를 붙여 표현해야 합니다.
+::: {.infobox .caution data-latex="{caution}{}"}
+**찾아보기에서의 언더라인의 표현**
 
-\textbackslash index\{include\textbackslash\_graphics()\}
-\end{caution}
-```
+LaTeX에서는 언더라인(_)은 특수문자로 인식합니다. 그래서 문자로서의 언더라인을 입력하려면 역슬래시(\\)를 붙여야 합니다. 그러므로 \\index\{key\} 명령의 key 값에 언더라인이 있다면 다음처럼 역슬래시를 붙여 표현해야 합니다.
+
+\\index{include\\_graphics()}
+:::
+
 
 ### 참고문헌 등록
 

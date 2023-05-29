@@ -1,3 +1,6 @@
+##==============================================================================
+## R graphics 한글 폰트 적용을 위한 작업
+##==============================================================================
 if(!require("Cairo")){
   install.packages("Cairo")
   library("Cairo")
@@ -67,8 +70,10 @@ old_theme <- theme_set(theme_grey())
 theme_set(hrbrthemes::theme_ipsum(base_family = "NanumSquare"))
 
 
-## https://github.com/rstudio/gt/issues/818 참고로 작성
+##==============================================================================
 ## table의 cross-reference 적용을 위해서
+##==============================================================================
+## https://github.com/rstudio/gt/issues/818 참고로 작성
 as_latex_with_caption <- function(gt, label, caption) {
   gt <- gt::as_latex(gt)
   
@@ -82,4 +87,36 @@ as_latex_with_caption <- function(gt, label, caption) {
   
   gt
 }
+
+
+##==============================================================================
+## information, caution 블록의 정의
+##==============================================================================
+custom_block <- function(msg = NULL, type = c("information", "caution", "warning", "tip"), title = NULL) {
+  type <- match.arg(type)
+
+  if (knitr::is_latex_output()) {
+    if (!is.null(title)) {
+      title <- paste0("{", title, "}")
+    } else {
+      title <- "{}"
+    }
+    
+    block <- paste0("\n::: {.infobox", " data-latex=\"{", type, "}", title, "\"}\n", msg, "\n:::\n")
+  }
+  
+  if (knitr::is_html_output()) {
+    if (!is.null(title)) {
+      block <- paste0("\n::: {.infobox .", type, " data-latex=\"\"}\n**", title, "**\n\n", 
+      msg, ":::\n")
+    } else {
+      block <- paste0("\n::: {.infobox .", type, " data-latex=\"\"}\n", msg, "\n:::\n")
+    }
+  }
+  
+  cat(block)
+}
+
+
+
 
