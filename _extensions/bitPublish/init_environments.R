@@ -35,20 +35,20 @@ showtext.opts(dpi = 300)
 
 # 한글 폰트
 font_add("NanumSquare", 
-         regular = here("_extensions", "bitPublish", "fonts", "NanumSquare", 
+         regular = here("_extensions", "bit2r", "bitPublish", "fonts", "NanumSquare", 
                         "NanumSquareR.otf"), 
-         bold = here("_extensions", "bitPublish", "fonts", "NanumSquare", 
+         bold = here("_extensions", "bit2r", "bitPublish", "fonts", "NanumSquare", 
                      "NanumSquareB.otf"))
 
 # 영문폰트
 font_add("Nimbus Sans L",
-         regular = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
+         regular = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
                         "NimbusSanL-Reg.otf"),     
-         bold = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
+         bold = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
                      "NimbusSanL-Bol.otf"),     
-         italic = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
+         italic = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
                        "NimbusSanL-RegIta.otf"),     
-         bolditalic = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
+         bolditalic = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
                            "NimbusSanL-BolIta.otf"))
 
 
