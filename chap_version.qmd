@@ -5,7 +5,8 @@
 \setcounter{exam_num_version}{0}
 
 ```{r init, include=FALSE}
-source(here::here("_extensions", "bitPublish", "init_environments.R"))
+# source(here::here("_extensions", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 
 이 장에서는 `bitPublish'의 버전에 대한 정보를 제공합니다.
@@ -29,3 +30,12 @@ source(here::here("_extensions", "bitPublish", "init_environments.R"))
     - infobox
         - information, caution, warning, tip
     - LaTeX or HTML output    
+
+```{r}
+#| echo: false
+#| results: asis
+quote_block(
+  "자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.", 
+  spkeaker = "스피노자", align = "right")
+```
+

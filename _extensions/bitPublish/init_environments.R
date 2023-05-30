@@ -118,5 +118,36 @@ custom_block <- function(msg = NULL, type = c("information", "caution", "warning
 }
 
 
+##==============================================================================
+## quote 블록의 정의
+##==============================================================================
+quote_block <- function(msg = NULL, spkeaker = NULL, 
+                        align = c("left", "center", "right")) {
+  align <- match.arg(align)
+  
+  if (knitr::is_latex_output()) {
+    if (!is.null(spkeaker)) {
+      spkeaker <- paste0("{", spkeaker, "}")
+    } else {
+      spkeaker <- "{}"
+    }
+    
+    align <- substr(align, 1, 1)
+    block <- paste0("\n\\begin{shadequote}[", align, "]", spkeaker, "\n", msg, "\\end{shadequote}\n")
+  }
+  
+  if (knitr::is_html_output()) {
+    if (!is.null(spkeaker)) {
+      block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n</blockquote>\n")
+    } else {
+      block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n<span>", 
+                      spkeaker, "</span>\n</blockquote>\n")
+    }
+  }
+  
+  cat(block)
+}
+
+
 
 

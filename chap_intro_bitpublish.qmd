@@ -65,7 +65,7 @@ extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 �
 ### 페이지 레이아웃
 
 현재 bitPublish의 기본 페이지 레이아웃\index{페이지 레이아웃} 설정은 4\times6 배판으로 설계되었습니다. 
-4\times6 배판 `판형`\index{판형}의 레이아웃 설정을 변경하려면, _extensions/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
+4\times6 배판 `판형`\index{판형}의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
 
 ```{yaml}
   geometry:                            # 4x6 배판 도서를 위한 설정
@@ -142,13 +142,13 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 #### 주의사항
 
-모든 폰트는 \_extensions/bitPublish/fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 `KoPubWorld바탕체_Pro`와 `KoPubWorld돋움체_Pro` 폰트를 사용하기 위해서는 `한국출판인회의` 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.
+모든 폰트는 \_extensions/bit2r/bitPublish/fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 `KoPubWorld바탕체_Pro`와 `KoPubWorld돋움체_Pro` 폰트를 사용하기 위해서는 `한국출판인회의` 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.
 
 ### 머리글 바닥글
 
 `머리글`(`header`)\index{머리글}\index{header}과 `바닥글`(`footer`)\index{바닥글}\index{footer}는 `fancyhdr`\index{fancyhdr} 패키지를 사용해서 정의하였습니다.
 
-\_extensions/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.
+\_extensions/bit2r/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.
 
 ```{tex}
 \usepackage{fancyhdr}
@@ -167,7 +167,7 @@ bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적
 
 ### 글줄 사이
 
-줄간격, 행간 등으로 부르는 글줄 사이\index{글줄 사이}(line spacing\index{line spacing})는 1.5로 설정되었습니다. 수정이 필요하다면, _extensions/bitPublish/bitPublish.tex 파일의 다음 행을 수정합니다.
+줄간격, 행간 등으로 부르는 글줄 사이\index{글줄 사이}(line spacing\index{line spacing})는 1.5로 설정되었습니다. 수정이 필요하다면, _extensions/bit2r/bitPublish/bitPublish.tex 파일의 다음 행을 수정합니다.
 
 ```{tex}
 %% 줄간격 정의
@@ -313,7 +313,8 @@ custom_block(msg, type, title)
 ```
 
 ```{r init2, include=FALSE}
-source(here::here("_extensions", "bitPublish", "init_environments.R"))
+# source(here::here("_extensions", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 
 이 방법도 멀티 아웃 포맷을 지원합니다. 다음과 같은 `knitr` 청크를 이용합니다.
@@ -346,7 +347,7 @@ custom_block("
 ```{r}`r ''`
 #| label: init
 #| include: false
-source(here::here("_extensions", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 ````
 
@@ -694,7 +695,7 @@ hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
 
 ````md
 ```{r init, include=FALSE}`r ''`
-source(here::here("_extensions", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 ````
 
@@ -932,7 +933,7 @@ LaTeX의 찾아보기(인덱싱) 기능을 활성화하기 위해, 이미 bitPub
 \printindex
 ```
 
-이 명령어는 \_extensions/bitPublish/\_extension.yml 파일에 다음과 같이 설정되어 있습니다.
+이 명령어는 \_extensions/bit2r/bitPublish/\_extension.yml 파일에 다음과 같이 설정되어 있습니다.
 
 ```{yaml}
 include-after-body:  
