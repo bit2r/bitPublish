@@ -76,5 +76,5 @@ contributes:
       linkcolor: highlight
       urlcolor: highlight
       keep-tex: false
-      keep-md: true
+      keep-md: false
       

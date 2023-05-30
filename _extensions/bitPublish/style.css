@@ -72,12 +72,12 @@
     width: 200px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+KR:400italic);
 .otro-blockquote{
   font-size: 1.1em;
   width:100%;
   margin:50px auto;
-  font-family:Open Sans;
+  font-family:Noto Sans KR;
   font-style:italic;
   color: #555555;
   padding:1.2em 30px 1.2em 75px;
@@ -88,7 +88,7 @@
 }
 
 .otro-blockquote::before{
-  font-family:Arial;
+  font-family:Noto Sans KR;
   content: "\201C";
   color:#78C0A8;
   font-size:4em;

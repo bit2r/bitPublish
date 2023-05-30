@@ -138,10 +138,10 @@ quote_block <- function(msg = NULL, spkeaker = NULL,
   
   if (knitr::is_html_output()) {
     if (!is.null(spkeaker)) {
-      block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n</blockquote>\n")
-    } else {
       block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n<span>", 
-                      spkeaker, "</span>\n</blockquote>\n")
+                      spkeaker, "</span>\n</blockquote>\n")      
+    } else {
+      block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n</blockquote>\n")
     }
   }
   

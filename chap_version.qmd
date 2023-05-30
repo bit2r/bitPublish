@@ -39,3 +39,10 @@ quote_block(
   spkeaker = "스피노자", align = "right")
 ```
 
+```{r}
+#| echo: false
+#| results: asis
+quote_block(
+  "자신은 할 수 없다고 생각하는 동안 사실은 그것을 하기 싫다고 다짐하고 있는 것이다.")
+```
+
