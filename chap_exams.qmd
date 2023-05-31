@@ -196,7 +196,6 @@ quote_block(
 ```
 
 
-
 `state.region`은 내장 데이터셋으로 미국 50개주를 'Northeast', 'South', 'North Central', \`West'라는 4개 권역으로 분류한 범주형 데이터다. 이 데이터를 `dplyr` 패키지의 함수와 파이프 연산자를 이용해서 도수분포표를 만들어보겠다.
 
 먼저 `head()` 함수로 데이터의 앞부분 몇 건을 조회해 본다.

@@ -121,25 +121,25 @@ custom_block <- function(msg = NULL, type = c("information", "caution", "warning
 ##==============================================================================
 ## quote 블록의 정의
 ##==============================================================================
-quote_block <- function(msg = NULL, spkeaker = NULL, 
+quote_block <- function(msg = NULL, speaker = NULL, 
                         align = c("left", "center", "right")) {
   align <- match.arg(align)
   
   if (knitr::is_latex_output()) {
-    if (!is.null(spkeaker)) {
-      spkeaker <- paste0("{", spkeaker, "}")
+    if (!is.null(speaker)) {
+      speaker <- paste0("{", speaker, "}")
     } else {
-      spkeaker <- "{}"
+      speaker <- "{}"
     }
     
     align <- substr(align, 1, 1)
-    block <- paste0("\n\\begin{shadequote}[", align, "]", spkeaker, "\n", msg, "\\end{shadequote}\n")
+    block <- paste0("\n\\begin{shadequote}[", align, "]", speaker, "\n", msg, "\\end{shadequote}\n")
   }
   
   if (knitr::is_html_output()) {
-    if (!is.null(spkeaker)) {
+    if (!is.null(speaker)) {
       block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n<span>", 
-                      spkeaker, "</span>\n</blockquote>\n")      
+                      speaker, "</span>\n</blockquote>\n")      
     } else {
       block <- paste0("<blockquote class=\"otro-blockquote\">\n", msg, "\n</blockquote>\n")
     }
