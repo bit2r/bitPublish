@@ -42,11 +42,11 @@ contributes:
             %% 머리글 바닥글의 위한 폰트 스타일 정의
             % 장/절 번호 파트: 볼드 돋움체
             \newcommand{\numberfont}{%
-              \hangulfontspec{KoPubWorld돋움체_Pro}\bfseries\selectfont
+              \hangulfontspec[ExternalLocation=_extensions/bit2r/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Dotum_Pro Light.otf}\bfseries\selectfont
             }
             % 장/절 라벨 파트: 돋움체
             \newcommand{\labelfont}{%
-              \hangulfontspec{KoPubWorld돋움체_Pro}\selectfont
+              \hangulfontspec[ExternalLocation=_extensions/bit2r/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Dotum_Pro Light.otf}\selectfont
             }
             %% 페이지 번호 파트 
             \newcommand*\pagefont{\normalfont\bfseries\sffamily}
