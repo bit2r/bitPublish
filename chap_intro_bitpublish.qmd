@@ -425,7 +425,7 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 
 이야기 블록은 저자가 독자에게 강조해서 하고 싶은 이야기나, 명사의 명언을 인용하여 이야기할 때 사용하는 블록으로 멀티 아웃 포맷을 지원합니다.
 
-### PDF 저작 전용
+#### PDF 저작 전용
 
 PDF 문서로만 저작할 경우에 사용하는데, `shadequote` 환경을 이용합니다. 이야기 블록 구문은 다음과 같습니다.
 
@@ -453,7 +453,7 @@ PDF 문서로만 저작할 경우에 사용하는데, `shadequote` 환경을 이
 \end{shadequote}
 ```
 
-### HTML 저작 전용
+#### HTML 저작 전용
 
 HTML 문서로만 저작할 경우에 사용하는데, `blockquote` 태그를 이용합니다. 이야기 블록 구문은 다음과 같습니다.
 
