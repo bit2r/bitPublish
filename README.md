@@ -38,4 +38,47 @@ quarto preview --to bitPublish-pdf
 quarto render --to bitPublish-pdf
 ```
 
+## 라이센스
+
+### 소프트웨어 라이센스
+
+bitPublish는 <a href="https://github.com/bit2r/bitPublish/blob/main/LICENSE" target="_blank">GNU General Public License (GPLv2)</a> 라이센스를 따릅니다.
+
+### 저작물 라이센스
+
+bitPublish가 제공하는 예제 등의 저작물은 <a href="https://creativecommons.org/licenses/?lang=ko" target="_blank">CC BY-NC-SA</a> 라이센스를 따릅니다.
+
+![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)
+
+### 폰트 라이센스
+
+bitPublish는 bitPublish에 최적화된 폰트를 내장하여 배포합니다. 그러나 경우에 따라서 사용자가 원하는 폰트로 변경하여 사용이 가능합니다.
+
+bitPublish가 사용하는 폰트는 다음의 라이센스를 따릅니다.
+
+- D2Coding
+    - <a href="http://scripts.sil.org/OFL" target="_blank">SIL OFL(Open Font License)</a>
+    - [네이버 나눔글꼴 라이선스 안내](https://help.naver.com/service/30016/contents/18088?osType=PC&lang=ko)  
+- KoPupWdorld
+    - [별도 라이센스](https://www.kopus.org/wp-content/uploads/2021/04/%EC%84%9C%EC%B2%B4_%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4.pdf)
+- NanumSquare
+    - <a href="http://scripts.sil.org/OFL" target="_blank">SIL OFL(Open Font License)</a>
+    - [네이버 나눔글꼴 라이선스 안내](https://help.naver.com/service/30016/contents/18088?osType=PC&lang=ko)  
+- Nimbus Sans L
+    - [GPL](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)
+    - [LLPL](https://www.latex-project.org/lppl/lppl-1-3c/)
+- STIXTwoText
+    - <a href="http://scripts.sil.org/OFL" target="_blank">SIL OFL(Open Font License)</a>
+
+## 도움요청
+
+bitPublish의 발전을 위해서 버그에 대한 리포팅, 기능 개선을 위한 요구사항들은
+<a href="https://github.com/bit2r/bitPublish/issues" target="_blank">여기에</a>에 문제를 제기하거나 요청해주세요. 
+특히 버그는 최소한의 재현 가능한 예제와 함께 제출바랍니다.
+
+## 기여자 행동 강령
+
+이 프로젝트는
+<a href="https://github.com/bit2r/bitPublish/blob/main/CONDUCT.md" target="_blank">Contributor Code of Conduct(기여자 행동 강령)</a>과 함께
+릴리스되었습니다. 이 프로젝트에 참여함으로써 귀하는 해당 조건을 준수하는 데 동의하는 것입니다.
 
