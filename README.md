@@ -70,6 +70,18 @@ bitPublish가 사용하는 폰트는 다음의 라이센스를 따릅니다.
 - STIXTwoText
     - <a href="http://scripts.sil.org/OFL" target="_blank">SIL OFL(Open Font License)</a>
 
+
+## 고마운 분들
+
+bitPublish는 다음 오픈소스 기여자의 리소스를 사용하거나 참조하였습니다.:
+
+- Pawan Mall
+    - [CSS3 Blockquote Effects Demos](https://codepen.io/iPawan/pen/emrPKP)
+    - 타이틀 박스에 응용
+- Jaime
+    - [Quotes With Font Awesome And Pseudo Elements](https://codepen.io/jimmycow/pen/LmjVaz)
+    - 이야기 박스에 응용
+
 ## 도움요청
 
 bitPublish의 발전을 위해서 버그에 대한 리포팅, 기능 개선을 위한 요구사항들은
