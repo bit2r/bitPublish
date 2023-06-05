@@ -149,5 +149,32 @@ quote_block <- function(msg = NULL, speaker = NULL,
 }
 
 
+##==============================================================================
+## titlebox 블록의 정의
+##==============================================================================
+titlebox_block <- function(msg = NULL, title = NULL, 
+                           theme = c("bluejeans", "grapefruit", "bittersweet", 
+                                     "sunflower", "grass", "mint", "aqua", 
+                                     "lavander", "pinkrose", "light", "gray", 
+                                     "night")) {
+  theme <- match.arg(theme)
+  if (is.null(theme)) {
+    theme <- "bluejeans"
+  }
+  
+  if (knitr::is_latex_output()) {
+    block <- paste0("\\titlebox{", title, "}{C", theme, "}{", msg, "}\n") 
+  }
+  
+  if (knitr::is_html_output()) {
+    block <- paste0("<titlebox class=\"", theme, "\">\n", 
+                    "<h4><span class=\"C", theme, "\">", title, "</span></h4>\n",
+                    "<p>", msg, "</p>\n",
+                    "</titlebox>\n")
+  }
+  
+  cat(block)
+}
+
 
 

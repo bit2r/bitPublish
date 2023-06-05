@@ -34,4 +34,16 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - quote_block()
     - R 함수 이용 
 
+### version 0.2.1    
+
+- **2023-06-05**
+
+- pdf와 html에서 공통으로 작동하는 타이틀 박스 블록 정의
+    - PDF
+        - titlebox 명령
+    - HTML
+        - titlebox 태그
+    - 멀티 아웃 포맷
+        - titlebox_block() 함수
+
 

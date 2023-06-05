@@ -6,7 +6,7 @@
 
 이 장에서는 \`bitPublish'의 사용시에 발생하는 문제와 해결 방법에 대해서 다룹니다.
 
-\snbox{학습 목표}{blue!30}{blue!10}{bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.}
+\titlebox{학습 목표}{blue}{bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.}
 
 ## Quarto 오류
 

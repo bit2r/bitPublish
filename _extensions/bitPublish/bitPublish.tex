@@ -290,14 +290,27 @@
 
 
 %%==============================================================================
-%% 시나리오 박스 : snbox
+%% 타이틀 박스 : titlebox
 %%==============================================================================
-\newcommand{\snbox}[4]{
+\definecolor{Cgrapefruit}{HTML}{da4453}
+\definecolor{Cbittersweet}{HTML}{e95546}
+\definecolor{Csunflower}{HTML}{f6ba59}
+\definecolor{Cgrass}{HTML}{8bc163}
+\definecolor{Cmint}{HTML}{34bc9d}
+\definecolor{Caqua}{HTML}{3bb0d6}
+\definecolor{Cbluejeans}{HTML}{4b8ad6}
+\definecolor{Clavander}{HTML}{977bd5}
+\definecolor{Cpinkrose}{HTML}{d870a9}
+\definecolor{Clight}{HTML}{e6e9ed}
+\definecolor{Cnight}{HTML}{434a53}
+\definecolor{Cgray}{HTML}{aab2bc}
+
+\newcommand{\titlebox}[3]{
     \begin{figure}[h]
         \centering
     \begin{tikzpicture}
-        \node[anchor=text,text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
-        \node[draw, rounded corners, line width=.5pt, fill=#2, anchor=west, xshift=5mm] (small) at (big.north west) {\sffamily#1};
+        \node[anchor=text,text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#2!15, inner sep=5mm] (big) {\\#3};
+        \node[draw, rounded corners, line width=.5pt, fill=#2!40, anchor=west, xshift=5mm] (small) at (big.north west) {\sffamily#1};
     \end{tikzpicture}
     \end{figure}
 }
