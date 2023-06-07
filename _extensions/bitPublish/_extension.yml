@@ -68,6 +68,10 @@ contributes:
             \fancyhead[OR]{\changesize \numberfont 한글 책 조판하기 ---}
             \fancyfoot[EL]{{\pagefont\thepage}{\hskip4mm}{\changesize \leftmark}}
             \fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
+            
+            %% 코드 overflow 방지
+            \usepackage{fvextra}
+            \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}            
         - file: bitPublish.tex
       include-after-body:  
         - text: |      
