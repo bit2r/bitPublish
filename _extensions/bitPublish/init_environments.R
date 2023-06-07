@@ -88,6 +88,68 @@ as_latex_with_caption <- function(gt, label, caption) {
   gt
 }
 
+##==============================================================================
+## table의 cross-reference 적용을 위해서
+##==============================================================================
+table_with_caption <- function(tab, label) {
+  if (knitr::is_latex_output()) {
+    caption_lab <- paste0(
+      "\\caption{\\label{", label, "}\n")
+
+    align <- paste(ifelse(sapply(iris, is.numeric), "r", "l"), collapse = "")
+
+    tab2 <- tab                                          
+    factor_columns <- sapply(tab2, is.factor)  
+    numeric_columns <- sapply(tab2, is.numeric)  
+    
+    change_format <- function(x, digits, big.mark) {
+      if (!is.null(digits) & !is.null(big.mark)) {
+        x <- format(x, digits = digits, big.mark = big.mark)
+      } else if (!is.null(digits) & is.null(big.mark)) {
+        x <- format(x, digits = digits)
+      } else if (is.null(digits) & !is.null(big.mark)) {
+        x <- format(x, big.mark = big.mark)
+      } else {
+        x <- x
+      }
+      
+      x
+    }
+    
+    tab2[factor_columns] <- lapply(tab2[factor_columns], as.character)
+    tab2[numeric_columns] <- lapply(tab2[numeric_columns], change_format,
+                                    digits = digits, big.mark = big.mark)
+    
+    contents <- NULL
+    
+    for (i in seq(NROW(tab2))) {
+      contents <- paste0(contents, paste(paste(tab2[i, ], collapse = " & "), "\\\\\n"))
+    }
+    
+    str <- ""
+    str <- paste0(str, "")
+    # str <- paste0(str, "\\begin{table}[htb!]\n")
+    str <- paste0(str, "\\begin{longtable}{", align, "}\n")
+    str <- paste0(str, "\\toprule\\noalign{}\n")
+    str <- paste0(str, paste(names(iris), collapse = " & "), "\\\\\n")
+    str <- paste0(str, "\\midrule\\noalign{}\n")
+    str <- paste0(str, contents)
+    str <- paste0(str, "\\bottomrule\\noalign{}\n")
+    str <- paste0(str, caption_lab)      
+    str <- paste0(str, "\\end{longtable}\n")
+    # str <- paste0(str, "\\end{table}\n")    
+
+    cat(str)
+    
+    # knitr::kable(tab, format = "latex", label = label, caption = caption) |>
+    #   cat()
+  }
+  
+  if (knitr::is_html_output()) {
+    knitr::kable(tab)
+  }  
+}
+
 
 ##==============================================================================
 ## information, caution 블록의 정의

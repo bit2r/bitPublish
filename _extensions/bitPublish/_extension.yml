@@ -1,6 +1,6 @@
 title: "bitPublish"
 author: "Choonghyun Ryu"
-version: 0.2.1
+version: 0.2.2
 
 contributes:
   format:
@@ -72,6 +72,7 @@ contributes:
       include-after-body:  
         - text: |      
             \printindex  
+      pdfengine: xelatex            
       cite-method: biblatex       
       linkcolor: highlight
       urlcolor: highlight

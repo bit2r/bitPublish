@@ -1,12 +1,23 @@
 # bitPublish 소개
 
+```{r init, include=FALSE}
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+```
+
+```{=tex}
 \label{chap:bitpublish} 
 \newcounter{exam_num_bitpub} 
 \setcounter{exam_num_bitpub}{0}
+```
 
 이 장에서는 \`bitPublish'의 활용을 위한 특장점과 기능을 소개합니다.
 
-\titlebox{학습 목표}{blue}{bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.}
+```{r}
+#| echo: false
+#| results: asis
+titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.", 
+               title = "학습 목표", theme = "bluejeans")
+```
 
 ## Quarto 소개
 
@@ -22,7 +33,7 @@
 -   `Posit Connect`, `Confluence` 또는 기타 게시 시스템에 게시하여 조직 전체에서 지식과 통찰력을 공유합니다.
 -   방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 `팬독` 마크다운을 사용하여 작성합니다.
 
-Quarto[@quartoarch]를 요약하자면 그림 \ref{fig-quarto}처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `팬독`(`Pandoc`)\index{팬독}\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
+Quarto[@quartoarch]를 요약하자면 그림 [@fig-quarto]처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `팬독`(`Pandoc`)\index{팬독}\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
 
 ```{r}
 #| label: fig-quarto
@@ -896,7 +907,7 @@ hist(rnorm(500), col = "lightblue", main = "정규분포의 히스토그램")
 ````
 
 
-그런데 R 플롯에 한글이 포함될 경우에 그림 \ref{fig-hist}처럼 한글이 출력되지 않는 문제가 발생합니다.
+그런데 R 플롯에 한글이 포함될 경우에 [@fig-hist]처럼 한글이 출력되지 않는 문제가 발생합니다.
 
 ```{r}
 #| label: fig-hist
@@ -920,7 +931,7 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 ````
 
-그런 후, R 플롯을 그리는 `knitr`\index{knitr} 청크에 `nanum` 옵션의 값을 true로 추가합니다. 이 설정은 `나눔스퀘어` 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 그림 \ref{fig-hist2}\과 같은 R 그래픽스 플롯을 출력합니다.
+그런 후, R 플롯을 그리는 `knitr`\index{knitr} 청크에 `nanum` 옵션의 값을 true로 추가합니다. 이 설정은 `나눔스퀘어` 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 [@fig-hist2]\과 같은 R 그래픽스 플롯을 출력합니다.
 
 ````md
 ```{r}`r ''`
@@ -956,7 +967,7 @@ hist(rnorm(500), col = 'lightblue', main = '정규분포의 히스토그램')
 
 ggplot2 그래픽스도 별도의 설정없이 한글을 출력합니다. 테마는 `hrbrthemes`\index{hrbrthemes} 패키지의 `theme_ipsum()`\index{theme\_ipsum()} 함수를 사용하며, 폰트는 R 그래픽스와 동일한 방법으로 `나눔스퀘어` 폰트를 사용할 수 있습니다.
 
-다음 스크립트는 그림 \ref{fig-hist3}\과 같은 `ggplot2`\index{ggplot2} 그래픽스 플롯을 출력합니다.
+다음 스크립트는 [@fig-hist3]\과 같은 `ggplot2`\index{ggplot2} 그래픽스 플롯을 출력합니다.
 
 ````md
 ```{r}`r ''`
@@ -1069,47 +1080,67 @@ LaTeX을 이용한 표를 삽입하는 방법은 LaTeX 스크립트를 기술하
 
 #### R을 이용한 표
 
-R을 이용해서 표를 만드는 방법에 대표적인 것이 `knitr`\index{knitr} 패키지의 `kable()`\index{kable()} 함수와 `kableExtra`\index{kableExtra} 패키지의 `kable_styling()`\index{kable\_styling()} 함수를 사용하는 방법입니다. 그러나 이 방법은 캡션의 위치가 표의 위에 위치하는 것과 아직 `Quarto`에서 크로스-레퍼런스가 지원되지 않는 관계로 `gt`\index{gt} 패키지의 `gt()`\index{gt} 함수를 사용합니다. 이 함수로 크로스-레퍼런스가 지원되지 않았으나, `as_latex_with_caption()` 함수가 이를 지원합니다. 이 함수는 `bitPublish`에서 제공하는 사용자 정의 함수입니다. 
+멀티 아웃 포맷을 지원하는 방법입니다.
 
-다음은 표 \ref{tab-r}\를 생성합니다.  
+R을 이용해서 표를 만드는 방법에 대표적인 것이 `knitr`\index{knitr} 패키지의 `kable()`\index{kable()} 함수와 `kableExtra`\index{kableExtra} 패키지의 `kable_styling()`\index{kable\_styling()} 함수를 사용하는 방법입니다. 그러나 이 방법은 캡션의 위치가 표의 위에 위치하는 것과 아직 `Quarto`에서 크로스-레퍼런스가 지원되지 않는 관계로 bitPublish의 `table_with_caption()` 함수가 이를 지원합니다. 이 함수는 `bitPublish`에서 제공하는 사용자 정의 함수입니다. 
+
+```{r}
+#| echo: true
+#| eval: false
+
+table_with_caption(tab, label, digits = NULL, big.mark = NULL)
+```
+
+이 함수를 사용할 때 주의할 점은 멀티 아웃 포맷을 지원하기 위해서는 다음처럼 knir 청크에 
+label로 크로스-레퍼런스를 위한 라벨을 정의하고, tbl-cap로 캡션을 정의해야 합니다. 또한 중복되지만, table_with_caption() 함수에도 label 인수로 라벨을 지정해야 합니다.
+
+다음은 [@tbl-iris]\를 생성합니다.  
 
 ````md
 ```{r}`r ''`
+#| label: tbl-iris
+#| tbl-cap: "Sample Iris Data"
 #| echo: false
-tab <- tibble::tribble(
-  ~기본값, ~`왼쪽 정렬`, ~`가운데 정렬`, ~`오른쪽 정렬`,
-  "내용 1", "내용 2", "내용 3", "내용 4",
-  "내용 5", "내용 6", "내용 7", "내용 8",
-  "내용 9", "내용 10", "내용 11", "내용 12"
-)
+#| results: asis
 
-tab |> 
-  gt::gt() |> 
-  gt::cols_align(align = "left", columns = `왼쪽 정렬`) |> 
-  gt::cols_align(align = "center", columns = `가운데 정렬`) |> 
-  gt::cols_align(align = "right", columns = `오른쪽 정렬`) |>
-  as_latex_with_caption(label = "tab-r", caption = "R 기반 표")
+table_with_caption(head(iris), label = "tbl-iris", digits = 2)
 ```
 ````
 
 ```{r}
-#| eval: true
+#| label: tbl-iris
+#| tbl-cap: "Iris Data"
 #| echo: false
-tab <- tibble::tribble(
-  ~기본값, ~`왼쪽 정렬`, ~`가운데 정렬`, ~`오른쪽 정렬`,
-  "내용 1", "내용 2", "내용 3", "내용 4",
-  "내용 5", "내용 6", "내용 7", "내용 8",
-  "내용 9", "내용 10", "내용 11", "내용 12"
-)
+#| results: asis
 
-tab |> 
-  gt::gt() |> 
-  gt::cols_align(align = "left", columns = `왼쪽 정렬`) |> 
-  gt::cols_align(align = "center", columns = `가운데 정렬`) |> 
-  gt::cols_align(align = "right", columns = `오른쪽 정렬`) |>
-  as_latex_with_caption(label = "tab-r", caption = "R 기반 표")
+table_with_caption(head(iris), label = "tbl-iris", digits = 2)
 ```
- 
+
+### 크로스-레퍼런스
+
+HTML에서는 그림과 표의 크로스-레퍼런스가 거의 필요없으나, PDF에서는 꼭 필요한 기능입니다.
+
+PDF를 위한 LaTeX에서는 다음과 같이 \ref 명령어를 이용합니다.
+
+```{tex}
+\ref{label}
+```
+
+그러나 멀티 아웃 포맷을 지원하는 다음의 구문을 이용하는 것을 권장합니다.
+
+```{md}
+[@label]
+```
+
+라벨 이름인 label을 정의할 때는 다음의 권장 사항을 따르기 바랍니다.
+
+- 그림
+    - **fig-**name
+    - 예) fig-histogram
+- 표
+    - **tbl-**name
+    - 예) tbl-iris    
+
 ### 수식 입력
 
 수식 입력은 Latex의 수학 공식을 입력하는 TeX 문법을 따릅니다.

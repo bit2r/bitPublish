@@ -1,8 +1,10 @@
 # 예제를 위한 장
 
+```{=tex}
 \label{chap:data} 
 \newcounter{exam_num_data}
 \setcounter{exam_num_data}{0}
+```
 
 ```{r init, include=FALSE}
 #source(here::here("_extensions", "bitPublish", "init_environments.R"))
