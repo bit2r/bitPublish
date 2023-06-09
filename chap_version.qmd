@@ -1,8 +1,9 @@
-# Version
+# Version {#sec-version}
 
-\label{chap:version} 
+```{=tex}
 \newcounter{exam_num_version} 
 \setcounter{exam_num_version}{0}
+```
 
 ```{r init, include=FALSE}
 # source(here::here("_extensions", "bitPublish", "init_environments.R"))
@@ -55,4 +56,7 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - Not Yet
 - Table 크로스-레퍼런스의 구현 (#31)
 - HTML의 일부 크로스-레퍼런스 미적용 문제 및 Latex 패키지 로드 명령이 출력되는 문제 해결 (#29, thanks to youngjinkim81)
+- HTML의 일부 크로스-레퍼런스 미적용 문제 및 Latex 패키지 로드 명령이 출력되는 문제 해결 (#29, thanks to youngjinkim81)
+- chapter label을 LaTeX의 형식 대신, 멀티 아웃 포맷을 위해서 마크다운 형식으로 변경 
+
 

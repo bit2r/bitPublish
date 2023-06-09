@@ -1,11 +1,10 @@
-# bitPublish 소개
+# bitPublish 소개 {#sec-bitpublish}
 
 ```{r init, include=FALSE}
 source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 
 ```{=tex}
-\label{chap:bitpublish} 
 \newcounter{exam_num_bitpub} 
 \setcounter{exam_num_bitpub}{0}
 ```
@@ -718,7 +717,7 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 
 ### 예제
 
-`example` 환경을 이용합니다. 인용의 구문은 다음과 같습니다.
+`example` 환경을 이용합니다. 예제를 위한 `example` 환경의 구문은 다음과 같습니다.
 
 ```{tex}
 \begin{example}{number of example}
@@ -733,10 +732,21 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 - 예제를 본문이나 다른 예제에서 참조하는 경우가 있다.
     - `크로스-레퍼런스`\index{크로스-레퍼런스}(`cross-reference`)\index{cross-reference}를 지원해야 한다.
 
-예제를 위해서 다음과 같이 장(chapter)의 시작부분에 환경변수를 정의해야 합니다. 장의 라벨과 예제의 순번을 위한 카운더를 설정했습니다.
+`예제`를 위해서 다음과 같이 장(chapter)의 헤드에 크로스-레퍼런스를 위한 라벨(label)을 정의해야 합니다.
 
+```{md}
+# bitPublish 소개 {#sec-bitpublish}
+```
+
+::: {.infobox .warning data-latex="{warning}{}"}
+**라벨 접두어**
+
+크로스-레퍼런스가 정상적으로 동작하기 위해서는 라벨을 정의할 때, 반드시 접두어 **sec-**을 사용해야 합니다. 
+:::
+
+한 장에 여러 예제를 만들수 있습니다. 그래서 개별 예제를 식별할 수 있도록 예제에 순번을 매겨야 합니다. 순번을 생성하기 위해서 카운터를 설정합니다.
+ 
 ```{tex}
-\label{chap:bitpublish}                    % 장 라벨 정의
 \newcounter{exam_num_bitpub}               % 새로운 카운터 생성
 \setcounter{exam_num_bitpub}{0}            % 카운터 값 0으로 초기화
 ```
@@ -745,16 +755,16 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 
 ```{tex}
 \addtocounter{exam_num_bitpub}{1}          % 예제를 위한 카운터 1 증가
-\begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
-\examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+\begin{example}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
+\examplelabel{ex1}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
 bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
 \end{example}
 ```
 
 ```{=tex}
 \addtocounter{exam_num_bitpub}{1}         
-\begin{example}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
-\examplelabel{ex1}{\ref{chap:bitpublish}.\arabic{exam_num_bitpub}}
+\begin{example}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
+\examplelabel{ex1}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
 bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
 \end{example}
 ```
@@ -765,8 +775,9 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \ref{}를 사용합니다.
 ```
 
-예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \\ref{}를 사용합니다.
-
+```{=tex}
+예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 $\backslash$ref\{\}를 사용합니다.
+```
 
 ### 연습문제
 
@@ -1120,7 +1131,7 @@ table_with_caption(head(iris), label = "tbl-iris", digits = 2)
 
 HTML에서는 그림과 표의 크로스-레퍼런스가 거의 필요없으나, PDF에서는 꼭 필요한 기능입니다.
 
-PDF를 위한 LaTeX에서는 다음과 같이 \ref 명령어를 이용합니다.
+PDF를 위한 LaTeX에서는 다음과 같이 \\ref 명령어를 이용합니다.
 
 ```{tex}
 \ref{label}

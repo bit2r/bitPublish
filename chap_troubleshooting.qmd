@@ -1,12 +1,22 @@
-# Troubleshooting
+# Troubleshooting {#sec-tshoot}
 
-\label{chap:tshoot} 
+```{r init, include=FALSE}
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+```
+
+```{=tex}
 \newcounter{exam_num_tshoot} 
 \setcounter{exam_num_tshoot}{0}
+```
 
 이 장에서는 \`bitPublish'의 사용시에 발생하는 문제와 해결 방법에 대해서 다룹니다.
 
-\titlebox{학습 목표}{blue}{bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.}
+```{r}
+#| echo: false
+#| results: asis
+titlebox_block("bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.", 
+               title = "학습 목표", theme = "bluejeans")
+```
 
 ## Quarto 오류
 
