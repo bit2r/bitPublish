@@ -4,11 +4,6 @@
 source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 
-```{=tex}
-\newcounter{exam_num_tshoot} 
-\setcounter{exam_num_tshoot}{0}
-```
-
 이 장에서는 \`bitPublish'의 사용시에 발생하는 문제와 해결 방법에 대해서 다룹니다.
 
 ```{r}

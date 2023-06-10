@@ -717,67 +717,65 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 
 ### 예제
 
-`example` 환경을 이용합니다. 예제를 위한 `example` 환경의 구문은 다음과 같습니다.
+Quarto에서 제공하는 `정리`(`theorems`)\index{정리}\index{theorems}의 변형을 이용합니다. 이 방법은 아주 심플하고 멀티 아웃 포맷과 크로스-레퍼런스까지 지원합니다. 다만 이전에 LaTeX으로 구현한 서식이 있는 블록보다 너무 평범해서 본문에서 두드러지지는 않습니다. 그러나 문법이 쉽고 불필요한 카운터의 정의가 필요없기 때문에, bitPublish는 이 방법을 표준으로 정했습니다.  
 
-```{tex}
-\begin{example}{number of example}
-  text of example
-\end{example}
-```
+다음과 같이 사용합니다.
 
-그러나 예제는 다음처럼 생각보다 복잡합니다.
-
-- 장(chapter)에서 여러 예제가 있어서, 번호를 매겨야 한다.
-    - 번호는 자동으로 채번되어야 추가 및 제거 시 번호의 오류를 줄인다.
-- 예제를 본문이나 다른 예제에서 참조하는 경우가 있다.
-    - `크로스-레퍼런스`\index{크로스-레퍼런스}(`cross-reference`)\index{cross-reference}를 지원해야 한다.
-
-`예제`를 위해서 다음과 같이 장(chapter)의 헤드에 크로스-레퍼런스를 위한 라벨(label)을 정의해야 합니다.
+- `#exr-label`은 예제를 알려주는 지시자이면서,
+    - 크로스-레퍼런스에 사용될 라벨입니다.
+- `title of exercise`는 예제의 타이틀입니다.
+    - 만약 예제의 타이틀을 사용하지 않는다면 기술하지 않습니다.
+- `text of exercise`는 예제의 본문입니다.
 
 ```{md}
-# bitPublish 소개 {#sec-bitpublish}
+::: {#exr-label}
+### title of exercise
+text of exercise
+:::
 ```
 
 ::: {.infobox .warning data-latex="{warning}{}"}
 **라벨 접두어**
 
-크로스-레퍼런스가 정상적으로 동작하기 위해서는 라벨을 정의할 때, 반드시 접두어 **sec-**을 사용해야 합니다. 
+예제가 정상적으로 동작하기 위해서는 라벨을 정의할 때, 반드시 접두어 **exr-**을 사용해야 합니다. 
 :::
 
-한 장에 여러 예제를 만들수 있습니다. 그래서 개별 예제를 식별할 수 있도록 예제에 순번을 매겨야 합니다. 순번을 생성하기 위해서 카운터를 설정합니다.
- 
-```{tex}
-\newcounter{exam_num_bitpub}               % 새로운 카운터 생성
-\setcounter{exam_num_bitpub}{0}            % 카운터 값 0으로 초기화
-```
+다음은 타이틀을 포함한 예제입니다.
 
-다음은 예제를 위한 환경 설정과 예제를 구현하는 예제입니다. 크로스-레퍼런스를 위해서 예제에 대해서 `ex1`이라는 라벨을 `example` 환경 안에서 정의한 것을 주의깊게 보십시오.
-
-```{tex}
-\addtocounter{exam_num_bitpub}{1}          % 예제를 위한 카운터 1 증가
-\begin{example}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
-\examplelabel{ex1}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
+```{md}
+::: {#exr-bitformat}
+### bitPublish 서식 예제
 bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
-\end{example}
+:::
 ```
 
-```{=tex}
-\addtocounter{exam_num_bitpub}{1}         
-\begin{example}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
-\examplelabel{ex1}{\ref{sec-bitpublish}.\arabic{exam_num_bitpub}}
+
+::: {#exr-bitformat}
+### bitPublish 서식 예제
 bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
-\end{example}
+:::
+  
+다음은 타이틀을 제외한 예제입니다.
+
+```{md}
+::: {#exr-bitformat2}
+bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.
+:::
 ```
 
-`ex1`이라는 라벨을 레퍼런스하는 방법은 다음과 같습니다.
 
-```{tex}
-예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 \ref{}를 사용합니다.
+::: {#exr-bitformat2}
+bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.  
+:::  
+
+라벨을 레퍼런스하는 방법은 다음과 같습니다. 
+
+```{md}
+[@exr-bitformat]에서 연습한 bitPublish의 서식은 반드시 숙지하시기 바랍니다.
 ```
 
-```{=tex}
-예제 \ref{ex1}를 레퍼런스하기 위해서는 레퍼런스 명령 $\backslash$ref\{\}를 사용합니다.
-```
+[@exr-bitformat]에서 연습한 bitPublish의 서식은 반드시 숙지하시기 바랍니다.
+
 
 ### 연습문제
 
@@ -834,7 +832,7 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 \end{Exercise}
 ```
 
-만약에 연습문제를 별도의 페이지에서 시각하고 싶다면 \\clearpage 명령어를 사용하면 됩니다.
+만약에 연습문제를 별도의 페이지에서 시작하고 싶다면 \\clearpage 명령어를 사용하면 됩니다.
 
 
 ## bitPublish 활용을 위한 팁
