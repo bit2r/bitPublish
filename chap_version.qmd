@@ -59,4 +59,5 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - 초성을 기준으로 찾아보기 정상적으로 동작 
     - Not Yet
 - 예제 블록의 멀티 아웃 포맷 지원 (#36)
+    - Quarto에서 제공하는 정리(theorems)의 변형을 이용
 
