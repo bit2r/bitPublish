@@ -17,28 +17,28 @@ contributes:
         - layoutvoffset=18.5mm
         - showcrop
         - top=20mm
-        - headsep=10mm             
+        - headsep=10mm
         - bottom=30mm
-        - footskip=15mm                 
+        - footskip=15mm
         - left=25mm
         - right=25mm
-        - centering        
+        - centering
       fig-cap-location: bottom
       tbl-cap-location: bottom
       toc-title: "목차"
-      crossref: 
+      crossref:
         fig-title: "그림"
         tbl-title: "표"
-      include-in-header: 
+      include-in-header:
         - text: |
             \usepackage{fancyhdr}
             \pagestyle{fancy}
-            
-            %% 폰트 사이즈 정의 
+
+            %% 폰트 사이즈 정의
             \newcommand{\changesize}{%
               \fontsize{8}{10}\selectfont
             }
-            
+
             %% 머리글 바닥글의 위한 폰트 스타일 정의
             % 장/절 번호 파트: 볼드 돋움체
             \newcommand{\numberfont}{%
@@ -48,13 +48,13 @@ contributes:
             \newcommand{\labelfont}{%
               \hangulfontspec[ExternalLocation=_extensions/bit2r/bitPublish/fonts/KOPUBWORLD_OTF_FONTS/]{KoPubWorld Dotum_Pro Light.otf}\selectfont
             }
-            %% 페이지 번호 파트 
+            %% 페이지 번호 파트
             \newcommand*\pagefont{\normalfont\bfseries\sffamily}
-            
+
             %% Rule 라인 제거
             \renewcommand {\headrulewidth}{0pt} % 라인 제거
             \renewcommand {\footrulewidth}{0pt} % 라인 제거
-            
+
             \makeatletter
             \DeclareRobustCommand{\format@sec@number}[2]{{\numberfont\upshape#1}#2}
             \renewcommand{\chaptermark}[1]{%
@@ -62,24 +62,25 @@ contributes:
             \renewcommand{\sectionmark}[1]{%
               \markright{{\numberfont \thesection.} {\labelfont #1}}{}}
             \makeatother
-            
+
             \fancyhf{}
             \fancyhead[EL]{\changesize \numberfont --- bitPublish를 이용하여}
             \fancyhead[OR]{\changesize \numberfont 한글 책 조판하기 ---}
             \fancyfoot[EL]{{\pagefont\thepage}{\hskip4mm}{\changesize \leftmark}}
             \fancyfoot[OR]{{\changesize \rightmark}{\hskip4mm}{\pagefont\thepage}}
-            
+
             %% 코드 overflow 방지
             \usepackage{fvextra}
-            \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}            
+            \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
         - file: bitPublish.tex
-      include-after-body:  
-        - text: |      
-            \printindex  
-      pdfengine: xelatex            
-      cite-method: biblatex       
+      include-after-body:
+        - text: |
+            \printindex
+      pdf-engine: xelatex
+      latex-makeindex: texindy
+      latex-makeindex-opts: -Mlang/korean/utf8-lang
+      cite-method: biblatex
       linkcolor: highlight
       urlcolor: highlight
       keep-tex: false
       keep-md: false
-      
