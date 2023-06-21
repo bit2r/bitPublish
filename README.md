@@ -75,6 +75,9 @@ bitPublish가 사용하는 폰트는 다음의 라이센스를 따릅니다.
 
 bitPublish는 다음 오픈소스 기여자의 리소스를 사용하거나 참조하였습니다.:
 
+- 이재호님
+    - <a href="https://github.com/bit2r/bitPublish/pull/44" target="_blank">한글 색인의 오분류 문제 해결 및 초성 타이틀 출력 구현</a>
+    - <a href="https://github.com/Zeta611" target="_blank">Github</a>    
 - Pawan Mall
     - [CSS3 Blockquote Effects Demos](https://codepen.io/iPawan/pen/emrPKP)
     - 타이틀 박스에 응용

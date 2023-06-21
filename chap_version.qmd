@@ -60,4 +60,11 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - Not Yet
 - 예제 블록의 멀티 아웃 포맷 지원 (#36)
     - Quarto에서 제공하는 정리(theorems)의 변형을 이용
+    
+### version 0.2.4
+
+- **2023-06-22**
+
+- 유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)
+    - 초성을 기준으로 찾아보기 정상적으로 동작 
 
