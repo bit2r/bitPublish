@@ -11,11 +11,6 @@ if(!require("here")){
   library("here")
 }
 
-if(!require("showtext")){
-  install.packages("showtext")
-  library("showtext")
-}
-
 if(!require("tidyverse")){
   install.packages("tidyverse")
   library("tidyverse")
@@ -31,17 +26,20 @@ if(!require("hrbrthemes")){
   library("hrbrthemes")
 }
 
-showtext.opts(dpi = 300)
+if(!require("ragg")){
+  install.packages("ragg")
+  library("ragg")
+}
 
 # 한글 폰트
-font_add("NanumSquare", 
-         regular = here("_extensions", "bit2r", "bitPublish", "fonts", "NanumSquare", 
-                        "NanumSquareR.otf"), 
-         bold = here("_extensions", "bit2r", "bitPublish", "fonts", "NanumSquare", 
-                     "NanumSquareB.otf"))
+sysfonts::font_add("NanumSquare", 
+         regular = here::here("_extensions", "bit2r", "bitPublish", "fonts", 
+                              "NanumSquare", "NanumSquareR.otf"), 
+         bold = here::here("_extensions", "bit2r", "bitPublish", "fonts", 
+                           "NanumSquare", "NanumSquareB.otf"))
 
 # 영문폰트
-font_add("Nimbus Sans L",
+sysfonts::font_add("Nimbus Sans L",
          regular = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
                         "NimbusSanL-Reg.otf"),     
          bold = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
@@ -62,13 +60,17 @@ knitr::knit_hooks$set(
 
 knitr::opts_chunk$set(
   message = FALSE, warning = FALSE,
-  dev = "cairo_pdf", dpi = 300, fig.showtext = TRUE, fig.pos = "htb!",
+  dev = "ragg_png", dpi = 300, fig.pos = "htb!", 
   fig.align = "center")
 
 ## ggplot2 테마 설정
 old_theme <- theme_set(theme_grey())
 theme_set(hrbrthemes::theme_ipsum(base_family = "NanumSquare"))
 
+## 청크로 R 시각화를 위한 디렉토리 생성
+if (!dir.exists("figure")) {
+  dir.create("figure")
+}
 
 ##==============================================================================
 ## table의 cross-reference 적용을 위해서

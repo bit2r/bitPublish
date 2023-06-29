@@ -68,3 +68,10 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 - 유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)
     - 초성을 기준으로 찾아보기 정상적으로 동작 
 
+
+### version 0.2.5
+
+- **2023-06-29**
+
+- HTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결  (#30)
+    - ragg 패키지 이용
