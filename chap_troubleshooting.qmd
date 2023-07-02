@@ -85,4 +85,42 @@ l.54   \item include_
 \index{include\_graphics()}
 ```
 
+## 설치 이슈
+
+### bitPublish 파일 다운로드 설치
+
+bitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.
+
+```{md}
+quarto use template bit2r/bitPublish
+```
+
+혹은 다음처럼 기존 문서에 bitPublish extension을 설치하는 명령으로도 Github에서 bitPublish가 설치됩니다.
+
+```{md}
+quarto install extension bit2r/bitPublish
+```
+
+그러나 사용자 PC 환경에서, 보안 프로그램 등의 이슈로 `quarto` 명령 설치에 오류가 발생할 수 있습니다. 이 경우에는 Github으로부터 bitPublish를 다운로드한 후 특정 디렉토리에 복사해서 사용하면 됩니다. 그러나 이 경우에는 다음과 같은 명령에 에러가 발생할 수 있습니다.
+
+- 명령
+
+```{md}
+quarto preview --to bitPublish-pdf
+```
+
+- 에러 메시지의 일부
+
+```{md}
+finding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.
+
+1 package to install
+installing stix2-otf (1 of 1)
+ERROR: tlmgr returned a non zero status code
+```
+
+이러한 에러가 발생한 이유는 `quarto` 명령어로 bitPublish가 설치될 경우에는 `_extensions/bit2r/bitPublish` 경로로 `extensions`이 설치되지만, Github에서 파일을 다운로드해서 실치할 경우에는 `_extensions/bitPublish` 경로로 설치되기 때문입니다.
+
+`bitPublish` `extensions`은 `_extensions/bit2r/bitPublish` 디렉토리에 설치됨을 전제로 개발되었기 때문에 다운로드 설치 시 `_extensions` 디렉토리 안에 `bit2r` 디렉토리를 만들어서 현재의 `_extensions/bitPublish` 경로를 `_extensions/bit2r/bitPublish` 경로로 변경하면 문제가 해결됩니다.
+
 
