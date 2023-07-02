@@ -12,6 +12,5 @@ book:
     - chap_intro_bitpublish.qmd
     - chap_troubleshooting.qmd
     - chap_version.qmd
-    - references.qmd
 bibliography: references.bib
 link-citations: false

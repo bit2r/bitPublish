@@ -75,3 +75,13 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 
 - HTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결  (#30)
     - ragg 패키지 이용
+    
+    
+### version 0.2.6
+
+- **2023-07-02**
+
+- 참고문헌 reference.bib 출력 관련 이슈 해결  (#46)
+    - HTML 아웃 포맷에서 내용이 없는 참고문헌 chapter 출력문제 해결
+- Github 파일 다운로드로 설치 시의 파일경로 문제 해결 방법 제시  (#45)
+    - 예제 문서의 **Troubleshooting** chapter에 기술
