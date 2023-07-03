@@ -48,7 +48,7 @@ knitr::include_graphics(here::here("img", "b5217f2a-f129-4bf9-90dc-c5b9783d0ea8_
 
 ### Quarto extensions
 
-extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 제공하며, 다음과 같은 유형으로 구분합니다.[@extensions] 
+extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 제공하며, 다음과 같은 유형으로 구분합니다.[@posit2023extensions] 
 
 | 영문 유형         | 국문 유형         | 설명                                    |
 |-------------------|-------------------|-----------------------------------------|
