@@ -22,7 +22,7 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 
 ### Quarto
 
-`Quarto`[@quarto]\index{Quarto}는 오픈 소스의 과학 및 기술 출판 시스템으로 다음과 같은 기능을 제공합니다.[^intro-quarto]
+`Quarto`[@posit2023quarto]\index{Quarto}는 오픈 소스의 과학 및 기술 출판 시스템으로 다음과 같은 기능을 제공합니다.[^intro-quarto]
 
 [^intro-quarto]: https://quarto.org/
 
@@ -32,7 +32,7 @@ titlebox_block("bitPublish가 제공하는 기능을 이해하고, bitPublish을
 -   `Posit Connect`, `Confluence` 또는 기타 게시 시스템에 게시하여 조직 전체에서 지식과 통찰력을 공유합니다.
 -   방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 `팬독` 마크다운을 사용하여 작성합니다.
 
-Quarto[@quartoarch]를 요약하자면 그림 [@fig-quarto]처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `팬독`(`Pandoc`)\index{팬독}\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
+Quarto[@horst2022quartoarch]를 요약하자면 [@fig-quarto]처럼, Quarto 문서를 `knitr` 또는 `jupyter`\index{jupyter}로, `마크다운`(`Markdown`)\index{마크다운}\index{Markdown} 문서로 랜더링한 다음 `팬독`(`Pandoc`)\index{팬독}\index{Pandoc}에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.
 
 ```{r}
 #| label: fig-quarto
@@ -208,7 +208,7 @@ bitPublish 초기 버전에서 대부분의 서식은 LaTeX 출력을 지원하�
 
 ### 사용자 정의 블록
 
-bitPublish 서식의 대표적인 것에 `커스텀 블록`(`custom blocks`)\index{사용자 정의 블록}\index{custom blocks}[@rmcook]이 있습니다. 사용자 정의 블록은 보고서나 책의 일부 콘텐츠를 블록으로 정의하여 본문보다 돋보이게 하여 독자가 핵심 포인트를 쉽게 이해할 수 있도록 주목도를 높이는 서식입니다. 
+bitPublish 서식의 대표적인 것에 `커스텀 블록`(`custom blocks`)\index{사용자 정의 블록}\index{custom blocks}[@xie2022rmcook]이 있습니다. 사용자 정의 블록은 보고서나 책의 일부 콘텐츠를 블록으로 정의하여 본문보다 돋보이게 하여 독자가 핵심 포인트를 쉽게 이해할 수 있도록 주목도를 높이는 서식입니다. 
 
 사용자 정의 블록은 `팬독`의 `fenced Div blocks` 기능을 사용합니다. 이 기능은 Div 블록을 HTML과 LaTeX 모두로 변환해줍니다.
 
@@ -871,7 +871,7 @@ knitr::include_graphics("이미지 파일이름.png")
     1. 여의치 않으면, 그 다음 페이지 가장 윗부분에 배치, 
     1. 만약 이것도 여의치 않으면, 그 다음 페이지 가장 아랫 부분에 배치.
 
-이미지의 페이지 배치는 다음과 같은 `fig-pos`[@float] 옵션으로 지정합니다.
+이미지의 페이지 배치는 다음과 같은 `fig-pos`[@minidonut2021float] 옵션으로 지정합니다.
 
 | 플로트 지정자 | 의미                                                                                                               |
 |:-------------:|--------------------------------------------------------------------------------------------------------------------|
@@ -1276,33 +1276,23 @@ book:
     - index.qmd
     - chap_exams.qmd
     - chap_intro_bitpublish.qmd
-    - references.qmd
 bibliography: references.bib
 link-citations: false
 ```
 
-상기 `YAML` 헤더에서 `chapters` 옵션은 책에 장을 추가하는데 'references.qmd' 파일이 참고문헌 등록에 해당하는 파일입니다. 그 내용은 다음과 같습니다. 이 설정은 참고문헌을 나타내는 시작 페이지의 제목을 "참고문헌"으로 표기합니다.
-
-```{md}
-# 참고문헌 {.unnumbered}
-
-::: {#refs}
-:::
-```
-
-그리고 참고문헌에 등록하기 위해서는 `YAML` 헤더에 `bibliography` 옵션에 기술된 'references.bib' 파일에 참고문헌을 정의합니다.
+참고문헌에 등록하기 위해서는 `YAML` 헤더에 `bibliography` 옵션에 기술된 'references.bib' 파일에 참고문헌을 정의합니다.
 
 다음은 'references.bib' 파일에 정의된 일부분으로 참고한 도서와 웹 사이트의 예입니다.
 
 ```{verbatim}
-@book{rstat,
+@book{ryu2013rstat,
   author = {유충현, 이상호},
   title = {R을 이용한 통계학 이해},
   year = {2013},
   publisher = {자유아카데미}
 }
 
-@misc{quarto,
+@misc{posit2023quarto,
   author = {posit},
   title = {Welcome to Quarto},
   howpublished = {\url{https://quarto.org/}},
@@ -1321,7 +1311,7 @@ link-citations: false
 다음의 \\cite{} 명령은 '참고 문헌' 페이지에 참고한 문헌에 대한 정보를 기술하고, 인용된 본문에 링크를 걸어줍니다.
 
 ```{tex}
-Quarto 홈페이지의 Quarto에 대한 소개\cite{quarto}는 다음과 같다. 이러쿵 저러쿵...
+Quarto 홈페이지의 Quarto에 대한 소개\cite{posit2023quarto}는 다음과 같다. 이러쿵 저러쿵...
 ```
 
 마크다운에도 인용을 위한 다음과 같은 명령이 있습니다.
@@ -1336,11 +1326,11 @@ Quarto 홈페이지의 Quarto에 대한 소개\cite{quarto}는 다음과 같다.
 Quarto 홈페이지의 Quarto에 대한 소개[@quarto]는 다음과 같다. 이러쿵 저러쿵...
 ```
 
-```{=tex}
-\begin{shadequote}{}
-인용의 경우에는 LaTeX 명령보다 마크다운 명령을 사용할 것을 권장합니다. 왜냐하면 bitPublish가 현재는 LaTeX 기반의 PDF 파일 포맷만 지원하지만, 향후 HTML, ePub 포맷과 같은 전자책 저작도 지원할 계획입니다. 호환을 위한 LaTeX 명령을 자제하는 것이 좋습니다.
-\end{shadequote}
-```
+::: {.infobox .caution data-latex="{caution}{}"}
+**참조문헌의 멀티 아웃 포맷 지원**
+
+인용의 경우에는 LaTeX 명령보다 마크다운 명령을 사용할 것을 권장합니다. 왜냐하면 LaTeX 명령은 PDF 아웃 포맷만 지원하므로, LaTeX 명령을 자제하는 것이 좋습니다. HTML, ePub 포맷과 같은 전자책 저작에도 동작하도록 마크다운 명령을 사용하는 것을 권장합니다.
+:::
 
 ### 자동조사 처리 
 
@@ -1358,7 +1348,7 @@ Quarto 홈페이지의 Quarto에 대한 소개[@quarto]는 다음과 같다. 이
 그림 2.4과 같이 정규분포를 따르는 히스토그램을 그린다.
 ```
 
-그림에 크로스-레퍼런스를 적용해서 그림의 번호 3이 4로 정상적으로 변경되었는데, 조사가 어색합니다. \`그림 2.4과'가 아니라 \`그림 2.4와'로 출력되야하기 때문입니다. 왜냐하면 우리말의 조사에는 다음과 같은 규칙이 있기 때문입니다. 앞단어의 끝소리의 자소에 따라 다음처럼 조사가 결정되기 때문입니다.[@kim2007]
+그림에 크로스-레퍼런스를 적용해서 그림의 번호 3이 4로 정상적으로 변경되었는데, 조사가 어색합니다. \`그림 2.4과'가 아니라 \`그림 2.4와'로 출력되야하기 때문입니다. 왜냐하면 우리말의 조사에는 다음과 같은 규칙이 있기 때문입니다. 앞단어의 끝소리의 자소에 따라 다음처럼 조사가 결정되기 때문입니다.[@kim2007latex]
 
 | 앞단어 끝소리 | 와 / 과 | 을 / 를 | 이 / 가 | 은 / 는 | (이)라 | (으)로 |
 |:--------------|:-------:|:-------:|:-------:|:-------:|:------:|:------:|
@@ -1366,7 +1356,7 @@ Quarto 홈페이지의 Quarto에 대한 소개[@quarto]는 다음과 같다. 이
 | ㄹ 아닌 종성  |   과    |   을    |   이    |   은    |  이라  |  으로  |
 | 중성          |   와    |   를    |   가    |   는    |   라   |   로   |
 
-LaTeX이 크로스-레퍼런스에서 계산되는 아라비아 숫자의 한글 독음 끝소리 자소에 따라 자동으로 자동조사 처리를 하기 위해서는, 크로스-레퍼런스를 위한 \\ref{} 명령에 붙는 조사에 역 슬래시(\\)불여주면 됩니다.
+LaTeX이 크로스-레퍼런스에서 계산되는 아라비아 숫자의 한글 독음 끝소리 자소에 따라 자동으로 자동조사 처리를 하기 위해서는, 크로스-레퍼런스를 위한 참조 명령 뒤에 붙는 조사에 역 슬래시(\\)불여주면 됩니다.
 
 다음은 크로스-레퍼런스에서 번호가 계산되었다는 전제로 자동조사 처리를 테스트한 것입니다.
 
