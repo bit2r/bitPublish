@@ -98,7 +98,7 @@ table_with_caption <- function(tab, label, digits = NULL, big.mark = NULL) {
     caption_lab <- paste0(
       "\\caption{\\label{", label, "}\n")
     
-    align <- paste(ifelse(sapply(iris, is.numeric), "r", "l"), collapse = "")
+    align <- paste(ifelse(sapply(tab, is.numeric), "r", "l"), collapse = "")
     
     tab2 <- tab                                          
     factor_columns <- sapply(tab2, is.factor)  
@@ -133,7 +133,7 @@ table_with_caption <- function(tab, label, digits = NULL, big.mark = NULL) {
     # str <- paste0(str, "\\begin{table}[htb!]\n")
     str <- paste0(str, "\\begin{longtable}{", align, "}\n")
     str <- paste0(str, "\\toprule\\noalign{}\n")
-    str <- paste0(str, paste(names(iris), collapse = " & "), "\\\\\n")
+    str <- paste0(str, paste(names(tab), collapse = " & "), "\\\\\n")
     str <- paste0(str, "\\midrule\\noalign{}\n")
     str <- paste0(str, contents)
     str <- paste0(str, "\\bottomrule\\noalign{}\n")
