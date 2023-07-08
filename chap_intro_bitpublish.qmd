@@ -4,11 +4,6 @@
 source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 ```
 
-```{=tex}
-\newcounter{exam_num_bitpub} 
-\setcounter{exam_num_bitpub}{0}
-```
-
 이 장에서는 \`bitPublish'의 활용을 위한 특장점과 기능을 소개합니다.
 
 ```{r}
