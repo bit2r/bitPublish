@@ -322,25 +322,44 @@
 
 \usepackage{stackengine}
 \usepackage{tasks}
-% \newlength{\longestlabel}
-% \settowidth{\longestlabel}{\bfseries viii.}
-% \settasks{label=\roman*., label-format={\bfseries}, label-width=\longestlabel,
-% item-indent=0pt, label-offset=2pt, column-sep={10pt}}
+
+\usepackage{fancyvrb,adjustbox}
+
+\usepackage{nameref}
+\usepackage{ifthen}
+\newboolean{firstanswerofthechapter}
+%%- 장(chapter)의 첫번째 답안일 경우에는 `firstanswerofthechapter`를 true로
+%%- 장(chapter)의 첫번째 답안이 아닐 경우에는 `firstanswerofthechapter`를 false로
+\newboolean{chapterexerlevel}  
+%% - 장(chapter)에 연습문제 1개 있을 경우에는 `chapterexerlevel`를 true로
+%%     - 헤더가 "1장. 연습문제"
+%% - 절(section)에 연습문제 1개 있을 경우에는 `chapterexerlevel`를 false로
+%%     - 헤더가 "1.1 연습문제"
+\setboolean{chapterexerlevel}{true}
 
 \usepackage[lastexercise,answerdelayed]{exercise}
 \counterwithin{Exercise}{chapter}
 \counterwithin{Answer}{chapter}
 \renewcounter{Exercise}[chapter]
 \newcommand{\QuestionNB}{\bfseries\arabic{Question}.\ }
+
+%% 연습문제 서식 정의
 \renewcommand{\ExerciseName}{\sffamily연습문제}
-\renewcommand{\ExerciseHeader}{\noindent\def\stackalignment{l}% code from https://tex.stackexchange.com/a/195118/101651
-    \stackunder[0pt]{\colorbox{cornflowerblue}{\textcolor{white}{\textbf{\sffamily\LARGE\ExerciseHeaderNB\;\large\ExerciseName}}}}{\textcolor{cornflowerblue}{\rule{\linewidth}{2pt}}}\medskip}
-\renewcommand{\AnswerName}{연습문제 풀이}
+\renewcommand{\ExerciseHeaderNB}{\ifthenelse{\boolean{chapterexerlevel}}%
+    {\thechapter \chaptername.}{\thesection}}
+\renewcommand{\ExerciseHeader}{\noindent\def\stackalignment{l}% 
+    \stackunder[0pt]{\colorbox{cornflowerblue}{\textcolor{white}{\textbf{\sffamily\LARGE\ExerciseHeaderNB\;\large\ExerciseName}}}}{\textcolor{cornflowerblue}{\rule{\linewidth}{2pt}}}\bigskip}
+
+%% 연습문제 해답 서식 정의    
+\newcommand{\AnswerChapter}{initial}
+\renewcommand{\AnswerName}{연습문제}
 \renewcommand{\AnswerHeader}{\ifthenelse{\boolean{firstanswerofthechapter}}%
-    {\bigskip\noindent\textcolor{cornflowerblue}{\textbf{CHAPTER \thechapter}}\newline\newline%
-        \noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, page %
-                \pageref{\AnswerRef}}}\smallskip}
-    {\noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, page \pageref{\AnswerRef}}}\smallskip}}
+    {\ifthenelse{\boolean{chapterexerlevel}}%
+    {\bigskip\noindent\textcolor{cornflowerblue}{\textbf{\thechapter \chaptername. \AnswerChapter, \pageref{\AnswerRef} 페이지}}\smallskip}
+    {\bigskip\noindent\textcolor{cornflowerblue}{\textbf{\thechapter \chaptername. \AnswerChapter}}\newline\newline%
+        \noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, %
+                \pageref{\AnswerRef} 페이지}}\smallskip}}
+    {\noindent\bfseries\emph{\textcolor{cornflowerblue}{\AnswerName\ \ExerciseHeaderNB, \pageref{\AnswerRef}} 페이지}\smallskip}}
 \setlength{\QuestionIndent}{16pt}
 
 

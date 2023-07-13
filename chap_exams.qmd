@@ -267,7 +267,8 @@ Total & $\displaystyle n_{.1}=\sum_{i=1}^I n_{i 1}$ & $\displaystyle n_{\cdot 2}
 ```{=tex}
 \clearpage
 
-\begin{Exercise}\label{EX1}
+\setboolean{chapterexerlevel}{true}
+\begin{Exercise}[label={exerexam}]
 \noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
 \begin{tasks}[label=(\arabic*)](1)
  \task 합격, 불합격, 불합격, 합격, 불합격
@@ -281,5 +282,34 @@ Total & $\displaystyle n_{.1}=\sum_{i=1}^I n_{i 1}$ & $\displaystyle n_{\cdot 2}
  \task (1)의 파일을 다시 읽어 들여서 women2라는 이름의 데이터 프레임을 만들어라.
 \end{tasks}
 \end{Exercise}
+
+\renewcommand{\AnswerChapter}{\nameref{sec-data}}
+\setboolean{firstanswerofthechapter}{true}
+\begin{Answer}[ref={exerexam}]
+
+\noindent 1.
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+# (1)
+factor(c("합격", "불합격", "불합격", "합격", "불합격"))
+# (2)
+ordered(c("1등급", "2등급", "3등급", "2등급", "5등급", "3등급", 
+          "4등급", "4등급", "3등급", "3등급"))
+# (3)
+c(12, 23, 32, 22, 19, 21, 20)     
+\end{Verbatim}
+
+\noindent 2.
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+# (1)
+write.csv(women, file = "women.csv")    
+
+# (2)
+women2 <- read.csv(women, file = "women.csv")      
+\end{Verbatim}
+
+\end{Answer}  
+\setboolean{firstanswerofthechapter}{false}
 ```
+
+
 

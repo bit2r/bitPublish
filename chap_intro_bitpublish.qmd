@@ -774,6 +774,10 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 
 ### 연습문제
 
+연습문제는 현재 멀티 아웃 포맷을 지원하지 않습니다. PDF 아웃 포맷만 지원하기 때문에, 어느정도 LaTeX애 대한 지식이 필요합니다. 
+
+#### LaTeX 환경
+
 기술서나 학습서의 경우에는 연습문제를 제공하는 경우가 많습니다. bitPublish에서 연습문제 서식은 `Exercise` 환경을 이용합니다. 
 
 ```{tex}
@@ -782,52 +786,359 @@ bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 �
 \end{Exercise}
 ```
 
-또한 연습문제의 내용을 위해서 `tasks` 환경과 `task`\index{tasks} 명령을 사용할 수 있습니다.
+또한 연습문제의 해답 서식은 `Answer` 환경을 이용합니다. 
 
 ```{tex}
-\begin{tasks}[label](1)
- \task text of task
- \task text of task
+\begin{Answer}
+  text of answer
+\end{Answer}
+```
+
+#### tasks 환경
+
+또한 연습문제의 내용을 위해서 `tasks` 환경과 `task`\index{tasks} 명령을 사용할 수 있습니다. 4지선다형의 객관식에 유용하게 사용할 수 있습니다.
+
+다음 예제는 4지선다형의 객관식 문제의 예시입니다. 각 문항은 아라비아 숫자로 표현하게 됩니다.
+
+```{tex}
+\noindent 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?
+\begin{tasks}[label=(\arabic*)](1)
+ \task dplyr
+ \task ggplot2
+ \task tidyr
+ \task dlookr
 \end{tasks}
 ```
 
-다음 명령은 예제 장에서 사용한 연습문제를 기술한 LaTeX 스크립트입니다.
+이 LaTeX 스크립트는 다음과 같이 조판됩니다.
+
+```{=tex}
+\noindent 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?
+\begin{tasks}[label=(\arabic*)](1)
+ \task dplyr
+ \task ggplot2
+ \task tidyr
+ \task dlookr
+\end{tasks}
+```
+
+#### Verbatim 환경
+
+연습문제나 연습문제의 해답에 R 스크립트와 같은 프로그램 코드를 사용할 수 있습니다. 이 경우에는 `Verbatim` 환경을 사용하면 좋습니다.
+
+다음 예제는 간단한 R 스크립트로 글자 색상이나 크기를 지정할 수 있습니다.
 
 ```{tex}
-\begin{Exercise}\label{EX2}
-\noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+if(!require("ragg")){
+  install.packages("ragg")
+  library("ragg")
+}   
+\end{Verbatim}
+```
+
+이 LaTeX 스크립트는 다음과 같이 조판됩니다.
+
+```{=tex}
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+if(!require("ragg")){
+  install.packages("ragg")
+  library("ragg")
+}   
+\end{Verbatim}
+```
+
+#### 연습문제 설정
+
+연습문제는 다음과 같이 두 가지 설정을 사용자가 선택할 수 있습니다. 
+
+- 연습문제 헤더의 넘버링
+    - 장(chapter)에 한 번의 연습문제를 사용할 경우의 넘버링
+        - "1장. 연습문제"
+    - 장(chapter)에 여러 번의 연습문제를 사용할 경우의 넘버링
+        - 넘버링은 {장 번호}.{절 번호}의 형식을 따름
+        - "1.1 연습문제"        
+- 연습문제 헤더의 이름
+    - {넘버링} {이름}의 형식으로 기본 이름 설정은 "연습문제"임 
+        - "1장. 연습문제"
+    - 이름 설정을 "Exercise"로 설정하면, 다음과 같이 출력됨 
+        - "1장. Exercise"        
+
+다음은 헤더의 넘버링을 장에 여러 번 연습문제를 사용하는 예시입니다. `chapterexerlevel`의 값을 `false`로 지정했기 때문입니다. 만약 이 값을 `true`로 지정하면 장에 한 번의 연습문제를 사용하는 형식이 됩니다.
+
+`Exercise` 환경에서 `label`은 반드시 지정해야 합니다. 이 라벨은 연습문제의 해답 페이지에 연습문제가 있는 페이지로 하이퍼링크를 생성할 때 크로스-레퍼런스로 사용됩니다. 이 예제에서는 `label`을 `exerbitpublish`로 지정했습니다.
+
+```{tex}
+\setboolean{chapterexerlevel}{false}
+\begin{Exercise}[label={exerbitpublish}, name={Exercise}]
+  text of exercise
+\end{Exercise}
+```
+
+`chapterexerlevel`의 값이 `true`인 연습문제 헤더의 넘버링은 [@fig-chapter]\와 같이 출력됩니다.
+
+```{r}
+#| label: fig-chapter
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "장에 한 번 연습문제를 사용하는 예시"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/chapter_header.png")
+```
+
+`chapterexerlevel`의 값이 `false`인 연습문제 헤더의 넘버링은 [@fig-section]\와 같이 출력됩니다.
+
+```{r}
+#| label: fig-section
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "장에 여러 번 연습문제를 사용하는 예시"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/section_header.png")
+```
+
+다음은 헤더의 이름을 `Exercise`로 지정하는 예시로 [@fig-section2]\와 같이 출력됩니다.
+
+
+```{tex}
+\setboolean{chapterexerlevel}{false}
+\begin{Exercise}[label={exerbitpublish}, name={Exercise}]
+  text of exercise
+\end{Exercise}
+```
+
+```{r}
+#| label: fig-section2
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "헤더 이름을 변경한 예시"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/section_header2.png")
+```
+
+#### 연습문제 해답 설정
+
+연습문제는 다음과 같이 세 가지를 설정해야 합니다. 
+
+- 장(chapter)에 처음 나타나는 연습문제의 해답 여부
+    - `firstanswerofthechapter`을 `true` 혹은 `false`로 설정 
+    - `true`이면 장 정보를 출력하고, 
+    - `false`이면 장 정보를 출력하지 않는다. 
+- 장(chapter)의 이름(제목) 설정
+    - 연습문제 해답에 정보로서의 장 제목을 출력하기 위해서,
+    - `AnswerChapter` 명령에 해당 장의 라벨을 설정해줌
+- 해당 연습문제의 라벨정보 설정
+    - 해답 위치에서 연습문제로 하이퍼 링크를 연결해 주기 위한 크로스-레퍼런스
+    - `ref` 인수에 라벨정보 할당
+
+다음은 연습문제 헤더 정보에 장의 정보를 출력합니다. `firstanswerofthechapter`의 값을 `true`로 지정했기 때문입니다. 만약 이 값을 `false`로 지정하면 장 정보를 출력하지 않고 해답을 출력해 줍니다. 중요한 것은 `Answer` 환경이 끝난 위치에 `firstanswerofthechapter`의 값을 `false`로 초기화해야 한다는 것입니다.
+
+또한 `AnswerChapter` 명령에는 연습문제가 포함된 장의 라벨인 `sec-bitpublish`를 지정했습니다.
+
+`Answer` 환경에서 `label`은 반드시 지정해야 합니다. 이 라벨은 연습문제의 해답 페이지에 연습문제가 있는 페이지로 하이퍼링크를 생성할 때 크로스-레퍼런스로 사용됩니다. 이 예제에서는 `label`을 `exerbitpublish`로 지정했습니다.
+
+```{tex}
+\renewcommand{\AnswerChapter}{\nameref{sec-bitpublish}}
+\setboolean{firstanswerofthechapter}{true}
+\begin{Answer}[ref={exerbitpublish}]
+  text of answer
+\end{Answer}
+\setboolean{firstanswerofthechapter}{false}
+```
+
+위와 같은 설정은 연습문제 해답의 헤더 부분에 [@fig-answer]\과 같은 정보를 표현해 줍니다. 보라색의 정보가 크로스-레퍼런스로 연결된 하이퍼 링크입니다. ` bitPublish 소개'를 클릭하면 장 제목이 있는 2장의 첫 페이지로 이동하고, `41'을 클릭하면 해당 연습문제가 있는 41 페이지로 이동하게 됩니다.
+
+```{r}
+#| label: fig-answer
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "연습문제 해답의 헤더 모양"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/answer_header.png")
+```
+
+#### 연습문제와 연습문제 해답 예제
+
+이상을 종합하여 다음과 같은 연습문제와 연습문제 해답을 기술하였습니다. 연습문제는 현재 위치에 출력되고, 연습문제 해답은 5장 연습문제 풀이에 출력됩니다.
+
+```{tex}
+\setboolean{chapterexerlevel}{false}
+\begin{Exercise}[label={exerbitpublish}]
+\noindent 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?
 \begin{tasks}[label=(\arabic*)](1)
- \task 합격, 불합격, 불합격, 합격, 불합격
- \task 1등급, 2등급, 3등급, 2등급, 5등급, 3등급, 4등급, 4등급, 3등급, 3등급
- \task 12㎝, 23㎝, 32㎝, 22㎝, 19㎝, 21㎝, 20㎝
+ \task dplyr
+ \task ggplot2
+ \task tidyr
+ \task dlookr
 \end{tasks}
 
 \noindent 2. 다음의 데이터 객체를 외부 파일로 출력해 보아라.
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+if(!require("ragg")){
+  install.packages("ragg")
+  library("ragg")
+}   
+\end{Verbatim}
+
+\noindent 3. ggplot2 패키지의 diamonds 데이터셋으로 dplyr을 이용해서 다음 과정으로 계산하고 시각화 하여라.
 \begin{tasks}[label=(\arabic*)](1)
- \task R의 datas 패키지에 포함되어 있는 women 데이터 프레임을 women.csv 파일로 출력해 보아라.
- \task (1)의 파일을 다시 읽어 들여서 women2라는 이름의 데이터 프레임을 만들어라.
+ \task cut과 color별로 평균 가격과 평균 캐럿을 계산한 후 평균 가격의 내림차순으로 정렬하라.
+ \task (1)의 결과로 평균 가격과 평균 캐럿의 상관계수를 구하라.
+ \task (1)의 결과로 평균 가격과 평균 캐럿의 산점도를 시각화하라. 이 때, cut별로 색상을 구분하라.
 \end{tasks}
 \end{Exercise}
+
+\renewcommand{\AnswerChapter}{\nameref{sec-bitpublish}}
+\setboolean{firstanswerofthechapter}{true}
+\begin{Answer}[ref={exerbitpublish}]
+
+\noindent 1. (4) dplyr
+
+\noindent 2. ragg 패키지가 없으면, 패키지를 설치한다. 그리고 ragg 패키지를 로드한다.
+
+\noindent 3. 
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+# (1)
+library(tidyverse)
+
+agg_diamonds <- diamonds |> 
+  group_by(cut, color) |> 
+  summarise(mean_price = mean(price),
+            mean_carat = mean(carat),
+            .groups = "drop") |> 
+  arrange(desc(mean_price)) 
+agg_diamonds  
+
+# (2)
+agg_diamonds |> 
+  (function(x) cor(x$mean_price, x$mean_carat))()
+
+# (3)
+agg_diamonds |> 
+  ggplot(aes(x = mean_price, y = mean_carat, color = cut)) +
+  geom_point() +
+  labs(title = "Relation of price and carat",
+       subtitle = "by cut class",
+       x = "price", y = "carat")
+\end{Verbatim}
+
+\end{Answer}  
+\setboolean{firstanswerofthechapter}{false}
 ```
 
 ```{=tex}
-\begin{Exercise}\label{EX2}
-\noindent 1. 다음의 데이터를 R의 객체로 만들어 보아라.
+\setboolean{chapterexerlevel}{true}
+\begin{Exercise}[label={exerbitpublish}]
+\noindent 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?
 \begin{tasks}[label=(\arabic*)](1)
- \task 합격, 불합격, 불합격, 합격, 불합격
- \task 1등급, 2등급, 3등급, 2등급, 5등급, 3등급, 4등급, 4등급, 3등급, 3등급
- \task 12㎝, 23㎝, 32㎝, 22㎝, 19㎝, 21㎝, 20㎝
+ \task dplyr
+ \task ggplot2
+ \task tidyr
+ \task dlookr
 \end{tasks}
 
 \noindent 2. 다음의 데이터 객체를 외부 파일로 출력해 보아라.
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+if(!require("ragg")){
+  install.packages("ragg")
+  library("ragg")
+}   
+\end{Verbatim}
+
+\noindent 3. ggplot2 패키지의 diamonds 데이터셋으로 dplyr을 이용해서 다음 과정으로 계산하고 시각화 하여라.
 \begin{tasks}[label=(\arabic*)](1)
- \task R의 datas 패키지에 포함되어 있는 women 데이터 프레임을 women.csv 파일로 출력해 보아라.
- \task (1)의 파일을 다시 읽어 들여서 women2라는 이름의 데이터 프레임을 만들어라.
+ \task cut과 color별로 평균 가격과 평균 캐럿을 계산한 후 평균 가격의 내림차순으로 정렬하라.
+ \task (1)의 결과로 평균 가격과 평균 캐럿의 상관계수를 구하라.
+ \task (1)의 결과로 평균 가격과 평균 캐럿의 산점도를 시각화하라. 이 때, cut별로 색상을 구분하라.
 \end{tasks}
 \end{Exercise}
+
+\renewcommand{\AnswerChapter}{\nameref{sec-bitpublish}}
+\setboolean{firstanswerofthechapter}{true}
+\begin{Answer}[ref={exerbitpublish}]
+
+\noindent 1. (4) dplyr
+
+\noindent 2. ragg 패키지가 없으면, 패키지를 설치한다. 그리고 ragg 패키지를 로드한다.
+
+\noindent 3. 
+\begin{Verbatim}[fontsize=\small,formatcom=\color{black}]
+# (1)
+library(tidyverse)
+
+agg_diamonds <- diamonds |> 
+  group_by(cut, color) |> 
+  summarise(mean_price = mean(price),
+            mean_carat = mean(carat),
+            .groups = "drop") |> 
+  arrange(desc(mean_price)) 
+agg_diamonds  
+
+# (2)
+agg_diamonds |> 
+  (function(x) cor(x$mean_price, x$mean_carat))()
+
+# (3)
+agg_diamonds |> 
+  ggplot(aes(x = mean_price, y = mean_carat, color = cut)) +
+  geom_point() +
+  labs(title = "Relation of price and carat",
+       subtitle = "by cut class",
+       x = "price", y = "carat")
+\end{Verbatim}
+
+\end{Answer}  
+\setboolean{firstanswerofthechapter}{false}
 ```
 
-만약에 연습문제를 별도의 페이지에서 시작하고 싶다면 \\clearpage 명령어를 사용하면 됩니다.
+#### 연습문제 해답 출력 
+
+연습문제 해답을 출력하기 위해서는 출력하고자 하는 위치에 `shipoutAnswer` 명령을 기술해야 합니다.
+
+본 예제 문서에서는 다음 정보를 `chap_solve_exercise.qmd` 파일에 기술했습니다.
+
+```{tex}
+# 연습문제 풀이 {#sec-solve}
+\shipoutAnswer
+```
+
+그리고 설정 파일인 `_quarto.yml` 파일에 다음과 같이 마지막 장 위치에 `chap_solve_exercise.qmd` 파일을 위치시켰습니다. 그래서 5장에 연습문제 해답을 출력하게 됩니다. 모든 장에 있는 모든 연습문제의 해답이 5장에 출력되는 것입니다.
+
+```{md}
+project:
+  type: book
+  output-dir: docs
+
+lang: ko-KR
+
+book:
+  title: "bitPublish를 이용하여 한글 책 조판하기"
+  chapters:
+    - index.qmd
+    - chap_exams.qmd
+    - chap_intro_bitpublish.qmd
+    - chap_troubleshooting.qmd
+    - chap_version.qmd
+    - chap_solve_exercise.qmd    
+bibliography: references.bib
+link-citations: false
+```
+
+#### 연습문제 페이지 넘기기
+
+만약에 연습문제를 본문에 출력하지 않고 다음 페이지에서 시작하고 싶다면, 다음처럼 `clearpage` 명령어를 사용하면 됩니다.
+
+```{tex}
+\clearpage
+```
 
 
 ## bitPublish 활용을 위한 팁

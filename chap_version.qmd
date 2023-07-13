@@ -94,3 +94,16 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 - table_with_caption() 오류 수정 (#49)
     - PDF 아웃 포맷에서 테이블의 헤더(변수 이름)가 `iris` 변수 이름으로 출력되는 문제
     
+
+### version 0.2.8
+
+- **2023-07-13**
+
+- 연습문제 서식 개선 및 연습문제 해답 기능 추가 (#38)
+    - 연습문제 헤더 사용자 정의 지원
+        - 장(chapter) 레벨과 절(section) 레벨 중에서 선택
+        - 연습문제 이름을 사용자가 정의 가능
+            - 기본 이름은 **"연습문제"**이지만, "Exercise" 등으로 변경 가능
+    - 예제 본문에 연습문제 및 연습문제 해답 사용방법 추가
+
+    
