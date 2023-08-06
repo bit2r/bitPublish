@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>bitPublish를 이용하여 한글 책 조판하기 - 1&nbsp; 예제를 위한 장</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap_intro_bitpublish.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/bit2r/bitPublish/style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_exams.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="검색" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">bitPublish를 이용하여 한글 책 조판하기</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="검색"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">머리말</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_exams.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_intro_bitpublish.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_solve_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#데이터" id="toc-데이터" class="nav-link active" data-scroll-target="#데이터"><span class="header-section-number">1.1</span> 데이터</a>
+  <ul class="collapse">
+  <li><a href="#측정의-타당도-및-신뢰도" id="toc-측정의-타당도-및-신뢰도" class="nav-link" data-scroll-target="#측정의-타당도-및-신뢰도"><span class="header-section-number">1.1.1</span> 측정의 타당도 및 신뢰도</a></li>
+  <li><a href="#척도" id="toc-척도" class="nav-link" data-scroll-target="#척도"><span class="header-section-number">1.1.2</span> 척도</a></li>
+  <li><a href="#도수분포표" id="toc-도수분포표" class="nav-link" data-scroll-target="#도수분포표"><span class="header-section-number">1.1.3</span> 도수분포표</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-data" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>이 장에서는 `bitPublish’를 이용하여 작성한 한글 책’의 형태를 이해할 수 있도록, 여러 조판 방법의 예시를 표현한다. 본문에 표현되는 내용은 저술중인, 가칭 “R로 배우는 기초 통계학”의 일부를 발췌한 것이다.<span class="citation" data-cites="ryu2013rstat">(유충현 와/과 이상호 2013)</span> 그러므로 본문의 내용은 완벽한 문맥이 아닌, 중간중간 문단이나 내용이 제거된 불완전한 내용임을 밝혀 둔다.</p>
+<div class="cell" data-layout-align="center">
+<titlebox class="bluejeans">
+<h4 class="anchored">
+<span class="Cbluejeans">학습 목표</span>
+</h4>
+<p>
+데이터의 분류 체계로서의 척도를 이해하고, 이를 기반으로 한 R 데이터 객체를 이해한다. CSV 파일을 읽고, 데이터 프레임 객체로 CSV 파일을 생성할 수 있다.
+</p>
+<p></p>
+</titlebox></div>
+<section id="데이터" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="데이터"><span class="header-section-number">1.1</span> 데이터</h2>
+<p><code>데이터(data)</code>를 국어사전에서 찾으면 다음과 같은 세 가지의 뜻을 가지고 있다.</p>
+<ol type="1">
+<li>이론을 세우는 데 기초가 되는 사실, 또는 바탕이 되는 자료.</li>
+<li>관찰이나 실험, 조사로 얻은 사실이나 정보.</li>
+</ol>
+<p>이 세 가지를 정리하면 데이터는 ``<strong>이론을 세우기 위해 관찰이나 실험, 조사를 통해서 얻은 정보를 컴퓨터가 처리하기 위한 형태로 만든 정보</strong>”로 생각해 볼 수 있다. 이 절에서는 데이터의 정의에서 컴퓨터가 처리하기 위한 형태로 된 정보를 R이 처리하기 위한 형태로 된 정보로 간주할 것이다. 또한 위키피디아(Wikipedia)에서는 데이터를 ``<strong>항목(items)의 집합(set)에 속하는 질적(qualitative) 또는 양적(quantitative) 변수(variables)의 값(values)</strong>”으로 정의하고 있다. 여기서 항목의 집합이란 관심이 있는 객체의 집합을 의미하며, 변수는 항목의 특성을 의미한다. 국어사전에서의 데이터 정의는 데이터의 목적성과 취득 방법 및 형태에 의한 것이라면, 위키피디아에서의 정의는 데이터의 속성에 대한 것이다.</p>
+<p>국어사전에서의 정의를 기준으로 R을 이용한 통계분석을 위해서는 몇 단계의 과정이 필요하다.</p>
+<p>첫째로, <strong>사건이나 사실 등의 현상을 관찰하여 일정한 규칙에 의한 체계적인 단위의 수치를 부여</strong>하는 <code>측정</code>이 필요하다. 측정을 위해서는 자, 저울, 속도계, 온도계, 혈압계와 같은 측정을 위한 도구가 필요할 수도 있으며, 이를 통해서 측정한 현상을 수량화한다. 이처럼 사건이나 사실 등의 현상을 수량화하기 위해서 그 현상에 숫자를 부여한 것을 <code>척도</code>라 한다.</p>
+<p>이러한 일련의 과정에 오류가 발생할 수 있다. 측정하는 과정에서 발생할 수 있는 측정의 오류, 측정된 값을 데이터로 코딩하는 과정에서의 오기(타)로 인한 오류도 있을 수 있다. 또한 측정하는 저울, 온도계와 같이 측정하는 도구의 정밀도에 따른 오류도 있을 수 있다. 그러므로 올바른 통계분석을 위해서는 분석 단계 이전에 정밀도가 높은 측정도구를 이용하여 정확하게 측정하고, 측정된 값을 정확하게 옮겨서 데이터화하는 것이 필요하다.</p>
+<p>마지막으로 코딩된 데이터를 R의 데이터 객체로 변환하는 방법도 중요하다. 이 작업에서는 적절한 R의 데이터 객체로의 전환이 필요하며, 척도의 적당한 변환도 필요할 수 있다.</p>
+<section id="측정의-타당도-및-신뢰도" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="측정의-타당도-및-신뢰도"><span class="header-section-number">1.1.1</span> 측정의 타당도 및 신뢰도</h3>
+<p>우수한 측정도구는 다음의 두 가지 조건을 만족해야 한다.</p>
+<p>양궁으로 과녁을 맞히는 예를 R을 이용해서 그려 보자. 다음의 예제를 실행하면 <a href="#fig-circles">그림&nbsp;<span>1.1</span></a>같은 네 가지 종류 플롯을 얻는다. 여기서 가장 이상적인 과녁은 오른쪽 상단의 과녁으로 타당도와 신뢰도가 높음을 알 수 있다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-circles" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="chap_exams_files/figure-html/fig-circles-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;1.1: 타당도와 신뢰도</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="척도" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="척도"><span class="header-section-number">1.1.2</span> 척도</h3>
+<p>측정된 데이터는 본질적인 내용이 기호나 수량화되어서 변수로 만들어진다. 이 수치화된 변숫값들의 체계를 <code>척도(scale)</code>한다. 척도는 다음처럼 <code>명목척도</code>, <code>서열척도</code>, <code>구간척도</code>, <code>비율척도</code>로 나누어진다.</p>
+<ul>
+<li>명목척도(nominal scale, 名目尺度)
+<ul>
+<li>분류 목적으로 수치화한 것으로 양적인 의미를 전혀 갖지 않고, 명칭을 대신하는 척도</li>
+<li>예) 성별(1-남자, 2-여자)</li>
+</ul></li>
+<li>서열척도(ordinal scale, 序列尺度)
+<ul>
+<li>명목척도와 같은 개념에 추가적으로 서열(순서) 관계의 속성을 갖는 척도</li>
+<li>예) 등급: 1-1등급, 2-2등급, 3-3등급. 크기: 1-대, 2-중, 3-소</li>
+</ul></li>
+</ul>
+<p>빈도수를 이용한 계산만 의미가 있는 명목척도는 일반적으로 범주형 데이터로 만들어 진다. 예를 들면 성별이라는 <code>범주형 데이터(categorical data)</code>에서의 남자, 여자와 같은 <code>수준(level)</code>에 대한 도수 및 비율(빈도)을 이용한 분석을 수행할 수 있다. 서열척도 또한 범주형 데이터로 만들어지지만 명목척도와 달리 순서의 의미가 있기 때문에 빈도분석 이외에 중위수 등 순서통계량 기반의 분석을 수행할 수 있다. 구간척도와 비율척도에는 여러 가지의 기술통계 및 추론통계의 방법을 사용할 수 있으며, 우리가 일상생활에서 활용하는 수치 데이터들의 대부분은 비율척도로 이루어져 있다.</p>
+<div id="exr-scale" class="theorem exercise">
+<p><span class="theorem-title"><strong>예제 1.1 (척도의 표현) </strong></span>네 가지의 척도를 R의 데이터 객체로 표현해 보자.</p>
+</div>
+<p>명목척도에 대한 예제다. 예제의 fruits는 세 가지 과일 이름을 갖는 범주형 데이터로 R의 <code>factor()</code> 함수로 만들 수 있다. 이 함수는 <code>factor</code>라는, 명목척도를 표현하는 데이터 객체를 생성한다. 데이터 객체인 <code>factor</code>는 <code>table()</code> 함수를 이용해서 도수와 비율을 구할 수 있다.<br>
+명목척도를 표현하는 <code>factor</code> 객체는 apple, banana, pear와 같이 과일 이름으로 표현되지만 R의 내부에서는 1, 2, 3과 같이 인식된다. 그래서 <code>as.numeric()</code> 함수를 이용하면 apple, pear, pear, apple, banana가 1, 3, 3, 1, 2와 같이 인식됨을 알 수 있다. 여기서 각 수준을 인식하는 1, 2, 3은 비록 수치형이지만 각 수준의 크기가 아니라 몇 번째 수준인가를 나타내는 지시자다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"pear"</span>, <span class="st">"pear"</span>, <span class="st">"apple"</span>, <span class="st">"banana"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">factor</span>(fruits)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fruits</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] apple  pear   pear   apple  banana
+Levels: apple banana pear</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fruits)                               <span class="co"># 도수분포</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fruits
+ apple banana   pear 
+     2      1      2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(fruits) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">table</span>(fruits)) <span class="sc">*</span> <span class="dv">100</span>    <span class="co"># 비율 (백분율)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fruits
+ apple banana   pear 
+    40     20     40 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(fruits)                          <span class="co"># 수준 인덱스</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 3 1 2</code></pre>
+</div>
+</div>
+<p>구간척도와 비율척도를 표현해 보자. 두 척도에서의 차이점은 절대 0의 여부에 따르기 때문에 표현하는 방법은 동일할 뿐, 개념적으로 절대 0을 갖느냐 갖지 못하느냐의 차이로 구분된다. 다음은 섭씨온도 값을 표현한 것과 절대온도 값을 표현한 예제다. 그런데 사실 두 사례는 동일한 온도값이다. 섭씨온도에 273.15를 더해서 절대온도로 변환하였기 때문이다.</p>
+</section>
+<section id="도수분포표" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="도수분포표"><span class="header-section-number">1.1.3</span> 도수분포표</h3>
+<p><code>도수분포표(frequency table)</code>는 데이터의 분포 형태를 알아보기 위해서, 데이터를 구간별로 나누어 각 구간에 속하는 관찰치의 개수를 표로 나타낸 것이다. 각 구간을 <code>계급(class)</code>이라 하고 계급에 속한 관찰치의 개수를 <code>도수(frequency)</code>라 한다.</p>
+<p>데이터가 <span class="math inline">\(x_1, x_2, x_3, \cdots, x_n\)</span>일 때, 도수분포표는 다음의 단계적 방법으로 만든다.</p>
+<ol type="1">
+<li>데이터의 개수 <span class="math inline">\(n\)</span>을 구한다.</li>
+<li>데이터의 최댓값 <span class="math inline">\(\operatorname{Max}\)</span>와 최솟값 <span class="math inline">\(\operatorname{Min}\)</span>을 구한다. 데이터를 오름차순으로 정렬하여 순서통계량 <span class="math inline">\(x_{(1)}, x_{(2)}, x_{(3)}, \cdots, x_{(n)}\)</span>을 만들면 최댓값 <span class="math inline">\(\operatorname{Max}\)</span>와 최솟값 <span class="math inline">\(\operatorname{Min}\)</span>은 각각 <span class="math inline">\(x_{(n)}\)</span>과 <span class="math inline">\(x_{(1)}\)</span>이다.</li>
+<li>계급의 개수 계산 (Sturges 공식을 이용한 계급의 개수 계산) <span class="math display">\[
+n_{\text {class }}=1+\frac{\log _n}{\log _2} \text { 근처의 정수 }
+\]</span> 데이터의 개수가 너무 적으면 데이터의 분포에 대한 정보를 많이 잃게 되며, 너무 많으면 데이터의 전반적인 형태를 파악하기 어렵다.</li>
+<li>데이터의 최소단위(Unit) <span class="math inline">\(u\)</span>를 구한다. 예를 들어 168.2,175.3,171.2 등의 최소단위는 0.1이다.</li>
+<li>누적도수, 상대도수, 누적상대도수 등을 구한다.</li>
+</ol>
+<ul>
+<li>누적도수: 각 계급별로 누적된 도수로 마지막 계급의 누적도수는 <span class="math inline">\(n\)</span>이 된다. <span class="math inline">\(k\)</span>번째 계급의 누적도수: <span class="math display">\[F_k=\sum_{i=1}^k f_i\]</span></li>
+<li>상대도수: 계급도수를 데이터 개수로 나눈 비율로 전체 데이터 중에서 해당계 급이 차지하는 비율을 의미한다. 상대도수의 합은 1이 된다. <span class="math display">\[
+\begin{aligned}
+&amp; f_i^R=\frac{f_i}{n}, i=1,2, \cdots, n_{\text {class }} \\
+&amp; \sum_{i=1}^{n_{\text {class }}} f_i^R=\frac{f_1}{n}+\frac{f_2}{n}+\cdots+\frac{f_{n_{\text {class }}}}{n}=\sum_{i=1}^{n_{\text {class }}} f_i \times \frac{1}{n}=n \times \frac{1}{n}=1
+\end{aligned}
+\]</span></li>
+<li>누적상대도수: 각 계급에서의 누적된 상대도수의 값으로 누적 비율을 의미한다. 마지막 계급에서는 그 값이 1이 된다. <span class="math inline">\(k\)</span>번째 계급의 누적상대도수: <span class="math display">\[
+C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
+\]</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="infobox information">
+<p><strong>클래스 상속과 ordered factor</strong></p>
+<p>상속(inheritance)은 부모 클래스의 내용(속성과 메소드)을 자식 클래스가 물려받는 것으로 객체지향형 언어의 특징이다. 예를 들면, 자동차라는 부모 클래스를 상속받아 세단과 SUV라는 자식 클래스를 생성하면, 자식 클래스인 세단과 SUV는 부모 클래스인 자동차가 갖고 있는 속성인 <em>‘핸들’</em>, <em>‘브레이크’</em>, <em>‘바퀴’</em>와 같은 속성과 <em>‘엑셀을 밟다’</em>, <em>‘핸들을 돌리다’</em>, <em>‘브레이크를 밟다’</em>와 같은 메소드를 사용할 수 있다. 세단은 <em>‘가벼운 중량’</em>, <em>‘낮은 차체’</em> 속성을, SUV는 <em>‘무거운 중량’</em>, <em>‘높은 차체’</em> 속성을 추가로 만들어서 부모 클래스로부터 자식 클래스를 정의한다.</p>
+<p>R에서도 클래스 상속의 개념이 있다. ordered() 함수는 ’factor’라는 부모 클래스를 상속하여 ’ordered’라는 자식 클래스를 만든다. 그러므로 ’rdered’는 factor의 내용에, 수준의 순서가 서열로 처리되는 특성이 추가된 클래스다. 속성 중 class의 값이 “ordered” “factor”인 것은, 부모 클래스인 factor로부터 상속받아 만들어진 ordered 클래스라는 의미다. 오른쪽이 부모 클래스고, 왼쪽이 자식 클래스다.</p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="infobox caution">
+<p><strong>CP949 인코딩과 fileEncoding 인수</strong></p>
+<p>MS Windows에서는 별도의 설정이 없으면, 텍스트 파일의 한글을 <strong>CP949</strong>로 인코딩하여 저장한다. 그러므로 MS Windows에서 만들어진 한글이 포함된 텍스트 파일을 읽을 때에는, ‘fileEncoding’ 인수에 “cp949”를 지정해야 한다. 그런데 그림처럼 Excel에서 CSV 파일을 저장할 때, 인코딩을 <strong>UTF-8</strong>로 설정하면 <code>read.table()</code> 함수에서 fileEncoding 인수로 인코딩을 “cp949”로 지정하지 않아도 된다.</p>
+<p>외산 소프트웨어에서 한글을 문제없이 사용하는 것은 매우 번거롭고 까다롭다. 최선의 방법 중 하나는 한글이 포함된 데이터 파일을 <strong>UTF-8</strong> 인코딩으로 저장하는 것임을 잊지말자.</p>
+</div>
+</div>
+<p><code>tidyverse</code> 패키지는 R의 대표적인 패키지로 데이터 분석의 일련과정을 지원하는 여러 유용한 패키지의 모음이다. 그래서 패키지군이라 부르는 게 맞을듯 하다. <code>tidyverse</code> 패키지군을 구성하는 대표적인 패키지에는 <code>dplyr</code> 패키지와 <code>ggplot2</code> 패키지가 있다. <code>dplyr</code> 패키지는 논리적이고 순차적인 문법으로 데이터를 조작하거나 집계하는 패키지며 <code>ggplot2</code> 패키지는 데이터 시각화 패키지다. 우리는 <code>dplyr</code> 패키지를 이용해서 끊김없는 논리적 흐름의 전개로 도수분포표를 계산할 것이다.</p>
+<p>개별 파이프의 목적은 파이프의 직경과 길이에 해당하는 수돗물을 특정 위치까지 이동시키는 것이다. 그리고 순차적인 데이터 처리의 흐름은 <a href="#fig-pipeline">그림&nbsp;<span>1.2</span></a>처럼 해당 처리를 담당하는 파이프들을 순차적으로 연결한 구조의 파이프라인으로 정의된다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-pipeline" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/pipeline.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;1.2: 파이프와 파이프라인</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>input -&gt; process -&gt; output</strong> 구조의 단일 파이프를 연결하기 위해서 <code>tidyverse</code> 패키지군의 <code>magrittr</code> 패키지가 파이프 연산자인 <code>%&gt;%</code>를 제공한다. 이 연산자의 역할은 연산자 이전 함수(process)에서의 결과(output)를 다음 함수(process)의 입력(input)으로 전달하는 역할을 수행한다. 결국 이 연산자를 통해서 파이프라인이 만들어지며 <strong>input -&gt; process -&gt; output -&gt; input -&gt; process -&gt; output</strong>과 같은 구조를 만들 수 있게 된다. 즉, 파이프 연산자 <code>%&gt;%</code>는 파이프라인을 만드는 배관공이라 할 수 있다.</p>
+<p>이러한 이유들로 인해서 파이프 연산자는 특히 <code>dplyr</code> 패키지의 데이터 처리에서 두각을 보였으며, 많은 R 사용자들의 R 스크립트에서 사랑받게되었다. 그래서 이제는 외부(3rd-party) 패키지가 아니라 R 엔진 자체에 파이프 연산자를 포함시켰고, <code>|&gt;</code>로 표현한다.</p>
+<div class="cell" data-layout-align="center">
+<blockquote class="otro-blockquote blockquote">
+이 책에서는 수리적인 알고리즘의 이해를 위한 작업이 아니라면, 가급적으로 R의 내장 파이프 연산자를 |&gt;를 사용하여 파이프라인 처리를 하겠다. 유용한 기능이기 때문에 적극적으로 습득하는 것을 추천한다.
+</blockquote>
+</div>
+<p><code>state.region</code>은 내장 데이터셋으로 미국 50개주를 ‘Northeast’, ‘South’, ‘North Central’, `West’라는 4개 권역으로 분류한 범주형 데이터다. 이 데이터를 <code>dplyr</code> 패키지의 함수와 파이프 연산자를 이용해서 도수분포표를 만들어보겠다.</p>
+<p>먼저 <code>head()</code> 함수로 데이터의 앞부분 몇 건을 조회해 본다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(state.region)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] South West  West  South West  West 
+Levels: Northeast South North Central West</code></pre>
+</div>
+</div>
+<p>대략 데이터의 구조가 이해되었으니, <code>tidyverse</code> 패키지를 불러들여서 작업을 위한 환경을 구성한다. <code>library()</code> 함수로 <code>tidyverse</code> 패키지를 불러오면 <code>dplyr</code>, <code>ggplot2</code>를 비롯한 몇 개의 패키지가 자동으로 로드된다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음은 도수분포표를 생성하기 위한 <code>dplyr</code> 패키지 함수와 파이프 연산자를 이용한 스크립트다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>state.region <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">|&gt;</span>   </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(권역 <span class="ot">=</span> state.region, <span class="at">name =</span> <span class="st">"도수"</span>) <span class="sc">|&gt;</span>       </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(누적도수 <span class="ot">=</span> <span class="fu">cumsum</span>(도수)) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(상대도수 <span class="ot">=</span> 도수 <span class="sc">/</span> <span class="fu">sum</span>(도수)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(누적상대도수 <span class="ot">=</span> <span class="fu">cumsum</span>(상대도수))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           권역 도수 누적도수 상대도수 누적상대도수
+1     Northeast    9        9     0.18         0.18
+2         South   16       25     0.32         0.50
+3 North Central   12       37     0.24         0.74
+4          West   13       50     0.26         1.00</code></pre>
+</div>
+</div>
+<p>열거형 도수분포표는 복잡한 수리적인 계산 알고리즘이 필요없다. 논리적인 사고로 데이터 처리 프로세스를 다음처럼 순차적으로 풀어나가면 된다.</p>
+<ol type="1">
+<li>factor를 데이터 프레임 객체로 변환한다.
+<ul>
+<li><code>data.frame()</code></li>
+</ul></li>
+<li>집계 대상 변수의 수준(levels)별로 도수를 계산한다.
+<ul>
+<li><code>count()</code></li>
+</ul></li>
+</ol>
+<p>이 사례에서 중요한 것은 파이프 연산자로 심리스(seamless)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>하게 데이터를 처리하는 순차 연산을 구현한다는 것이다.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ryu2013rstat" class="csl-entry" role="listitem">
+유충현, 와/과 이상호. 2013. <em>R을 이용한 통계학 이해</em>. 자유아카데미.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>뭔가를 연결할 때 마치 원래 하나였던 것처럼 끊김없이 매끄럽게 연결하는 것을 의미한다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">머리말</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap_intro_bitpublish.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

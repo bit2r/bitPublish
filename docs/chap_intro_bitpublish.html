@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>bitPublish를 이용하여 한글 책 조판하기 - 2&nbsp; bitPublish 소개</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap_troubleshooting.html" rel="next">
+<link href="./chap_exams.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/bit2r/bitPublish/style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_intro_bitpublish.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="검색" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">bitPublish를 이용하여 한글 책 조판하기</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="검색"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">머리말</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_exams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_intro_bitpublish.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap_solve_exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#quarto-소개" id="toc-quarto-소개" class="nav-link active" data-scroll-target="#quarto-소개"><span class="header-section-number">2.1</span> Quarto 소개</a>
+  <ul class="collapse">
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">2.1.1</span> Quarto</a></li>
+  <li><a href="#quarto-extensions" id="toc-quarto-extensions" class="nav-link" data-scroll-target="#quarto-extensions"><span class="header-section-number">2.1.2</span> Quarto extensions</a></li>
+  <li><a href="#bitpublish" id="toc-bitpublish" class="nav-link" data-scroll-target="#bitpublish"><span class="header-section-number">2.1.3</span> bitPublish</a></li>
+  </ul></li>
+  <li><a href="#bitpublish-소개" id="toc-bitpublish-소개" class="nav-link" data-scroll-target="#bitpublish-소개"><span class="header-section-number">2.2</span> bitPublish 소개</a></li>
+  <li><a href="#조판-설정" id="toc-조판-설정" class="nav-link" data-scroll-target="#조판-설정"><span class="header-section-number">2.3</span> 조판 설정</a>
+  <ul class="collapse">
+  <li><a href="#페이지-레이아웃" id="toc-페이지-레이아웃" class="nav-link" data-scroll-target="#페이지-레이아웃"><span class="header-section-number">2.3.1</span> 페이지 레이아웃</a></li>
+  <li><a href="#폰트-설정" id="toc-폰트-설정" class="nav-link" data-scroll-target="#폰트-설정"><span class="header-section-number">2.3.2</span> 폰트 설정</a></li>
+  <li><a href="#머리글-바닥글" id="toc-머리글-바닥글" class="nav-link" data-scroll-target="#머리글-바닥글"><span class="header-section-number">2.3.3</span> 머리글 바닥글</a></li>
+  <li><a href="#글줄-사이" id="toc-글줄-사이" class="nav-link" data-scroll-target="#글줄-사이"><span class="header-section-number">2.3.4</span> 글줄 사이</a></li>
+  </ul></li>
+  <li><a href="#bitpublish-서식-이용하기" id="toc-bitpublish-서식-이용하기" class="nav-link" data-scroll-target="#bitpublish-서식-이용하기"><span class="header-section-number">2.4</span> bitPublish 서식 이용하기</a>
+  <ul class="collapse">
+  <li><a href="#멀티-아웃-포맷" id="toc-멀티-아웃-포맷" class="nav-link" data-scroll-target="#멀티-아웃-포맷"><span class="header-section-number">2.4.1</span> 멀티 아웃 포맷</a></li>
+  <li><a href="#사용자-정의-블록" id="toc-사용자-정의-블록" class="nav-link" data-scroll-target="#사용자-정의-블록"><span class="header-section-number">2.4.2</span> 사용자 정의 블록</a></li>
+  <li><a href="#정보-블록" id="toc-정보-블록" class="nav-link" data-scroll-target="#정보-블록"><span class="header-section-number">2.4.3</span> 정보 블록</a></li>
+  <li><a href="#이야기-블록" id="toc-이야기-블록" class="nav-link" data-scroll-target="#이야기-블록"><span class="header-section-number">2.4.4</span> 이야기 블록</a></li>
+  <li><a href="#타이틀-박스" id="toc-타이틀-박스" class="nav-link" data-scroll-target="#타이틀-박스"><span class="header-section-number">2.4.5</span> 타이틀 박스</a></li>
+  <li><a href="#예제" id="toc-예제" class="nav-link" data-scroll-target="#예제"><span class="header-section-number">2.4.6</span> 예제</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">2.4.7</span> 연습문제</a></li>
+  </ul></li>
+  <li><a href="#bitpublish-활용을-위한-팁" id="toc-bitpublish-활용을-위한-팁" class="nav-link" data-scroll-target="#bitpublish-활용을-위한-팁"><span class="header-section-number">2.5</span> bitPublish 활용을 위한 팁</a>
+  <ul class="collapse">
+  <li><a href="#이미지-삽입" id="toc-이미지-삽입" class="nav-link" data-scroll-target="#이미지-삽입"><span class="header-section-number">2.5.1</span> 이미지 삽입</a></li>
+  <li><a href="#표-삽입" id="toc-표-삽입" class="nav-link" data-scroll-target="#표-삽입"><span class="header-section-number">2.5.2</span> 표 삽입</a></li>
+  <li><a href="#크로스-레퍼런스" id="toc-크로스-레퍼런스" class="nav-link" data-scroll-target="#크로스-레퍼런스"><span class="header-section-number">2.5.3</span> 크로스-레퍼런스</a></li>
+  <li><a href="#수식-입력" id="toc-수식-입력" class="nav-link" data-scroll-target="#수식-입력"><span class="header-section-number">2.5.4</span> 수식 입력</a></li>
+  <li><a href="#찾아보기-등록" id="toc-찾아보기-등록" class="nav-link" data-scroll-target="#찾아보기-등록"><span class="header-section-number">2.5.5</span> 찾아보기 등록</a></li>
+  <li><a href="#참고문헌-등록" id="toc-참고문헌-등록" class="nav-link" data-scroll-target="#참고문헌-등록"><span class="header-section-number">2.5.6</span> 참고문헌 등록</a></li>
+  <li><a href="#자동조사-처리" id="toc-자동조사-처리" class="nav-link" data-scroll-target="#자동조사-처리"><span class="header-section-number">2.5.7</span> 자동조사 처리</a></li>
+  <li><a href="#커버-이미지-추가" id="toc-커버-이미지-추가" class="nav-link" data-scroll-target="#커버-이미지-추가"><span class="header-section-number">2.5.8</span> 커버 이미지 추가</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-bitpublish" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>이 장에서는 `bitPublish’의 활용을 위한 특장점과 기능을 소개합니다.</p>
+<div class="cell" data-layout-align="center">
+<titlebox class="bluejeans">
+<h4 class="anchored">
+<span class="Cbluejeans">학습 목표</span>
+</h4>
+<p>
+bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.
+</p>
+<p></p>
+</titlebox></div>
+<section id="quarto-소개" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quarto-소개"><span class="header-section-number">2.1</span> Quarto 소개</h2>
+<section id="quarto" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">2.1.1</span> Quarto</h3>
+<p><code>Quarto</code><span class="citation" data-cites="posit2023quarto">(posit 2023b)</span>는 오픈 소스의 과학 및 기술 출판 시스템으로 다음과 같은 기능을 제공합니다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<ul>
+<li><code>Jupyter</code> 노트북, <code>RStudio</code>를 사용하거나 선호하는 편집기로 마크다운 문서를 작성합니다.</li>
+<li><code>Python</code>, <code>R</code>, <code>Julia</code> 및 <code>Observable</code>을 사용하여 동적 콘텐츠를 만듭니다.</li>
+<li><code>HTML</code>, <code>PDF</code>, <code>MS Word</code>, <code>ePub</code> 등으로 재현 가능한 프로덕션 품질의 기사, 프리젠테이션, 웹 사이트, 블로그 및 책을 게시합니다.</li>
+<li><code>Posit Connect</code>, <code>Confluence</code> 또는 기타 게시 시스템에 게시하여 조직 전체에서 지식과 통찰력을 공유합니다.</li>
+<li>방정식, 인용, 상호 참조, 그림 패널, 콜아웃, 고급 레이아웃 등을 포함한 <code>팬독</code> 마크다운을 사용하여 작성합니다.</li>
+</ul>
+<p>Quarto<span class="citation" data-cites="horst2022quartoarch">(Horst 2022)</span>를 요약하자면 <a href="#fig-quarto">그림&nbsp;<span>2.1</span></a>처럼, Quarto 문서를 <code>knitr</code> 또는 <code>jupyter</code>로, <code>마크다운</code>(<code>Markdown</code>) 문서로 랜더링한 다음 <code>팬독</code>(<code>Pandoc</code>)에 의해 마크다운 문서를 HTML, PDF 또는 Word 문서를 비롯한 여러 출력 포맷으로 변환해주는 시스템입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-quarto" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/b5217f2a-f129-4bf9-90dc-c5b9783d0ea8_rw_1920.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.1: Quarto 매커니즘, Allison Horst.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="quarto-extensions" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="quarto-extensions"><span class="header-section-number">2.1.2</span> Quarto extensions</h3>
+<p>extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 제공하며, 다음과 같은 유형으로 구분합니다.<span class="citation" data-cites="posit2023extensions">(posit 2023a)</span></p>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>영문 유형</th>
+<th>국문 유형</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shortcodes</td>
+<td>단축 코드</td>
+<td>다양한 유형의 콘텐츠를 생성하는 특수 마크다운 지시문. 예를 들어 짧은 코드를 만들어 문서에 트윗이나 동영상을 삽입</td>
+</tr>
+<tr class="even">
+<td>Filters</td>
+<td>필터</td>
+<td>새로운 전역 동작 또는 새로운 마크다운 렌더링 동작을 도입하기 위한 도구. 예를 들어 출력 접기, 이미지 슬라이더 등의 필터 제작</td>
+</tr>
+<tr class="odd">
+<td>Journal Articles</td>
+<td>저널 기사</td>
+<td>마크다운으로 전문적인 저널 기사를 작성. LaTeX(PDF) 및 HTML 버전을 모두 생성할 수 있음</td>
+</tr>
+<tr class="even">
+<td>Custom Formats</td>
+<td>맞춤 형식</td>
+<td>문서 옵션, 템플릿, 스타일시트 및 기타 콘텐츠를 함께 묶어 새로운 출력 형식을 생성</td>
+</tr>
+<tr class="odd">
+<td>Revealjs Plugins</td>
+<td>Revealjs 플러그인</td>
+<td>Revealjs로 만든 HTML 프레젠테이션의 기능을 확장</td>
+</tr>
+<tr class="even">
+<td>Project Types</td>
+<td>프로젝트 유형</td>
+<td>표준 콘텐츠와 옵션을 함께 묶는 새로운 프로젝트 유형을 만들거나, 사용자 지정 HTML 형식으로 웹 사이트 제작</td>
+</tr>
+<tr class="odd">
+<td>Starter Templates</td>
+<td>시작 템플릿</td>
+<td>템플릿과 예제 콘텐츠를 제공하여 사용자가 새 프로젝트를 시작할 수 있도록 지원</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bitpublish" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="bitpublish"><span class="header-section-number">2.1.3</span> bitPublish</h3>
+<p><code>bitPublish</code>는 <code>Quarto</code> <code>extensions</code>로 R 기반으로 한글 책을 저작해 줍니다. 또한 한글 책 저작을 위한 예제 콘텐츠를 제공합니다. 그러므로 extensions 분류 상으로는 <code>맞춤 형식</code>, <code>시작 템플릿</code>으로 분류할 수 있습니다.</p>
+</section>
+</section>
+<section id="bitpublish-소개" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="bitpublish-소개"><span class="header-section-number">2.2</span> bitPublish 소개</h2>
+<p><code>Quarto</code>를 이용해서 책으로 만들 수 있는 포맷에는 <code>HTML</code>, <code>PDF</code>, <code>MS Word</code>, <code>EPUB</code>, <code>AsciiDoc</code>이 있습니다. <code>bitPublish</code>는 이중에서 <code>PDF</code> 포맷의 책을 생성합니다.</p>
+<p>현재 bitPublish의 기본 설정에서는 4 배판 판형을, 갖는 영어를 포함한 라틴계열 언어와 한국어, 중국어를 혼용한 책을 저작할 수 있습니다.</p>
+</section>
+<section id="조판-설정" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="조판-설정"><span class="header-section-number">2.3</span> 조판 설정</h2>
+<section id="페이지-레이아웃" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="페이지-레이아웃"><span class="header-section-number">2.3.1</span> 페이지 레이아웃</h3>
+<p>현재 bitPublish의 기본 페이지 레이아웃 설정은 4 배판으로 설계되었습니다. 4 배판 <code>판형</code>의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. <code>LaTeX</code>의 <code>geometry</code> 패키지를 사용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geometry</span><span class="kw">:</span><span class="co">                            # 4x6 배판 도서를 위한 설정</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> paper=a4paper</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutwidth=190mm</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutheight=260mm</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layouthoffset=10mm</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutvoffset=18.5mm</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> showcrop</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> top=20mm</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> headsep=10mm             </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> bottom=30mm</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> footskip=15mm                 </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> left=25mm</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> right=25mm</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> centering   </span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="폰트-설정" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="폰트-설정"><span class="header-section-number">2.3.2</span> 폰트 설정</h3>
+<p>bitPublish는 전자책이 아닌 종이에 출력되는 책의 저작을 목적으로 만들어졌기 때문에, 폰트의 선택에서 <code>TTF</code>(<code>True Type Font</code>)가 아닌 <code>OTF</code>(<code>Open Type Font</code>)를 선택하였습니다.</p>
+<section id="폰트-선정의-기준" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="폰트-선정의-기준"><span class="header-section-number">2.3.2.1</span> 폰트 선정의 기준</h4>
+<ul>
+<li>출판 시 발생할 라이센스 이슈 제거
+<ul>
+<li><strong>모든 폰트를 상업적으로 이용이 가능한 폰트로 선정</strong></li>
+<li>serif<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 영어 폰트인 Times New Roman 저작권의 이슈
+<ul>
+<li>가독성이 뛰어난 범용적인 세리프체로 영문 에세이와 학위 논문의 표준 폰트로 자리잡았으나</li>
+<li>상업용으로 쓸 땐 저작권 면책 조건을 확인해야 함</li>
+</ul></li>
+<li>sans-serif<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 영어 폰트인 Helvetica 저작권의 이슈
+<ul>
+<li>대표적인 산세리프 글꼴로 20세기에 널리 쓰였음<br>
+</li>
+</ul></li>
+</ul></li>
+<li>출판 인쇄물의 미적 완성도
+<ul>
+<li>가독성, 심미성 등</li>
+</ul></li>
+</ul>
+</section>
+<section id="한국어-폰트" class="level4" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="한국어-폰트"><span class="header-section-number">2.3.2.2</span> 한국어 폰트</h4>
+<ul>
+<li>serif 폰트:
+<ul>
+<li><strong>KoPubWorld바탕체_Pro</strong></li>
+</ul></li>
+<li>sans-serif 폰트:
+<ul>
+<li><strong>KoPubWorld돋움체_Pro</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="영어-폰트" class="level4" data-number="2.3.2.3">
+<h4 data-number="2.3.2.3" class="anchored" data-anchor-id="영어-폰트"><span class="header-section-number">2.3.2.3</span> 영어 폰트</h4>
+<ul>
+<li>serif 폰트:
+<ul>
+<li>Times New Roman 대체 폰트</li>
+<li><strong>STIX Two Text</strong></li>
+</ul></li>
+<li>sans-serif 폰트:
+<ul>
+<li><strong>Nimbus Sans L</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="한자-폰트" class="level4" data-number="2.3.2.4">
+<h4 data-number="2.3.2.4" class="anchored" data-anchor-id="한자-폰트"><span class="header-section-number">2.3.2.4</span> 한자 폰트</h4>
+<ul>
+<li><strong>KoPubWorld돋움체_Pro</strong></li>
+</ul>
+</section>
+<section id="mono-space-폰트" class="level4" data-number="2.3.2.5">
+<h4 data-number="2.3.2.5" class="anchored" data-anchor-id="mono-space-폰트"><span class="header-section-number">2.3.2.5</span> Mono space 폰트</h4>
+<ul>
+<li>mono space 폰트
+<ul>
+<li><strong>D2Coding</strong>
+<ul>
+<li>영어/한국어 모두 동일한 폰트 사용</li>
+<li>영어 mono space와 한국어 mono space를 혼용하면 자간격이 틀어짐</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="math-폰트" class="level4" data-number="2.3.2.6">
+<h4 data-number="2.3.2.6" class="anchored" data-anchor-id="math-폰트"><span class="header-section-number">2.3.2.6</span> Math 폰트</h4>
+<ul>
+<li>STIX Two Math</li>
+</ul>
+</section>
+<section id="r-그래픽스-이미지-폰트" class="level4" data-number="2.3.2.7">
+<h4 data-number="2.3.2.7" class="anchored" data-anchor-id="r-그래픽스-이미지-폰트"><span class="header-section-number">2.3.2.7</span> R 그래픽스 이미지 폰트</h4>
+<ul>
+<li>한국어 폰트
+<ul>
+<li><strong>나눔스퀘어</strong></li>
+</ul></li>
+<li>영어 폰트
+<ul>
+<li><strong>Nimbus Sans L</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="주의사항" class="level4" data-number="2.3.2.8">
+<h4 data-number="2.3.2.8" class="anchored" data-anchor-id="주의사항"><span class="header-section-number">2.3.2.8</span> 주의사항</h4>
+<p>모든 폰트는 _extensions/bit2r/bitPublish/fonts 디렉토리에 위치합니다. 그래서 따로 설치할 필요도 없고, 이미 설치된 폰트도 중복으로 위치하게 됩니다. 그리고 <code>KoPubWorld바탕체_Pro</code>와 <code>KoPubWorld돋움체_Pro</code> 폰트를 사용하기 위해서는 <code>한국출판인회의</code> 홈페이지인 https://forms.gle/aQU7b3EoaF53zMKaA에 사용자 정보를 등록 후 무료로 사용하실 수 있습니다. 이 경우에는 https://www.kopus.org/wp-content/uploads/2021/04/서체_라이센스.pdf 페이지의 라이센스를 일독하시기 바랍니다.</p>
+</section>
+</section>
+<section id="머리글-바닥글" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="머리글-바닥글"><span class="header-section-number">2.3.3</span> 머리글 바닥글</h3>
+<p><code>머리글</code>(<code>header</code>)과 <code>바닥글</code>(<code>footer</code>)는 <code>fancyhdr</code> 패키지를 사용해서 정의하였습니다.</p>
+<p>_extensions/bit2r/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>중간 생략</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhf</span>{}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[EL]{<span class="fu">\changesize</span> <span class="fu">\numberfont</span> --- bitPublish를 이용하여}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[OR]{<span class="fu">\changesize</span> <span class="fu">\numberfont</span> 한글 책 조판하기 ---}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[EL]{{<span class="fu">\pagefont\thepage</span>}{<span class="fu">\hskip</span>4mm}{<span class="fu">\changesize</span> <span class="fu">\leftmark</span>}}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[OR]{{<span class="fu">\changesize</span> <span class="fu">\rightmark</span>}{<span class="fu">\hskip</span>4mm}{<span class="fu">\pagefont\thepage</span>}}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>만약에 머리글과 바닥글의 모양을 바꾸려면 직접 LaTeX 스크립트를 수정하면 됩니다. 책의 제목을 바꾸기 위해서는 <code>fancyhead</code>의 <code>EL</code>과 <code>OR</code>을 변경하면 됩니다.</p>
+</section>
+<section id="글줄-사이" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="글줄-사이"><span class="header-section-number">2.3.4</span> 글줄 사이</h3>
+<p>줄간격, 행간 등으로 부르는 글줄 사이(line spacing)는 1.5로 설정되었습니다. 수정이 필요하다면, _extensions/bit2r/bitPublish/bitPublish.tex 파일의 다음 행을 수정합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">%% 줄간격 정의</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\linespread</span>{1.5}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="bitpublish-서식-이용하기" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="bitpublish-서식-이용하기"><span class="header-section-number">2.4</span> bitPublish 서식 이용하기</h2>
+<p>bitPublish는 본문에서 예제, 연습문제, 주의, 정보, 인용 등을 표현할 수 있는 여러 LaTeX 서식을 지원합니다. 이 서식은 다음과 같은 구조의 LaTeX <code>환경</code>(<code>enviroment</code>)으로 제공합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">enviroment</span><span class="er"> name</span>}[optional argument]{main argument}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  text of enviroment</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">enviroment</span><span class="er"> name</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>또한 다음과 같은 LaTeX <code>명령</code>(<code>command</code>)으로도 제공합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\command</span> name[optional argument]{main argument} </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="멀티-아웃-포맷" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="멀티-아웃-포맷"><span class="header-section-number">2.4.1</span> 멀티 아웃 포맷</h3>
+<p>bitPublish 서식은 전자출판이 아닌, 종이로 된 서책의 출판을 염두에 둔 것이라서 LaTeX을 기반으로 서식을 정의합니다. 그러나 이 경우에는 종이 서책 출판을 위한 PDF 포맷은 지원하지만 전자책 위한 HTML 포맷을 지원하지 못하는 단점이 있습니다.</p>
+<p>bitPublish 초기 버전에서 대부분의 서식은 LaTeX 출력을 지원하지만, 전자책을 위한 HTML 출력도 동시에 지원하는 <code>멀티 아웃 포맷</code>(<code>multiple output formats</code>)으로 업그레이드하려 합니다.</p>
+</section>
+<section id="사용자-정의-블록" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="사용자-정의-블록"><span class="header-section-number">2.4.2</span> 사용자 정의 블록</h3>
+<p>bitPublish 서식의 대표적인 것에 <code>커스텀 블록</code>(<code>custom blocks</code>)<span class="citation" data-cites="xie2022rmcook">(Yihui Xie 2022)</span>이 있습니다. 사용자 정의 블록은 보고서나 책의 일부 콘텐츠를 블록으로 정의하여 본문보다 돋보이게 하여 독자가 핵심 포인트를 쉽게 이해할 수 있도록 주목도를 높이는 서식입니다.</p>
+<p>사용자 정의 블록은 <code>팬독</code>의 <code>fenced Div blocks</code> 기능을 사용합니다. 이 기능은 Div 블록을 HTML과 LaTeX 모두로 변환해줍니다.</p>
+<p>다음의 <code>팬독</code> 사용자 정의 블록은,</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>::: {.verbatim data-latex=""}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>We show some _verbatim_ text here.</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>LaTeX 출력일 경우에는 다음과 같이 변환하고,</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">verbatim</span>}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="vs">We show some \emph{verbatim} text here.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">verbatim</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>HTML 출력일 경우에는 다음과 같이 변환해 줍니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"verbatim"</span><span class="kw">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>We show some <span class="kw">&lt;em&gt;</span>verbatim<span class="kw">&lt;/em&gt;</span> text here.</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="정보-블록" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="정보-블록"><span class="header-section-number">2.4.3</span> 정보 블록</h3>
+<p>정보 블록은 멀티 아웃 포맷을 지원하는데, 다음과 같은 네 개의 유형을 지원합니다. 네 개의 유형은 HTML과 LaTeX에서 우주 똑같은 모양은 아니지만, 거의 유사한 모습으로 출력됩니다.</p>
+<ul>
+<li>정보
+<ul>
+<li>information</li>
+</ul></li>
+<li>주의
+<ul>
+<li>caution</li>
+</ul></li>
+<li>경고
+<ul>
+<li>warning</li>
+</ul></li>
+<li>팁
+<ul>
+<li>tip</li>
+</ul></li>
+</ul>
+<p>멀티 아웃 포맷을 지원하기 위한 <code>팬독</code> 사용자 정의 블록의 구문은 다음과 같습니다. 그리고 정보 블록에 들어갈 내용은 마크다운 문법으로 기술해야 합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .<span class="kw">&lt;type&gt;</span> data-latex="{<span class="kw">&lt;type&gt;</span>}{<span class="kw">&lt;title&gt;</span>}"}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>text of infobox</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="정보-블록-1" class="level4" data-number="2.4.3.1">
+<h4 data-number="2.4.3.1" class="anchored" data-anchor-id="정보-블록-1"><span class="header-section-number">2.4.3.1</span> 정보 블록</h4>
+<p>본문에서 서술하는 것보다 <strong>유용한 정보</strong>를 기술하는 데 사용하는 <code>정보</code>(<code>information</code>) <code>블록</code> 블록은 다음처럼 사용합니다.</p>
+<p>블록 청크의 옵션 중에 <code>data-latex</code>는 LaTeX에 전달하는 인수입니다. 정보(information)를 의미하는 .information와 {information}가 중복으로 기술된 것은, 멀티 아웃 포맷을 위한 것이므로 반드시 이 형식을 따라야 합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .information data-latex="{information}{information의 용도}"}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>환경의 내부에는 **Markdown**으로 문장을 기술합니다.</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox information">
+<p>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 환경의 내부에는 <strong>Markdown</strong>으로 문장을 기술합니다.</p>
+</div>
+<p>다음은 정보 블록에서 제목을 생략한 예제입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .information data-latex="{information}{}"}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>환경의 내부에는 **Markdown**으로 문장을 기술합니다.</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox information">
+<p>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 환경의 내부에는 <strong>Markdown</strong>으로 문장을 기술합니다..</p>
+</div>
+<p>infobox를 팬독 블록으로 정의할 경우 HTML에서는 제목이 출력되지 않는 버그<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>가 있습니다. 이 경우에는 다음처럼 기술하면 재목이 출력되는 멀티 아웃 포맷이 가능합니다. 즉, 본문에서 제목을 표현하는 방법입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .information data-latex="{information}{}"}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>**information의 용도**</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다.</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>환경의 내부에는 **Markdown**으로 문장을 기술합니다.</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox information">
+<p><strong>information의 용도</strong></p>
+<p>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 환경의 내부에는 <strong>Markdown</strong>으로 문장을 기술합니다.</p>
+</div>
+<p>또 하나의 방법은 bitPublish가 제공하는 사용자 정의 R 함수 custom_block()를 사용하는 방법이 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>custom_block(msg, type, title)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 방법도 멀티 아웃 포맷을 지원합니다. 다음과 같은 <code>knitr</code> 청크를 이용합니다.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">custom_block</span>(<span class="st">"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">**information**은 본문에서 서술하는 것보다 **유용한 정보**를 기술하는 데 사용합니다. </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">파란색 테두리와 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>, <span class="at">title =</span> <span class="st">"information의 용도"</span>, <span class="at">type =</span> <span class="st">"information"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="infobox information">
+<p><strong>information의 용도</strong></p>
+<p><strong>information</strong>은 본문에서 서술하는 것보다 <strong>유용한 정보</strong>를 기술하는 데 사용합니다. 파란색 테두리와 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 블록 내부를 채울 텍스트는 <strong>Markdown 문법</strong>으로 기술합니다.</p>
+</div>
+</div>
+<p>사용자 정의 함수인 custom_block()를 사용하기 위해서는 사전에 다음처럼 init_environments.R 파일을 로드해야 합니다.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: init</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"_extensions"</span>, <span class="st">"bit2r"</span>, <span class="st">"bitPublish"</span>, <span class="st">"init_environments.R"</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="주의-블록" class="level4" data-number="2.4.3.2">
+<h4 data-number="2.4.3.2" class="anchored" data-anchor-id="주의-블록"><span class="header-section-number">2.4.3.2</span> 주의 블록</h4>
+<p>당부하고 싶은 <strong>주의사항</strong>을 기술하는 데 사용하는 <code>주의</code>(<code>caution</code>) <code>블록</code>은 다음처럼 사용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .caution data-latex="{caution}{}"}</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>**caution의 용도**</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>**caution**은 당부하고 싶은 **주의사항**을 기술하는 데 사용합니다. </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>주황색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox caution">
+<p><strong>caution의 용도</strong></p>
+<p><strong>caution</strong>은 당부하고 싶은 <strong>주의사항</strong>을 기술하는 데 사용합니다. 주황색 테두리에 주의를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 블록 내부를 채울 텍스트는 <strong>Markdown 문법</strong>으로 기술합니다.</p>
+</div>
+</section>
+<section id="경고-블록" class="level4" data-number="2.4.3.3">
+<h4 data-number="2.4.3.3" class="anchored" data-anchor-id="경고-블록"><span class="header-section-number">2.4.3.3</span> 경고 블록</h4>
+<p>주의사항보다 더 치명적인 문제를 야기할 <strong>경고</strong>를 기술하는 데 사용하는 <code>경고</code>(<code>warning</code>) <code>블록</code>은 다음처럼 사용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .warning data-latex="{warning}{}"}</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>**warning의 용도**</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>**warning**은 주의사항보다 더 치명적인 문제를 야기할 **경고**를 기술하는 데 사용합니다. </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>붉은색 테두리에 폭탄을 표현한 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox warning">
+<p><strong>warning의 용도</strong></p>
+<p><strong>warning</strong>은 주의사항보다 더 치명적인 문제를 야기할 <strong>경고</strong>를 기술하는 데 사용합니다. 붉은색 테두리에 폭탄을 표현한 아이콘을 배치하여 주위를 환기시킵니다. 블록 내부를 채울 텍스트는 <strong>Markdown 문법</strong>으로 기술합니다.</p>
+</div>
+</section>
+<section id="팁-블록" class="level4" data-number="2.4.3.4">
+<h4 data-number="2.4.3.4" class="anchored" data-anchor-id="팁-블록"><span class="header-section-number">2.4.3.4</span> 팁 블록</h4>
+<p>유용하게 사용할 수 있는 <strong>아이디어나 비법</strong>을 설명하는 데 사용하는 <code>팁</code>(<code>tip</code>) <code>블록</code>은 다음처럼 사용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .tip data-latex="{tip}{}"}</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>**tip의 용도**</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>**tip**은 유용하게 사용할 수 있는 **아이디어나 비법**을 기술하는 데 사용합니다. </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>초록색 테두리에 아이디어를 나타내는 전구 아이콘을 배치하여 주위를 환기시킵니다.</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>블록 내부를 채울 텍스트는 **Markdown 문법**으로 기술합니다.</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox tip">
+<p><strong>tip의 용도</strong></p>
+<p><strong>tip</strong>은 유용하게 사용할 수 있는 <strong>아이디어나 비법</strong>을 기술하는 데 사용합니다. 초록색 테두리에 아이디어를 나타내는 전구 아이콘을 배치하여 주위를 환기시킵니다. 블록 내부를 채울 텍스트는 <strong>Markdown 문법</strong>으로 기술합니다.</p>
+</div>
+</section>
+</section>
+<section id="이야기-블록" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="이야기-블록"><span class="header-section-number">2.4.4</span> 이야기 블록</h3>
+<p>이야기 블록은 저자가 독자에게 강조해서 하고 싶은 이야기나, 명사의 명언을 인용하여 이야기할 때 사용하는 블록으로 멀티 아웃 포맷을 지원합니다.</p>
+<section id="pdf-저작-전용" class="level4" data-number="2.4.4.1">
+<h4 data-number="2.4.4.1" class="anchored" data-anchor-id="pdf-저작-전용"><span class="header-section-number">2.4.4.1</span> PDF 저작 전용</h4>
+<p>PDF 문서로만 저작할 경우에 사용하는데, <code>shadequote</code> 환경을 이용합니다. 이야기 블록 구문은 다음과 같습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">shadequote</span>}[&lt;alignment&gt;]{&lt;author&gt;}</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  text of quote</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">shadequote</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음처럼 괄호를 비우면, 저자의 이야기를 표시합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">shadequote</span>}{}</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>통상적으로 많은 사람들은 `수준을 등급의 높고 낮음을 의미하는 가치의 척도'로 </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>인식하고 있다. 그러나 통계학계에서는 levels을 수준으로 직역하여 사용해 왔다. </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>혼동스럽다면, <span class="fu">\textbf</span>{수준을 범주형 데이터의 범주로 이해}하기 바란다.</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">shadequote</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>명사의 명언을 인용하여 이야기할 경우에는 화자의 이름을 첫째 괄호에 기입합니다. 이 예제는 화자의 이름을 오른쪽 정렬하였습니다. 정렬은 l, c, r로 표기합니다. 각각 왼쪽, 가운데, 오른쪽 정렬을 의미합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">shadequote</span>}[r]{안창호}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>진실은 반드시 따르는 자가 있고, 정의는 반드시 이루는 날이 있다.</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">shadequote</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="html-저작-전용" class="level4" data-number="2.4.4.2">
+<h4 data-number="2.4.4.2" class="anchored" data-anchor-id="html-저작-전용"><span class="header-section-number">2.4.4.2</span> HTML 저작 전용</h4>
+<p>HTML 문서로만 저작할 경우에 사용하는데, <code>blockquote</code> 태그를 이용합니다. 이야기 블록 구문은 다음과 같습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"otro-blockquote"</span><span class="kw">&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  text of quote</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;span&gt;</span>author<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/blockquote&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음과 같이 기술하며, 화자의 이름의 정렬을 지원하지 않습니다. 왼쪽 정렬로 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;blockquote</span> <span class="er">class</span><span class="ot">=</span><span class="st">"otro-blockquote"</span><span class="kw">&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  진실은 반드시 따르는 자가 있고, 정의는 반드시 이루는 날이 있다.</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;span&gt;</span>안창호<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/blockquote&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="otro-blockquote blockquote">
+  진실은 반드시 따르는 자가 있고, 정의는 반드시 이루는 날이 있다.
+  <span>안창호</span>
+</blockquote>
+</section>
+<section id="멀티-아웃-포맷-1" class="level4" data-number="2.4.4.3">
+<h4 data-number="2.4.4.3" class="anchored" data-anchor-id="멀티-아웃-포맷-1"><span class="header-section-number">2.4.4.3</span> 멀티 아웃 포맷</h4>
+<p>멀티 아웃 포맷을 지원하는 구문은 다음과 같습니다. <code>align</code>은 PDF 저작에서만 동작합니다.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quote_block</span>(<span class="st">"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">text of quote</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>, <span class="at">speaker =</span> author, <span class="at">align =</span> align)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>앞의 안창호 선생님의 명언을 이용하는 방법은 다음과 같습니다.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quote_block</span>(<span class="st">"진실은 반드시 따르는 자가 있고, 정의는 반드시 이루는 날이 있다."</span>, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">speaker =</span> <span class="st">"안창호"</span>, <span class="at">align =</span> <span class="st">"right"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<blockquote class="otro-blockquote blockquote">
+진실은 반드시 따르는 자가 있고, 정의는 반드시 이루는 날이 있다. <span>안창호</span>
+</blockquote>
+</div>
+<p>저자의 이야기는 다음처럼 표현합니다.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">quote_block</span>(<span class="st">"통상적으로 많은 사람들은 '수준을 등급의 높고 낮음을 의미하는 가치의 </span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="st">척도'로 인식하고 있다. 그러나 통계학계에서는 levels을 수준으로 직역하여 사용해 왔다. </span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">혼동스럽다면, 수준을 범주형 데이터의 범주로 이해하기 바란다."</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<blockquote class="otro-blockquote blockquote">
+통상적으로 많은 사람들은 ’수준을 등급의 높고 낮음을 의미하는 가치의 척도’로 인식하고 있다. 그러나 통계학계에서는 levels을 수준으로 직역하여 사용해 왔다. 혼동스럽다면, 수준을 범주형 데이터의 범주로 이해하기 바란다.
+</blockquote>
+</div>
+</section>
+</section>
+<section id="타이틀-박스" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="타이틀-박스"><span class="header-section-number">2.4.5</span> 타이틀 박스</h3>
+<p>앞의 예제에서 `학습목표’를 정의한 블록 서식을 타이틀 박스라 부르겠습니다. 여러 용도로 사용될 수 있어 목적으로 이름을 특정할 수 없기 때문입니다. 학습 시나리오, 학습의 목표, 뭐든 상관없습니다.</p>
+<p>타이틀 박스도 멀티 아웃 포맷을 지원합니다.</p>
+<section id="pdf-저작-전용-1" class="level4" data-number="2.4.5.1">
+<h4 data-number="2.4.5.1" class="anchored" data-anchor-id="pdf-저작-전용-1"><span class="header-section-number">2.4.5.1</span> PDF 저작 전용</h4>
+<p>PDF 문서로만 저작할 경우에 사용하는데, <code>titlebox</code> 명령을 이용합니다. 타이틀 박스 블록 명령은 다음과 같으며, 블록의 내부를 채울 색상 테마를 지정합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\titlebox</span>}{text of title}{color theme}{text of box}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음은 학습목표를 설명하는 용도로 타이틀 박스 블록을 사용한 예제입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\titlebox</span>{학습 목표}{Cbluejeans}{bitPublish가 제공하는 기능을 이해하고, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  bitPublish을 이용해서 원하는 책을 저작할 수 있다.}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>`Cbluejeans’는 색상을 지정하기 위한 컬러입니다. 프리엠블에서 미리 지정해 놓은 컬러에는 다음과 같은 것을 사용할 수 있습니다. 이름과 이름에 해당하는 RGB값입니다.</p>
+</section>
+<section id="html-저작-전용-1" class="level4" data-number="2.4.5.2">
+<h4 data-number="2.4.5.2" class="anchored" data-anchor-id="html-저작-전용-1"><span class="header-section-number">2.4.5.2</span> HTML 저작 전용</h4>
+<p>HTML 문서로만 저작할 경우에 사용하는데, <code>titlebox</code> 태그를 이용합니다. 타이틀 박스 블록 구문은 다음과 같습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;titlebox</span> <span class="er">class</span><span class="ot">=</span><span class="st">"color theme 클래스"</span><span class="kw">&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h4&gt;&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"color of title"</span><span class="kw">&gt;</span>text of title<span class="kw">&lt;/span&gt;&lt;/h4&gt;</span>  </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>text of box<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/titlebox&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음과 같이 기술하며, 타이틀 색상과 블록의 테두리를 채울 색상 테마를 지정합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;titlebox</span> <span class="er">class</span><span class="ot">=</span><span class="st">"bluejeans"</span><span class="kw">&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h4&gt;&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"Cbluejeans"</span><span class="kw">&gt;</span>학습목표<span class="kw">&lt;/span&gt;&lt;/h4&gt;</span>  </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>저작할 수 있다.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/titlebox&gt;</span>  </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<titlebox class="bluejeans">
+  <h4 class="anchored"><span class="Cbluejeans">학습목표</span></h4>  
+  <p>bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 
+저작할 수 있다.</p>
+</titlebox>  
+</section>
+<section id="멀티-아웃-포맷-2" class="level4" data-number="2.4.5.3">
+<h4 data-number="2.4.5.3" class="anchored" data-anchor-id="멀티-아웃-포맷-2"><span class="header-section-number">2.4.5.3</span> 멀티 아웃 포맷</h4>
+<p>멀티 아웃 포맷을 지원하는 구문은 다음과 같습니다. <code>theme</code> 인수로 HTML과 PDF에서의 타이클 박스 블록의 색상을 정의합니다. 그러나 블록의 모양과 색상의 표현은 두 포맷에서 상이합니다.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">titlebox_block</span>(<span class="st">"text of box"</span>, <span class="at">title =</span> <span class="st">"text of title"</span>, <span class="at">theme =</span> <span class="st">"color theme"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>앞의 학습 목표 예제는 다음과 같이 기술합니다.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">titlebox_block</span>(<span class="st">"bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 </span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="st">책을 저작할 수 있다."</span>, <span class="at">title =</span> <span class="st">"학습목표"</span>, <span class="at">theme =</span> <span class="st">"bluejeans"</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<titlebox class="bluejeans">
+<h4 class="anchored">
+<span class="Cbluejeans">학습목표</span>
+</h4>
+<p>
+bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.
+</p>
+<p></p>
+</titlebox></div>
+<p>색상과 타이블 제목을 바꿔봅니다.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">titlebox_block</span>(<span class="st">"bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 </span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="st">책을 저작할 수 있다."</span>, <span class="at">title =</span> <span class="st">"이 장을 마치면"</span>, <span class="at">theme =</span> <span class="st">"lavander"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<titlebox class="lavander">
+<h4 class="anchored">
+<span class="Clavander">이 장을 마치면</span>
+</h4>
+<p>
+bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 원하는 책을 저작할 수 있다.
+</p>
+<p></p>
+</titlebox></div>
+</section>
+</section>
+<section id="예제" class="level3" data-number="2.4.6">
+<h3 data-number="2.4.6" class="anchored" data-anchor-id="예제"><span class="header-section-number">2.4.6</span> 예제</h3>
+<p>Quarto에서 제공하는 <code>정리</code>(<code>theorems</code>)의 변형을 이용합니다. 이 방법은 아주 심플하고 멀티 아웃 포맷과 크로스-레퍼런스까지 지원합니다. 다만 이전에 LaTeX으로 구현한 서식이 있는 블록보다 너무 평범해서 본문에서 두드러지지는 않습니다. 그러나 문법이 쉽고 불필요한 카운터의 정의가 필요없기 때문에, bitPublish는 이 방법을 표준으로 정했습니다.</p>
+<p>다음과 같이 사용합니다.</p>
+<ul>
+<li><code>#exr-label</code>은 예제를 알려주는 지시자이면서,
+<ul>
+<li>크로스-레퍼런스에 사용될 라벨입니다.</li>
+</ul></li>
+<li><code>title of exercise</code>는 예제의 타이틀입니다.
+<ul>
+<li>만약 예제의 타이틀을 사용하지 않는다면 기술하지 않습니다.</li>
+</ul></li>
+<li><code>text of exercise</code>는 예제의 본문입니다.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>::: {#exr-label}</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### title of exercise</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>text of exercise</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox warning">
+<p><strong>라벨 접두어</strong></p>
+<p>예제가 정상적으로 동작하기 위해서는 라벨을 정의할 때, 반드시 접두어 <strong>exr-</strong>을 사용해야 합니다.</p>
+</div>
+<p>다음은 타이틀을 포함한 예제입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>::: {#exr-bitformat}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### bitPublish 서식 예제</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="exr-bitformat" class="theorem exercise">
+<p><span class="theorem-title"><strong>예제 2.1 (bitPublish 서식 예제) </strong></span>bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.</p>
+</div>
+<p>다음은 타이틀을 제외한 예제입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>::: {#exr-bitformat2}</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="exr-bitformat2" class="theorem exercise">
+<p><span class="theorem-title"><strong>예제 2.2 </strong></span>bitPublish의 서식 중에서 예제, 연습문제, 주의, 정보, 인용을 만들어 보아라.</p>
+</div>
+<p>라벨을 레퍼런스하는 방법은 다음과 같습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@exr-bitformat</span><span class="co">]</span>에서 연습한 bitPublish의 서식은 반드시 숙지하시기 바랍니다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#exr-bitformat">예제&nbsp;<span>2.1</span></a>에서 연습한 bitPublish의 서식은 반드시 숙지하시기 바랍니다.</p>
+</section>
+<section id="연습문제" class="level3" data-number="2.4.7">
+<h3 data-number="2.4.7" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">2.4.7</span> 연습문제</h3>
+<p>연습문제는 현재 멀티 아웃 포맷을 지원하지 않습니다. PDF 아웃 포맷만 지원하기 때문에, 어느정도 LaTeX애 대한 지식이 필요합니다.</p>
+<section id="latex-환경" class="level4" data-number="2.4.7.1">
+<h4 data-number="2.4.7.1" class="anchored" data-anchor-id="latex-환경"><span class="header-section-number">2.4.7.1</span> LaTeX 환경</h4>
+<p>기술서나 학습서의 경우에는 연습문제를 제공하는 경우가 많습니다. bitPublish에서 연습문제 서식은 <code>Exercise</code> 환경을 이용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Exercise</span>}</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  text of exercise</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Exercise</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>또한 연습문제의 해답 서식은 <code>Answer</code> 환경을 이용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Answer</span>}</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  text of answer</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Answer</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tasks-환경" class="level4" data-number="2.4.7.2">
+<h4 data-number="2.4.7.2" class="anchored" data-anchor-id="tasks-환경"><span class="header-section-number">2.4.7.2</span> tasks 환경</h4>
+<p>또한 연습문제의 내용을 위해서 <code>tasks</code> 환경과 <code>task</code> 명령을 사용할 수 있습니다. 4지선다형의 객관식에 유용하게 사용할 수 있습니다.</p>
+<p>다음 예제는 4지선다형의 객관식 문제의 예시입니다. 각 문항은 아라비아 숫자로 표현하게 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">tasks</span>}[label=(<span class="fu">\arabic*</span>)](1)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> dplyr</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> ggplot2</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> tidyr</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> dlookr</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">tasks</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 LaTeX 스크립트는 다음과 같이 조판됩니다.</p>
+</section>
+<section id="verbatim-환경" class="level4" data-number="2.4.7.3">
+<h4 data-number="2.4.7.3" class="anchored" data-anchor-id="verbatim-환경"><span class="header-section-number">2.4.7.3</span> Verbatim 환경</h4>
+<p>연습문제나 연습문제의 해답에 R 스크립트와 같은 프로그램 코드를 사용할 수 있습니다. 이 경우에는 <code>Verbatim</code> 환경을 사용하면 좋습니다.</p>
+<p>다음 예제는 간단한 R 스크립트로 글자 색상이나 크기를 지정할 수 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Verbatim</span>}[fontsize=\small,formatcom=\color{black}]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="vs">if(!require("ragg")){</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  install.packages("ragg")</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  library("ragg")</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="vs">}   </span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Verbatim</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 LaTeX 스크립트는 다음과 같이 조판됩니다.</p>
+</section>
+<section id="연습문제-설정" class="level4" data-number="2.4.7.4">
+<h4 data-number="2.4.7.4" class="anchored" data-anchor-id="연습문제-설정"><span class="header-section-number">2.4.7.4</span> 연습문제 설정</h4>
+<p>연습문제는 다음과 같이 두 가지 설정을 사용자가 선택할 수 있습니다.</p>
+<ul>
+<li>연습문제 헤더의 넘버링
+<ul>
+<li>장(chapter)에 한 번의 연습문제를 사용할 경우의 넘버링
+<ul>
+<li>“1장. 연습문제”</li>
+</ul></li>
+<li>장(chapter)에 여러 번의 연습문제를 사용할 경우의 넘버링
+<ul>
+<li>넘버링은 {장 번호}.{절 번호}의 형식을 따름</li>
+<li>“1.1 연습문제”<br>
+</li>
+</ul></li>
+</ul></li>
+<li>연습문제 헤더의 이름
+<ul>
+<li>{넘버링} {이름}의 형식으로 기본 이름 설정은 “연습문제”임
+<ul>
+<li>“1장. 연습문제”</li>
+</ul></li>
+<li>이름 설정을 “Exercise”로 설정하면, 다음과 같이 출력됨
+<ul>
+<li>“1장. Exercise”</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>다음은 헤더의 넘버링을 장에 여러 번 연습문제를 사용하는 예시입니다. <code>chapterexerlevel</code>의 값을 <code>false</code>로 지정했기 때문입니다. 만약 이 값을 <code>true</code>로 지정하면 장에 한 번의 연습문제를 사용하는 형식이 됩니다.</p>
+<p><code>Exercise</code> 환경에서 <code>label</code>은 반드시 지정해야 합니다. 이 라벨은 연습문제의 해답 페이지에 연습문제가 있는 페이지로 하이퍼링크를 생성할 때 크로스-레퍼런스로 사용됩니다. 이 예제에서는 <code>label</code>을 <code>exerbitpublish</code>로 지정했습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{chapterexerlevel}{false}</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Exercise</span>}[label={exerbitpublish}, name={Exercise}]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  text of exercise</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Exercise</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>chapterexerlevel</code>의 값이 <code>true</code>인 연습문제 헤더의 넘버링은 <a href="#fig-chapter">그림&nbsp;<span>2.2</span></a>같이 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-chapter" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/chapter_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.2: 장에 한 번 연습문제를 사용하는 예시</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>chapterexerlevel</code>의 값이 <code>false</code>인 연습문제 헤더의 넘버링은 <a href="#fig-section">그림&nbsp;<span>2.3</span></a>같이 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-section" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/section_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.3: 장에 여러 번 연습문제를 사용하는 예시</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>다음은 헤더의 이름을 <code>Exercise</code>로 지정하는 예시로 <a href="#fig-section2">그림&nbsp;<span>2.4</span></a>같이 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{chapterexerlevel}{false}</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Exercise</span>}[label={exerbitpublish}, name={Exercise}]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  text of exercise</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Exercise</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-section2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/section_header2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.4: 헤더 이름을 변경한 예시</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="연습문제-해답-설정" class="level4" data-number="2.4.7.5">
+<h4 data-number="2.4.7.5" class="anchored" data-anchor-id="연습문제-해답-설정"><span class="header-section-number">2.4.7.5</span> 연습문제 해답 설정</h4>
+<p>연습문제는 다음과 같이 세 가지를 설정해야 합니다.</p>
+<ul>
+<li>장(chapter)에 처음 나타나는 연습문제의 해답 여부
+<ul>
+<li><code>firstanswerofthechapter</code>을 <code>true</code> 혹은 <code>false</code>로 설정</li>
+<li><code>true</code>이면 장 정보를 출력하고,</li>
+<li><code>false</code>이면 장 정보를 출력하지 않는다.</li>
+</ul></li>
+<li>장(chapter)의 이름(제목) 설정
+<ul>
+<li>연습문제 해답에 정보로서의 장 제목을 출력하기 위해서,</li>
+<li><code>AnswerChapter</code> 명령에 해당 장의 라벨을 설정해줌</li>
+</ul></li>
+<li>해당 연습문제의 라벨정보 설정
+<ul>
+<li>해답 위치에서 연습문제로 하이퍼 링크를 연결해 주기 위한 크로스-레퍼런스</li>
+<li><code>ref</code> 인수에 라벨정보 할당</li>
+</ul></li>
+</ul>
+<p>다음은 연습문제 헤더 정보에 장의 정보를 출력합니다. <code>firstanswerofthechapter</code>의 값을 <code>true</code>로 지정했기 때문입니다. 만약 이 값을 <code>false</code>로 지정하면 장 정보를 출력하지 않고 해답을 출력해 줍니다. 중요한 것은 <code>Answer</code> 환경이 끝난 위치에 <code>firstanswerofthechapter</code>의 값을 <code>false</code>로 초기화해야 한다는 것입니다.</p>
+<p>또한 <code>AnswerChapter</code> 명령에는 연습문제가 포함된 장의 라벨인 <code>sec-bitpublish</code>를 지정했습니다.</p>
+<p><code>Answer</code> 환경에서 <code>label</code>은 반드시 지정해야 합니다. 이 라벨은 연습문제의 해답 페이지에 연습문제가 있는 페이지로 하이퍼링크를 생성할 때 크로스-레퍼런스로 사용됩니다. 이 예제에서는 <code>label</code>을 <code>exerbitpublish</code>로 지정했습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\AnswerChapter</span>}{<span class="fu">\nameref</span>{sec-bitpublish}}</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{firstanswerofthechapter}{true}</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Answer</span>}[ref={exerbitpublish}]</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  text of answer</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Answer</span>}</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{firstanswerofthechapter}{false}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>위와 같은 설정은 연습문제 해답의 헤더 부분에 <a href="#fig-answer">그림&nbsp;<span>2.5</span></a>같은 정보를 표현해 줍니다. 보라색의 정보가 크로스-레퍼런스로 연결된 하이퍼 링크입니다. <code>bitPublish 소개'를 클릭하면 장 제목이 있는 2장의 첫 페이지로 이동하고,</code>41’을 클릭하면 해당 연습문제가 있는 41 페이지로 이동하게 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-answer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/answer_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.5: 연습문제 해답의 헤더 모양</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="연습문제와-연습문제-해답-예제" class="level4" data-number="2.4.7.6">
+<h4 data-number="2.4.7.6" class="anchored" data-anchor-id="연습문제와-연습문제-해답-예제"><span class="header-section-number">2.4.7.6</span> 연습문제와 연습문제 해답 예제</h4>
+<p>이상을 종합하여 다음과 같은 연습문제와 연습문제 해답을 기술하였습니다. 연습문제는 현재 위치에 출력되고, 연습문제 해답은 5장 연습문제 풀이에 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{chapterexerlevel}{false}</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Exercise</span>}[label={exerbitpublish}]</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 1. 다음 중에서 tidyverse에 포함되지 않는 패키지는 무엇인가?</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">tasks</span>}[label=(<span class="fu">\arabic*</span>)](1)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> dplyr</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> ggplot2</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> tidyr</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> dlookr</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">tasks</span>}</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 2. 다음의 데이터 객체를 외부 파일로 출력해 보아라.</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Verbatim</span>}[fontsize=\small,formatcom=\color{black}]</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="vs">if(!require("ragg")){</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="vs">  install.packages("ragg")</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="vs">  library("ragg")</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="vs">}   </span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Verbatim</span>}</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 3. ggplot2 패키지의 diamonds 데이터셋으로 dplyr을 이용해서 다음 과정으로 계산하고 시각화 하여라.</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">tasks</span>}[label=(<span class="fu">\arabic*</span>)](1)</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> cut과 color별로 평균 가격과 평균 캐럿을 계산한 후 평균 가격의 내림차순으로 정렬하라.</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> (1)의 결과로 평균 가격과 평균 캐럿의 상관계수를 구하라.</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a> <span class="fu">\task</span> (1)의 결과로 평균 가격과 평균 캐럿의 산점도를 시각화하라. 이 때, cut별로 색상을 구분하라.</span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">tasks</span>}</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Exercise</span>}</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\AnswerChapter</span>}{<span class="fu">\nameref</span>{sec-bitpublish}}</span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{firstanswerofthechapter}{true}</span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Answer</span>}[ref={exerbitpublish}]</span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 1. (4) dplyr</span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 2. ragg 패키지가 없으면, 패키지를 설치한다. 그리고 ragg 패키지를 로드한다.</span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu">\noindent</span> 3. </span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Verbatim</span>}[fontsize=\small,formatcom=\color{black}]</span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a><span class="vs"># (1)</span></span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a><span class="vs">library(tidyverse)</span></span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="vs">agg_diamonds &lt;- diamonds |&gt; </span></span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a><span class="vs">  group_by(cut, color) |&gt; </span></span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="vs">  summarise(mean_price = mean(price),</span></span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a><span class="vs">            mean_carat = mean(carat),</span></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="vs">            .groups = "drop") |&gt; </span></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a><span class="vs">  arrange(desc(mean_price)) </span></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a><span class="vs">agg_diamonds  </span></span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="vs"># (2)</span></span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="vs">agg_diamonds |&gt; </span></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="vs">  (function(x) cor(x$mean_price, x$mean_carat))()</span></span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a><span class="vs"># (3)</span></span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a><span class="vs">agg_diamonds |&gt; </span></span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a><span class="vs">  ggplot(aes(x = mean_price, y = mean_carat, color = cut)) +</span></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="vs">  geom_point() +</span></span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a><span class="vs">  labs(title = "Relation of price and carat",</span></span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a><span class="vs">       subtitle = "by cut class",</span></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="vs">       x = "price", y = "carat")</span></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Verbatim</span>}</span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Answer</span>}  </span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{firstanswerofthechapter}{false}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="연습문제-해답-출력" class="level4" data-number="2.4.7.7">
+<h4 data-number="2.4.7.7" class="anchored" data-anchor-id="연습문제-해답-출력"><span class="header-section-number">2.4.7.7</span> 연습문제 해답 출력</h4>
+<p>연습문제 해답을 출력하기 위해서는 출력하고자 하는 위치에 <code>shipoutAnswer</code> 명령을 기술해야 합니다.</p>
+<p>본 예제 문서에서는 다음 정보를 <code>chap_solve_exercise.qmd</code> 파일에 기술했습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a># 연습문제 풀이 {#sec-solve}</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\shipoutAnswer</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그리고 설정 파일인 <code>_quarto.yml</code> 파일에 다음과 같이 마지막 장 위치에 <code>chap_solve_exercise.qmd</code> 파일을 위치시켰습니다. 그래서 5장에 연습문제 해답을 출력하게 됩니다. 모든 장에 있는 모든 연습문제의 해답이 5장에 출력되는 것입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="an">project:</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  type: book</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  output-dir: docs</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>lang: ko-KR</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>book:</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  title: "bitPublish를 이용하여 한글 책 조판하기"</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  chapters:</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>index.qmd</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_exams.qmd</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_intro_bitpublish.qmd</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_troubleshooting.qmd</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_version.qmd</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_solve_exercise.qmd    </span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>bibliography: references.bib</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>link-citations: false</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="연습문제-페이지-넘기기" class="level4" data-number="2.4.7.8">
+<h4 data-number="2.4.7.8" class="anchored" data-anchor-id="연습문제-페이지-넘기기"><span class="header-section-number">2.4.7.8</span> 연습문제 페이지 넘기기</h4>
+<p>만약에 연습문제를 본문에 출력하지 않고 다음 페이지에서 시작하고 싶다면, 다음처럼 <code>clearpage</code> 명령어를 사용하면 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\clearpage</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="bitpublish-활용을-위한-팁" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="bitpublish-활용을-위한-팁"><span class="header-section-number">2.5</span> bitPublish 활용을 위한 팁</h2>
+<p><code>bitPublish</code>는 <code>LaTeX</code> 기반의 솔루션이기 때문에, 좀더 유용하게 사용하기 위해서 <code>LaTeX</code>에 대한 지식을 요구합니다. R 환경에서는 <code>knitr</code> 패키지를 이용해서 <code>Quarto</code> 문서를 마크다운 문서로 랜더링하기 때문에 <code>knitr</code> 청크에 대한 지식도 필요합니다.</p>
+<p>그러나 너무 걱정하지 마십시오. 심도있는 지식이 아닌, 기초적인 지식으로도 충분하게 책을 저작할 수 있습니다. 이 절에서는 요긴하게 사용된 <code>LaTeX</code> 팁을 소개합니다.</p>
+<section id="이미지-삽입" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="이미지-삽입"><span class="header-section-number">2.5.1</span> 이미지 삽입</h3>
+<section id="이미지-파일" class="level4" data-number="2.5.1.1">
+<h4 data-number="2.5.1.1" class="anchored" data-anchor-id="이미지-파일"><span class="header-section-number">2.5.1.1</span> 이미지 파일</h4>
+<p>이미지 파일을 삽입하기 위해서는 다음처럼 <code>knitr</code> 패키지의 <code>include_graphics()</code> 함수를 사용하는 것을 추천합니다. 이 때, <code>knitr</code> 청크는 다음과 같이 사용합니다.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-label</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "이미지 캡션"</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-pos: "htb!"</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"이미지 파일이름.png"</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이 예제는 다음과 같은 작업을 수행합니다.</p>
+<ul>
+<li>`이미지 파일이름.png’ 파일을 본문에 삽입하는데,
+<ul>
+<li>이미지의 크기는 본문 너비의 90%에 해당하게 적용하며, 이미지는 가운데 정렬로 배치함</li>
+</ul></li>
+<li>이미지의 캡션은 “이미지 캡션”으로 정의하며,</li>
+<li>크로스-레퍼런스를 위한 라벨의 이름은 `fig-label’로 설정하는데, 라벨의 접두어 `fig-’를 사용한 `fig-라벨이름’의 포맷을 권장함</li>
+<li><strong>이미지의 페이지 배치는</strong>
+<ol type="1">
+<li>이미지를 정확히 해당 위치(here)에 일단 배치,</li>
+<li>여의치 않으면, 그 다음 페이지 가장 윗부분에 배치,</li>
+<li>만약 이것도 여의치 않으면, 그 다음 페이지 가장 아랫 부분에 배치.</li>
+</ol></li>
+</ul>
+<p>이미지의 페이지 배치는 다음과 같은 <code>fig-pos</code><span class="citation" data-cites="minidonut2021float">(미니도넛 2021)</span> 옵션으로 지정합니다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">플로트 지정자</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">h</td>
+<td>here의 약자로, 본문에 위치한 그 자리에 이미지 배치</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">t</td>
+<td>top의 약자로, 이미지가 위치한 페이지의 가장 윗부분에 배치. 크기가 맞지 않으면 다음 페이지의 가장 윗쪽에 배치</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">b</td>
+<td>bottom의 약자로, 이미지가 위치한 페이지 가장 아래에 이미지 배치. 크기가 맞지 않으면 다음 페이지의 가장 아래에 배치</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">p</td>
+<td>이미지가 텍스트 없는 단독 페이지를 따로 만들어 배치</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">!</td>
+<td>적절한 위치 결정을 위해, 적용한 지정자 재정의. 지정자가 나열된 순서에 따라 적절한 위치에 이미지 삽입</td>
+</tr>
+</tbody>
+</table>
+<p>플로트 지정자 예제에서 사용한 “htb!”는 일단 이미지를 정확히 그 위치(h)에 배치하려 하고, 여의치 않으면 다음은 위(t)이기 때문에 그 다음 페이지 가장 윗부분에 배치합니다. 만약 그것도 여의치 않으면 그 다음은 아래(b)이기 때문에 그 다음 페이지 가장 아랫 부분에 배치합니다.</p>
+<p>그런데 bitPublish에서 <code>fig-pos</code>의 기본값<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>이 “htb!”로 설정되었기 때문에 이 설정을 생략해도 적당한 페이지에 이미지를 배치합니다. <code>fig-align</code>의 기본값도 “center”입니다.</p>
+<p>실제로 <code>Allison Horst</code>가 그린 <code>R learners</code> 일러스트를 본문에 삽입하고 참조해봅니다.</p>
+<p>https://allisonhorst.com/everything-else 페이지에서 다운로드한 다음 예제의 이미지 파일을 다음처럼 본문에 삽입합니다. 실제 홈페이지의 파일 이름은 그 의미를 파악할 수 없을 정도로 매우 긴, 암호같은 이름이었지만 편의를 위해서 <code>rlearners.png</code>로 변경했습니다.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-rlearners</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: "center"</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "R learners, Allison Horst."</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-pos: "htb!"</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/rlearners.png"</span>)</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>그리고 이미지를 크로스-레퍼런스하기 위해서는 다음과 같이 사용합니다.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>Allison Horsts는 [@fig-rlearners]\과 같은 일러스트를 그렸습니다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-rlearners" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/rlearners.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.6: R learners, Allison Horst.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>이 이미지 크로스 크로스-레퍼런스는 다음과 같이 표현됩니다.</p>
+<p>Allison Horsts는 <a href="#fig-rlearners">그림&nbsp;<span>2.6</span></a>같은 일러스트를 그렸습니다.</p>
+<p>주의할 점은 HTML의 경우에는 뒤에서 다룰 자동 조사 처리를 지원하지 않기 때문에 \과가 와나 과로 자동 변환되지 않습니다. 참고로 자동 조사 처리는 뒤에서 자세히 다룹니다.</p>
+<div class="infobox information">
+<p><strong>fig-pos과 label</strong></p>
+<p>웹 페이지로 배포하는 문서는 페이지로 구분되지 않기 때문에 이미지는 항상 그(here) 자리에 출력됩니다.<br>
+그래서 본문에서 “다음 그림처럼”과 같은 표현이 가능합니다만, 페이지가 구분되는 책에서는 이 표현은 적절하지 않습니다. 왜냐하면 페이지 상황에 따라 이미지가 다음 페이지로 넘어갈 수 있는 등 저작 과정에서는 예측이 안됩니다.</p>
+<p>그래서 ’fig-pos’의 값을 “htb!”으로 설정하고 ’label’을 지정하여 크로스-레퍼런스를 이용해서, “그림 2.1처럼”과 같이 표현하는 것이 좋습니다.</p>
+</div>
+</section>
+<section id="r-그래픽스" class="level4" data-number="2.5.1.2">
+<h4 data-number="2.5.1.2" class="anchored" data-anchor-id="r-그래픽스"><span class="header-section-number">2.5.1.2</span> R 그래픽스</h4>
+<p>R 마크다운에 익숙한 R 사용자라면 다음처럼 <code>knitr</code> <code>청크</code>(<code>chunk</code>)를 이용하여 R 스크립트 실행으로 본문에 플롯 삽입을 수행할 수 있습니다. 다음 스크립트는 <a href="#fig-hist">그림&nbsp;<span>2.7</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "정규분포 히스토그램"</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>), <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"정규분포의 히스토그램"</span>)</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-hist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="chap_intro_bitpublish_files/figure-html/fig-hist-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.7: 정규분포 히스토그램</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>도서에서 플롯의 크기는 인쇄되는 너비의 70% 정도도 출력되는 것이 적절합니다. 그래서 청크 옵션에 <code>out-width</code>를 사용하였습니다. 이 방법은 멀티 아웃 포맷을 지원하며 4 배판 <code>판형</code>의 레이아웃에 최적화된 설정입니만, 랜더링된 결과를 보고 저작자의 의도대로 수정하시기 바랍니다.</p>
+<p>bitPublish는 <code>ragg</code> 패키지의 <code>agg_png()</code>를 사용하여 본문에 플롯을 시각화합니다. 이 방법은 한글 문자가 포함된 스크립트도 기본 한글 폰트로 문제없이 시각화합니다. 그런데 까다로운 저작자는 플롯의 기본 폰트가 마음에 들지 않을 수 있습니다. 개인적으로는 R 시각화의 한글 폰트로 <code>나눔스퀘어</code> 폰트를 즐겨 사용합니다. 그래서 bitPublish에 <code>나눔스퀘어</code> 폰트로 시각화하는 기능을 구현했습니다.</p>
+<p>만약 기본 폰트가 아닌 <code>나눔스퀘어</code> 폰트를 사용하려면 문서의 맨 앞에 다음 스크립트를 추가합니다.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r init, include=FALSE}</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"_extensions"</span>, <span class="st">"bit2r"</span>, <span class="st">"bitPublish"</span>, <span class="st">"init_environments.R"</span>))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>그런 후, R 플롯을 그리는 <code>knitr</code> 청크에 <code>nanum</code> 옵션을 추가하고 값을 true로 지정합니다. 이 설정은 <code>나눔스퀘어</code> 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 <a href="#fig-hist2">그림&nbsp;<span>2.8</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "나눔스퀘어 폰트를 사용한 시각화"</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| nanum: true</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>), <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"정규분포의 히스토그램"</span>)</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-nanum="true">
+<div class="cell-output-display">
+<div id="fig-hist2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="chap_intro_bitpublish_files/figure-html/fig-hist2-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.8: 나눔스퀘어 폰트를 사용한 시각화</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>만약 한글이 포함되지 않은 플롯에서 라틴 문자에 사용할 폰트로 <code>Nimbus Sans L</code> 폰트를 사용하려면, <code>nimbus</code> 옵션의 값을 true로 추가하면 됩니다.</p>
+</section>
+<section id="ggplot2-그래픽스" class="level4" data-number="2.5.1.3">
+<h4 data-number="2.5.1.3" class="anchored" data-anchor-id="ggplot2-그래픽스"><span class="header-section-number">2.5.1.3</span> ggplot2 그래픽스</h4>
+<p>ggplot2 그래픽스도 별도의 설정없이 한글을 출력합니다. 테마는 <code>hrbrthemes</code> 패키지의 <code>theme_ipsum()</code> 함수를 사용하며, 폰트는 R 그래픽스와 동일한 방법으로 <code>나눔스퀘어</code> 폰트를 사용할 수 있습니다.</p>
+<p>다음 스크립트는 <a href="#fig-hist3">그림&nbsp;<span>2.9</span></a>같은 <code>ggplot2</code> 그래픽스 플롯을 출력합니다.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist3</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "ggplot2 정규분포 히스토그램"</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| nanum: true</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>random_norm <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">rnd =</span> <span class="fu">rnorm</span>(<span class="dv">500</span>))</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(random_norm, <span class="fu">aes</span>(<span class="at">x =</span> rnd)) <span class="sc">+</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"ggplot2의 히스토그램"</span>,</span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"500개 정규분포 난수"</span>)</span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-nanum="true">
+<div class="cell-output-display">
+<div id="fig-hist3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="chap_intro_bitpublish_files/figure-html/fig-hist3-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.9: ggplot2 정규분포 히스토그램</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="표-삽입" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="표-삽입"><span class="header-section-number">2.5.2</span> 표 삽입</h3>
+<p>본문에 표를 삽입하는 방법에 다음처럼 3가지 방법을 사용할 수 있습니다.</p>
+<ul>
+<li>마크다운을 이용한 표
+<ul>
+<li>캡션의 핸들링과 라벨의 지정에 취약해서 권하지 않음</li>
+<li>그러나, 캡션과 라벨을 사용하지 않을 때에는 유용함</li>
+</ul></li>
+<li>LaTeX을 이용한 표
+<ul>
+<li>가장 세밀하게 조정할 수 있으나, LaTeX에 대한 지식이 필요함</li>
+</ul></li>
+<li>R을 이용한 표
+<ul>
+<li>R에 익숙하면 쉽게 사용할 수 있음</li>
+</ul></li>
+</ul>
+<section id="마크다운을-이용한-표" class="level4" data-number="2.5.2.1">
+<h4 data-number="2.5.2.1" class="anchored" data-anchor-id="마크다운을-이용한-표"><span class="header-section-number">2.5.2.1</span> 마크다운을 이용한 표</h4>
+<p>마크다운을 이용한 표 생성의 경우에는 캡션이 표 내부에 위치하고, 라벨을 지정할 수 없어서 표를 삽입하는 방법으로 적절하지 않습니다.</p>
+<p>다음과 같이 표를 정의합니다. 캡션과 라벨을 사용하지 않을 때에는 유용합니다.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>| 기본값  | 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 |</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>|---------|:----------|:-----------:|------------:|</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>|내용 1   |내용 2     |내용 3       |내용 4       |</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>|내용 5   |내용 6     |내용 7       |내용 8       |</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>|내용 9   |내용 10    |내용 11      |내용 12      |</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>Table: 마크다운 기반 표    </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<caption>마크다운 기반 표</caption>
+<thead>
+<tr class="header">
+<th>기본값</th>
+<th style="text-align: left;">왼쪽 정렬</th>
+<th style="text-align: center;">가운데 정렬</th>
+<th style="text-align: right;">오른쪽 정렬</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>내용 1</td>
+<td style="text-align: left;">내용 2</td>
+<td style="text-align: center;">내용 3</td>
+<td style="text-align: right;">내용 4</td>
+</tr>
+<tr class="even">
+<td>내용 5</td>
+<td style="text-align: left;">내용 6</td>
+<td style="text-align: center;">내용 7</td>
+<td style="text-align: right;">내용 8</td>
+</tr>
+<tr class="odd">
+<td>내용 9</td>
+<td style="text-align: left;">내용 10</td>
+<td style="text-align: center;">내용 11</td>
+<td style="text-align: right;">내용 12</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="latex을-이용한-표" class="level4" data-number="2.5.2.2">
+<h4 data-number="2.5.2.2" class="anchored" data-anchor-id="latex을-이용한-표"><span class="header-section-number">2.5.2.2</span> LaTeX을 이용한 표</h4>
+<p>LaTeX을 이용한 표를 삽입하는 방법은 LaTeX 스크립트를 기술하는 것입니다. 다음처럼 테이블을 생성하는 LaTeX 스크립트를 기술합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">table</span>}[htb!]</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\centering</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">tabular</span>}[]{llcr}</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\toprule</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>기본값  <span class="op">&amp;</span> 왼쪽 정렬 <span class="op">&amp;</span> 가운데 정렬 <span class="op">&amp;</span> 오른쪽 정렬 <span class="fu">\\</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\midrule</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>내용 1 <span class="op">&amp;</span> 내용 2  <span class="op">&amp;</span> 내용 3   <span class="op">&amp;</span> 내용 4    <span class="fu">\\</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>내용 5 <span class="op">&amp;</span> 내용 6  <span class="op">&amp;</span> 내용 7   <span class="op">&amp;</span> 내용 8    <span class="fu">\\</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>내용 9 <span class="op">&amp;</span> 내용 10 <span class="op">&amp;</span> 내용 11  <span class="op">&amp;</span> 내용 12   <span class="fu">\\</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="fu">\bottomrule</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">tabular</span>}</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\caption</span>{<span class="kw">\label</span>{<span class="ex">tab-latex</span>}LaTex 기반 표}</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">table</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r을-이용한-표" class="level4" data-number="2.5.2.3">
+<h4 data-number="2.5.2.3" class="anchored" data-anchor-id="r을-이용한-표"><span class="header-section-number">2.5.2.3</span> R을 이용한 표</h4>
+<p>멀티 아웃 포맷을 지원하는 방법입니다.</p>
+<p>R을 이용해서 표를 만드는 방법에 대표적인 것이 <code>knitr</code> 패키지의 <code>kable()</code> 함수와 <code>kableExtra</code> 패키지의 <code>kable_styling()</code> 함수를 사용하는 방법입니다. 그러나 이 방법은 캡션의 위치가 표의 위에 위치하는 것과 아직 <code>Quarto</code>에서 크로스-레퍼런스가 지원되지 않는 관계로 bitPublish의 <code>table_with_caption()</code> 함수가 이를 지원합니다. 이 함수는 <code>bitPublish</code>에서 제공하는 사용자 정의 함수입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table_with_caption</span>(tab, label, <span class="at">digits =</span> <span class="cn">NULL</span>, <span class="at">big.mark =</span> <span class="cn">NULL</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 함수를 사용할 때 주의할 점은 멀티 아웃 포맷을 지원하기 위해서는 다음처럼 knir 청크에 label로 크로스-레퍼런스를 위한 라벨을 정의하고, tbl-cap로 캡션을 정의해야 합니다. 또한 중복되지만, table_with_caption() 함수에도 label 인수로 라벨을 지정해야 합니다.</p>
+<p>다음은 <a href="#tbl-iris">표&nbsp;<span>2.1</span></a>생성합니다.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Sample Iris Data"</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table_with_caption</span>(<span class="fu">head</span>(iris), <span class="at">label =</span> <span class="st">"tbl-iris"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-iris" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>표&nbsp;2.1: Iris Data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="크로스-레퍼런스" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="크로스-레퍼런스"><span class="header-section-number">2.5.3</span> 크로스-레퍼런스</h3>
+<p>HTML에서는 그림과 표의 크로스-레퍼런스가 거의 필요없으나, PDF에서는 꼭 필요한 기능입니다.</p>
+<p>PDF를 위한 LaTeX에서는 다음과 같이 \ref 명령어를 이용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\ref</span>{<span class="ex">label</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그러나 멀티 아웃 포맷을 지원하는 다음의 구문을 이용하는 것을 권장합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@label</span><span class="co">]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>라벨 이름인 label을 정의할 때는 다음의 권장 사항을 따르기 바랍니다.</p>
+<ul>
+<li>그림
+<ul>
+<li><strong>fig-</strong>name</li>
+<li>예) fig-histogram</li>
+</ul></li>
+<li>표
+<ul>
+<li><strong>tbl-</strong>name</li>
+<li>예) tbl-iris</li>
+</ul></li>
+</ul>
+</section>
+<section id="수식-입력" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="수식-입력"><span class="header-section-number">2.5.4</span> 수식 입력</h3>
+<p>수식 입력은 Latex의 수학 공식을 입력하는 TeX 문법을 따릅니다.</p>
+<p>인라인 수식의 경우에는 $와 $ 사이에서 수식을 정의하고, 한 라인 전체에 수식을 사용하기 위해서는 $$와 $$ 사이에서 수식을 정의합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>데이터가 <span class="ss">$x_1, x_2, x_3, </span><span class="sc">\cdots</span><span class="ss">, x_n$</span>일 때, 도수분포표는 다음과 같이 만든다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>데이터가 <span class="math inline">\(x_1, x_2, x_3, \cdots, x_n\)</span>일 때, 도수분포표는 다음과 같이 만든다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>누적상대도수: </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="ss">C F_k=</span><span class="sc">\sum</span><span class="ss">_{i=1}^k f_i^R=</span><span class="sc">\frac</span><span class="ss">{F_k}{n}</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>누적상대도수: <span class="math display">\[
+C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
+\]</span></p>
+</section>
+<section id="찾아보기-등록" class="level3" data-number="2.5.5">
+<h3 data-number="2.5.5" class="anchored" data-anchor-id="찾아보기-등록"><span class="header-section-number">2.5.5</span> 찾아보기 등록</h3>
+<p>LaTeX의 찾아보기(인덱싱) 기능을 활성화하기 위해, 이미 bitPublish는 프리엠블에 다음처럼 <code>makeidx</code> 패키지를 로드하고 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">makeidx</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>또한 프리엠블에서는 찾아보기 기능을 활성화하기 위해서 다음의 명령을 포함했습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeindex</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그리고 문서에 찾아보기 색인을 표시하기 위한 다음의 명령어를 사용해야 하는데,</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printindex</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 명령어는 _extensions/bit2r/bitPublish/_extension.yml 파일에 다음과 같이 설정되어 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include-after-body</span><span class="kw">:</span><span class="at">  </span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="kw">  - </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="ch">|</span><span class="at">      </span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>      \printindex  </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그러므로 찾아보기에 색인 등록을 위해서는 여러분이 작성할 본문에 다음의 인덱스 명령을 사용하기만 하면 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\index</span>{key}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음 예는 찾아보기 색인에 <em>척도</em>를 등록합니다. 그리고 LaTeX이 알아서 해당 문장이 위치한 페이지를 찾아보기 색인과 연결해 줍니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>그 현상에 숫자를 부여한 것을 척도<span class="fu">\index</span>{척도}라 한다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox caution">
+<p><strong>찾아보기에서의 언더라인의 표현</strong></p>
+<p>LaTeX에서는 언더라인(_)은 특수문자로 인식합니다. 그래서 문자로서의 언더라인을 입력하려면 역슬래시(\)를 붙여야 합니다. 그러므로 \index{key} 명령의 key 값에 언더라인이 있다면 다음처럼 역슬래시를 붙여 표현해야 합니다.</p>
+<p>\index{include\_graphics()}</p>
+</div>
+</section>
+<section id="참고문헌-등록" class="level3" data-number="2.5.6">
+<h3 data-number="2.5.6" class="anchored" data-anchor-id="참고문헌-등록"><span class="header-section-number">2.5.6</span> 참고문헌 등록</h3>
+<p>참고문헌(<code>bibliography</code>) 등록은 LaTeX의 <code>biblatex</code> 패키지를 이용합니다. 이 패키지를 사용할 수 있는 설정은 이미 되어 있으니, ‘bitPublish를 이용하여 한글 책 조판하기’ 예제를 위한 다음의 `_quarto.yml’을 참고하여 참고문헌 등록을 적용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"bitPublish를 이용하여 한글 책 조판하기"</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chapters</span><span class="kw">:</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> chap_exams.qmd</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> chap_intro_bitpublish.qmd</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="fu">link-citations</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>참고문헌에 등록하기 위해서는 <code>YAML</code> 헤더에 <code>bibliography</code> 옵션에 기술된 ‘references.bib’ 파일에 참고문헌을 정의합니다.</p>
+<p>다음은 ‘references.bib’ 파일에 정의된 일부분으로 참고한 도서와 웹 사이트의 예입니다.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>@book{ryu2013rstat,</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  author = {유충현, 이상호},</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  title = {R을 이용한 통계학 이해},</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  year = {2013},</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  publisher = {자유아카데미}</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>@misc{posit2023quarto,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>  author = {posit},</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  title = {Welcome to Quarto},</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>  howpublished = {\url{https://quarto.org/}},</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>  note = {Accessed: 2023-05-15}</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>‘references.bib’ 파일에 참고문헌을 정의했다고 `참고문헌’이라는 제목의 참고문헌에 등록되지 않습니다. 참고문헌에 등록하기 위해서는, 참고한 본문 내용에 <code>인용</code>(<code>citation</code>) 명령을 적용해야 합니다.</p>
+<p>다음과 같은 LaTeX 인용 명령을 사용합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\cite</span>{<span class="ex">key</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음의 \cite{} 명령은 ‘참고 문헌’ 페이지에 참고한 문헌에 대한 정보를 기술하고, 인용된 본문에 링크를 걸어줍니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>Quarto 홈페이지의 Quarto에 대한 소개<span class="fu">\cite</span>{posit2023quarto}는 다음과 같다. 이러쿵 저러쿵...</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>마크다운에도 인용을 위한 다음과 같은 명령이 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@key</span><span class="co">]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그러므로 다음은 앞에서의 LaTeX 명령과 동일한 작업을 수행합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>Quarto 홈페이지의 Quarto에 대한 소개<span class="co">[</span><span class="ot">@quarto</span><span class="co">]</span>는 다음과 같다. 이러쿵 저러쿵...</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="infobox caution">
+<p><strong>참조문헌의 멀티 아웃 포맷 지원</strong></p>
+<p>인용의 경우에는 LaTeX 명령보다 마크다운 명령을 사용할 것을 권장합니다. 왜냐하면 LaTeX 명령은 PDF 아웃 포맷만 지원하므로, LaTeX 명령을 자제하는 것이 좋습니다. HTML, ePub 포맷과 같은 전자책 저작에도 동작하도록 마크다운 명령을 사용하는 것을 권장합니다.</p>
+</div>
+</section>
+<section id="자동조사-처리" class="level3" data-number="2.5.7">
+<h3 data-number="2.5.7" class="anchored" data-anchor-id="자동조사-처리"><span class="header-section-number">2.5.7</span> 자동조사 처리</h3>
+<p>예제, 그림, 표 등에 라벨을 지정해서 크로스-레퍼런스를 구현하면 저작자는 번호의 증감에 신경쓸 필요가 없습니다. 그림과 그림 사이에 또 하나의 그림을 삽입하거나, 또는 기존 그림을 제거함으로서 빠뀌게 될 참조 번호를 수정할 필요가 없습니다. LaTeX이 알아서 번호를 수정해주기 때문입니다.</p>
+<p>다음과 같이 출력되는 본문이 있다고 가정합니다.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>그림 2.3과 같이 정규분포를 따르는 히스토그램을 그린다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>그런데 앞 부분에 크로스-레퍼런스를 적용한 그림 하나를 추가하면 이 문장은 다음과 같이 바뀝니다.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>그림 2.4과 같이 정규분포를 따르는 히스토그램을 그린다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>그림에 크로스-레퍼런스를 적용해서 그림의 번호 3이 4로 정상적으로 변경되었는데, 조사가 어색합니다. `그림 2.4과’가 아니라 `그림 2.4와’로 출력되야하기 때문입니다. 왜냐하면 우리말의 조사에는 다음과 같은 규칙이 있기 때문입니다. 앞단어의 끝소리의 자소에 따라 다음처럼 조사가 결정되기 때문입니다.<span class="citation" data-cites="kim2007latex">(김강수 2007)</span></p>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">앞단어 끝소리</th>
+<th style="text-align: center;">와 / 과</th>
+<th style="text-align: center;">을 / 를</th>
+<th style="text-align: center;">이 / 가</th>
+<th style="text-align: center;">은 / 는</th>
+<th style="text-align: center;">(이)라</th>
+<th style="text-align: center;">(으)로</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">리을(ㄹ)</td>
+<td style="text-align: center;">과</td>
+<td style="text-align: center;">을</td>
+<td style="text-align: center;">이</td>
+<td style="text-align: center;">은</td>
+<td style="text-align: center;">이라</td>
+<td style="text-align: center;">로</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ㄹ 아닌 종성</td>
+<td style="text-align: center;">과</td>
+<td style="text-align: center;">을</td>
+<td style="text-align: center;">이</td>
+<td style="text-align: center;">은</td>
+<td style="text-align: center;">이라</td>
+<td style="text-align: center;">으로</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">중성</td>
+<td style="text-align: center;">와</td>
+<td style="text-align: center;">를</td>
+<td style="text-align: center;">가</td>
+<td style="text-align: center;">는</td>
+<td style="text-align: center;">라</td>
+<td style="text-align: center;">로</td>
+</tr>
+</tbody>
+</table>
+<p>LaTeX이 크로스-레퍼런스에서 계산되는 아라비아 숫자의 한글 독음 끝소리 자소에 따라 자동으로 자동조사 처리를 하기 위해서는, 크로스-레퍼런스를 위한 참조 명령 뒤에 붙는 조사에 역 슬래시(\)불여주면 됩니다.</p>
+<p>다음은 크로스-레퍼런스에서 번호가 계산되었다는 전제로 자동조사 처리를 테스트한 것입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>그림 2.3<span class="fu">\와</span> 그림 2.4<span class="fu">\은</span> 같이 정규분포를 따르는 히스토그램을 그린다. </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>그림 2.3<span class="fu">\과</span> 그림 2.4<span class="fu">\는</span> 같이 정규분포를 따르는 히스토그램을 그린다.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>그림 2.3그림 2.4같이 정규분포를 따르는 히스토그램을 그린다.</p>
+<p>그림 2.3그림 2.4같이 정규분포를 따르는 히스토그램을 그린다.</p>
+</section>
+<section id="커버-이미지-추가" class="level3" data-number="2.5.8">
+<h3 data-number="2.5.8" class="anchored" data-anchor-id="커버-이미지-추가"><span class="header-section-number">2.5.8</span> 커버 이미지 추가</h3>
+<p>HTML 아웃 포맷에서 커머 이미지를 추가할 수 있습니다.</p>
+<p>다음처럼 <code>_quarto.yml</code> 파일의 YAML에서 <code>book</code> 아래 <code>cover-image</code>에 커버 이미지의 경로를 지정하면 됩니다.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>book:</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  title: "bitPublish를 이용하여 한글 책 조판하기"</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  chapters:</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>    - index.qmd</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>    - chap_exams.qmd</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    - chap_intro_bitpublish.qmd</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>    - chap_troubleshooting.qmd</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    - chap_version.qmd</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>    - chap_solve_exercise.qmd    </span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>  cover-image: hexlogo/bitPublish_logo.png    </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이 설정으로 <a href="#fig-coverimage">그림&nbsp;<span>2.10</span></a>처럼 커버 이미지가 출력되는 HTML 아웃 포맷 첫 화면에 커버 이미지가 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-coverimage" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/cover-image.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.10: 커버 이미지가 추가된 HTML 포맷 아웃의 화면</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-horst2022quartoarch" class="csl-entry" role="listitem">
+Horst, Allison. 2022. <span>“ÇETINKAYA-RUNDEL &amp; LOWNDES QUARTO KEYNOTE”</span>. <a href="https://allisonhorst.com/cetinkaya-rundel-lowndes-quarto-keynote" class="uri">https://allisonhorst.com/cetinkaya-rundel-lowndes-quarto-keynote</a>.
+</div>
+<div id="ref-posit2023extensions" class="csl-entry" role="listitem">
+posit. 2023a. <span>“Creating Extensions”</span>. <a href="https://quarto.org/docs/extensions/creating.html" class="uri">https://quarto.org/docs/extensions/creating.html</a>.
+</div>
+<div id="ref-posit2023quarto" class="csl-entry" role="listitem">
+———. 2023b. <span>“Welcome to Quarto”</span>. <a href="https://quarto.org/" class="uri">https://quarto.org/</a>.
+</div>
+<div id="ref-xie2022rmcook" class="csl-entry" role="listitem">
+Yihui Xie, Emily Riederer, Christophe Dervieux. 2022. <span>“R Markdown Cookbook”</span>. <a href="https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html</a>.
+</div>
+<div id="ref-kim2007latex" class="csl-entry" role="listitem">
+김강수. 2007. <span>“한글 라텍에서 조사 이형태 교체의 자동화에 관하여”</span>. <em>The Asian Journal of TEX</em> 1 (2): 153–66. <a href="http://ajt.ktug.org/2007/0102karnes.pdf">http://ajt.ktug.org/2007/0102karnes.pdf</a>.
+</div>
+<div id="ref-minidonut2021float" class="csl-entry" role="listitem">
+미니도넛. 2021. <span>“이미지 특정 위치에 고정하기”</span>. <a href="https://forestunit.tistory.com/117" class="uri">https://forestunit.tistory.com/117</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://quarto.org/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>serif 폰트는 바탕체 폰트를 의미합니다. 글자의 획에서 부리처럼 날카롭게 튀어나온 부분을 <code>세리프</code>(<code>serif</code>)라 합니다. 영어는 <code>로만체</code>, 한국어의 경우에는 과거에 <code>명조체</code>라는 이름으로 통용되던 <code>바탕체</code> 서체를 의미합니다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>serif 폰트는 <code>돋움체</code> 폰트를 의미합니다. 프랑스어로 sans는 “~가 없이”라는 뜻으로, <code>sans-serif</code>는 세리프가 없는 서체입니다. 한국어의 경우에는 과거에 <code>고딕체</code>라는 이름으로 통용되던 <code>돋움체</code> 서체를 의미합니다.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>원인을 알고 있으나 저자의 웹 프로그래밍 기술적인 한계로 해결하지 못했음<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>“htb!”을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_environments.R 파일을 로드하는 설정을 전제로 합니다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chap_exams.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap_troubleshooting.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
