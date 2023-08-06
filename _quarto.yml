@@ -13,5 +13,6 @@ book:
     - chap_troubleshooting.qmd
     - chap_version.qmd
     - chap_solve_exercise.qmd    
+  cover-image: hexlogo/bitPublish_logo.png    
 bibliography: references.bib
 link-citations: false
