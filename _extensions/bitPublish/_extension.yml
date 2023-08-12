@@ -1,6 +1,6 @@
 title: "bitPublish"
 author: "Choonghyun Ryu"
-version: 0.2.9
+version: 0.3.0
 
 contributes:
   format:
@@ -10,19 +10,31 @@ contributes:
     pdf:
       documentclass: book
       geometry:                            # 4x6 배판 도서를 위한 설정
-        - paper=a4paper
-        - layoutwidth=190mm
-        - layoutheight=260mm
-        - layouthoffset=10mm
-        - layoutvoffset=18.5mm
-        - showcrop
-        - top=20mm
-        - headsep=10mm
-        - bottom=30mm
-        - footskip=15mm
+        # 이하 재단선이 없는 조판 ----------------------------------------------     
+        # - paper=b5paper
+        - paperheight=257mm
+        - paperwidth=188mm
+        - top=25mm    
+        - headsep=10mm  
+        - bottom=30mm     
+        - footskip=15mm           
         - left=25mm
         - right=25mm
-        - centering
+        - centering     
+        # 이하 재단선을 넣는 조판 ----------------------------------------------
+        # - paper=a4paper
+        # - layoutwidth=190mm
+        # - layoutheight=260mm
+        # - layouthoffset=10mm
+        # - layoutvoffset=18.5mm
+        # - showcrop
+        # - top=20mm
+        # - headsep=10mm
+        # - bottom=30mm
+        # - footskip=15mm
+        # - left=25mm
+        # - right=25mm
+        # - centering            
       fig-cap-location: bottom
       tbl-cap-location: bottom
       toc-title: "목차"

@@ -362,23 +362,61 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <h2 data-number="2.3" class="anchored" data-anchor-id="조판-설정"><span class="header-section-number">2.3</span> 조판 설정</h2>
 <section id="페이지-레이아웃" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="페이지-레이아웃"><span class="header-section-number">2.3.1</span> 페이지 레이아웃</h3>
-<p>현재 bitPublish의 기본 페이지 레이아웃 설정은 4 배판으로 설계되었습니다. 4 배판 <code>판형</code>의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. <code>LaTeX</code>의 <code>geometry</code> 패키지를 사용합니다.</p>
+<p>현재 bitPublish의 기본 페이지 레이아웃 설정은 4 배판으로 설계되었습니다. 4 배판 판형은 용지의 크기가 188mm254mm입니다. 이 용지의 크기는 B5 사이즈이고 우리가 일반적으로 프린터 용지로 사용하는 A4 사이즈는 국배판이라하며, 용지의 크기가 210mm217mm입니다.</p>
+<p>4 배판 <code>판형</code>의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. 이 설정은 <code>LaTeX</code>의 <code>geometry</code> 패키지가 사용하는 레이아웃 설정 파라미터입니다.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geometry</span><span class="kw">:</span><span class="co">                            # 4x6 배판 도서를 위한 설정</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> paper=a4paper</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutwidth=190mm</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutheight=260mm</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layouthoffset=10mm</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> layoutvoffset=18.5mm</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> showcrop</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> top=20mm</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> headsep=10mm             </span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> bottom=30mm</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> footskip=15mm                 </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> left=25mm</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> right=25mm</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> centering   </span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">geometry</span><span class="kw">:</span><span class="co">                            # 4x6 배판 도서를 위한 설정</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">        ### 이하 재단선이 없는 조판    </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">        # - paper=b5paper</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> paperheight=257mm</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> paperwidth=188mm</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> top=25mm    </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> headsep=10mm  </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> bottom=30mm     </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> footskip=15mm           </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> left=25mm</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> right=25mm</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> centering     </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">        ### 이하 재단선을 넣는 조판 </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        # - paper=a4paper</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">        # - layoutwidth=190mm</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">        # - layoutheight=260mm</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">        # - layouthoffset=10mm</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">        # - layoutvoffset=18.5mm</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">        # - showcrop</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">        # - top=20mm</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">        # - headsep=10mm</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">        # - bottom=30mm</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">        # - footskip=15mm</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">        # - left=25mm</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">        # - right=25mm</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">        # - centering    </span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="a4-용지를-사용하는-경우" class="level4" data-number="2.3.1.1">
+<h4 data-number="2.3.1.1" class="anchored" data-anchor-id="a4-용지를-사용하는-경우"><span class="header-section-number">2.3.1.1</span> A4 용지를 사용하는 경우</h4>
+<p>일반적으로 저작을 위해서는 프린터로 출력해서 이상여부를 확인하는 작업을 거치게 됩니다. 대중적으로 사용되는 A4 사이즈의 프린터 용지는 4 배판보다 크기 때문에, 출력은 A4 사이즈에 출력하지만 실제로 만들어질 재단선(crop) 마크를 출력해서 4 배판 판형을 표시하기도 합니다. 앞의 <code>geometry</code> 패키지의 판형 설정 영역에서 주석으로 처리되는 영역이, A4 용지를 사용하는 경우를 예시한 것입니다.</p>
+</section>
+<section id="a5-용지를-사용하는-경우" class="level4" data-number="2.3.1.2">
+<h4 data-number="2.3.1.2" class="anchored" data-anchor-id="a5-용지를-사용하는-경우"><span class="header-section-number">2.3.1.2</span> A5 용지를 사용하는 경우</h4>
+<p>종이 출판을 위해서 원고를 넘길 때, 재단선이 없는 실제 4 배판 크기의 결과를 요구하기도 합니다. 이 경우에는 앞의 geometry 패키지의 판형 설정 영역에서 주석처리 되지 않은 영역을 사용합니다.</p>
+<p>여기서 중요한 것은, 국배판 <span class="math inline">\(=\)</span> A4, 4 배판 <span class="math inline">\(\approx\)</span> B5의 관계<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>라는 점입니다. 그래서 <code>geometry</code> 설정에서 <code>paper</code> 설정이 아니라, <code>paperheight</code>, <code>paperwidth</code>를 사용했습니다.</p>
+<p>그리고 물리적인 용지 크기와 판형의 크기가 동일하기 때문에 재단선 출력을 설정하는 <code>showcrop</code>을 설정하지 않았습니다.</p>
+</section>
+<section id="레이아웃-설정" class="level4" data-number="2.3.1.3">
+<h4 data-number="2.3.1.3" class="anchored" data-anchor-id="레이아웃-설정"><span class="header-section-number">2.3.1.3</span> 레이아웃 설정</h4>
+<p><code>geometry</code> 패키지의 페이지 설정 파라미터는 <a href="#fig-layout">그림&nbsp;<span>2.2</span></a>같습니다. 머리글과 바탕글 위치는 각각 <code>head</code>와 <code>foot</code>입니다. 그러므로 설정 시에는 <code>top</code>보다 <code>headsep</code>이 작아야 하고, <code>bottom</code>보다 <code>footskip</code>이 작아야 합니다. 즉, <code>top</code> 영역 안에 <code>headsep</code>이 포함되고, <code>bottom</code> 영역 안에 <code>footskip</code>이 포함되기 때문입니다.</p>
+<p>출판 저작물을 생성하는 저자는, 현재 bitPublish의 기본 페이지 레이아웃을 참고해서 레이아웃을 정의하기 바랍니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-layout" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/geometry.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.2: geometry 패키지의 레이아웃 설정 파라미터</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="폰트-설정" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="폰트-설정"><span class="header-section-number">2.3.2</span> 폰트 설정</h3>
@@ -389,12 +427,12 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <li>출판 시 발생할 라이센스 이슈 제거
 <ul>
 <li><strong>모든 폰트를 상업적으로 이용이 가능한 폰트로 선정</strong></li>
-<li>serif<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 영어 폰트인 Times New Roman 저작권의 이슈
+<li>serif<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 영어 폰트인 Times New Roman 저작권의 이슈
 <ul>
 <li>가독성이 뛰어난 범용적인 세리프체로 영문 에세이와 학위 논문의 표준 폰트로 자리잡았으나</li>
 <li>상업용으로 쓸 땐 저작권 면책 조건을 확인해야 함</li>
 </ul></li>
-<li>sans-serif<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 영어 폰트인 Helvetica 저작권의 이슈
+<li>sans-serif<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 영어 폰트인 Helvetica 저작권의 이슈
 <ul>
 <li>대표적인 산세리프 글꼴로 20세기에 널리 쓰였음<br>
 </li>
@@ -595,7 +633,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div class="infobox information">
 <p>information은 독자에게 전하고 싶은 정보나 아이디어를 기술하는 데 사용합니다. 짙은 회색 테두리에 정보를 나타내는 아이콘을 배치하여 주위를 환기시킵니다. 환경의 내부에는 <strong>Markdown</strong>으로 문장을 기술합니다..</p>
 </div>
-<p>infobox를 팬독 블록으로 정의할 경우 HTML에서는 제목이 출력되지 않는 버그<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>가 있습니다. 이 경우에는 다음처럼 기술하면 재목이 출력되는 멀티 아웃 포맷이 가능합니다. 즉, 본문에서 제목을 표현하는 방법입니다.</p>
+<p>infobox를 팬독 블록으로 정의할 경우 HTML에서는 제목이 출력되지 않는 버그<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>가 있습니다. 이 경우에는 다음처럼 기술하면 재목이 출력되는 멀티 아웃 포맷이 가능합니다. 즉, 본문에서 제목을 표현하는 방법입니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .information data-latex="{information}{}"}</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>**information의 용도**</span>
@@ -990,29 +1028,29 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  text of exercise</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Exercise</span>}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>chapterexerlevel</code>의 값이 <code>true</code>인 연습문제 헤더의 넘버링은 <a href="#fig-chapter">그림&nbsp;<span>2.2</span></a>같이 출력됩니다.</p>
+<p><code>chapterexerlevel</code>의 값이 <code>true</code>인 연습문제 헤더의 넘버링은 <a href="#fig-chapter">그림&nbsp;<span>2.3</span></a>같이 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-chapter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/chapter_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.2: 장에 한 번 연습문제를 사용하는 예시</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.3: 장에 한 번 연습문제를 사용하는 예시</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p><code>chapterexerlevel</code>의 값이 <code>false</code>인 연습문제 헤더의 넘버링은 <a href="#fig-section">그림&nbsp;<span>2.3</span></a>같이 출력됩니다.</p>
+<p><code>chapterexerlevel</code>의 값이 <code>false</code>인 연습문제 헤더의 넘버링은 <a href="#fig-section">그림&nbsp;<span>2.4</span></a>같이 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-section" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/section_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.3: 장에 여러 번 연습문제를 사용하는 예시</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.4: 장에 여러 번 연습문제를 사용하는 예시</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>다음은 헤더의 이름을 <code>Exercise</code>로 지정하는 예시로 <a href="#fig-section2">그림&nbsp;<span>2.4</span></a>같이 출력됩니다.</p>
+<p>다음은 헤더의 이름을 <code>Exercise</code>로 지정하는 예시로 <a href="#fig-section2">그림&nbsp;<span>2.5</span></a>같이 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{chapterexerlevel}{false}</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Exercise</span>}[label={exerbitpublish}, name={Exercise}]</span>
@@ -1024,7 +1062,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div id="fig-section2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/section_header2.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.4: 헤더 이름을 변경한 예시</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.5: 헤더 이름을 변경한 예시</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1062,13 +1100,13 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Answer</span>}</span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\setboolean</span>{firstanswerofthechapter}{false}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>위와 같은 설정은 연습문제 해답의 헤더 부분에 <a href="#fig-answer">그림&nbsp;<span>2.5</span></a>같은 정보를 표현해 줍니다. 보라색의 정보가 크로스-레퍼런스로 연결된 하이퍼 링크입니다. <code>bitPublish 소개'를 클릭하면 장 제목이 있는 2장의 첫 페이지로 이동하고,</code>41’을 클릭하면 해당 연습문제가 있는 41 페이지로 이동하게 됩니다.</p>
+<p>위와 같은 설정은 연습문제 해답의 헤더 부분에 <a href="#fig-answer">그림&nbsp;<span>2.6</span></a>같은 정보를 표현해 줍니다. 보라색의 정보가 크로스-레퍼런스로 연결된 하이퍼 링크입니다. <code>bitPublish 소개'를 클릭하면 장 제목이 있는 2장의 첫 페이지로 이동하고,</code>41’을 클릭하면 해당 연습문제가 있는 41 페이지로 이동하게 됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-answer" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/answer_header.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.5: 연습문제 해답의 헤더 모양</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.6: 연습문제 해답의 헤더 모양</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1250,7 +1288,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 </tbody>
 </table>
 <p>플로트 지정자 예제에서 사용한 “htb!”는 일단 이미지를 정확히 그 위치(h)에 배치하려 하고, 여의치 않으면 다음은 위(t)이기 때문에 그 다음 페이지 가장 윗부분에 배치합니다. 만약 그것도 여의치 않으면 그 다음은 아래(b)이기 때문에 그 다음 페이지 가장 아랫 부분에 배치합니다.</p>
-<p>그런데 bitPublish에서 <code>fig-pos</code>의 기본값<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>이 “htb!”로 설정되었기 때문에 이 설정을 생략해도 적당한 페이지에 이미지를 배치합니다. <code>fig-align</code>의 기본값도 “center”입니다.</p>
+<p>그런데 bitPublish에서 <code>fig-pos</code>의 기본값<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>이 “htb!”로 설정되었기 때문에 이 설정을 생략해도 적당한 페이지에 이미지를 배치합니다. <code>fig-align</code>의 기본값도 “center”입니다.</p>
 <p>실제로 <code>Allison Horst</code>가 그린 <code>R learners</code> 일러스트를 본문에 삽입하고 참조해봅니다.</p>
 <p>https://allisonhorst.com/everything-else 페이지에서 다운로드한 다음 예제의 이미지 파일을 다음처럼 본문에 삽입합니다. 실제 홈페이지의 파일 이름은 그 의미를 파악할 수 없을 정도로 매우 긴, 암호같은 이름이었지만 편의를 위해서 <code>rlearners.png</code>로 변경했습니다.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -1270,13 +1308,13 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div id="fig-rlearners" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/rlearners.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.6: R learners, Allison Horst.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.7: R learners, Allison Horst.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>이 이미지 크로스 크로스-레퍼런스는 다음과 같이 표현됩니다.</p>
-<p>Allison Horsts는 <a href="#fig-rlearners">그림&nbsp;<span>2.6</span></a>같은 일러스트를 그렸습니다.</p>
+<p>Allison Horsts는 <a href="#fig-rlearners">그림&nbsp;<span>2.7</span></a>같은 일러스트를 그렸습니다.</p>
 <p>주의할 점은 HTML의 경우에는 뒤에서 다룰 자동 조사 처리를 지원하지 않기 때문에 \과가 와나 과로 자동 변환되지 않습니다. 참고로 자동 조사 처리는 뒤에서 자세히 다룹니다.</p>
 <div class="infobox information">
 <p><strong>fig-pos과 label</strong></p>
@@ -1287,7 +1325,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 </section>
 <section id="r-그래픽스" class="level4" data-number="2.5.1.2">
 <h4 data-number="2.5.1.2" class="anchored" data-anchor-id="r-그래픽스"><span class="header-section-number">2.5.1.2</span> R 그래픽스</h4>
-<p>R 마크다운에 익숙한 R 사용자라면 다음처럼 <code>knitr</code> <code>청크</code>(<code>chunk</code>)를 이용하여 R 스크립트 실행으로 본문에 플롯 삽입을 수행할 수 있습니다. 다음 스크립트는 <a href="#fig-hist">그림&nbsp;<span>2.7</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
+<p>R 마크다운에 익숙한 R 사용자라면 다음처럼 <code>knitr</code> <code>청크</code>(<code>chunk</code>)를 이용하여 R 스크립트 실행으로 본문에 플롯 삽입을 수행할 수 있습니다. 다음 스크립트는 <a href="#fig-hist">그림&nbsp;<span>2.8</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
@@ -1304,7 +1342,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div id="fig-hist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="chap_intro_bitpublish_files/figure-html/fig-hist-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.7: 정규분포 히스토그램</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.8: 정규분포 히스토그램</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1315,7 +1353,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div class="sourceCode" id="cb53"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r init, include=FALSE}</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"_extensions"</span>, <span class="st">"bit2r"</span>, <span class="st">"bitPublish"</span>, <span class="st">"init_environments.R"</span>))</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>그런 후, R 플롯을 그리는 <code>knitr</code> 청크에 <code>nanum</code> 옵션을 추가하고 값을 true로 지정합니다. 이 설정은 <code>나눔스퀘어</code> 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 <a href="#fig-hist2">그림&nbsp;<span>2.8</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
+<p>그런 후, R 플롯을 그리는 <code>knitr</code> 청크에 <code>nanum</code> 옵션을 추가하고 값을 true로 지정합니다. 이 설정은 <code>나눔스퀘어</code> 폰트를 사용해서 R 플롯을 시각화한다는 것을 의미합니다. 다음 스크립트는 <a href="#fig-hist2">그림&nbsp;<span>2.9</span></a>같은 R 그래픽스 플롯을 출력합니다.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
@@ -1333,7 +1371,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div id="fig-hist2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="chap_intro_bitpublish_files/figure-html/fig-hist2-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.8: 나눔스퀘어 폰트를 사용한 시각화</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.9: 나눔스퀘어 폰트를 사용한 시각화</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1343,7 +1381,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <section id="ggplot2-그래픽스" class="level4" data-number="2.5.1.3">
 <h4 data-number="2.5.1.3" class="anchored" data-anchor-id="ggplot2-그래픽스"><span class="header-section-number">2.5.1.3</span> ggplot2 그래픽스</h4>
 <p>ggplot2 그래픽스도 별도의 설정없이 한글을 출력합니다. 테마는 <code>hrbrthemes</code> 패키지의 <code>theme_ipsum()</code> 함수를 사용하며, 폰트는 R 그래픽스와 동일한 방법으로 <code>나눔스퀘어</code> 폰트를 사용할 수 있습니다.</p>
-<p>다음 스크립트는 <a href="#fig-hist3">그림&nbsp;<span>2.9</span></a>같은 <code>ggplot2</code> 그래픽스 플롯을 출력합니다.</p>
+<p>다음 스크립트는 <a href="#fig-hist3">그림&nbsp;<span>2.10</span></a>같은 <code>ggplot2</code> 그래픽스 플롯을 출력합니다.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-hist3</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
@@ -1366,7 +1404,7 @@ bitPublish가 제공하는 기능을 이해하고, bitPublish을 이용해서 �
 <div id="fig-hist3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="chap_intro_bitpublish_files/figure-html/fig-hist3-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.9: ggplot2 정규분포 히스토그램</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.10: ggplot2 정규분포 히스토그램</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1743,13 +1781,13 @@ C F_k=\sum_{i=1}^k f_i^R=\frac{F_k}{n}
 <span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    - chap_version.qmd</span>
 <span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>    - chap_solve_exercise.qmd    </span>
 <span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>  cover-image: hexlogo/bitPublish_logo.png    </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>이 설정으로 <a href="#fig-coverimage">그림&nbsp;<span>2.10</span></a>처럼 커버 이미지가 출력되는 HTML 아웃 포맷 첫 화면에 커버 이미지가 출력됩니다.</p>
+<p>이 설정으로 <a href="#fig-coverimage">그림&nbsp;<span>2.11</span></a>처럼 커버 이미지가 출력되는 HTML 아웃 포맷 첫 화면에 커버 이미지가 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-coverimage" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/cover-image.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">그림&nbsp;2.10: 커버 이미지가 추가된 HTML 포맷 아웃의 화면</figcaption><p></p>
+<p></p><figcaption class="figure-caption">그림&nbsp;2.11: 커버 이미지가 추가된 HTML 포맷 아웃의 화면</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1782,10 +1820,11 @@ Yihui Xie, Emily Riederer, Christophe Dervieux. 2022. <span>“R Markdown Cookbo
 <hr>
 <ol>
 <li id="fn1"><p>https://quarto.org/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>serif 폰트는 바탕체 폰트를 의미합니다. 글자의 획에서 부리처럼 날카롭게 튀어나온 부분을 <code>세리프</code>(<code>serif</code>)라 합니다. 영어는 <code>로만체</code>, 한국어의 경우에는 과거에 <code>명조체</code>라는 이름으로 통용되던 <code>바탕체</code> 서체를 의미합니다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>serif 폰트는 <code>돋움체</code> 폰트를 의미합니다. 프랑스어로 sans는 “~가 없이”라는 뜻으로, <code>sans-serif</code>는 세리프가 없는 서체입니다. 한국어의 경우에는 과거에 <code>고딕체</code>라는 이름으로 통용되던 <code>돋움체</code> 서체를 의미합니다.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>원인을 알고 있으나 저자의 웹 프로그래밍 기술적인 한계로 해결하지 못했음<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>“htb!”을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_environments.R 파일을 로드하는 설정을 전제로 합니다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>한국정기간행물햡동조합 홈페이지, http://kptc.or.kr/pds/paperstorys.html 참고<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>serif 폰트는 바탕체 폰트를 의미합니다. 글자의 획에서 부리처럼 날카롭게 튀어나온 부분을 <code>세리프</code>(<code>serif</code>)라 합니다. 영어는 <code>로만체</code>, 한국어의 경우에는 과거에 <code>명조체</code>라는 이름으로 통용되던 <code>바탕체</code> 서체를 의미합니다.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>serif 폰트는 <code>돋움체</code> 폰트를 의미합니다. 프랑스어로 sans는 “~가 없이”라는 뜻으로, <code>sans-serif</code>는 세리프가 없는 서체입니다. 한국어의 경우에는 과거에 <code>고딕체</code>라는 이름으로 통용되던 <code>돋움체</code> 서체를 의미합니다.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>원인을 알고 있으나 저자의 웹 프로그래밍 기술적인 한계로 해결하지 못했음<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>“htb!”을 기본값으로 설정하기 위해서는, 뒷부분에서 설명할 플롯에서의 한글 폰트 적용을 위한 init_environments.R 파일을 로드하는 설정을 전제로 합니다.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

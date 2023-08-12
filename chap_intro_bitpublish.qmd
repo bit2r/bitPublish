@@ -69,25 +69,71 @@ extensions은 Quarto의 동작을 수정하고 확장할 수 있는 방법을 �
 
 ### 페이지 레이아웃
 
-현재 bitPublish의 기본 페이지 레이아웃\index{페이지 레이아웃} 설정은 4\times6 배판으로 설계되었습니다. 
-4\times6 배판 `판형`\index{판형}의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. `LaTeX`의 `geometry`\index{geometry} 패키지를 사용합니다.
+현재 bitPublish의 기본 페이지 레이아웃\index{페이지 레이아웃} 설정은 4\times6 배판\index{4\times6 배판}으로 설계되었습니다. 4\times6 배판 판형은 용지의 크기가 188mm\times254mm입니다. 이 용지의 크기는 B5\index{B5} 사이즈이고 우리가 일반적으로 프린터 용지로 사용하는 A4\index{A4} 사이즈는 국배판\index{국배판}이라하며, 용지의 크기가 210mm\times217mm입니다. 
+
+4\times6 배판 `판형`\index{판형}의 레이아웃 설정을 변경하려면, _extensions/bit2r/bitPublish/_extension.yml 파일의 다음 행들을 수정합니다. 이 설정은 `LaTeX`의 `geometry`\index{geometry} 패키지가 사용하는 레이아웃 설정 파라미터입니다.
 
 ```{yaml}
-  geometry:                            # 4x6 배판 도서를 위한 설정
-    - paper=a4paper
-    - layoutwidth=190mm
-    - layoutheight=260mm
-    - layouthoffset=10mm
-    - layoutvoffset=18.5mm
-    - showcrop
-    - top=20mm
-    - headsep=10mm             
-    - bottom=30mm
-    - footskip=15mm                 
-    - left=25mm
-    - right=25mm
-    - centering   
+      geometry:                            # 4x6 배판 도서를 위한 설정
+        ### 이하 재단선이 없는 조판    
+        # - paper=b5paper
+        - paperheight=257mm
+        - paperwidth=188mm
+        - top=25mm    
+        - headsep=10mm  
+        - bottom=30mm     
+        - footskip=15mm           
+        - left=25mm
+        - right=25mm
+        - centering     
+        ### 이하 재단선을 넣는 조판 
+        # - paper=a4paper
+        # - layoutwidth=190mm
+        # - layoutheight=260mm
+        # - layouthoffset=10mm
+        # - layoutvoffset=18.5mm
+        # - showcrop
+        # - top=20mm
+        # - headsep=10mm
+        # - bottom=30mm
+        # - footskip=15mm
+        # - left=25mm
+        # - right=25mm
+        # - centering    
 ```
+
+#### A4 용지를 사용하는 경우
+
+일반적으로 저작을 위해서는 프린터로 출력해서 이상여부를 확인하는 작업을 거치게 됩니다. 대중적으로 사용되는 A4 사이즈의 프린터 용지는 4\times6 배판보다 크기 때문에, 출력은 A4 사이즈에 출력하지만 실제로 만들어질 재단선(crop)\index{재단선}\index{crop} 마크를 출력해서 4\times6 배판 판형을 표시하기도 합니다. 앞의 `geometry` 패키지의 판형 설정 영역에서 주석으로 처리되는 영역이, A4 용지를 사용하는 경우를 예시한 것입니다.
+
+#### A5 용지를 사용하는 경우
+
+종이 출판을 위해서 원고를 넘길 때, 재단선이 없는 실제 4\times6 배판 크기의 결과를 요구하기도 합니다. 이 경우에는 앞의 geometry 패키지의 판형 설정 영역에서 주석처리 되지 않은 영역을 사용합니다.
+
+여기서 중요한 것은, 국배판 $=$ A4, 4\times6 배판 $\approx$ B5의 관계[^paper]라는 점입니다. 그래서 `geometry` 설정에서 `paper`\index{paper}\index{geometry!paper} 설정이 아니라, `paperheight`\index{paperheight}\index{geometry!paperheight}, `paperwidth`\index{paperwidth}\index{geometry!paperwidth}를 사용했습니다.
+
+그리고 물리적인 용지 크기와 판형의 크기가 동일하기 때문에 재단선 출력을 설정하는 `showcrop`\index{showcrop}\index{geometry!showcrop}을 설정하지 않았습니다.
+
+#### 레이아웃 설정
+
+`geometry` 패키지의 페이지 설정 파라미터는 [@fig-layout]\과 같습니다. 머리글과 바탕글 위치는 각각 `head`\index{head}\index{geometry!head}와 `foot`\index{foot}\index{geometry!foot}입니다. 그러므로 설정 시에는 `top`\index{top}\index{geometry!top}보다 `headsep`\index{headsep}\index{geometry!headsep}이 작아야 하고, `bottom`\index{bottom}\index{geometry!bottom}보다 `footskip`\index{footskip}\index{geometry!footskip}이 작아야 합니다. 즉, `top` 영역 안에 `headsep`이 포함되고, `bottom` 영역 안에 `footskip`이 포함되기 때문입니다.
+
+출판 저작물을 생성하는 저자는, 현재 bitPublish의 기본 페이지 레이아웃을 참고해서 레이아웃을 정의하기 바랍니다.
+
+```{r}
+#| label: fig-layout
+#| echo: false
+#| out-width: "95%"
+#| fig-align: "center"
+#| fig-cap: "geometry 패키지의 레이아웃 설정 파라미터"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/geometry.png")
+```
+
+
+[^paper]: 한국정기간행물햡동조합 홈페이지, http://kptc.or.kr/pds/paperstorys.html 참고
+
 
 ### 폰트 설정
 

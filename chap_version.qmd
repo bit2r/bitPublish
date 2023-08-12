@@ -112,5 +112,17 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
 - **2023-08-06**
 
 - HTML 아웃 포맷에서의 cover-image 사용 예제 추가 (#54)
+
+
+### version 0.3.0
+
+- **2023-08-12**
+
+- HTML 아웃 포맷을 웹북으로 출판하기 위한 데모를 github pages에 deploy (#55)
+    - https://r2bit.com/bitPublish/
+- 판형 설정에서 용지크기를 46배판(B5)으로 설정 (#57)
+    - 기존에는 용지의 크기가 국배판(A4)였음
+- geometry 패키지의 판형 설정 설명을 추가
+
     
     
