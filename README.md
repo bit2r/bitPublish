@@ -1,4 +1,4 @@
-# bitPublish <img src="hexlogo/bitPublish_logo.png" align="right" height="120" width="103.6"/>
+# bitPublish <img src="hexlogo/bitPublish_logo.png" align="right" height="120" width="120"/>
 
 XeLaTeX 기반으로 한글 책을 PDF 파일로 조판할 수 있는 `Quarto extension`입니다.
 
