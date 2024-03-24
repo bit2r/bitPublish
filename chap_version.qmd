@@ -124,5 +124,15 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - 기존에는 용지의 크기가 국배판(A4)였음
 - geometry 패키지의 판형 설정 설명을 추가
 
+
+### version 0.4.0
+
+- **2024-03-24**
+
+- 랜더링 시 오류 발생 오류 수정 (#59)
+    - "_extensions/bit2r/bitPublish/init_environments.R" 파일의
+    - table_with_caption() 함수 수정
+
+
     
     
