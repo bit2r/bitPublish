@@ -93,10 +93,14 @@ as_latex_with_caption <- function(gt, label, caption) {
 ##==============================================================================
 ## table의 cross-reference 적용을 위해서
 ##==============================================================================
-table_with_caption <- function(tab, label, digits = NULL, big.mark = NULL) {
-  if (knitr::is_latex_output()) {
+table_with_caption <- function(tab, label, caption, digits = NULL, big.mark = NULL) {
+  is_latex <- knitr::is_latex_output()
+
+  if (is_latex) {
     caption_lab <- paste0(
-      "\\caption{\\label{", label, "}\n")
+      "\\caption{", caption, "}")
+    caption_lab <- paste0(caption_lab, 
+      "\\label{", label, "}\n")  
     
     align <- paste(ifelse(sapply(tab, is.numeric), "r", "l"), collapse = "")
     
@@ -147,7 +151,9 @@ table_with_caption <- function(tab, label, digits = NULL, big.mark = NULL) {
     #   cat()
   }
   
-  if (knitr::is_html_output()) {
+  is_html <- knitr::is_html_output()
+  
+  if (is_html) {
     knitr::kable(tab)
   }  
 }
