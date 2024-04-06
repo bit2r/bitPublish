@@ -10,6 +10,7 @@ book:
     - index.qmd
     - chap_exams.qmd
     - chap_intro_bitpublish.qmd
+    - chap_tips.qmd    
     - chap_troubleshooting.qmd
     - chap_version.qmd
     - chap_solve_exercise.qmd    

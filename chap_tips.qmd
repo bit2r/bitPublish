@@ -1,0 +1,36 @@
+# bitPublish 사용 팁 {#sec-tips}
+
+```{r init, include=FALSE}
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+```
+
+이 장에서는 \`bitPublish'을 응용하여 다소 복잡한 기능을 구현하는 팁을 제시합니다.
+
+
+## 서식에 관련된 팁
+
+### 그림을 표로 인식시키고, 표의 label을 활용
+
+경우에 따라서 복잡한 표를 LaTeX로 작성하는 것이 어려울 수 있습니다. 이때 표를 파워포인트나 그림으로 작성하고, 그림을 표로 인식시키는 방법을 사용할 수 있습니다. 
+
+다음 예제처럼 그림을 표로 인식시키고, 표의 label을 활용하여 표의 cross-reference를 적용할 수 있습니다.
+
+```{md}
+다음 [@tbl-image]처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다. 
+
+::: {#tbl-image}
+
+![](img/table_image.png){fig-pos='!ht' fig-align="center" width=50%}
+
+테이블 이미지의 표로 출력
+:::
+```
+
+다음 [@tbl-image]처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다. 
+
+::: {#tbl-image}
+
+![](img/table_image.png){fig-pos='!ht' fig-align="center" width=50%}
+
+테이블 이미지의 표로 출력
+:::
