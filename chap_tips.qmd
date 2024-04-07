@@ -74,3 +74,83 @@ link-citations: false
 hyperrefoptions: draft
 ```
 
+
+### 코드 블록의 배경색 설정
+
+다음의 코드 블록이 실행되면 어떻게 출력되는지 확인해보세요.
+
+```{md}
+#| eval: false
+#| echo: true
+velocity <- c(65, 70, 54, 59, 40)
+mean(velocity)                        # (1) 산술평균
+```
+
+Quarto로 생성한 문서의 코드 블록의 기본 출력은 [@fig-codeblock-default]\와 같이 출력됩니다.
+
+```{r}
+#| label: fig-codeblock-default
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "코드 블록의 기본 출력"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/codeblock-default.png")
+```
+
+그런데 이 블록의 경우, 배경색이 흐려서 일반 프린터 출력 시 잘 보이지 않아 본문에서 구분이 잘 안될 수도 있습니다. 이처럼 코드 블록의 배경색을 설정하고 싶을 때가 있습니다. 이때 다음과 같이 설정을 변경할 수 있습니다.
+
+_quarto.yml 파일에 다음과 같은 옵션을 기술합니다.
+
+- code-block-border-left
+    - 코드블록의 왼쪽 테두리 색상을 지정합니다.
+    - 기본값은 true로 밝은 회색을 테두리를 생성합니다.
+    - RGB 색상 이름을 지정해서 테두리의 색상을 지정할 수 있습니다.
+- code-block-bg
+    - 코드블록의 배경색을 지정합니다.
+    - 설정하지 않으면 배경색을 출력하지 않습니다.
+    - true를 지정하면 html에서는 "#F0F3F5" 색상으로 출력되지만,
+        - pdf에서는 색상이 출력되지 않습니다.
+    - RGB 색상 이름을 지정해서 배경색을 지정할 수 있습니다.
+
+다음은 bitPublist로 생성된 문서의 코드 블록의 색상을 지정하는 _quarto.yml 파일 예제입니다. 
+
+```{md}
+project:
+  type: book
+  output-dir: docs
+
+lang: ko-KR
+
+book:
+  title: "bitPublish를 이용하여 한글 책 조판하기"
+  chapters:
+    - index.qmd
+    - chap_exams.qmd
+    - chap_intro_bitpublish.qmd
+    - chap_tips.qmd    
+    - chap_troubleshooting.qmd
+    - chap_version.qmd
+    - chap_solve_exercise.qmd    
+  cover-image: hexlogo/bitPublish_logo.png    
+bibliography: references.bib
+link-citations: false
+code-block-border-left: "#245ABE"
+code-block-bg: "#f8f8f8"
+```
+
+
+수정한 _quarto.yml 파일로 생성한 문서의 코드 블록은 [@fig-codeblock-custom]\와 같이 출력됩니다.
+
+```{r}
+#| label: fig-codeblock-custom
+#| echo: false
+#| out-width: "90%"
+#| fig-align: "center"
+#| fig-cap: "코드 블록의 사용자 정의 출력"
+#| fig-pos: "htb!"
+
+knitr::include_graphics("img/codeblock-custom.png")
+```
+
