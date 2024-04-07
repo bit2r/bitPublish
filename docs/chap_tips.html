@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>bitPublish를 이용하여 한글 책 조판하기</title>
+<title>bitPublish를 이용하여 한글 책 조판하기 - 3&nbsp; bitPublish 사용 팁</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chap_exams.html" rel="next">
+<link href="./chap_troubleshooting.html" rel="next">
+<link href="./chap_intro_bitpublish.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">머리말</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_tips.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">머리말</span></a>
   </div>
 </li>
@@ -126,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chap_tips.html" class="sidebar-item-text sidebar-link">
+  <a href="./chap_tips.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></span></a>
   </div>
 </li>
@@ -164,7 +199,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#머리말" id="toc-머리말" class="nav-link active" data-scroll-target="#머리말">머리말</a></li>
+  <li><a href="#서식에-관련된-팁" id="toc-서식에-관련된-팁" class="nav-link active" data-scroll-target="#서식에-관련된-팁"><span class="header-section-number">3.1</span> 서식에 관련된 팁</a>
+  <ul class="collapse">
+  <li><a href="#그림을-표로-인식시키고-표의-label을-활용" id="toc-그림을-표로-인식시키고-표의-label을-활용" class="nav-link" data-scroll-target="#그림을-표로-인식시키고-표의-label을-활용"><span class="header-section-number">3.1.1</span> 그림을 표로 인식시키고, 표의 label을 활용</a></li>
+  <li><a href="#문서-내-인용-하이퍼-링크-제거" id="toc-문서-내-인용-하이퍼-링크-제거" class="nav-link" data-scroll-target="#문서-내-인용-하이퍼-링크-제거"><span class="header-section-number">3.1.2</span> 문서 내 인용 하이퍼 링크 제거</a></li>
+  <li><a href="#코드-블록의-배경색-설정" id="toc-코드-블록의-배경색-설정" class="nav-link" data-scroll-target="#코드-블록의-배경색-설정"><span class="header-section-number">3.1.3</span> 코드 블록의 배경색 설정</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -173,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">bitPublish를 이용하여 한글 책 조판하기</h1>
+<h1 class="title"><span id="sec-tips" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></span></h1>
 </div>
 
 
@@ -190,14 +230,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>이 장에서는 `bitPublish’을 응용하여 다소 복잡한 기능을 구현하는 팁을 제시합니다.</p>
+<section id="서식에-관련된-팁" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="서식에-관련된-팁"><span class="header-section-number">3.1</span> 서식에 관련된 팁</h2>
+<section id="그림을-표로-인식시키고-표의-label을-활용" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="그림을-표로-인식시키고-표의-label을-활용"><span class="header-section-number">3.1.1</span> 그림을 표로 인식시키고, 표의 label을 활용</h3>
+<p>경우에 따라서 복잡한 표를 LaTeX로 작성하는 것이 어려울 수 있습니다. 이때 표를 파워포인트나 그림으로 작성하고, 그림을 표로 인식시키는 방법을 사용할 수 있습니다.</p>
+<p>다음 예제처럼 그림을 표로 인식시키고, 표의 label을 활용하여 표의 cross-reference를 적용할 수 있습니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>다음 <span class="co">[</span><span class="ot">@tbl-image</span><span class="co">]</span>처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다. </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>::: {#tbl-image}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/table_image.png)</span>{fig-pos='!ht' fig-align="center" width=50%}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>테이블 이미지의 표로 출력</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음 <a href="#tbl-image" class="quarto-xref">표&nbsp;<span>3.1</span></a>처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다.</p>
+<div id="tbl-image" class="quarto-float anchored" data-fig-align="center" data-fig-pos="!ht">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+표&nbsp;3.1: 테이블 이미지의 표로 출력
+</figcaption>
+<div aria-describedby="tbl-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/table_image.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" data-fig-pos="!ht">
+</div>
+</figure>
+</div>
+</section>
+<section id="문서-내-인용-하이퍼-링크-제거" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="문서-내-인용-하이퍼-링크-제거"><span class="header-section-number">3.1.2</span> 문서 내 인용 하이퍼 링크 제거</h3>
+<p>문서 내 인용을 하이퍼 링크로 제공하는 것이 기본 설정이지만, 이를 제거하고 싶을 때가 있습니다.</p>
+<p>예를 들어서 생성된 문서를 인쇄할 경우에 하이퍼 링크가 파란색으로 출력되는 것을 방지하고 싶을 때가 있습니다. pdf 파일로 배포할 경우에는 하이퍼 링크가 필요하지만, 단행본 출판을 위해서 인쇄 목적의 출력을 위해서는 하이퍼 링크를 제거하는 것이 좋습니다.</p>
+<p>이때 다음과 같이 설정을 변경할 수 있습니다.</p>
+<p>_quarto.yml 파일에 다음과 같은 <code>hyperrefoptions</code> 설정을 추가합니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="an">hyperrefoptions:</span><span class="co"> draft</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음은 bitPublist로 생성된 문서의 인용을 하이퍼 링크로 제공하는 것을 방지하는 _quarto.yml 파일 예제입니다. 만약 하이퍼 링크를 제공하고 싶다면 <code>hyperrefoptions: draft</code>를 제거하면 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="an">project:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  type: book</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  output-dir: docs</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>lang: ko-KR</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>book:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  title: "bitPublish를 이용하여 한글 책 조판하기"</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  chapters:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>index.qmd</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_exams.qmd</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_intro_bitpublish.qmd</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_tips.qmd    </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_troubleshooting.qmd</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_version.qmd</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_solve_exercise.qmd    </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  cover-image: hexlogo/bitPublish_logo.png    </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>bibliography: references.bib</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>link-citations: false</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>hyperrefoptions: draft</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="코드-블록의-배경색-설정" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="코드-블록의-배경색-설정"><span class="header-section-number">3.1.3</span> 코드 블록의 배경색 설정</h3>
+<p>다음의 코드 블록이 실행되면 어떻게 출력되는지 확인해보세요.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>velocity &lt;- c(65, 70, 54, 59, 40)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mean(velocity)                        # (1) 산술평균</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Quarto로 생성한 문서의 코드 블록의 기본 출력은 <a href="#fig-codeblock-default" class="quarto-xref">그림&nbsp;<span>3.1</span></a>같이 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-codeblock-default" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="htb!">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-codeblock-default-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/codeblock-default.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="htb!">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-codeblock-default-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;3.1: 코드 블록의 기본 출력
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>그런데 이 블록의 경우, 배경색이 흐려서 일반 프린터 출력 시 잘 보이지 않아 본문에서 구분이 잘 안될 수도 있습니다. 이처럼 코드 블록의 배경색을 설정하고 싶을 때가 있습니다. 이때 다음과 같이 설정을 변경할 수 있습니다.</p>
+<p>_quarto.yml 파일에 다음과 같은 옵션을 기술합니다.</p>
+<ul>
+<li>code-block-border-left
+<ul>
+<li>코드블록의 왼쪽 테두리 색상을 지정합니다.</li>
+<li>기본값은 true로 밝은 회색을 테두리를 생성합니다.</li>
+<li>RGB 색상 이름을 지정해서 테두리의 색상을 지정할 수 있습니다.</li>
+</ul></li>
+<li>code-block-bg
+<ul>
+<li>코드블록의 배경색을 지정합니다.</li>
+<li>설정하지 않으면 배경색을 출력하지 않습니다.</li>
+<li>true를 지정하면 html에서는 “#F0F3F5” 색상으로 출력되지만,
+<ul>
+<li>pdf에서는 색상이 출력되지 않습니다.</li>
+</ul></li>
+<li>RGB 색상 이름을 지정해서 배경색을 지정할 수 있습니다.</li>
+</ul></li>
+</ul>
+<p>다음은 bitPublist로 생성된 문서의 코드 블록의 색상을 지정하는 _quarto.yml 파일 예제입니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="an">project:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  type: book</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  output-dir: docs</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>lang: ko-KR</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>book:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  title: "bitPublish를 이용하여 한글 책 조판하기"</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  chapters:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>index.qmd</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_exams.qmd</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_intro_bitpublish.qmd</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_tips.qmd    </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_troubleshooting.qmd</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_version.qmd</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>chap_solve_exercise.qmd    </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  cover-image: hexlogo/bitPublish_logo.png    </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>bibliography: references.bib</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>link-citations: false</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>code-block-border-left: "#245ABE"</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>code-block-bg: "#f8f8f8"</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>수정한 _quarto.yml 파일로 생성한 문서의 코드 블록은 <a href="#fig-codeblock-custom" class="quarto-xref">그림&nbsp;<span>3.2</span></a>같이 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-codeblock-custom" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="htb!">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-codeblock-custom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/codeblock-custom.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="htb!">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-codeblock-custom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;3.2: 코드 블록의 사용자 정의 출력
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
-<section id="머리말" class="level1 unnumbered">
-<h1 class="unnumbered">머리말</h1><p><img src="hexlogo/bitPublish_logo.png" title="bitPublish를 이용하여 한글 책 조판하기" class="quarto-cover-image img-fluid"></p>
-<p>R은 통계적인 계산과 시각화에 많은 장점을 가지고 있는 도구이다. 개인적으로는 S-PLUS의 경험을 시작으로 해서 R이라는 아주 친한 친구를 알게 된 것을 대단한 행운으로 여기고 있다. R에대한깊이가깊다고자신할수는없지만, 함께해 온 날은 결코 짧지 않다. 1993년 여름, S-PLUS를 통해 S 언어를 처음 접한 후 매우 강한 인상을 받았다. 그리고 2000년대 초 어느 서점에서 책을 뒤적이다가 단 몇 줄이지만 S 언어의 클론이라는 존재로 R이라는 것이 있음을 알고 전율을 느꼈던 순간을 잊지 못한다. 그리고 아직 까지도 통계적인 계산과 시각화에 R보다 더 좋은 도구가 없다는 생각에는 변함이 없다.</p>
-<p>필자는 2005년 “R 그래픽스”를 통해서 R을 이용해서 여러 가지 통계적인 그래프를 그리는 방법과 원리를 제시했고, 2010년 “R 프로그래밍”을 통해서는 R로 데이터를 다루고 프로그래밍을 하는 방법을 설명하였다. 그리고 이제 R을 이용해서 통계학의 기본적인 원리를 이해할 수 있도록 예제 중심의 통계학 기본서를 내놓게 되었다. 늘 그렇듯 책을 마 무리하는 시점에서는 항상 부족함을 느낀다. 그러나 딱딱한 수리적인 통계 이론이 아닌 R을 이용해서 쉽게 통계학의 원리를 터득할 수 있는 예제를 표현하려고 노력한 것에 대 해서는 인정해 주었으면 한다.</p>
-<p>기타 등등 블라블라</p>
 
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -590,10 +768,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./chap_intro_bitpublish.html" class="pagination-link" aria-label="bitPublish 소개">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chap_exams.html" class="pagination-link" aria-label="예제를 위한 장">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">예제를 위한 장</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chap_troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

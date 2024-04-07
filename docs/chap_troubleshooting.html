@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>bitPublish를 이용하여 한글 책 조판하기 - 3&nbsp; Troubleshooting</title>
+<title>bitPublish를 이용하여 한글 책 조판하기 - 4&nbsp; Troubleshooting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./chap_version.html" rel="next">
-<link href="./chap_intro_bitpublish.html" rel="prev">
+<link href="./chap_tips.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,6 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/bit2r/bitPublish/style.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -115,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_troubleshooting.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_troubleshooting.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -160,20 +161,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chap_tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chap_troubleshooting.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chap_version.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chap_solve_exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">참고문헌</span></a>
   </div>
 </li>
     </ul>
@@ -186,17 +199,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#quarto-오류" id="toc-quarto-오류" class="nav-link active" data-scroll-target="#quarto-오류"><span class="header-section-number">3.1</span> Quarto 오류</a>
+  <li><a href="#quarto-오류" id="toc-quarto-오류" class="nav-link active" data-scroll-target="#quarto-오류"><span class="header-section-number">4.1</span> Quarto 오류</a>
   <ul class="collapse">
-  <li><a href="#texlive-버전-이슈" id="toc-texlive-버전-이슈" class="nav-link" data-scroll-target="#texlive-버전-이슈"><span class="header-section-number">3.1.1</span> TeXlive 버전 이슈</a></li>
+  <li><a href="#texlive-버전-이슈" id="toc-texlive-버전-이슈" class="nav-link" data-scroll-target="#texlive-버전-이슈"><span class="header-section-number">4.1.1</span> TeXlive 버전 이슈</a></li>
   </ul></li>
-  <li><a href="#latex-오류" id="toc-latex-오류" class="nav-link" data-scroll-target="#latex-오류"><span class="header-section-number">3.2</span> LaTeX 오류</a>
+  <li><a href="#latex-오류" id="toc-latex-오류" class="nav-link" data-scroll-target="#latex-오류"><span class="header-section-number">4.2</span> LaTeX 오류</a>
   <ul class="collapse">
-  <li><a href="#찾아보기-오류" id="toc-찾아보기-오류" class="nav-link" data-scroll-target="#찾아보기-오류"><span class="header-section-number">3.2.1</span> 찾아보기 오류</a></li>
+  <li><a href="#찾아보기-오류" id="toc-찾아보기-오류" class="nav-link" data-scroll-target="#찾아보기-오류"><span class="header-section-number">4.2.1</span> 찾아보기 오류</a></li>
   </ul></li>
-  <li><a href="#설치-이슈" id="toc-설치-이슈" class="nav-link" data-scroll-target="#설치-이슈"><span class="header-section-number">3.3</span> 설치 이슈</a>
+  <li><a href="#설치-이슈" id="toc-설치-이슈" class="nav-link" data-scroll-target="#설치-이슈"><span class="header-section-number">4.3</span> 설치 이슈</a>
   <ul class="collapse">
-  <li><a href="#bitpublish-파일-다운로드-설치" id="toc-bitpublish-파일-다운로드-설치" class="nav-link" data-scroll-target="#bitpublish-파일-다운로드-설치"><span class="header-section-number">3.3.1</span> bitPublish 파일 다운로드 설치</a></li>
+  <li><a href="#bitpublish-파일-다운로드-설치" id="toc-bitpublish-파일-다운로드-설치" class="nav-link" data-scroll-target="#bitpublish-파일-다운로드-설치"><span class="header-section-number">4.3.1</span> bitPublish 파일 다운로드 설치</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -206,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-tshoot" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></h1>
+<h1 class="title"><span id="sec-tshoot" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></h1>
 </div>
 
 
@@ -234,10 +247,10 @@ bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있�
 </p>
 <p></p>
 </titlebox></div>
-<section id="quarto-오류" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="quarto-오류"><span class="header-section-number">3.1</span> Quarto 오류</h2>
-<section id="texlive-버전-이슈" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="texlive-버전-이슈"><span class="header-section-number">3.1.1</span> TeXlive 버전 이슈</h3>
+<section id="quarto-오류" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="quarto-오류"><span class="header-section-number">4.1</span> Quarto 오류</h2>
+<section id="texlive-버전-이슈" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="texlive-버전-이슈"><span class="header-section-number">4.1.1</span> TeXlive 버전 이슈</h3>
 <p>다음처럼 미리보기 명령이나,</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto preview --to bitPublish-pdf</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -268,10 +281,10 @@ bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있�
 </div>
 </section>
 </section>
-<section id="latex-오류" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="latex-오류"><span class="header-section-number">3.2</span> LaTeX 오류</h2>
-<section id="찾아보기-오류" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="찾아보기-오류"><span class="header-section-number">3.2.1</span> 찾아보기 오류</h3>
+<section id="latex-오류" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="latex-오류"><span class="header-section-number">4.2</span> LaTeX 오류</h2>
+<section id="찾아보기-오류" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="찾아보기-오류"><span class="header-section-number">4.2.1</span> 찾아보기 오류</h3>
 <p>다음과 같이 찾아보기 명령 \index{}를 사용할 때,</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\index</span>{include_graphics()}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -289,10 +302,10 @@ bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있�
 </div>
 </section>
 </section>
-<section id="설치-이슈" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="설치-이슈"><span class="header-section-number">3.3</span> 설치 이슈</h2>
-<section id="bitpublish-파일-다운로드-설치" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="bitpublish-파일-다운로드-설치"><span class="header-section-number">3.3.1</span> bitPublish 파일 다운로드 설치</h3>
+<section id="설치-이슈" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="설치-이슈"><span class="header-section-number">4.3</span> 설치 이슈</h2>
+<section id="bitpublish-파일-다운로드-설치" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="bitpublish-파일-다운로드-설치"><span class="header-section-number">4.3.1</span> bitPublish 파일 다운로드 설치</h3>
 <p>bitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarto use template bit2r/bitPublish</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -715,13 +728,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chap_intro_bitpublish.html" class="pagination-link" aria-label="bitPublish 소개">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">bitPublish 소개</span></span>
+      <a href="./chap_tips.html" class="pagination-link" aria-label="bitPublish 사용 팁">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chap_version.html" class="pagination-link" aria-label="Version">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

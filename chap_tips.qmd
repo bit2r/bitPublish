@@ -80,8 +80,6 @@ hyperrefoptions: draft
 다음의 코드 블록이 실행되면 어떻게 출력되는지 확인해보세요.
 
 ```{md}
-#| eval: false
-#| echo: true
 velocity <- c(65, 70, 54, 59, 40)
 mean(velocity)                        # (1) 산술평균
 ```

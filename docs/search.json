@@ -110,73 +110,103 @@
     ]
   },
   {
+    "objectID": "chap_tips.html",
+    "href": "chap_tips.html",
+    "title": "3  bitPublish 사용 팁",
+    "section": "",
+    "text": "3.1 서식에 관련된 팁",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>bitPublish 사용 팁</span>"
+    ]
+  },
+  {
+    "objectID": "chap_tips.html#서식에-관련된-팁",
+    "href": "chap_tips.html#서식에-관련된-팁",
+    "title": "3  bitPublish 사용 팁",
+    "section": "",
+    "text": "3.1.1 그림을 표로 인식시키고, 표의 label을 활용\n경우에 따라서 복잡한 표를 LaTeX로 작성하는 것이 어려울 수 있습니다. 이때 표를 파워포인트나 그림으로 작성하고, 그림을 표로 인식시키는 방법을 사용할 수 있습니다.\n다음 예제처럼 그림을 표로 인식시키고, 표의 label을 활용하여 표의 cross-reference를 적용할 수 있습니다.\n\n다음 [@tbl-image]처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다. \n\n::: {#tbl-image}\n\n![](img/table_image.png){fig-pos='!ht' fig-align=\"center\" width=50%}\n\n테이블 이미지의 표로 출력\n:::\n\n다음 표 3.1처럼 이미지화된 표를 테이블로 인식시킬 수 있습니다.\n\n\n\n표 3.1: 테이블 이미지의 표로 출력\n\n\n\n\n\n\n\n\n3.1.2 문서 내 인용 하이퍼 링크 제거\n문서 내 인용을 하이퍼 링크로 제공하는 것이 기본 설정이지만, 이를 제거하고 싶을 때가 있습니다.\n예를 들어서 생성된 문서를 인쇄할 경우에 하이퍼 링크가 파란색으로 출력되는 것을 방지하고 싶을 때가 있습니다. pdf 파일로 배포할 경우에는 하이퍼 링크가 필요하지만, 단행본 출판을 위해서 인쇄 목적의 출력을 위해서는 하이퍼 링크를 제거하는 것이 좋습니다.\n이때 다음과 같이 설정을 변경할 수 있습니다.\n_quarto.yml 파일에 다음과 같은 hyperrefoptions 설정을 추가합니다.\n\nhyperrefoptions: draft\n\n다음은 bitPublist로 생성된 문서의 인용을 하이퍼 링크로 제공하는 것을 방지하는 _quarto.yml 파일 예제입니다. 만약 하이퍼 링크를 제공하고 싶다면 hyperrefoptions: draft를 제거하면 됩니다.\n\nproject:\n  type: book\n  output-dir: docs\n\nlang: ko-KR\n\nbook:\n  title: \"bitPublish를 이용하여 한글 책 조판하기\"\n  chapters:\n    - index.qmd\n    - chap_exams.qmd\n    - chap_intro_bitpublish.qmd\n    - chap_tips.qmd    \n    - chap_troubleshooting.qmd\n    - chap_version.qmd\n    - chap_solve_exercise.qmd    \n  cover-image: hexlogo/bitPublish_logo.png    \nbibliography: references.bib\nlink-citations: false\nhyperrefoptions: draft\n\n\n\n3.1.3 코드 블록의 배경색 설정\n다음의 코드 블록이 실행되면 어떻게 출력되는지 확인해보세요.\n\nvelocity &lt;- c(65, 70, 54, 59, 40)\nmean(velocity)                        # (1) 산술평균\n\nQuarto로 생성한 문서의 코드 블록의 기본 출력은 그림 3.1같이 출력됩니다.\n\n\n\n\n\n\n\n\n그림 3.1: 코드 블록의 기본 출력\n\n\n\n\n\n그런데 이 블록의 경우, 배경색이 흐려서 일반 프린터 출력 시 잘 보이지 않아 본문에서 구분이 잘 안될 수도 있습니다. 이처럼 코드 블록의 배경색을 설정하고 싶을 때가 있습니다. 이때 다음과 같이 설정을 변경할 수 있습니다.\n_quarto.yml 파일에 다음과 같은 옵션을 기술합니다.\n\ncode-block-border-left\n\n코드블록의 왼쪽 테두리 색상을 지정합니다.\n기본값은 true로 밝은 회색을 테두리를 생성합니다.\nRGB 색상 이름을 지정해서 테두리의 색상을 지정할 수 있습니다.\n\ncode-block-bg\n\n코드블록의 배경색을 지정합니다.\n설정하지 않으면 배경색을 출력하지 않습니다.\ntrue를 지정하면 html에서는 “#F0F3F5” 색상으로 출력되지만,\n\npdf에서는 색상이 출력되지 않습니다.\n\nRGB 색상 이름을 지정해서 배경색을 지정할 수 있습니다.\n\n\n다음은 bitPublist로 생성된 문서의 코드 블록의 색상을 지정하는 _quarto.yml 파일 예제입니다.\n\nproject:\n  type: book\n  output-dir: docs\n\nlang: ko-KR\n\nbook:\n  title: \"bitPublish를 이용하여 한글 책 조판하기\"\n  chapters:\n    - index.qmd\n    - chap_exams.qmd\n    - chap_intro_bitpublish.qmd\n    - chap_tips.qmd    \n    - chap_troubleshooting.qmd\n    - chap_version.qmd\n    - chap_solve_exercise.qmd    \n  cover-image: hexlogo/bitPublish_logo.png    \nbibliography: references.bib\nlink-citations: false\ncode-block-border-left: \"#245ABE\"\ncode-block-bg: \"#f8f8f8\"\n\n수정한 _quarto.yml 파일로 생성한 문서의 코드 블록은 그림 3.2같이 출력됩니다.\n\n\n\n\n\n\n\n\n그림 3.2: 코드 블록의 사용자 정의 출력",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>bitPublish 사용 팁</span>"
+    ]
+  },
+  {
     "objectID": "chap_troubleshooting.html",
     "href": "chap_troubleshooting.html",
-    "title": "3  Troubleshooting",
+    "title": "4  Troubleshooting",
     "section": "",
-    "text": "3.1 Quarto 오류",
+    "text": "4.1 Quarto 오류",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Troubleshooting</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Troubleshooting</span>"
     ]
   },
   {
     "objectID": "chap_troubleshooting.html#quarto-오류",
     "href": "chap_troubleshooting.html#quarto-오류",
-    "title": "3  Troubleshooting",
+    "title": "4  Troubleshooting",
     "section": "",
-    "text": "3.1.1 TeXlive 버전 이슈\n다음처럼 미리보기 명령이나,\n\nquarto preview --to bitPublish-pdf\n\n랜더링 명령에서,\n\nquarto render --to bitPublish-pdf\n\n아래와 같은 에러가 발생하는 경우가 있습니다.\nupdating existing packages\nfinding package for bclogo.sty\nERROR: Your TexLive version is not updated enough to connect to the remote \nrepository and download packages. Please update your installation of TexLive \nor TinyTex.\n\nUnderlying message: Local TeX Live (2022) is older than remote repository (2023).\nCross release updates are only supported with\n  update-tlmgr-latest(.sh/.exe) --update\nSee https://tug.org/texlive/upgrade.html for details.\n매년 4월 TeXlive는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 TeXlive 또는 TeXlive는 원격저장소를 이용하는 TinyTex을 업데이트 해야 합니다.\nTeXlive를 사용한다면, 다음 명령으로 TeXlive를 업데이트하세요.\n\nupdate-tlmgr-latest --update\n\nTinyTex을 사용한다면, 다음 명령으로 TinyTex을 업데이트하세요.\n\nquarto update tinytex",
+    "text": "4.1.1 TeXlive 버전 이슈\n다음처럼 미리보기 명령이나,\n\nquarto preview --to bitPublish-pdf\n\n랜더링 명령에서,\n\nquarto render --to bitPublish-pdf\n\n아래와 같은 에러가 발생하는 경우가 있습니다.\nupdating existing packages\nfinding package for bclogo.sty\nERROR: Your TexLive version is not updated enough to connect to the remote \nrepository and download packages. Please update your installation of TexLive \nor TinyTex.\n\nUnderlying message: Local TeX Live (2022) is older than remote repository (2023).\nCross release updates are only supported with\n  update-tlmgr-latest(.sh/.exe) --update\nSee https://tug.org/texlive/upgrade.html for details.\n매년 4월 TeXlive는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 TeXlive 또는 TeXlive는 원격저장소를 이용하는 TinyTex을 업데이트 해야 합니다.\nTeXlive를 사용한다면, 다음 명령으로 TeXlive를 업데이트하세요.\n\nupdate-tlmgr-latest --update\n\nTinyTex을 사용한다면, 다음 명령으로 TinyTex을 업데이트하세요.\n\nquarto update tinytex",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Troubleshooting</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Troubleshooting</span>"
     ]
   },
   {
     "objectID": "chap_troubleshooting.html#latex-오류",
     "href": "chap_troubleshooting.html#latex-오류",
-    "title": "3  Troubleshooting",
-    "section": "3.2 LaTeX 오류",
-    "text": "3.2 LaTeX 오류\n\n3.2.1 찾아보기 오류\n다음과 같이 찾아보기 명령 \\index{}를 사용할 때,\n\n\\index{include_graphics()}\n\n텍스트 내에 언더라인(_)이 있을 경우 다음과 같은 에러가 발생합니다.\nompilation failed- Error compiling latex\nMissing $ inserted.\n&lt;inserted text&gt; \n                $\nl.54   \\item include_\n                     graphics(), \\hyperpage{27} \n문자로서의 언더라인을 기술하기 위해서는 다음과 같이 언더라인에 역 슬래시를 붙여서 기술합니다.\n\n\\index{include\\_graphics()}",
+    "title": "4  Troubleshooting",
+    "section": "4.2 LaTeX 오류",
+    "text": "4.2 LaTeX 오류\n\n4.2.1 찾아보기 오류\n다음과 같이 찾아보기 명령 \\index{}를 사용할 때,\n\n\\index{include_graphics()}\n\n텍스트 내에 언더라인(_)이 있을 경우 다음과 같은 에러가 발생합니다.\nompilation failed- Error compiling latex\nMissing $ inserted.\n&lt;inserted text&gt; \n                $\nl.54   \\item include_\n                     graphics(), \\hyperpage{27} \n문자로서의 언더라인을 기술하기 위해서는 다음과 같이 언더라인에 역 슬래시를 붙여서 기술합니다.\n\n\\index{include\\_graphics()}",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Troubleshooting</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Troubleshooting</span>"
     ]
   },
   {
     "objectID": "chap_troubleshooting.html#설치-이슈",
     "href": "chap_troubleshooting.html#설치-이슈",
-    "title": "3  Troubleshooting",
-    "section": "3.3 설치 이슈",
-    "text": "3.3 설치 이슈\n\n3.3.1 bitPublish 파일 다운로드 설치\nbitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.\n\nquarto use template bit2r/bitPublish\n\n혹은 다음처럼 기존 문서에 bitPublish extension을 설치하는 명령으로도 Github에서 bitPublish가 설치됩니다.\n\nquarto install extension bit2r/bitPublish\n\n그러나 사용자 PC 환경에서, 보안 프로그램 등의 이슈로 quarto 명령 설치에 오류가 발생할 수 있습니다. 이 경우에는 Github으로부터 bitPublish를 다운로드한 후 특정 디렉토리에 복사해서 사용하면 됩니다. 그러나 이 경우에는 다음과 같은 명령에 에러가 발생할 수 있습니다.\n\n명령\n\n\nquarto preview --to bitPublish-pdf\n\n\n에러 메시지의 일부\n\n\nfinding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.\n\n1 package to install\ninstalling stix2-otf (1 of 1)\nERROR: tlmgr returned a non zero status code\n\n이러한 에러가 발생한 이유는 quarto 명령어로 bitPublish가 설치될 경우에는 _extensions/bit2r/bitPublish 경로로 extensions이 설치되지만, Github에서 파일을 다운로드해서 실치할 경우에는 _extensions/bitPublish 경로로 설치되기 때문입니다.\nbitPublish extensions은 _extensions/bit2r/bitPublish 디렉토리에 설치됨을 전제로 개발되었기 때문에 다운로드 설치 시 _extensions 디렉토리 안에 bit2r 디렉토리를 만들어서 현재의 _extensions/bitPublish 경로를 _extensions/bit2r/bitPublish 경로로 변경하면 문제가 해결됩니다.",
+    "title": "4  Troubleshooting",
+    "section": "4.3 설치 이슈",
+    "text": "4.3 설치 이슈\n\n4.3.1 bitPublish 파일 다운로드 설치\nbitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.\n\nquarto use template bit2r/bitPublish\n\n혹은 다음처럼 기존 문서에 bitPublish extension을 설치하는 명령으로도 Github에서 bitPublish가 설치됩니다.\n\nquarto install extension bit2r/bitPublish\n\n그러나 사용자 PC 환경에서, 보안 프로그램 등의 이슈로 quarto 명령 설치에 오류가 발생할 수 있습니다. 이 경우에는 Github으로부터 bitPublish를 다운로드한 후 특정 디렉토리에 복사해서 사용하면 됩니다. 그러나 이 경우에는 다음과 같은 명령에 에러가 발생할 수 있습니다.\n\n명령\n\n\nquarto preview --to bitPublish-pdf\n\n\n에러 메시지의 일부\n\n\nfinding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.\n\n1 package to install\ninstalling stix2-otf (1 of 1)\nERROR: tlmgr returned a non zero status code\n\n이러한 에러가 발생한 이유는 quarto 명령어로 bitPublish가 설치될 경우에는 _extensions/bit2r/bitPublish 경로로 extensions이 설치되지만, Github에서 파일을 다운로드해서 실치할 경우에는 _extensions/bitPublish 경로로 설치되기 때문입니다.\nbitPublish extensions은 _extensions/bit2r/bitPublish 디렉토리에 설치됨을 전제로 개발되었기 때문에 다운로드 설치 시 _extensions 디렉토리 안에 bit2r 디렉토리를 만들어서 현재의 _extensions/bitPublish 경로를 _extensions/bit2r/bitPublish 경로로 변경하면 문제가 해결됩니다.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Troubleshooting</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Troubleshooting</span>"
     ]
   },
   {
     "objectID": "chap_version.html",
     "href": "chap_version.html",
-    "title": "4  Version",
+    "title": "5  Version",
     "section": "",
-    "text": "4.1 version 0.1",
+    "text": "5.1 version 0.1",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Version</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Version</span>"
     ]
   },
   {
     "objectID": "chap_version.html#version-0.1",
     "href": "chap_version.html#version-0.1",
-    "title": "4  Version",
+    "title": "5  Version",
     "section": "",
-    "text": "4.1.1 version 0.1.2\n\n2023-05-27\n예제 문서에 버전 정보를 담은 chapter 추가\n\nchap_version.qmd",
+    "text": "5.1.1 version 0.1.2\n\n2023-05-27\n예제 문서에 버전 정보를 담은 chapter 추가\n\nchap_version.qmd",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Version</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Version</span>"
     ]
   },
   {
     "objectID": "chap_version.html#version-0.2",
     "href": "chap_version.html#version-0.2",
-    "title": "4  Version",
-    "section": "4.2 version 0.2",
-    "text": "4.2 version 0.2\n\n4.2.1 version 0.2.0\n\n2023-06-01\npdf와 html에서 공통으로 작동하는 정보 블록 정의\n\ninfobox\n\ninformation, caution, warning, tip\n\n팬독 청크 이용\n\npdf와 html에서 공통으로 작동하는 이야기 블록 정의\n\nquote_block()\nR 함수 이용\n\n\n\n\n4.2.2 version 0.2.1\n\n2023-06-05\npdf와 html에서 공통으로 작동하는 타이틀 박스 블록 정의\n\nPDF\n\ntitlebox 명령\n\nHTML\n\ntitlebox 태그\n\n멀티 아웃 포맷\n\ntitlebox_block() 함수\n\n\n\n\n\n4.2.3 version 0.2.2\n\n2023-06-07\nTable 크로스-레퍼런스의 구현 (#31)\nHTML의 일부 크로스-레퍼런스 미적용 문제 및 Latex 패키지 로드 명령이 출력되는 문제 해결 (#29, thanks to youngjinkim81)\nchapter label을 LaTeX 형식 대신, 멀티 아웃 포맷을 위해서 마크다운 형식으로 변경\n\n\n\n4.2.4 version 0.2.3\n\n2023-06-11\n유니코드 인덱스를 처리하는 방법 개선\n\n초성을 기준으로 찾아보기 정상적으로 동작\nNot Yet\n\n예제 블록의 멀티 아웃 포맷 지원 (#36)\n\nQuarto에서 제공하는 정리(theorems)의 변형을 이용\n\n\n\n\n4.2.5 version 0.2.4\n\n2023-06-22\n유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)\n\n초성을 기준으로 찾아보기 정상적으로 동작\n\n\n\n\n4.2.6 version 0.2.5\n\n2023-06-29\nHTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결 (#30)\n\nragg 패키지 이용\n\n\n\n\n4.2.7 version 0.2.6\n\n2023-07-02\n참고문헌 reference.bib 출력 관련 이슈 해결 (#46)\n\nHTML 아웃 포맷에서 내용이 없는 참고문헌 chapter 출력문제 해결\n\nGithub 파일 다운로드로 설치 시의 파일경로 문제 해결 방법 제시 (#45)\n\n예제 문서의 Troubleshooting chapter에 기술\n\n\n\n\n4.2.8 version 0.2.7\n\n2023-07-07\ntable_with_caption() 오류 수정 (#49)\n\nPDF 아웃 포맷에서 테이블의 헤더(변수 이름)가 iris 변수 이름으로 출력되는 문제\n\n\n\n\n4.2.9 version 0.2.8\n\n2023-07-13\n연습문제 서식 개선 및 연습문제 해답 기능 추가 (#38)\n\n연습문제 헤더 사용자 정의 지원\n\n장(chapter) 레벨과 절(section) 레벨 중에서 선택\n연습문제 이름을 사용자가 정의 가능\n\n기본 이름은 “연습문제”이지만, “Exercise” 등으로 변경 가능\n\n\n예제 본문에 연습문제 및 연습문제 해답 사용방법 추가\n\n\n\n\n4.2.10 version 0.2.9\n\n2023-08-06\nHTML 아웃 포맷에서의 cover-image 사용 예제 추가 (#54)\n\n\n\n4.2.11 version 0.3.0\n\n2023-08-12\nHTML 아웃 포맷을 웹북으로 출판하기 위한 데모를 github pages에 deploy (#55)\n\nhttps://r2bit.com/bitPublish/\n\n판형 설정에서 용지크기를 46배판(B5)으로 설정 (#57)\n\n기존에는 용지의 크기가 국배판(A4)였음\n\ngeometry 패키지의 판형 설정 설명을 추가\n\n\n\n4.2.12 version 0.4.0\n\n2024-03-24\n랜더링 시 오류 발생 오류 수정 (#59)\n\n“_extensions/bit2r/bitPublish/init_environments.R” 파일의\ntable_with_caption() 함수 수정",
+    "title": "5  Version",
+    "section": "5.2 version 0.2",
+    "text": "5.2 version 0.2\n\n5.2.1 version 0.2.0\n\n2023-06-01\npdf와 html에서 공통으로 작동하는 정보 블록 정의\n\ninfobox\n\ninformation, caution, warning, tip\n\n팬독 청크 이용\n\npdf와 html에서 공통으로 작동하는 이야기 블록 정의\n\nquote_block()\nR 함수 이용\n\n\n\n\n5.2.2 version 0.2.1\n\n2023-06-05\npdf와 html에서 공통으로 작동하는 타이틀 박스 블록 정의\n\nPDF\n\ntitlebox 명령\n\nHTML\n\ntitlebox 태그\n\n멀티 아웃 포맷\n\ntitlebox_block() 함수\n\n\n\n\n\n5.2.3 version 0.2.2\n\n2023-06-07\nTable 크로스-레퍼런스의 구현 (#31)\nHTML의 일부 크로스-레퍼런스 미적용 문제 및 Latex 패키지 로드 명령이 출력되는 문제 해결 (#29, thanks to youngjinkim81)\nchapter label을 LaTeX 형식 대신, 멀티 아웃 포맷을 위해서 마크다운 형식으로 변경\n\n\n\n5.2.4 version 0.2.3\n\n2023-06-11\n유니코드 인덱스를 처리하는 방법 개선\n\n초성을 기준으로 찾아보기 정상적으로 동작\nNot Yet\n\n예제 블록의 멀티 아웃 포맷 지원 (#36)\n\nQuarto에서 제공하는 정리(theorems)의 변형을 이용\n\n\n\n\n5.2.5 version 0.2.4\n\n2023-06-22\n유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)\n\n초성을 기준으로 찾아보기 정상적으로 동작\n\n\n\n\n5.2.6 version 0.2.5\n\n2023-06-29\nHTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결 (#30)\n\nragg 패키지 이용\n\n\n\n\n5.2.7 version 0.2.6\n\n2023-07-02\n참고문헌 reference.bib 출력 관련 이슈 해결 (#46)\n\nHTML 아웃 포맷에서 내용이 없는 참고문헌 chapter 출력문제 해결\n\nGithub 파일 다운로드로 설치 시의 파일경로 문제 해결 방법 제시 (#45)\n\n예제 문서의 Troubleshooting chapter에 기술\n\n\n\n\n5.2.8 version 0.2.7\n\n2023-07-07\ntable_with_caption() 오류 수정 (#49)\n\nPDF 아웃 포맷에서 테이블의 헤더(변수 이름)가 iris 변수 이름으로 출력되는 문제\n\n\n\n\n5.2.9 version 0.2.8\n\n2023-07-13\n연습문제 서식 개선 및 연습문제 해답 기능 추가 (#38)\n\n연습문제 헤더 사용자 정의 지원\n\n장(chapter) 레벨과 절(section) 레벨 중에서 선택\n연습문제 이름을 사용자가 정의 가능\n\n기본 이름은 “연습문제”이지만, “Exercise” 등으로 변경 가능\n\n\n예제 본문에 연습문제 및 연습문제 해답 사용방법 추가\n\n\n\n\n5.2.10 version 0.2.9\n\n2023-08-06\nHTML 아웃 포맷에서의 cover-image 사용 예제 추가 (#54)\n\n\n\n5.2.11 version 0.3.0\n\n2023-08-12\nHTML 아웃 포맷을 웹북으로 출판하기 위한 데모를 github pages에 deploy (#55)\n\nhttps://r2bit.com/bitPublish/\n\n판형 설정에서 용지크기를 46배판(B5)으로 설정 (#57)\n\n기존에는 용지의 크기가 국배판(A4)였음\n\ngeometry 패키지의 판형 설정 설명을 추가\n\n\n\n5.2.12 version 0.4.0\n\n2024-03-24\n랜더링 시 오류 발생 오류 수정 (#59)\n\n“_extensions/bit2r/bitPublish/init_environments.R” 파일의\ntable_with_caption() 함수 수정",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Version</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Version</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "참고문헌",
+    "section": "",
+    "text": "Horst, Allison. 2022. “ÇETINKAYA-RUNDEL & LOWNDES QUARTO\nKEYNOTE.” https://allisonhorst.com/cetinkaya-rundel-lowndes-quarto-keynote.\n\n\nposit. 2023a. “Creating Extensions.” https://quarto.org/docs/extensions/creating.html.\n\n\n———. 2023b. “Welcome to Quarto.” https://quarto.org/.\n\n\nYihui Xie, Emily Riederer, Christophe Dervieux. 2022. “R Markdown\nCookbook.” https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html.\n\n\n김강수. 2007. “한글 라텍에서 조사 이형태 교체의 자동화에\n관하여.” The Asian Journal of TEX 1 (2): 153–66. http://ajt.ktug.org/2007/0102karnes.pdf.\n\n\n미니도넛. 2021. “이미지 특정 위치에 고정하기.” https://forestunit.tistory.com/117.\n\n\n유충현, and 이상호. 2013. R을 이용한 통계학 이해. 자유아카데미.",
+    "crumbs": [
+      "참고문헌"
     ]
   }
 ]

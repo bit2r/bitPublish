@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>bitPublish를 이용하여 한글 책 조판하기 - 4&nbsp; Version</title>
+<title>bitPublish를 이용하여 한글 책 조판하기 - 5&nbsp; Version</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/bit2r/bitPublish/style.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_version.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap_version.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,20 +127,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chap_tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">bitPublish 사용 팁</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chap_troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chap_version.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chap_solve_exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">참고문헌</span></a>
   </div>
 </li>
     </ul>
@@ -152,24 +165,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#version-0.1" id="toc-version-0.1" class="nav-link active" data-scroll-target="#version-0.1"><span class="header-section-number">4.1</span> version 0.1</a>
+  <li><a href="#version-0.1" id="toc-version-0.1" class="nav-link active" data-scroll-target="#version-0.1"><span class="header-section-number">5.1</span> version 0.1</a>
   <ul class="collapse">
-  <li><a href="#version-0.1.2" id="toc-version-0.1.2" class="nav-link" data-scroll-target="#version-0.1.2"><span class="header-section-number">4.1.1</span> version 0.1.2</a></li>
+  <li><a href="#version-0.1.2" id="toc-version-0.1.2" class="nav-link" data-scroll-target="#version-0.1.2"><span class="header-section-number">5.1.1</span> version 0.1.2</a></li>
   </ul></li>
-  <li><a href="#version-0.2" id="toc-version-0.2" class="nav-link" data-scroll-target="#version-0.2"><span class="header-section-number">4.2</span> version 0.2</a>
+  <li><a href="#version-0.2" id="toc-version-0.2" class="nav-link" data-scroll-target="#version-0.2"><span class="header-section-number">5.2</span> version 0.2</a>
   <ul class="collapse">
-  <li><a href="#version-0.2.0" id="toc-version-0.2.0" class="nav-link" data-scroll-target="#version-0.2.0"><span class="header-section-number">4.2.1</span> version 0.2.0</a></li>
-  <li><a href="#version-0.2.1" id="toc-version-0.2.1" class="nav-link" data-scroll-target="#version-0.2.1"><span class="header-section-number">4.2.2</span> version 0.2.1</a></li>
-  <li><a href="#version-0.2.2" id="toc-version-0.2.2" class="nav-link" data-scroll-target="#version-0.2.2"><span class="header-section-number">4.2.3</span> version 0.2.2</a></li>
-  <li><a href="#version-0.2.3" id="toc-version-0.2.3" class="nav-link" data-scroll-target="#version-0.2.3"><span class="header-section-number">4.2.4</span> version 0.2.3</a></li>
-  <li><a href="#version-0.2.4" id="toc-version-0.2.4" class="nav-link" data-scroll-target="#version-0.2.4"><span class="header-section-number">4.2.5</span> version 0.2.4</a></li>
-  <li><a href="#version-0.2.5" id="toc-version-0.2.5" class="nav-link" data-scroll-target="#version-0.2.5"><span class="header-section-number">4.2.6</span> version 0.2.5</a></li>
-  <li><a href="#version-0.2.6" id="toc-version-0.2.6" class="nav-link" data-scroll-target="#version-0.2.6"><span class="header-section-number">4.2.7</span> version 0.2.6</a></li>
-  <li><a href="#version-0.2.7" id="toc-version-0.2.7" class="nav-link" data-scroll-target="#version-0.2.7"><span class="header-section-number">4.2.8</span> version 0.2.7</a></li>
-  <li><a href="#version-0.2.8" id="toc-version-0.2.8" class="nav-link" data-scroll-target="#version-0.2.8"><span class="header-section-number">4.2.9</span> version 0.2.8</a></li>
-  <li><a href="#version-0.2.9" id="toc-version-0.2.9" class="nav-link" data-scroll-target="#version-0.2.9"><span class="header-section-number">4.2.10</span> version 0.2.9</a></li>
-  <li><a href="#version-0.3.0" id="toc-version-0.3.0" class="nav-link" data-scroll-target="#version-0.3.0"><span class="header-section-number">4.2.11</span> version 0.3.0</a></li>
-  <li><a href="#version-0.4.0" id="toc-version-0.4.0" class="nav-link" data-scroll-target="#version-0.4.0"><span class="header-section-number">4.2.12</span> version 0.4.0</a></li>
+  <li><a href="#version-0.2.0" id="toc-version-0.2.0" class="nav-link" data-scroll-target="#version-0.2.0"><span class="header-section-number">5.2.1</span> version 0.2.0</a></li>
+  <li><a href="#version-0.2.1" id="toc-version-0.2.1" class="nav-link" data-scroll-target="#version-0.2.1"><span class="header-section-number">5.2.2</span> version 0.2.1</a></li>
+  <li><a href="#version-0.2.2" id="toc-version-0.2.2" class="nav-link" data-scroll-target="#version-0.2.2"><span class="header-section-number">5.2.3</span> version 0.2.2</a></li>
+  <li><a href="#version-0.2.3" id="toc-version-0.2.3" class="nav-link" data-scroll-target="#version-0.2.3"><span class="header-section-number">5.2.4</span> version 0.2.3</a></li>
+  <li><a href="#version-0.2.4" id="toc-version-0.2.4" class="nav-link" data-scroll-target="#version-0.2.4"><span class="header-section-number">5.2.5</span> version 0.2.4</a></li>
+  <li><a href="#version-0.2.5" id="toc-version-0.2.5" class="nav-link" data-scroll-target="#version-0.2.5"><span class="header-section-number">5.2.6</span> version 0.2.5</a></li>
+  <li><a href="#version-0.2.6" id="toc-version-0.2.6" class="nav-link" data-scroll-target="#version-0.2.6"><span class="header-section-number">5.2.7</span> version 0.2.6</a></li>
+  <li><a href="#version-0.2.7" id="toc-version-0.2.7" class="nav-link" data-scroll-target="#version-0.2.7"><span class="header-section-number">5.2.8</span> version 0.2.7</a></li>
+  <li><a href="#version-0.2.8" id="toc-version-0.2.8" class="nav-link" data-scroll-target="#version-0.2.8"><span class="header-section-number">5.2.9</span> version 0.2.8</a></li>
+  <li><a href="#version-0.2.9" id="toc-version-0.2.9" class="nav-link" data-scroll-target="#version-0.2.9"><span class="header-section-number">5.2.10</span> version 0.2.9</a></li>
+  <li><a href="#version-0.3.0" id="toc-version-0.3.0" class="nav-link" data-scroll-target="#version-0.3.0"><span class="header-section-number">5.2.11</span> version 0.3.0</a></li>
+  <li><a href="#version-0.4.0" id="toc-version-0.4.0" class="nav-link" data-scroll-target="#version-0.4.0"><span class="header-section-number">5.2.12</span> version 0.4.0</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -179,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-version" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Version</span></span></h1>
+<h1 class="title"><span id="sec-version" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Version</span></span></h1>
 </div>
 
 
@@ -197,10 +210,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>이 장에서는 `bitPublish’의 버전에 대한 정보를 제공합니다.</p>
-<section id="version-0.1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="version-0.1"><span class="header-section-number">4.1</span> version 0.1</h2>
-<section id="version-0.1.2" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="version-0.1.2"><span class="header-section-number">4.1.1</span> version 0.1.2</h3>
+<section id="version-0.1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="version-0.1"><span class="header-section-number">5.1</span> version 0.1</h2>
+<section id="version-0.1.2" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="version-0.1.2"><span class="header-section-number">5.1.1</span> version 0.1.2</h3>
 <ul>
 <li><p><strong>2023-05-27</strong></p></li>
 <li><p>예제 문서에 버전 정보를 담은 chapter 추가</p>
@@ -210,10 +223,10 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="version-0.2" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="version-0.2"><span class="header-section-number">4.2</span> version 0.2</h2>
-<section id="version-0.2.0" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="version-0.2.0"><span class="header-section-number">4.2.1</span> version 0.2.0</h3>
+<section id="version-0.2" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="version-0.2"><span class="header-section-number">5.2</span> version 0.2</h2>
+<section id="version-0.2.0" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="version-0.2.0"><span class="header-section-number">5.2.1</span> version 0.2.0</h3>
 <ul>
 <li><p><strong>2023-06-01</strong></p></li>
 <li><p>pdf와 html에서 공통으로 작동하는 정보 블록 정의</p>
@@ -231,8 +244,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.1" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="version-0.2.1"><span class="header-section-number">4.2.2</span> version 0.2.1</h3>
+<section id="version-0.2.1" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="version-0.2.1"><span class="header-section-number">5.2.2</span> version 0.2.1</h3>
 <ul>
 <li><p><strong>2023-06-05</strong></p></li>
 <li><p>pdf와 html에서 공통으로 작동하는 타이틀 박스 블록 정의</p>
@@ -252,8 +265,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.2" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="version-0.2.2"><span class="header-section-number">4.2.3</span> version 0.2.2</h3>
+<section id="version-0.2.2" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="version-0.2.2"><span class="header-section-number">5.2.3</span> version 0.2.2</h3>
 <ul>
 <li><p><strong>2023-06-07</strong></p></li>
 <li><p>Table 크로스-레퍼런스의 구현 (#31)</p></li>
@@ -261,8 +274,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>chapter label을 LaTeX 형식 대신, 멀티 아웃 포맷을 위해서 마크다운 형식으로 변경</p></li>
 </ul>
 </section>
-<section id="version-0.2.3" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="version-0.2.3"><span class="header-section-number">4.2.4</span> version 0.2.3</h3>
+<section id="version-0.2.3" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="version-0.2.3"><span class="header-section-number">5.2.4</span> version 0.2.3</h3>
 <ul>
 <li><p><strong>2023-06-11</strong></p></li>
 <li><p>유니코드 인덱스를 처리하는 방법 개선</p>
@@ -276,8 +289,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.4" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="version-0.2.4"><span class="header-section-number">4.2.5</span> version 0.2.4</h3>
+<section id="version-0.2.4" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="version-0.2.4"><span class="header-section-number">5.2.5</span> version 0.2.4</h3>
 <ul>
 <li><p><strong>2023-06-22</strong></p></li>
 <li><p>유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)</p>
@@ -286,8 +299,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.5" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="version-0.2.5"><span class="header-section-number">4.2.6</span> version 0.2.5</h3>
+<section id="version-0.2.5" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="version-0.2.5"><span class="header-section-number">5.2.6</span> version 0.2.5</h3>
 <ul>
 <li><p><strong>2023-06-29</strong></p></li>
 <li><p>HTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결 (#30)</p>
@@ -296,8 +309,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.6" class="level3" data-number="4.2.7">
-<h3 data-number="4.2.7" class="anchored" data-anchor-id="version-0.2.6"><span class="header-section-number">4.2.7</span> version 0.2.6</h3>
+<section id="version-0.2.6" class="level3" data-number="5.2.7">
+<h3 data-number="5.2.7" class="anchored" data-anchor-id="version-0.2.6"><span class="header-section-number">5.2.7</span> version 0.2.6</h3>
 <ul>
 <li><p><strong>2023-07-02</strong></p></li>
 <li><p>참고문헌 reference.bib 출력 관련 이슈 해결 (#46)</p>
@@ -310,8 +323,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.7" class="level3" data-number="4.2.8">
-<h3 data-number="4.2.8" class="anchored" data-anchor-id="version-0.2.7"><span class="header-section-number">4.2.8</span> version 0.2.7</h3>
+<section id="version-0.2.7" class="level3" data-number="5.2.8">
+<h3 data-number="5.2.8" class="anchored" data-anchor-id="version-0.2.7"><span class="header-section-number">5.2.8</span> version 0.2.7</h3>
 <ul>
 <li><p><strong>2023-07-07</strong></p></li>
 <li><p>table_with_caption() 오류 수정 (#49)</p>
@@ -320,8 +333,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.8" class="level3" data-number="4.2.9">
-<h3 data-number="4.2.9" class="anchored" data-anchor-id="version-0.2.8"><span class="header-section-number">4.2.9</span> version 0.2.8</h3>
+<section id="version-0.2.8" class="level3" data-number="5.2.9">
+<h3 data-number="5.2.9" class="anchored" data-anchor-id="version-0.2.8"><span class="header-section-number">5.2.9</span> version 0.2.8</h3>
 <ul>
 <li><p><strong>2023-07-13</strong></p></li>
 <li><p>연습문제 서식 개선 및 연습문제 해답 기능 추가 (#38)</p>
@@ -338,15 +351,15 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="version-0.2.9" class="level3" data-number="4.2.10">
-<h3 data-number="4.2.10" class="anchored" data-anchor-id="version-0.2.9"><span class="header-section-number">4.2.10</span> version 0.2.9</h3>
+<section id="version-0.2.9" class="level3" data-number="5.2.10">
+<h3 data-number="5.2.10" class="anchored" data-anchor-id="version-0.2.9"><span class="header-section-number">5.2.10</span> version 0.2.9</h3>
 <ul>
 <li><p><strong>2023-08-06</strong></p></li>
 <li><p>HTML 아웃 포맷에서의 cover-image 사용 예제 추가 (#54)</p></li>
 </ul>
 </section>
-<section id="version-0.3.0" class="level3" data-number="4.2.11">
-<h3 data-number="4.2.11" class="anchored" data-anchor-id="version-0.3.0"><span class="header-section-number">4.2.11</span> version 0.3.0</h3>
+<section id="version-0.3.0" class="level3" data-number="5.2.11">
+<h3 data-number="5.2.11" class="anchored" data-anchor-id="version-0.3.0"><span class="header-section-number">5.2.11</span> version 0.3.0</h3>
 <ul>
 <li><p><strong>2023-08-12</strong></p></li>
 <li><p>HTML 아웃 포맷을 웹북으로 출판하기 위한 데모를 github pages에 deploy (#55)</p>
@@ -360,8 +373,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>geometry 패키지의 판형 설정 설명을 추가</p></li>
 </ul>
 </section>
-<section id="version-0.4.0" class="level3" data-number="4.2.12">
-<h3 data-number="4.2.12" class="anchored" data-anchor-id="version-0.4.0"><span class="header-section-number">4.2.12</span> version 0.4.0</h3>
+<section id="version-0.4.0" class="level3" data-number="5.2.12">
+<h3 data-number="5.2.12" class="anchored" data-anchor-id="version-0.4.0"><span class="header-section-number">5.2.12</span> version 0.4.0</h3>
 <ul>
 <li><p><strong>2024-03-24</strong></p></li>
 <li><p>랜더링 시 오류 발생 오류 수정 (#59)</p>
@@ -766,12 +779,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chap_troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Troubleshooting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chap_solve_exercise.html" class="pagination-link" aria-label="연습문제 풀이">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">연습문제 풀이</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
