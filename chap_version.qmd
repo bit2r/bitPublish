@@ -133,6 +133,16 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - "_extensions/bit2r/bitPublish/init_environments.R" 파일의
     - table_with_caption() 함수 수정
 
+### version 0.4.1
 
+- **2024-04-09**
+
+- 인용 및 서식에 대한 몇 가지 요청 사항 tips에 반영 (#61)
+    - 문서 내 인용 하이퍼 링크 제거
+        - 인쇄용
+    - 그림을 표로 인식시키고, 표의 label을 활용하고 싶음
+        - 이미지이지만 그 내용이 표인 경우
+    - Code Script background
+        - 배경색이 흐려서 일반 프린터 출력 시 잘 보이지 않음 / 구분이 안됨
     
     

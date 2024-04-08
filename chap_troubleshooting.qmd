@@ -85,6 +85,40 @@ l.54   \item include_
 \index{include\_graphics()}
 ```
 
+
+### 참고문헌 컴파일 오류
+
+사용자의 Quarto 환경적인 문제로 LaTeX의 참고문헌을 컴파일할 때 다음과 같은 에러가 발생할 수 있습니다. 이 경우는 정상적으로 pdf 문서가 만들어지지만 참고문헌이 제대로 표시되지 않습니다.
+
+```{verbatim}
+generating bibliography
+Can't load '/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/auto/XML/LibXML/LibXML.bundle' for module XML::LibXML: dlopen(/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/auto/XML/LibXML/LibXML.bundle, 0x0001): Symbol not found: _iconv
+    Referenced from: <4FABCE36-0023-3D1B-A158-3499EFD82412> /private/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/libxml2.2.dylib
+    Expected in:     <E05EA2EB-4F11-36B6-87E5-41C89C1BCC5D> /private/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/libiconv.2.dylib at /loader/HASH(0x12083c250)/DynaLoader.pm line 210.
+   at /loader/HASH(0x1208abfe0)/PAR/Heavy.pm line 104.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML.pm line 156.
+  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML/Simple.pm line 21.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML/Simple.pm line 21.
+  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/LaTeX/Recode.pm line 16.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/LaTeX/Recode.pm line 16.
+  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Utils.pm line 19.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Utils.pm line 19.
+  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Internals.pm line 8.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Internals.pm line 8.
+  Compilation failed in require at /loader/HASH(0x12083cd90)/parent.pm line 16.
+  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber.pm line 5.
+  Compilation failed in require at script/biber-darwin line 17.
+  BEGIN failed--compilation aborted at script/biber-darwin line 17.
+```
+
+이 경우에는 로그 메시지에 나오는 디렉토리에 있는 경로의 모든 파일을 삭제하면 됩니다. 그리고 다시 `quarto preview --to bitPublish-pdf` 명령을 수행하면 생성된 PDF 파일에 참고문헌이 정상적으로 출력됩니다.
+
+```{md}
+rm -rf /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-*
+```
+
+
+
 ## 설치 이슈
 
 ### bitPublish 파일 다운로드 설치

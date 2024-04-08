@@ -18,3 +18,4 @@ book:
   cover-image: hexlogo/bitPublish_logo.png    
 bibliography: references.bib
 link-citations: false
+keep-tex: false
