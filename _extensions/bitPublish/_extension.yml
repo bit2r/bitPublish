@@ -83,7 +83,7 @@ contributes:
 
             %% 코드 overflow 방지
             \usepackage{fvextra}
-            \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+            \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}          
         - file: bitPublish.tex
       include-after-body:
         - text: |

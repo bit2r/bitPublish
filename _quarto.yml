@@ -19,3 +19,6 @@ book:
 bibliography: references.bib
 link-citations: false
 keep-tex: false
+citation_package: biblatex
+biblatexoptions: [backend=biber,nohashothers=true, maxcitenames =2,bibstyle=authoryear,citestyle=authoryear]
+            
