@@ -99,6 +99,22 @@
 
 
 %%==============================================================================
+%% 컬러 정의
+%%==============================================================================
+\definecolor{gray95}{gray}{.95}
+\definecolor{gray85}{gray}{.85}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{ExerciseColor}{gray}{0.65}              % for example 
+\definecolor{problemblue}{RGB}{100, 134, 158}        % for 시각화전략
+\definecolor{light}{HTML}{E6E6FA}
+\definecolor{highlight}{HTML}{800080}
+\definecolor{dark}{HTML}{330033}
+\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}  % for Exercise 
+\definecolor{colsec}{HTML}{000000}                   % for Section
+\definecolor{colsub}{HTML}{000000}                   % for Subsection 
+
+
+%%==============================================================================
 %% 절(section)과 서브절(subsection) 타이틀을 돋움체(sans-serif)로 바꾸기
 %%==============================================================================
 %% Rmarkdown과 titlesec 패키지가 호환되지 않는 이슈가 있음. 
@@ -112,23 +128,10 @@
 
 \usepackage{titlesec}
 \titleformat{\section}
-  {\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
+  {\color{colsec}\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
-  {\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
-  
+  {\color{colsub}\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
 
-%%==============================================================================
-%% 컬러 정의
-%%==============================================================================
-\definecolor{gray95}{gray}{.95}
-\definecolor{gray85}{gray}{.85}
-\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
-\definecolor{ExerciseColor}{gray}{0.65}              % for example 
-\definecolor{problemblue}{RGB}{100, 134, 158}        % for 시각화전략
-\definecolor{light}{HTML}{E6E6FA}
-\definecolor{highlight}{HTML}{800080}
-\definecolor{dark}{HTML}{330033}
-\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}  % for Exercise 
 
 
 %%==============================================================================
