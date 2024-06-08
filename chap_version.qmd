@@ -145,4 +145,12 @@ source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
     - Code Script background
         - 배경색이 흐려서 일반 프린터 출력 시 잘 보이지 않음 / 구분이 안됨
     
+
+### version 0.4.2
+
+- **2024-06-08**
+
+- 서식 (소제목) 색상 변경 (#62)
+    - Section, Subsection의 색상 변경
+        - bitPublish.tex 파일 수정
     

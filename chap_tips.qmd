@@ -152,3 +152,47 @@ code-block-bg: "#f8f8f8"
 knitr::include_graphics("img/codeblock-custom.png")
 ```
 
+
+### 소제목의 색상 변경하기
+
+소제목인 section과 subsection의 색상을 변경하고 싶을 때가 있습니다. 이때 다음과 같이 설정을 변경할 수 있습니다.
+
+_extension/bit2r/bitPublish/bitPublish.tex 파일에 다음과 같은 컬러 정의 부분이 있습니다. `colsec`과 `colsub`이 RGB 값으로 검정색인 `000000`으로 설정되어 있습니다. 이 부분을 원하는 색상으로 변경하면 됩니다. 만약 blue로 변경하고 싶다면 `colsec`과 `colsub`을 `0000FF`로 변경하면 됩니다.
+
+```{md}
+%%==============================================================================
+%% 컬러 정의
+%%==============================================================================
+\definecolor{gray95}{gray}{.95}
+\definecolor{gray85}{gray}{.85}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{ExerciseColor}{gray}{0.65}              % for example 
+\definecolor{problemblue}{RGB}{100, 134, 158}        % for 시각화전략
+\definecolor{light}{HTML}{E6E6FA}
+\definecolor{highlight}{HTML}{800080}
+\definecolor{dark}{HTML}{330033}
+\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}  % for Exercise 
+\definecolor{colsec}{HTML}{000000}                   % for Section
+\definecolor{colsub}{HTML}{000000}                   % for Subsection 
+
+
+%%==============================================================================
+%% 절(section)과 서브절(subsection) 타이틀을 돋움체(sans-serif)로 바꾸기
+%%==============================================================================
+%% Rmarkdown과 titlesec 패키지가 호환되지 않는 이슈가 있음. 
+%% 아래 두줄의 명령을 입력하지 않으면 에러가 발생함
+%% 문제의 원인:
+%% https://stackoverflow.com/questions/40439701/cant-knit-to-pdf-with-custom-styles
+%% 문제의 해결
+%% https://github.com/rstudio/bookdown/issues/677
+\let\paragraph\oldparagraph
+\let\subparagraph\oldsubparagraph
+
+\usepackage{titlesec}
+\titleformat{\section}
+  {\color{colsec}\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\color{colsub}\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  
+```
+
+

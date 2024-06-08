@@ -206,6 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#latex-오류" id="toc-latex-오류" class="nav-link" data-scroll-target="#latex-오류"><span class="header-section-number">4.2</span> LaTeX 오류</a>
   <ul class="collapse">
   <li><a href="#찾아보기-오류" id="toc-찾아보기-오류" class="nav-link" data-scroll-target="#찾아보기-오류"><span class="header-section-number">4.2.1</span> 찾아보기 오류</a></li>
+  <li><a href="#참고문헌-컴파일-오류" id="toc-참고문헌-컴파일-오류" class="nav-link" data-scroll-target="#참고문헌-컴파일-오류"><span class="header-section-number">4.2.2</span> 참고문헌 컴파일 오류</a></li>
   </ul></li>
   <li><a href="#설치-이슈" id="toc-설치-이슈" class="nav-link" data-scroll-target="#설치-이슈"><span class="header-section-number">4.3</span> 설치 이슈</a>
   <ul class="collapse">
@@ -301,6 +302,32 @@ bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있�
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\index</span>{include<span class="fu">\_</span>graphics()}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="참고문헌-컴파일-오류" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="참고문헌-컴파일-오류"><span class="header-section-number">4.2.2</span> 참고문헌 컴파일 오류</h3>
+<p>사용자의 Quarto 환경적인 문제로 LaTeX의 참고문헌을 컴파일할 때 다음과 같은 에러가 발생할 수 있습니다. 이 경우는 정상적으로 pdf 문서가 만들어지지만 참고문헌이 제대로 표시되지 않습니다.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>generating bibliography</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Can't load '/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/auto/XML/LibXML/LibXML.bundle' for module XML::LibXML: dlopen(/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/auto/XML/LibXML/LibXML.bundle, 0x0001): Symbol not found: _iconv</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    Referenced from: &lt;4FABCE36-0023-3D1B-A158-3499EFD82412&gt; /private/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/libxml2.2.dylib</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    Expected in:     &lt;E05EA2EB-4F11-36B6-87E5-41C89C1BCC5D&gt; /private/var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/libiconv.2.dylib at /loader/HASH(0x12083c250)/DynaLoader.pm line 210.</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   at /loader/HASH(0x1208abfe0)/PAR/Heavy.pm line 104.</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML.pm line 156.</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML/Simple.pm line 21.</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/XML/LibXML/Simple.pm line 21.</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/LaTeX/Recode.pm line 16.</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/LaTeX/Recode.pm line 16.</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Utils.pm line 19.</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Utils.pm line 19.</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Internals.pm line 8.</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber/Internals.pm line 8.</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at /loader/HASH(0x12083cd90)/parent.pm line 16.</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-63686f6f6e676879756e727975/cache-351a9b4d1739a271ecf0be692d0ec1ef0a81d258/inc/lib/Biber.pm line 5.</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  Compilation failed in require at script/biber-darwin line 17.</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  BEGIN failed--compilation aborted at script/biber-darwin line 17.</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이 경우에는 로그 메시지에 나오는 디렉토리에 있는 경로의 모든 파일을 삭제하면 됩니다. 그리고 다시 <code>quarto preview --to bitPublish-pdf</code> 명령을 수행하면 생성된 PDF 파일에 참고문헌이 정상적으로 출력됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rm -rf /var/folders/zy/rmhmyp4n0fd1_t0q9y_dy0hm0000gn/T/par-*</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="설치-이슈" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="설치-이슈"><span class="header-section-number">4.3</span> 설치 이슈</h2>
@@ -308,28 +335,28 @@ bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있�
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="bitpublish-파일-다운로드-설치"><span class="header-section-number">4.3.1</span> bitPublish 파일 다운로드 설치</h3>
 <p>bitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarto use template bit2r/bitPublish</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>quarto use template bit2r/bitPublish</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>혹은 다음처럼 기존 문서에 bitPublish extension을 설치하는 명령으로도 Github에서 bitPublish가 설치됩니다.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>quarto install extension bit2r/bitPublish</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>quarto install extension bit2r/bitPublish</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>그러나 사용자 PC 환경에서, 보안 프로그램 등의 이슈로 <code>quarto</code> 명령 설치에 오류가 발생할 수 있습니다. 이 경우에는 Github으로부터 bitPublish를 다운로드한 후 특정 디렉토리에 복사해서 사용하면 됩니다. 그러나 이 경우에는 다음과 같은 명령에 에러가 발생할 수 있습니다.</p>
 <ul>
 <li>명령</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>quarto preview --to bitPublish-pdf</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>quarto preview --to bitPublish-pdf</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>에러 메시지의 일부</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>finding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>1 package to install</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>installing stix2-otf (1 of 1)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ERROR: tlmgr returned a non zero status code</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>finding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>1 package to install</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>installing stix2-otf (1 of 1)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>ERROR: tlmgr returned a non zero status code</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>이러한 에러가 발생한 이유는 <code>quarto</code> 명령어로 bitPublish가 설치될 경우에는 <code>_extensions/bit2r/bitPublish</code> 경로로 <code>extensions</code>이 설치되지만, Github에서 파일을 다운로드해서 실치할 경우에는 <code>_extensions/bitPublish</code> 경로로 설치되기 때문입니다.</p>
 <p><code>bitPublish</code> <code>extensions</code>은 <code>_extensions/bit2r/bitPublish</code> 디렉토리에 설치됨을 전제로 개발되었기 때문에 다운로드 설치 시 <code>_extensions</code> 디렉토리 안에 <code>bit2r</code> 디렉토리를 만들어서 현재의 <code>_extensions/bitPublish</code> 경로를 <code>_extensions/bit2r/bitPublish</code> 경로로 변경하면 문제가 해결됩니다.</p>

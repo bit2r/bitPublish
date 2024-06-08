@@ -204,6 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#그림을-표로-인식시키고-표의-label을-활용" id="toc-그림을-표로-인식시키고-표의-label을-활용" class="nav-link" data-scroll-target="#그림을-표로-인식시키고-표의-label을-활용"><span class="header-section-number">3.1.1</span> 그림을 표로 인식시키고, 표의 label을 활용</a></li>
   <li><a href="#문서-내-인용-하이퍼-링크-제거" id="toc-문서-내-인용-하이퍼-링크-제거" class="nav-link" data-scroll-target="#문서-내-인용-하이퍼-링크-제거"><span class="header-section-number">3.1.2</span> 문서 내 인용 하이퍼 링크 제거</a></li>
   <li><a href="#코드-블록의-배경색-설정" id="toc-코드-블록의-배경색-설정" class="nav-link" data-scroll-target="#코드-블록의-배경색-설정"><span class="header-section-number">3.1.3</span> 코드 블록의 배경색 설정</a></li>
+  <li><a href="#소제목의-색상-변경하기" id="toc-소제목의-색상-변경하기" class="nav-link" data-scroll-target="#소제목의-색상-변경하기"><span class="header-section-number">3.1.4</span> 소제목의 색상 변경하기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -302,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Quarto로 생성한 문서의 코드 블록의 기본 출력은 <a href="#fig-codeblock-default" class="quarto-xref">그림&nbsp;<span>3.1</span></a>같이 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-codeblock-default" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="htb!">
+<div id="fig-codeblock-default" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="htb!" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-codeblock-default-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/codeblock-default.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="htb!">
@@ -361,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>수정한 _quarto.yml 파일로 생성한 문서의 코드 블록은 <a href="#fig-codeblock-custom" class="quarto-xref">그림&nbsp;<span>3.2</span></a>같이 출력됩니다.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-codeblock-custom" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="htb!">
+<div id="fig-codeblock-custom" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="htb!" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-codeblock-custom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="img/codeblock-custom.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" data-fig-pos="htb!">
@@ -372,6 +373,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+</div>
+</section>
+<section id="소제목의-색상-변경하기" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="소제목의-색상-변경하기"><span class="header-section-number">3.1.4</span> 소제목의 색상 변경하기</h3>
+<p>소제목인 section과 subsection의 색상을 변경하고 싶을 때가 있습니다. 이때 다음과 같이 설정을 변경할 수 있습니다.</p>
+<p>_extension/bit2r/bitPublish/bitPublish.tex 파일에 다음과 같은 컬러 정의 부분이 있습니다. <code>colsec</code>과 <code>colsub</code>이 RGB 값으로 검정색인 <code>000000</code>으로 설정되어 있습니다. 이 부분을 원하는 색상으로 변경하면 됩니다. 만약 blue로 변경하고 싶다면 <code>colsec</code>과 <code>colsub</code>을 <code>0000FF</code>로 변경하면 됩니다.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>%%==============================================================================</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>%% 컬러 정의</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>%%==============================================================================</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>\definecolor{gray95}{gray}{.95}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>\definecolor{gray85}{gray}{.85}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>\definecolor{ExerciseColor}{gray}{0.65}              % for example </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>\definecolor{problemblue}{RGB}{100, 134, 158}        % for 시각화전략</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>\definecolor{light}{HTML}{E6E6FA}</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>\definecolor{highlight}{HTML}{800080}</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>\definecolor{dark}{HTML}{330033}</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}  % for Exercise </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>\definecolor{colsec}{HTML}{000000}                   % for Section</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>\definecolor{colsub}{HTML}{000000}                   % for Subsection </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>%%==============================================================================</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>%% 절(section)과 서브절(subsection) 타이틀을 돋움체(sans-serif)로 바꾸기</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>%%==============================================================================</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>%% Rmarkdown과 titlesec 패키지가 호환되지 않는 이슈가 있음. </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>%% 아래 두줄의 명령을 입력하지 않으면 에러가 발생함</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>%% 문제의 원인:</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>%% https://stackoverflow.com/questions/40439701/cant-knit-to-pdf-with-custom-styles</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>%% 문제의 해결</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>%% https://github.com/rstudio/bookdown/issues/677</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>\let\paragraph\oldparagraph</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>\let\subparagraph\oldsubparagraph</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>\usepackage{titlesec}</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>\titleformat{\section}</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  {\color{colsec}\sffamily\selectfont\Large\bfseries}{\thesection}{1em}{}</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>\titleformat{\subsection}</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  {\color{colsub}\sffamily\selectfont\large\bfseries}{\thesubsection}{1em}{}  </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
