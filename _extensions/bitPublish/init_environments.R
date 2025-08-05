@@ -1,6 +1,8 @@
 ##==============================================================================
 ## R graphics 한글 폰트 적용을 위한 작업
 ##==============================================================================
+# CRAN 미러 설정
+options(repos = c(CRAN = "https://cran.r-project.org/"))
 if(!require("Cairo")){
   install.packages("Cairo")
   library("Cairo")
@@ -33,20 +35,20 @@ if(!require("ragg")){
 
 # 한글 폰트
 sysfonts::font_add("NanumSquare", 
-         regular = here::here("_extensions", "bit2r", "bitPublish", "fonts", 
+         regular = here::here("_extensions", "bitPublish", "fonts", 
                               "NanumSquare", "NanumSquareR.otf"), 
-         bold = here::here("_extensions", "bit2r", "bitPublish", "fonts", 
+         bold = here::here("_extensions", "bitPublish", "fonts", 
                            "NanumSquare", "NanumSquareB.otf"))
 
 # 영문폰트
 sysfonts::font_add("Nimbus Sans L",
-         regular = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
+         regular = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
                         "NimbusSanL-Reg.otf"),     
-         bold = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
+         bold = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
                      "NimbusSanL-Bol.otf"),     
-         italic = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
+         italic = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
                        "NimbusSanL-RegIta.otf"),     
-         bolditalic = here("_extensions", "bit2r", "bitPublish", "fonts", "Nimbus Sans L", 
+         bolditalic = here("_extensions", "bitPublish", "fonts", "Nimbus Sans L", 
                            "NimbusSanL-BolIta.otf"))
 
 
