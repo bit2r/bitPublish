@@ -149,14 +149,21 @@
 %% Define code blocks - for single space
 %%==============================================================================
 %% https://stackoverflow.com/questions/73439371/quarto-pdf-output-code-block-line-spacing
-\renewenvironment{Shaded}
-    {\begin{snugshade}
-    \begin{singlespace}
-    \linespread{1}
-    }
-    {\end{singlespace}
-    \end{snugshade}
+%% Use renewenvironment to redefine Quarto's built-in Shaded environment with reduced line spacing
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+% Shaded 환경이 없으면 먼저 정의
+\makeatletter
+\@ifundefined{Shaded}{%
+  \newenvironment{Shaded}
+    {\begin{snugshade}\begin{singlespace}\linespread{1}}
+    {\end{singlespace}\end{snugshade}}
+}{%
+  \renewenvironment{Shaded}
+    {\begin{snugshade}\begin{singlespace}\linespread{1}}
+    {\end{singlespace}\end{snugshade}}
 }
+\makeatother
 
 
 %%==============================================================================
