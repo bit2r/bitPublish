@@ -1,7 +1,7 @@
 # bitPublish 소개 {#sec-bitpublish}
 
 ```{r init, include=FALSE}
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 
 이 장에서는 \`bitPublish'의 활용을 위한 특장점과 기능을 소개합니다.
@@ -365,7 +365,7 @@ custom_block(msg, type, title)
 
 ```{r init2, include=FALSE}
 # source(here::here("_extensions", "bitPublish", "init_environments.R"))
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 
 이 방법도 멀티 아웃 포맷을 지원합니다. 다음과 같은 `knitr` 청크를 이용합니다.
@@ -398,7 +398,7 @@ custom_block("
 ```{r}`r ''`
 #| label: init
 #| include: false
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 ````
 
@@ -1329,7 +1329,7 @@ bitPublish는 `ragg` 패키지의 `agg_png()`를 사용하여 본문에 플롯�
 
 ````md
 ```{r init, include=FALSE}`r ''`
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 ````
 
@@ -1466,8 +1466,7 @@ LaTeX을 이용한 표를 삽입하는 방법은 LaTeX 스크립트를 기술하
 
 
 ```{=tex}
-#| tbl-pos: htb!
-\begin{table}
+\begin{table}[htb!]
 \centering
 \begin{tabular}[]{llcr}
 \toprule

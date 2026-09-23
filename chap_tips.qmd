@@ -1,7 +1,7 @@
 # bitPublish 사용 팁 {#sec-tips}
 
 ```{r init, include=FALSE}
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 
 이 장에서는 \`bitPublish'을 응용하여 다소 복잡한 기능을 구현하는 팁을 제시합니다.

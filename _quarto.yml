@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: docs
 
-lang: ko-KR
+lang: en
 
 book:
   title: "bitPublish를 이용하여 한글 책 조판하기"

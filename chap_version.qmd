@@ -2,7 +2,7 @@
 
 ```{r init, include=FALSE}
 # source(here::here("_extensions", "bitPublish", "init_environments.R"))
-source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bitPublish", "init_environments.R"))
 ```
 
 이 장에서는 `bitPublish'의 버전에 대한 정보를 제공합니다.
